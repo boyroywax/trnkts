@@ -137,40 +137,13 @@
             <h2 class="section-title">Text Colors</h2>
             <div class="typography-examples">
                 <div class="example-group">
-                    <div class="example-title">Primary Brand Colors</div>
+                    <div class="example-title">Semantic Colors</div>
                     <div class="color-primary h3">Primary Color (#AF4B0E)</div>
                     <div class="color-secondary h3">Secondary Color (#666)</div>
                     <div class="color-muted h3">Muted Color (#999)</div>
-                </div>
-                
-                <div class="example-group">
-                    <div class="example-title">Secondary Palette Colors</div>
-                    <div class="color-electric-mint h3">Electric Mint (#00E676)</div>
-                    <div class="color-coral-burst h3">Coral Burst (#FF6B35)</div>
-                    <div class="color-lavender-electric h3">Lavender Electric (#7B68EE)</div>
-                    <div class="color-neon-rose h3">Neon Rose (#FF1493)</div>
-                    <div class="color-aqua-glow h3">Aqua Glow (#00BCD4)</div>
-                    <div class="color-solar-lime h3">Solar Lime (#FFEB3B)</div>
-                </div>
-                
-                <div class="example-group">
-                    <div class="example-title">Semantic Colors</div>
-                    <div class="color-success h3">Success - Electric Mint (#00E676)</div>
-                    <div class="color-warning h3">Warning - Coral Burst (#FF6B35)</div>
-                    <div class="color-error h3">Error - Neon Rose (#FF1493)</div>
-                    <div class="color-info h3">Info - Aqua Glow (#00BCD4)</div>
-                    <div class="color-highlight h3">Highlight - Solar Lime (#FFEB3B)</div>
-                    <div class="color-interactive h3">Interactive - Lavender Electric (#7B68EE)</div>
-                </div>
-                
-                <div class="example-group">
-                    <div class="example-title">Usage Context</div>
-                    <div class="body-medium">
-                        Use <span class="color-link">Aqua Glow</span> for links and secondary actions, 
-                        <span class="color-success">Electric Mint</span> for success states, 
-                        <span class="color-warning">Coral Burst</span> for warnings, and 
-                        <span class="color-interactive">Lavender Electric</span> for interactive elements.
-                    </div>
+                    <div class="color-success h3">Success Color (#28a745)</div>
+                    <div class="color-warning h3">Warning Color (#ffc107)</div>
+                    <div class="color-error h3">Error Color (#dc3545)</div>
                 </div>
             </div>
         </div>
@@ -189,7 +162,6 @@
                         <div class="body-large line-height-relaxed">
                             Create beautiful, consistent interfaces with our comprehensive design system and icon library.
                         </div>
-                        <div class="body-medium color-link">Learn more about our features →</div>
                     </div>
                 </div>
 
@@ -201,40 +173,31 @@
                     <div class="example-text">
                         <div class="h2 font-weight-semibold">The Art of Typography</div>
                         <div class="body-medium line-height-normal">
-                            Typography is the art and technique of arranging type to make written language legible, readable, and appealing when displayed. 
-                            <a href="#" class="color-link">Learn more about typography principles</a> and how they apply to modern design.
+                            Typography is the art and technique of arranging type to make written language legible, readable, and appealing when displayed. The arrangement of type involves selecting typefaces, point sizes, line lengths, line-spacing, and letter-spacing.
                         </div>
                         <div class="body-small color-muted">Published on March 15, 2024</div>
                     </div>
                 </div>
 
                 <div class="usage-card">
-                    <div class="usage-title">Interactive Elements</div>
+                    <div class="usage-title">Card Component</div>
                     <div class="usage-description">
-                        Typography for interactive components and states.
+                        Structured typography for information hierarchy in components.
                     </div>
                     <div class="example-text">
                         <div class="h4 font-weight-semibold">Feature Title</div>
                         <div class="body-medium line-height-normal">
                             Brief description of the feature or content that explains its value proposition.
                         </div>
-                        <div class="button-text color-interactive">Hover State</div>
-                        <div class="button-text color-link">Link Action →</div>
+                        <div class="button-text color-primary">Learn More →</div>
                     </div>
                 </div>
 
                 <div class="usage-card">
-                    <div class="usage-title">Status Messages</div>
+                    <div class="usage-title">Navigation</div>
                     <div class="usage-description">
-                        Typography for different status and feedback states.
+                        Clean, scannable typography for navigation elements.
                     </div>
-                    <div class="example-text">
-                        <div class="body-medium color-success">✓ Success: Your changes have been saved</div>
-                        <div class="body-medium color-warning">⚠ Warning: Please check your input</div>
-                        <div class="body-medium color-error">✗ Error: Something went wrong</div>
-                        <div class="body-medium color-info">ℹ Info: Additional information available</div>
-                    </div>
-                </div>
                     <div class="example-text">
                         <div class="body-medium font-weight-medium">Home</div>
                         <div class="body-medium font-weight-medium">Products</div>
@@ -273,86 +236,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Color Reference Table</h2>
-            <table class="responsive-table">
-                <thead>
-                    <tr>
-                        <th>Color Name</th>
-                        <th>CSS Class</th>
-                        <th>Hex Value</th>
-                        <th>Usage</th>
-                        <th>Preview</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Primary</strong></td>
-                        <td><code>.color-primary</code></td>
-                        <td>#AF4B0E</td>
-                        <td>Brand primary, main actions</td>
-                        <td><span class="color-primary">Sample Text</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Electric Mint</strong></td>
-                        <td><code>.color-success</code></td>
-                        <td>#00E676</td>
-                        <td>Success states, positive feedback</td>
-                        <td><span class="color-success">Sample Text</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Coral Burst</strong></td>
-                        <td><code>.color-warning</code></td>
-                        <td>#FF6B35</td>
-                        <td>Warning states, attention-grabbing</td>
-                        <td><span class="color-warning">Sample Text</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Neon Rose</strong></td>
-                        <td><code>.color-error</code></td>
-                        <td>#FF1493</td>
-                        <td>Error states, urgent notifications</td>
-                        <td><span class="color-error">Sample Text</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Aqua Glow</strong></td>
-                        <td><code>.color-info</code></td>
-                        <td>#00BCD4</td>
-                        <td>Info states, links, secondary actions</td>
-                        <td><span class="color-info">Sample Text</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Lavender Electric</strong></td>
-                        <td><code>.color-interactive</code></td>
-                        <td>#7B68EE</td>
-                        <td>Interactive elements, hover states</td>
-                        <td><span class="color-interactive">Sample Text</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Solar Lime</strong></td>
-                        <td><code>.color-highlight</code></td>
-                        <td>#FFEB3B</td>
-                        <td>Highlights, badges, energy indicators</td>
-                        <td><span class="color-highlight">Sample Text</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Secondary</strong></td>
-                        <td><code>.color-secondary</code></td>
-                        <td>#666</td>
-                        <td>Secondary text, subtitles</td>
-                        <td><span class="color-secondary">Sample Text</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Muted</strong></td>
-                        <td><code>.color-muted</code></td>
-                        <td>#999</td>
-                        <td>Muted text, placeholders</td>
-                        <td><span class="color-muted">Sample Text</span></td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
 
         <div class="section">

@@ -5,466 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trnkts - Icon Library</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #89CFF0, #A855F7, #EC4899, #F97316, #FCD34D);
-            min-height: 100vh;
-            padding: 2rem;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 3rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .home-button {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1rem;
-            background: rgba(175, 75, 14, 0.1);
-            color: #AF4B0E;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-            border: 2px solid rgba(175, 75, 14, 0.2);
-            z-index: 10;
-        }
-
-        .home-button:hover {
-            background: #AF4B0E;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(175, 75, 14, 0.3);
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .logo-container {
-            margin-bottom: 2rem;
-        }
-
-        .logo-container svg {
-            width: 120px;
-            height: 120px;
-        }
-
-        .main-title {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #AF4B0E, #EC4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            font-weight: 400;
-            margin-bottom: 2rem;
-        }
-
-        .controls-section {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .controls-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: #333;
-        }
-
-        .control-row {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .control-group {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .control-label {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #555;
-            margin-bottom: 0.5rem;
-        }
-
-        .control-input {
-            width: 100%;
-            padding: 0.5rem;
-            border: 2px solid #e9ecef;
-            border-radius: 6px;
-            font-size: 0.9rem;
-        }
-
-        .color-mode-selector {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .color-mode {
-            padding: 0.5rem 1rem;
-            border: 2px solid #e9ecef;
-            border-radius: 6px;
-            background: white;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .color-mode.active {
-            border-color: #AF4B0E;
-            background: #AF4B0E;
-            color: white;
-        }
-
-        .section {
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: #333;
-        }
-
-        .section-description {
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .icon-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .icon-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e9ecef;
-            transition: all 0.2s ease;
-            text-align: center;
-        }
-
-        .icon-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .icon-preview {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .icon-preview svg {
-            width: 48px;
-            height: 48px;
-            max-width: 48px;
-            max-height: 48px;
-        }
-
-        .icon-name {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .icon-actions {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-        }
-
-        .icon-button {
-            padding: 0.4rem 0.8rem;
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: #666;
-        }
-
-        .icon-button:hover {
-            background: #AF4B0E;
-            color: white;
-            border-color: #AF4B0E;
-        }
-
-        .download-section {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-
-        .download-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: #AF4B0E;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin: 0.5rem;
-        }
-
-        .download-button:hover {
-            background: #8a3c0b;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(175, 75, 14, 0.3);
-        }
-
-        .download-button.secondary {
-            background: transparent;
-            color: #AF4B0E;
-            border: 2px solid #AF4B0E;
-        }
-
-        .download-button.secondary:hover {
-            background: #AF4B0E;
-            color: white;
-        }
-
-        .notification {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            background: #28a745;
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .notification.show {
-            transform: translateX(0);
-        }
-
-        @media (max-width: 768px) {
-            .control-row {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .icon-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
+    <div id="statusMessage" class="status-message"></div>
+    
     <div class="container">
         <a href="../index.html" class="home-button">
-            🏠 Home
+            <svg class="home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9,22 9,12 15,12 15,22"/>
+            </svg>
+            Back to Home
         </a>
         
         <div class="header">
-            <div class="logo-container">
-                <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                <linearGradient id="paint0_linear" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#833AB4"/>
-                <stop offset="0.3" stop-color="#E1306C"/>
-                <stop offset="0.6" stop-color="#F77737"/>
-                <stop offset="1" stop-color="#FCAF45"/>
-                </linearGradient>
-                <style>
-                 @keyframes hue-shift {
-                 from {
-                 filter: hue-rotate(0deg);
-                 }
-                 to {
-                 filter: hue-rotate(360deg);
-                 }
-                 }
-
-                 .gem {
-                 animation: hue-shift 10s linear infinite;
-                 }
-                 </style>
-                </defs>
-                <g class="gem">
-                <path d="M100 20L20 70L100 120L180 70L100 20Z" fill="url(#paint0_linear)"/>
-                <path d="M20 70L100 120L100 170L20 120L20 70Z" fill="url(#paint0_linear)" fill-opacity="0.7"/>
-                <path d="M180 70L100 120L100 170L180 120L180 70Z" fill="url(#paint0_linear)" fill-opacity="0.5"/>
-                </g>
-                </svg>
-            </div>
-            <h1 class="main-title">trnkts</h1>
-            <p class="subtitle">Icon Library - Tri-tone SVG Collection</p>
+            <h1 class="title">Icon Library</h1>
+            <p class="subtitle">Beautiful dual-tone SVG icons with gradient support</p>
         </div>
 
-        <div class="controls-section">
-            <h2 class="controls-title">Icon Customization</h2>
+        <div class="controls">
+            <h2 class="controls-title">Customization Options</h2>
+            
             <div class="control-row">
                 <div class="control-group">
-                    <label class="control-label">Icon Size</label>
-                    <select class="control-input" id="iconSize" onchange="updateAllIcons()">
-                        <option value="24">24px</option>
-                        <option value="32">32px</option>
-                        <option value="48">48px</option>
-                        <option value="64" selected>64px</option>
-                        <option value="96">96px</option>
-                        <option value="128">128px</option>
-                    </select>
+                    <label class="control-label">Icon Size (px)</label>
+                    <input type="range" id="sizeSlider" class="control-input" min="24" max="128" value="64" oninput="updateSize(this.value)">
+                    <div style="text-align: center; margin-top: 0.5rem; font-weight: 600;" id="sizeDisplay">64px</div>
                 </div>
+                
                 <div class="control-group">
                     <label class="control-label">Color Mode</label>
                     <div class="color-mode-selector">
-                        <div class="color-mode active" data-mode="gradient" onclick="setColorMode('gradient')">Gradient</div>
-                        <div class="color-mode" data-mode="mono" onclick="setColorMode('mono')">Monochrome</div>
-                        <div class="color-mode" data-mode="custom" onclick="setColorMode('custom')">Custom</div>
+                        <button class="color-mode active" onclick="setColorMode('gradient')">Gradient</button>
+                        <button class="color-mode" onclick="setColorMode('mono')">Monochrome</button>
+                        <button class="color-mode" onclick="setColorMode('custom')">Custom</button>
                     </div>
                 </div>
-                <div class="control-group" id="customColorGroup" style="display: none;">
+                
+                <div class="control-group">
                     <label class="control-label">Custom Color</label>
-                    <input type="color" class="control-input" id="customColor" value="#AF4B0E" onchange="updateAllIcons()">
+                    <input type="color" id="customColor" class="control-input" value="#AF4B0E" onchange="updateCustomColor()">
+                </div>
+            </div>
+            
+            <div class="control-row">
+                <div class="download-buttons">
+                    <button class="download-btn" onclick="downloadAllIcons()">Download All Icons</button>
+                    <button class="download-btn secondary" onclick="downloadCurrentCategory()">Download Category</button>
                 </div>
             </div>
         </div>
 
-        <div class="section">
-            <h2 class="section-title">Interface Icons</h2>
-            <p class="section-description">
-                Essential interface icons with tri-tone design, featuring three layers of transparency for depth and visual hierarchy.
-            </p>
-            <div class="icon-grid" id="interfaceIcons">
-                <!-- Icons will be populated by JavaScript -->
-            </div>
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('interface')">Interface</div>
+            <div class="tab" onclick="switchTab('system')">System</div>
+            <div class="tab" onclick="switchTab('arrows')">Arrows</div>
+            <div class="tab" onclick="switchTab('communication')">Communication</div>
+            <div class="tab" onclick="switchTab('media')">Media</div>
+            <div class="tab" onclick="switchTab('brand')">Brand</div>
+            <div class="tab" onclick="switchTab('gems')" style="background: linear-gradient(135deg, #89CFF0, #A855F7); color: white; border-color: transparent;">Gems</div>
+            <div class="tab" onclick="switchTab('prototypes')" style="background: linear-gradient(135deg, #833AB4, #E1306C); color: white; border-color: transparent;">Prototypes</div>
+            <div class="tab" onclick="switchTab('interface-3d')" style="background: linear-gradient(135deg, #E1306C, #F77737); color: white; border-color: transparent;">Interface 3D</div>
+            <div class="tab" onclick="switchTab('system-3d')" style="background: linear-gradient(135deg, #F77737, #FCAF45); color: white; border-color: transparent;">System 3D</div>
+            <div class="tab" onclick="switchTab('communication-3d')" style="background: linear-gradient(135deg, #833AB4, #F77737); color: white; border-color: transparent;">Comm 3D</div>
+            <div class="tab" onclick="switchTab('media-3d')" style="background: linear-gradient(135deg, #E1306C, #FCAF45); color: white; border-color: transparent;">Media 3D</div>
+            <div class="tab" onclick="switchTab('navigation-3d')" style="background: linear-gradient(135deg, #F77737, #833AB4); color: white; border-color: transparent;">Nav 3D</div>
+            <div class="tab" onclick="switchTab('web3-3d')" style="background: linear-gradient(135deg, #00E676, #7B68EE); color: white; border-color: transparent;">Web3 3D</div>
         </div>
 
-        <div class="section">
-            <h2 class="section-title">System Icons</h2>
-            <p class="section-description">
-                Common system and action icons following the trnkts design language with consistent tri-tone styling.
-            </p>
-            <div class="icon-grid" id="systemIcons">
-                <!-- Icons will be populated by JavaScript -->
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Arrow & Navigation Icons</h2>
-            <p class="section-description">
-                Directional and navigation icons for user flow guidance with precise tri-tone visual weight.
-            </p>
-            <div class="icon-grid" id="arrowIcons">
-                <!-- Icons will be populated by JavaScript -->
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Communication Icons</h2>
-            <p class="section-description">
-                Icons for messaging, sharing, and communication features with layered transparency effects.
-            </p>
-            <div class="icon-grid" id="communicationIcons">
-                <!-- Icons will be populated by JavaScript -->
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Media Icons</h2>
-            <p class="section-description">
-                Audio, video, and image control icons with gradient-compatible tri-tone structure.
-            </p>
-            <div class="icon-grid" id="mediaIcons">
-                <!-- Icons will be populated by JavaScript -->
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Brand Icons</h2>
-            <p class="section-description">
-                Trnkts-specific icons and logo variations for brand consistency across all touchpoints.
-            </p>
-            <div class="icon-grid" id="brandIcons">
-                <!-- Icons will be populated by JavaScript -->
-            </div>
-        </div>
-
-        <div class="download-section">
-            <h2 class="section-title">Download Icon Library</h2>
-            <p class="section-description">
-                Download the complete icon set in your preferred format and configuration.
-            </p>
-            <button class="download-button" onclick="downloadIconPack('svg')">
-                📁 Download SVG Pack
-            </button>
-            <button class="download-button secondary" onclick="downloadIconPack('png')">
-                🖼️ Download PNG Pack
-            </button>
-            <button class="download-button secondary" onclick="downloadCSS()">
-                📄 Download CSS
-            </button>
-        </div>
-    </div>
-
-    <div class="notification" id="notification">
-        Download completed!
+        <div id="interface-grid" class="icon-grid"></div>
+        <div id="system-grid" class="icon-grid" style="display: none;"></div>
+        <div id="arrows-grid" class="icon-grid" style="display: none;"></div>
+        <div id="communication-grid" class="icon-grid" style="display: none;"></div>
+        <div id="media-grid" class="icon-grid" style="display: none;"></div>
+        <div id="brand-grid" class="icon-grid" style="display: none;"></div>
+        <div id="gems-grid" class="icon-grid" style="display: none;"></div>
+        <div id="prototypes-grid" class="icon-grid" style="display: none;"></div>
+        <div id="interface-3d-grid" class="icon-grid" style="display: none;"></div>
+        <div id="system-3d-grid" class="icon-grid" style="display: none;"></div>
+        <div id="communication-3d-grid" class="icon-grid" style="display: none;"></div>
+        <div id="media-3d-grid" class="icon-grid" style="display: none;"></div>
+        <div id="navigation-3d-grid" class="icon-grid" style="display: none;"></div>
+        <div id="web3-3d-grid" class="icon-grid" style="display: none;"></div>
     </div>
 
     <!-- Import modular icon definitions -->
@@ -474,10 +97,19 @@
     <script src="icons/communication.js"></script>
     <script src="icons/media.js"></script>
     <script src="icons/brand.js"></script>
+    <script src="icons/gems.js"></script>
+    <script src="icons/prototypes.js"></script>
+    <script src="icons/interface-3d.js"></script>
+    <script src="icons/system-3d.js"></script>
+    <script src="icons/communication-3d.js"></script>
+    <script src="icons/media-3d.js"></script>
+    <script src="icons/navigation-3d.js"></script>
+    <script src="icons/web3-3d.js"></script>
 
     <script>
         let currentColorMode = 'gradient';
         let currentSize = 64;
+        let currentCategory = 'interface';
 
         // Combine all icon modules into the main library
         const iconLibrary = {
@@ -486,335 +118,30 @@
             arrows: arrowIcons,
             communication: communicationIcons,
             media: mediaIcons,
-            brand: brandIcons
-        };
-                'settings': {
-                    name: 'Settings',
-                    paths: [
-                        'M12 15a3 3 0 100-6 3 3 0 000 6z',
-                        'M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33M4.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33',
-                        'M12 13a1 1 0 100-2 1 1 0 000 2z'
-                    ]
-                },
-                'heart': {
-                    name: 'Heart',
-                    paths: [
-                        'M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z',
-                        'M18.5 6.5a3.5 3.5 0 00-4.95 0L12 8.05l-.55-.55a3.5 3.5 0 00-4.95 4.95l.55.55L12 18l4.95-4.95.55-.55a3.5 3.5 0 000-4.95z',
-                        'M12 12l2-2M12 12l-2-2'
-                    ]
-                },
-                'star': {
-                    name: 'Star',
-                    paths: [
-                        'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z',
-                        'M12 4l2.5 5.1L20 10l-4 3.9 1 5.6L12 16.8l-5 2.7 1-5.6L4 10l5.5-.9L12 4z',
-                        'M12 6l2 4 4.5-.5-3.5 3.5.5 4.5L12 15l-3.5 2.5.5-4.5L5.5 9.5 10 10l2-4z'
-                    ]
-                },
-                'bell': {
-                    name: 'Notification',
-                    paths: [
-                        'M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9',
-                        'M13.73 21a2 2 0 01-3.46 0',
-                        'M12 4v4'
-                    ]
-                },
-                'lock': {
-                    name: 'Lock',
-                    paths: [
-                        'M19 11H5a2 2 0 00-2 2v7a2 2 0 002 2h14a2 2 0 002-2v-7a2 2 0 00-2-2z',
-                        'M7 11V7a5 5 0 0110 0v4',
-                        'M12 15v2'
-                    ]
-                }
-            },
-            system: {
-                'home': {
-                    name: 'Home',
-                    paths: [
-                        'M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z',
-                        'M9 22V12h6v10',
-                        'M12 6v4'
-                    ]
-                },
-                'download': {
-                    name: 'Download',
-                    paths: [
-                        'M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4',
-                        'M7 10l5 5 5-5',
-                        'M12 15V3'
-                    ]
-                },
-                'upload': {
-                    name: 'Upload',
-                    paths: [
-                        'M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4',
-                        'M17 8l-5-5-5 5',
-                        'M12 3v12'
-                    ]
-                },
-                'edit': {
-                    name: 'Edit',
-                    paths: [
-                        'M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7',
-                        'M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z',
-                        'M15 5l3 3'
-                    ]
-                },
-                'delete': {
-                    name: 'Delete',
-                    paths: [
-                        'M3 6h18m-2 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6',
-                        'M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2',
-                        'M10 11v6m4-6v6'
-                    ]
-                },
-                'copy': {
-                    name: 'Copy',
-                    paths: [
-                        'M20 9h-1V4a2 2 0 00-2-2H4a2 2 0 00-2 2v13c0 1.1.9 2 2 2h5v1a2 2 0 002 2h9a2 2 0 002-2V11a2 2 0 00-2-2z',
-                        'M9 9h11v11',
-                        'M15 15h-6V9'
-                    ]
-                },
-                'folder': {
-                    name: 'Folder',
-                    paths: [
-                        'M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z',
-                        'M2 12h20',
-                        'M8 8h6'
-                    ]
-                },
-                'file': {
-                    name: 'File',
-                    paths: [
-                        'M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z',
-                        'M14 2v6h6',
-                        'M10 12h4m-4 4h4'
-                    ]
-                }
-            },
-            arrows: {
-                'arrow-up': {
-                    name: 'Arrow Up',
-                    paths: [
-                        'M18 15l-6-6-6 6',
-                        'M16 13l-4-4-4 4',
-                        'M14 11l-2-2-2 2'
-                    ]
-                },
-                'arrow-down': {
-                    name: 'Arrow Down',
-                    paths: [
-                        'M6 9l6 6 6-6',
-                        'M8 11l4 4 4-4',
-                        'M10 13l2 2 2-2'
-                    ]
-                },
-                'arrow-left': {
-                    name: 'Arrow Left',
-                    paths: [
-                        'M15 18l-6-6 6-6',
-                        'M13 16l-4-4 4-4',
-                        'M11 14l-2-2 2-2'
-                    ]
-                },
-                'arrow-right': {
-                    name: 'Arrow Right',
-                    paths: [
-                        'M9 18l6-6-6-6',
-                        'M11 16l4-4-4-4',
-                        'M13 14l2-2-2-2'
-                    ]
-                },
-                'chevron-up': {
-                    name: 'Chevron Up',
-                    paths: [
-                        'M6 15l6-6 6 6',
-                        'M8 13l4-4 4 4',
-                        'M10 11l2-2 2 2'
-                    ]
-                },
-                'chevron-down': {
-                    name: 'Chevron Down',
-                    paths: [
-                        'M18 9l-6 6-6-6',
-                        'M16 11l-4 4-4-4',
-                        'M14 13l-2 2-2-2'
-                    ]
-                },
-                'expand': {
-                    name: 'Expand',
-                    paths: [
-                        'M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7',
-                        'M17 5h4v4M7 19H3v-4M19 5l-5 5M3 19l5-5',
-                        'M19 7v2h-2M5 17v2h2M17 7l-3 3M7 17l3-3'
-                    ]
-                },
-                'compress': {
-                    name: 'Compress',
-                    paths: [
-                        'M8 3v3h3M16 3v3h-3M8 21v-3h3M16 21v-3h-3',
-                        'M10 5v2h2M14 5v2h-2M10 19v-2h2M14 19v-2h-2',
-                        'M12 7v1M12 17v-1M11 12h2'
-                    ]
-                }
-            },
-            communication: {
-                'message': {
-                    name: 'Message',
-                    paths: [
-                        'M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z',
-                        'M19 13a1 1 0 01-1 1H8l-3 3V7a1 1 0 011-1h12a1 1 0 011 1z',
-                        'M17 11H9l-2 2V9h10z'
-                    ]
-                },
-                'mail': {
-                    name: 'Mail',
-                    paths: [
-                        'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6',
-                        'M6 6h12c.5 0 1 .5 1 1v10c0 .5-.5 1-1 1H6c-.5 0-1-.5-1-1V7c0-.5.5-1 1-1zM19 7l-7 5L5 7',
-                        'M8 8h8v8H8V8zM16 8l-4 3L8 8'
-                    ]
-                },
-                'phone': {
-                    name: 'Phone',
-                    paths: [
-                        'M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z',
-                        'M20 17.5v2a1.5 1.5 0 01-1.6 1.5 17 17 0 01-7.4-2.6 16.5 16.5 0 01-5.1-5.1A17 17 0 013.5 5.9 1.5 1.5 0 015 4.4h2a1.5 1.5 0 011.5 1.3 11 11 0 00.6 2.4 1.5 1.5 0 01-.3 1.6l-1 1a14 14 0 005.2 5.2l1-1a1.5 1.5 0 011.6-.3 11 11 0 002.4.6A1.5 1.5 0 0120 17.5z',
-                        'M18 19v1H6v-1M16 7a10 10 0 01.8 2 1 1 0 01-.2 1l-.8.8a12 12 0 004.4 4.4l.8-.8a1 1 0 011-.2 10 10 0 012 .8'
-                    ]
-                },
-                'video': {
-                    name: 'Video',
-                    paths: [
-                        'M23 7l-7 5 7 5V7zM15 5H1a1 1 0 00-1 1v12a1 1 0 001 1h14a1 1 0 001-1V6a1 1 0 00-1-1z',
-                        'M21 9l-5 3 5 3V9zM13 7H3v10h10V7z',
-                        'M19 11l-3 1.5 3 1.5v-3zM11 9H5v6h6V9z'
-                    ]
-                },
-                'share': {
-                    name: 'Share',
-                    paths: [
-                        'M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13',
-                        'M6 14v6h12v-6M14 8l-2-2-2 2M12 4v9',
-                        'M8 16v4h8v-4M13 9l-1-1-1 1M12 6v6'
-                    ]
-                },
-                'link': {
-                    name: 'Link',
-                    paths: [
-                        'M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71',
-                        'M12 15a3 3 0 004.24.24l2-2a3 3 0 00-4.24-4.24l-1.2 1.2M12 9a3 3 0 00-4.24-.24l-2 2a3 3 0 004.24 4.24l1.2-1.2',
-                        'M14 13a1 1 0 001.41.14l1-1a1 1 0 00-1.41-1.41l-.7.7M10 11a1 1 0 00-1.41-.14l-1 1a1 1 0 001.41 1.41l.7-.7'
-                    ]
-                }
-            },
-            media: {
-                'play': {
-                    name: 'Play',
-                    paths: [
-                        'M8 5v14l11-7z',
-                        'M10 7v10l7-5z',
-                        'M12 9v6l4-3z'
-                    ]
-                },
-                'pause': {
-                    name: 'Pause',
-                    paths: [
-                        'M6 4h4v16H6zM14 4h4v16h-4z',
-                        'M8 6h2v12H8zM14 6h2v12h-2z',
-                        'M9 8h1v8H9zM14 8h1v8h-1z'
-                    ]
-                },
-                'stop': {
-                    name: 'Stop',
-                    paths: [
-                        'M5 5h14v14H5z',
-                        'M7 7h10v10H7z',
-                        'M9 9h6v6H9z'
-                    ]
-                },
-                'volume': {
-                    name: 'Volume',
-                    paths: [
-                        'M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07',
-                        'M9 7L7 9H4v6h3l2 2V7zM17 6.5a8 8 0 010 11M14.5 9.5a4 4 0 010 5',
-                        'M8 9v6l1-1H6v-4h3l-1-1M15.5 8a6 6 0 010 8M13 10.5a2 2 0 010 3'
-                    ]
-                },
-                'image': {
-                    name: 'Image',
-                    paths: [
-                        'M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z',
-                        'M17 5H7a1 1 0 00-1 1v12a1 1 0 001 1h10a1 1 0 001-1V6a1 1 0 00-1-1zM9.5 15l2 2.5L14 14l3 4H7l2.5-3z',
-                        'M15 7H9v10h6V7zM11 16l1.5-2L14 16H10z'
-                    ]
-                },
-                'camera': {
-                    name: 'Camera',
-                    paths: [
-                        'M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2zM12 17a4 4 0 100-8 4 4 0 000 8z',
-                        'M21 17a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1h3l1.5-2h5L15 8h4a1 1 0 011 1zM12 15a3 3 0 100-6 3 3 0 000 6z',
-                        'M19 15H5V10h2l1-1h4l1 1h2v5zM12 13a2 2 0 100-4 2 2 0 000 4z'
-                    ]
-                }
-            },
-            brand: {
-                'gem': {
-                    name: 'Gem Logo',
-                    paths: [
-                        'M12 2l8 5-8 10L4 7l8-5z',
-                        'M12 4l6 4-6 8L6 8l6-4z',
-                        'M12 6l4 3-4 6L8 9l4-3z'
-                    ]
-                },
-                'trnkts': {
-                    name: 'Trnkts',
-                    paths: [
-                        'M4 4h16v16H4V4z',
-                        'M6 6h12v12H6V6z',
-                        'M8 8h8v8H8V8z'
-                    ]
-                },
-                'sparkle': {
-                    name: 'Sparkle',
-                    paths: [
-                        'M12 1l3 9 9 3-9 3-3 9-3-9-9-3 9-3z',
-                        'M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z',
-                        'M12 5l1 4 4 1-4 1-1 4-1-4-4-1 4-1z'
-                    ]
-                },
-                'crystal': {
-                    name: 'Crystal',
-                    paths: [
-                        'M6 2l6 4 6-4v6l-6 4-6-4zM6 14l6 4 6-4v6l-6 4-6-4z',
-                        'M8 4l4 3 4-3v4l-4 3-4-3zM8 16l4 3 4-3v4l-4 3-4-3z',
-                        'M10 6l2 2 2-2v2l-2 2-2-2zM10 18l2 2 2-2v2l-2 2-2-2z'
-                    ]
-                },
-                'diamond': {
-                    name: 'Diamond',
-                    paths: [
-                        'M6 3h12l4 6-10 12L2 9z',
-                        'M8 5h8l3 4-7 8L4 9z',
-                        'M10 7h4l2 3-4 5L8 10z'
-                    ]
-                }
-            }
+            brand: brandIcons,
+            gems: gemsIcons,
+            prototypes: prototypeIcons,
+            'interface-3d': interface3dIcons,
+            'system-3d': system3dIcons,
+            'communication-3d': communication3dIcons,
+            'media-3d': media3dIcons,
+            'navigation-3d': navigation3dIcons,
+            'web3-3d': web3Icons
         };
 
         function createSVGIcon(iconData, size = 64, colorMode = 'gradient', previewMode = false) {
-            const { paths } = iconData;
+            const isPrototype = iconData.type === '3d-fill';
             let fills;
             
             // Use fixed 48px for preview cards, actual size for downloads
             const actualSize = previewMode ? 48 : size;
             
+            // Create unique gradient ID to avoid conflicts
+            const gradientId = `trnkts-gradient-${Math.random().toString(36).substr(2, 9)}`;
+            
             switch (colorMode) {
                 case 'gradient':
-                    fills = ['url(#trnkts-gradient)', 'url(#trnkts-gradient)', 'url(#trnkts-gradient)'];
+                    fills = [`url(#${gradientId})`, `url(#${gradientId})`, `url(#${gradientId})`];
                     break;
                 case 'mono':
                     fills = ['#333333', '#555555', '#777777'];
@@ -824,22 +151,34 @@
                     fills = [customColor, customColor + 'CC', customColor + '88'];
                     break;
                 default:
-                    fills = ['url(#trnkts-gradient)', 'url(#trnkts-gradient)', 'url(#trnkts-gradient)'];
+                    fills = [`url(#${gradientId})`, `url(#${gradientId})`, `url(#${gradientId})`];
             }
 
-            return `<svg width="${actualSize}" height="${actualSize}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            let svgContent = `<svg width="${actualSize}" height="${actualSize}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <linearGradient id="trnkts-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                    <linearGradient id="${gradientId}" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
                         <stop stop-color="#833AB4"/>
                         <stop offset="0.3" stop-color="#E1306C"/>
                         <stop offset="0.6" stop-color="#F77737"/>
                         <stop offset="1" stop-color="#FCAF45"/>
                     </linearGradient>
-                </defs>
-                <path d="${paths[0]}" stroke="${fills[0]}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="1.0"/>
-                <path d="${paths[1]}" stroke="${fills[1]}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.7"/>
-                <path d="${paths[2]}" stroke="${fills[2]}" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.5"/>
-            </svg>`;
+                </defs>`;
+
+            if (isPrototype && iconData.paths) {
+                // 3D Fill-based rendering for prototypes
+                iconData.paths.forEach((pathData) => {
+                    const fill = colorMode === 'gradient' ? `url(#${gradientId})` : fills[0];
+                    const opacity = pathData.opacity || 1;
+                    svgContent += `<path d="${pathData.d}" fill="${fill}" fill-opacity="${opacity}" stroke="none"/>`;
+                });
+            } else if (iconData.paths) {
+                // Dual-tone stroke-based rendering for existing icons
+                svgContent += `<path d="${iconData.paths[0]}" stroke="${fills[0]}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="1.0"/>`;
+                svgContent += `<path d="${iconData.paths[1]}" stroke="${fills[1]}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.7"/>`;
+            }
+
+            svgContent += '</svg>';
+            return svgContent;
         }
 
         function renderIconGrid(containerId, iconCategory) {
@@ -849,14 +188,13 @@
             Object.entries(iconLibrary[iconCategory]).forEach(([key, iconData]) => {
                 const iconCard = document.createElement('div');
                 iconCard.className = 'icon-card';
-                
                 iconCard.innerHTML = `
                     <div class="icon-preview">
-                        ${createSVGIcon(iconData, currentSize, currentColorMode, true)}
+                        ${createSVGIcon(iconData, 48, currentColorMode, true)}
                     </div>
                     <div class="icon-name">${iconData.name}</div>
                     <div class="icon-actions">
-                        <button class="icon-button" onclick="copyIconSVG('${iconCategory}', '${key}')">Copy</button>
+                        <button class="icon-button" onclick="copyToClipboard('${iconCategory}', '${key}')">Copy</button>
                         <button class="icon-button" onclick="downloadSingleIcon('${iconCategory}', '${key}')">Download</button>
                     </div>
                 `;
@@ -868,162 +206,131 @@
         function setColorMode(mode) {
             currentColorMode = mode;
             document.querySelectorAll('.color-mode').forEach(btn => btn.classList.remove('active'));
-            document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
-            
-            const customGroup = document.getElementById('customColorGroup');
-            customGroup.style.display = mode === 'custom' ? 'block' : 'none';
-            
-            updateAllIcons();
+            event.target.classList.add('active');
+            renderCurrentCategory();
         }
 
-        function updateAllIcons() {
-            currentSize = parseInt(document.getElementById('iconSize').value);
-            
-            renderIconGrid('interfaceIcons', 'interface');
-            renderIconGrid('systemIcons', 'system');
-            renderIconGrid('arrowIcons', 'arrows');
-            renderIconGrid('communicationIcons', 'communication');
-            renderIconGrid('mediaIcons', 'media');
-            renderIconGrid('brandIcons', 'brand');
+        function updateSize(value) {
+            currentSize = parseInt(value);
+            document.getElementById('sizeDisplay').textContent = value + 'px';
         }
 
-        function copyIconSVG(category, iconKey) {
+        function updateCustomColor() {
+            if (currentColorMode === 'custom') {
+                renderCurrentCategory();
+            }
+        }
+
+        function switchTab(category) {
+            // Hide all grids
+            document.querySelectorAll('.icon-grid').forEach(grid => grid.style.display = 'none');
+            
+            // Show selected grid
+            document.getElementById(category + '-grid').style.display = 'grid';
+            
+            // Update tab states
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            currentCategory = category;
+            renderIconGrid(category + '-grid', category);
+        }
+
+        function renderCurrentCategory() {
+            renderIconGrid(currentCategory + '-grid', currentCategory);
+        }
+
+        async function copyToClipboard(category, iconKey) {
             const iconData = iconLibrary[category][iconKey];
-            const svg = createSVGIcon(iconData, currentSize, currentColorMode);
+            const svgString = createSVGIcon(iconData, currentSize, currentColorMode);
             
-            navigator.clipboard.writeText(svg).then(() => {
-                showNotification(`${iconData.name} icon copied to clipboard!`);
-            }).catch(err => {
+            try {
+                await navigator.clipboard.writeText(svgString);
+                showStatus('Icon copied to clipboard!');
+            } catch (err) {
                 console.error('Failed to copy: ', err);
-                showNotification('Failed to copy icon. Please try again.');
-            });
+                showStatus('Failed to copy icon', 'error');
+            }
         }
 
         function downloadSingleIcon(category, iconKey) {
             const iconData = iconLibrary[category][iconKey];
-            const svg = createSVGIcon(iconData, currentSize, currentColorMode);
+            const svgString = createSVGIcon(iconData, currentSize, currentColorMode);
             
-            const blob = new Blob([svg], { type: 'image/svg+xml' });
+            const blob = new Blob([svgString], { type: 'image/svg+xml' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `trnkts-icon-${iconKey}-${currentSize}px.svg`;
+            a.download = `${iconKey}-${currentSize}px.svg`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
             
-            showNotification(`${iconData.name} icon downloaded!`);
+            showStatus('Icon downloaded!');
         }
 
-        function downloadIconPack(format) {
+        async function downloadCurrentCategory() {
             const zip = new JSZip();
-            let completed = 0;
-            let total = 0;
-
-            // Count total icons
-            Object.values(iconLibrary).forEach(category => {
-                total += Object.keys(category).length;
-            });
-
-            showNotification('Generating icon pack...');
-
-            Object.entries(iconLibrary).forEach(([categoryName, category]) => {
-                const categoryFolder = zip.folder(categoryName);
-                
-                Object.entries(category).forEach(([iconKey, iconData]) => {
-                    if (format === 'svg') {
-                        const svg = createSVGIcon(iconData, currentSize, currentColorMode);
-                        categoryFolder.file(`${iconKey}.svg`, svg);
-                        completed++;
-                        
-                        if (completed === total) {
-                            generateZipDownload(zip, `trnkts-icons-${currentSize}px-${currentColorMode}.zip`);
-                        }
-                    } else if (format === 'png') {
-                        const svg = createSVGIcon(iconData, currentSize, currentColorMode);
-                        svgToPng(svg, currentSize, (blob) => {
-                            categoryFolder.file(`${iconKey}.png`, blob);
-                            completed++;
-                            
-                            if (completed === total) {
-                                generateZipDownload(zip, `trnkts-icons-${currentSize}px-${currentColorMode}.zip`);
-                            }
-                        });
-                    }
-                });
-            });
-        }
-
-        function downloadCSS() {
-            let cssContent = `/* Trnkts Icon Library CSS */\n\n`;
-            cssContent += `.trnkts-icon {\n  display: inline-block;\n  width: ${currentSize}px;\n  height: ${currentSize}px;\n}\n\n`;
+            const folder = zip.folder(currentCategory);
             
-            Object.entries(iconLibrary).forEach(([categoryName, category]) => {
-                Object.entries(category).forEach(([iconKey, iconData]) => {
-                    const svg = createSVGIcon(iconData, currentSize, currentColorMode);
-                    const encodedSvg = encodeURIComponent(svg);
-                    cssContent += `.trnkts-icon-${iconKey} {\n  background-image: url("data:image/svg+xml,${encodedSvg}");\n}\n\n`;
-                });
+            Object.entries(iconLibrary[currentCategory]).forEach(([key, iconData]) => {
+                const svgString = createSVGIcon(iconData, currentSize, currentColorMode);
+                folder.file(`${key}-${currentSize}px.svg`, svgString);
             });
-
-            const blob = new Blob([cssContent], { type: 'text/css' });
+            
+            const blob = await zip.generateAsync({ type: 'blob' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `trnkts-icons-${currentSize}px-${currentColorMode}.css`;
+            a.download = `${currentCategory}-icons-${currentSize}px.zip`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
             
-            showNotification('CSS file downloaded!');
+            showStatus('Category downloaded!');
         }
 
-        function svgToPng(svgString, size, callback) {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            const img = new Image();
+        async function downloadAllIcons() {
+            const zip = new JSZip();
             
-            canvas.width = size;
-            canvas.height = size;
-            
-            img.onload = function() {
-                ctx.drawImage(img, 0, 0, size, size);
-                canvas.toBlob(callback, 'image/png');
-            };
-            
-            const svgBlob = new Blob([svgString], { type: 'image/svg+xml' });
-            const url = URL.createObjectURL(svgBlob);
-            img.src = url;
-        }
-
-        function generateZipDownload(zip, filename) {
-            zip.generateAsync({ type: 'blob' }).then(function(content) {
-                const url = URL.createObjectURL(content);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-                
-                showNotification(`${filename} ready for download!`);
+            Object.entries(iconLibrary).forEach(([categoryName, categoryIcons]) => {
+                const folder = zip.folder(categoryName);
+                Object.entries(categoryIcons).forEach(([key, iconData]) => {
+                    const svgString = createSVGIcon(iconData, currentSize, currentColorMode);
+                    folder.file(`${key}-${currentSize}px.svg`, svgString);
+                });
             });
+            
+            const blob = await zip.generateAsync({ type: 'blob' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `trnkts-icons-${currentSize}px.zip`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showStatus('All icons downloaded!');
         }
 
-        function showNotification(message) {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.classList.add('show');
+        function showStatus(message, type = 'success') {
+            const statusEl = document.getElementById('statusMessage');
+            statusEl.textContent = message;
+            statusEl.className = `status-message ${type}`;
+            statusEl.classList.add('show');
+            
             setTimeout(() => {
-                notification.classList.remove('show');
+                statusEl.classList.remove('show');
             }, 3000);
         }
 
         // Initialize the page
-        updateAllIcons();
+        document.addEventListener('DOMContentLoaded', function() {
+            renderIconGrid('interface-grid', 'interface');
+        });
     </script>
 </body>
 </html>
