@@ -204,20 +204,14 @@ const web3Icons = {
         name: 'Token',
         type: '3d-stroke',
         layers: [
-            // Layer 0: Outer coin ring - main shape
-            { path: 'M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0z', render: 'main' },
-            // Layer 1: Main coin body - gradient fill
-            { path: 'M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1z', render: 'depth' },
-            // Layer 2: Inner coin depth layer
-            { path: 'M12 2.5C6.75 2.5 2.5 6.75 2.5 12s4.25 9.5 9.5 9.5 9.5-4.25 9.5-9.5-4.25-9.5-9.5-9.5z', render: 'secondary' },
-            // Layer 3: Token symbol background for visibility
-            { path: 'M12 4C7.86 4 4.5 7.36 4.5 12s3.36 8.5 8.5 8.5 8.5-3.36 8.5-8.5S16.14 4 12 4z', render: 'tertiary' },
-            // Layer 4: Inner token detail - smaller circle for subtle background (moved before T symbol)
-            { path: 'M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z', render: 'background' },
-            // Layer 5: Token symbol (T) - bright accent (moved after background circle)
-            { path: 'M6 6h12v3h-4.5v9h-3v-9H6V6z', render: 'symbol' },
-            // Layer 6: Highlight arc (edge highlight)
-            { path: 'M12 2.5C7.37 2.5 3.29 5.41 1.5 9.5', render: 'highlight' }
+            // Layer 0: Main coin circle - simplified outer ring
+            { path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z', render: 'main' },
+            // Layer 1: Inner coin body - creates depth
+            { path: 'M12 3.5C7.31 3.5 3.5 7.31 3.5 12s3.81 8.5 8.5 8.5 8.5-3.81 8.5-8.5-3.81-8.5-8.5-8.5z', render: 'depth' },
+            // Layer 2: Token symbol (T) - clean and simple
+            { path: 'M8 8h8v2h-3v6h-2v-6H8V8z', render: 'symbol' },
+            // Layer 3: Subtle highlight for 3D effect
+            { path: 'M12 3.5C8.5 3.5 5.5 5.8 4.5 9', render: 'highlight' }
         ]
     },
     'staking': {
