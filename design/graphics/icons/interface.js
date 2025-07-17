@@ -57,7 +57,7 @@ const interfaceIcons = {
     'dashboard': {
         name: 'Dashboard',
         paths: [
-            'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z'
+            'M3 3h18v18H3zM3 9h18M9 9v12M15 9v12M6 12v6M12 13v5M18 15v3'
         ]
     },
     'grid': {
@@ -123,7 +123,7 @@ const interfaceIcons = {
     'eye-off': {
         name: 'Eye Off',
         paths: [
-            'M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24M1 1l22 22'
+            'M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8zM12 9a3 3 0 100 6 3 3 0 000-6zM4 4l16 16'
         ]
     },
     'filter': {
@@ -178,6 +178,30 @@ const interfaceIcons = {
         name: 'Minimize',
         paths: [
             'M8 3v3a2 2 0 01-2 2H3m18 0h-3a2 2 0 01-2-2V3m0 18v-3a2 2 0 012-2h3M3 16h3a2 2 0 012 2v3'
+        ]
+    },
+    'sidebar': {
+        name: 'Sidebar',
+        paths: [
+            'M3 3h4v18H3zM10 3h11v18H10z'
+        ]
+    },
+    'layout': {
+        name: 'Layout',
+        paths: [
+            'M3 3h18v4H3zM3 10h6v11H3zM12 10h9v11H12z'
+        ]
+    },
+    'window': {
+        name: 'Window',
+        paths: [
+            'M3 3h18v18H3zM3 9h18M6 6h.01M9 6h.01M12 6h.01'
+        ]
+    },
+    'fullscreen': {
+        name: 'Fullscreen',
+        paths: [
+            'M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3'
         ]
     }
 };
