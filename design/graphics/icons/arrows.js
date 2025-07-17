@@ -3,57 +3,49 @@ const arrowIcons = {
     'arrow-up': {
         name: 'Arrow Up',
         paths: [
-            'M18 15l-6-6-6 6M12 19V5',
-            'M16 13l-4-4-4 4M12 17V7'
+            'M18 15l-6-6-6 6M12 19V5'
         ]
     },
     'arrow-down': {
         name: 'Arrow Down',
         paths: [
-            'M6 9l6 6 6-6M12 5v14',
-            'M8 11l4 4 4-4M12 7v10'
+            'M6 9l6 6 6-6M12 5v14'
         ]
     },
     'arrow-left': {
         name: 'Arrow Left',
         paths: [
-            'M15 18l-6-6 6-6M19 12H5',
-            'M13 16l-4-4 4-4M17 12H7'
+            'M15 18l-6-6 6-6M19 12H5'
         ]
     },
     'arrow-right': {
         name: 'Arrow Right',
         paths: [
-            'M9 18l6-6-6-6M5 12h14',
-            'M11 16l4-4-4-4M7 12h10'
+            'M9 18l6-6-6-6M5 12h14'
         ]
     },
     'chevron-up': {
         name: 'Chevron Up',
         paths: [
-            'M18 15l-6-6-6 6',
-            'M16 13l-4-4-4 4'
+            'M18 15l-6-6-6 6'
         ]
     },
     'chevron-down': {
         name: 'Chevron Down',
         paths: [
-            'M6 9l6 6 6-6',
-            'M8 11l4 4 4-4'
+            'M6 9l6 6 6-6'
         ]
     },
     'expand': {
         name: 'Expand',
         paths: [
-            'M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7M15 21h6v-6M9 3H3v6M21 21l-7-7M3 3l7 7',
-            'M16 4h4v4M8 20H4v-4M20 4l-6 6M4 20l6-6M16 20h4v-4M8 4H4v4M20 20l-6-6M4 4l6 6'
+            'M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7M15 21h6v-6M9 3H3v6M21 21l-7-7M3 3l7 7'
         ]
     },
     'compress': {
         name: 'Compress',
         paths: [
-            'M8 3v3a2 2 0 01-2 2H3M21 8h-3a2 2 0 01-2-2V3M3 16h3a2 2 0 012 2v3M16 21v-3a2 2 0 012-2h3',
-            'M9 4v2a1 1 0 01-1 1H6M20 9h-2a1 1 0 01-1-1V6M4 15h2a1 1 0 011 1v2M15 20v-2a1 1 0 011-1h2'
+            'M8 3v3a2 2 0 01-2 2H3M21 8h-3a2 2 0 01-2-2V3M3 16h3a2 2 0 012 2v3M16 21v-3a2 2 0 012-2h3'
         ]
     }
 };
