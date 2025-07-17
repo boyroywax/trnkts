@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trnkts - Logo Formats & Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #89CFF0, #A855F7, #EC4899, #F97316, #FCD34D);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .home-button {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba(175, 75, 14, 0.1);
+            color: #AF4B0E;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: 2px solid rgba(175, 75, 14, 0.2);
+        }
+
+        .home-button:hover {
+            background: #AF4B0E;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(175, 75, 14, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+        }
+
+        .logo-container svg {
+            width: 120px;
+            height: 120px;
+        }
+
+        .main-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #AF4B0E, #EC4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .section-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .preset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .preset-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .preset-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .preset-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .preset-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .size-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .size-tag {
+            background: #f8f9fa;
+            color: #666;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+        }
+
+        .download-button {
+            width: 100%;
+            padding: 1rem;
+            background: #AF4B0E;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .download-button:hover {
+            background: #8a3c0b;
+            transform: translateY(-1px);
+        }
+
+        .download-button:active {
+            transform: translateY(0);
+        }
+
+        .notification {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: #28a745;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .code-container {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .code-header {
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .code-title {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .copy-button {
+            padding: 0.5rem 1rem;
+            background: #AF4B0E;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .copy-button:hover {
+            background: #8a3c0b;
+            transform: translateY(-1px);
+        }
+
+        .copy-button:active {
+            transform: translateY(0);
+        }
+
+        .copy-button.copied {
+            background: #28a745;
+        }
+
+        .code-content {
+            padding: 1.5rem;
+            margin: 0;
+            background: #f8f9fa;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            color: #333;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .code-content code {
+            background: none;
+            padding: 0;
+            color: inherit;
+            font-size: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="home-button">
+            🏠 Home
+        </a>
+        
+        <div class="header">
+            <div class="logo-container">
+                <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                <linearGradient id="paint0_linear" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#833AB4"/>
+                <stop offset="0.3" stop-color="#E1306C"/>
+                <stop offset="0.6" stop-color="#F77737"/>
+                <stop offset="1" stop-color="#FCAF45"/>
+                </linearGradient>
+                <style>
+                 @keyframes hue-shift {
+                 from {
+                 filter: hue-rotate(0deg);
+                 }
+                 to {
+                 filter: hue-rotate(360deg);
+                 }
+                 }
+
+                 .gem {
+                 animation: hue-shift 10s linear infinite;
+                 }
+                 </style>
+                </defs>
+                <g class="gem">
+                <path d="M100 20L20 70L100 120L180 70L100 20Z" fill="url(#paint0_linear)"/>
+                <path d="M20 70L100 120L100 170L20 120L20 70Z" fill="url(#paint0_linear)" fill-opacity="0.7"/>
+                <path d="M180 70L100 120L100 170L180 120L180 70Z" fill="url(#paint0_linear)" fill-opacity="0.5"/>
+                </g>
+                </svg>
+            </div>
+            <h1 class="main-title">trnkts</h1>
+            <p class="subtitle">Logo Formats & Generator</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Logo Format Downloads</h2>
+            <p class="section-description">
+                Download logo packs optimized for specific use cases. Each pack includes multiple sizes in popular formats with the original trnkts logo colors.
+            </p>
+            <div class="preset-grid">
+                <div class="preset-card">
+                    <h3 class="preset-title">📱 Favicon Pack</h3>
+                    <p class="preset-description">
+                        Complete favicon set for web browsers and mobile devices. Includes all standard sizes and the ICO format for maximum compatibility.
+                    </p>
+                    <div class="size-list">
+                        <span class="size-tag">16×16</span>
+                        <span class="size-tag">32×32</span>
+                        <span class="size-tag">48×48</span>
+                        <span class="size-tag">64×64</span>
+                        <span class="size-tag">128×128</span>
+                        <span class="size-tag">256×256</span>
+                    </div>
+                    <button class="download-button" onclick="downloadPresetPack('favicon')">
+                        Download Favicon Pack (ZIP)
+                    </button>
+                </div>
+
+                <div class="preset-card">
+                    <h3 class="preset-title">📱 App Icons (iOS)</h3>
+                    <p class="preset-description">
+                        iOS app icon sizes for all device types and contexts. Includes iPhone, iPad, and Apple Watch sizes with proper scaling.
+                    </p>
+                    <div class="size-list">
+                        <span class="size-tag">20×20</span>
+                        <span class="size-tag">29×29</span>
+                        <span class="size-tag">40×40</span>
+                        <span class="size-tag">58×58</span>
+                        <span class="size-tag">60×60</span>
+                        <span class="size-tag">80×80</span>
+                        <span class="size-tag">87×87</span>
+                        <span class="size-tag">120×120</span>
+                        <span class="size-tag">180×180</span>
+                        <span class="size-tag">1024×1024</span>
+                    </div>
+                    <button class="download-button" onclick="downloadPresetPack('ios')">
+                        Download iOS Pack (ZIP)
+                    </button>
+                </div>
+
+                <div class="preset-card">
+                    <h3 class="preset-title">🤖 App Icons (Android)</h3>
+                    <p class="preset-description">
+                        Android app icon sizes for different screen densities. Covers all DPI variations from LDPI to XXXHDPI.
+                    </p>
+                    <div class="size-list">
+                        <span class="size-tag">36×36</span>
+                        <span class="size-tag">48×48</span>
+                        <span class="size-tag">72×72</span>
+                        <span class="size-tag">96×96</span>
+                        <span class="size-tag">144×144</span>
+                        <span class="size-tag">192×192</span>
+                        <span class="size-tag">512×512</span>
+                    </div>
+                    <button class="download-button" onclick="downloadPresetPack('android')">
+                        Download Android Pack (ZIP)
+                    </button>
+                </div>
+
+                <div class="preset-card">
+                    <h3 class="preset-title">🌐 Web App Manifest</h3>
+                    <p class="preset-description">
+                        Progressive Web App icons and splash screen sizes. Perfect for PWA manifests and mobile web applications.
+                    </p>
+                    <div class="size-list">
+                        <span class="size-tag">72×72</span>
+                        <span class="size-tag">96×96</span>
+                        <span class="size-tag">128×128</span>
+                        <span class="size-tag">144×144</span>
+                        <span class="size-tag">152×152</span>
+                        <span class="size-tag">192×192</span>
+                        <span class="size-tag">384×384</span>
+                        <span class="size-tag">512×512</span>
+                    </div>
+                    <button class="download-button" onclick="downloadPresetPack('pwa')">
+                        Download PWA Pack (ZIP)
+                    </button>
+                </div>
+
+                <div class="preset-card">
+                    <h3 class="preset-title">📄 Social Media</h3>
+                    <p class="preset-description">
+                        Optimized sizes for social media platforms, profile pictures, and sharing thumbnails across different networks.
+                    </p>
+                    <div class="size-list">
+                        <span class="size-tag">200×200</span>
+                        <span class="size-tag">400×400</span>
+                        <span class="size-tag">500×500</span>
+                        <span class="size-tag">800×800</span>
+                        <span class="size-tag">1200×1200</span>
+                    </div>
+                    <button class="download-button" onclick="downloadPresetPack('social')">
+                        Download Social Pack (ZIP)
+                    </button>
+                </div>
+
+                <div class="preset-card">
+                    <h3 class="preset-title">🖨️ Print & High-Res</h3>
+                    <p class="preset-description">
+                        High-resolution versions suitable for print materials, presentations, and professional documents.
+                    </p>
+                    <div class="size-list">
+                        <span class="size-tag">1024×1024</span>
+                        <span class="size-tag">2048×2048</span>
+                        <span class="size-tag">4096×4096</span>
+                        <span class="size-tag">SVG</span>
+                    </div>
+                    <button class="download-button" onclick="downloadPresetPack('print')">
+                        Download Print Pack (ZIP)
+                    </button>
+                </div>
+
+                <div class="preset-card">
+                    <h3 class="preset-title">✨ Animated SVG</h3>
+                    <p class="preset-description">
+                        Original animated SVG with hue-shift animation. Perfect for web use where you want the dynamic color-changing effect.
+                    </p>
+                    <div class="size-list">
+                        <span class="size-tag">Animated</span>
+                        <span class="size-tag">SVG</span>
+                        <span class="size-tag">Web Ready</span>
+                    </div>
+                    <button class="download-button" onclick="downloadPresetPack('animated')">
+                        Download Animated SVG
+                    </button>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Animated SVG Code</h2>
+                <p class="section-description">
+                    Copy the complete animated SVG code for use in your web projects. This includes the hue-shifting animation CSS.
+                </p>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="code-title">trnkts-logo-animated.svg</span>
+                        <button class="copy-button" onclick="copyAnimatedSVGCode()">
+                            📋 Copy Code
+                        </button>
+                    </div>
+                    <pre class="code-content" id="animatedSvgCode"><code>&lt;svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;defs&gt;
+        &lt;linearGradient id="paint0_linear" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse"&gt;
+            &lt;stop stop-color="#833AB4"/&gt;
+            &lt;stop offset="0.3" stop-color="#E1306C"/&gt;
+            &lt;stop offset="0.6" stop-color="#F77737"/&gt;
+            &lt;stop offset="1" stop-color="#FCAF45"/&gt;
+        &lt;/linearGradient&gt;
+        &lt;style&gt;
+            @keyframes hue-shift {
+                from {
+                    filter: hue-rotate(0deg);
+                }
+                to {
+                    filter: hue-rotate(360deg);
+                }
+            }
+            
+            .gem {
+                animation: hue-shift 10s linear infinite;
+            }
+        &lt;/style&gt;
+    &lt;/defs&gt;
+    &lt;g class="gem"&gt;
+        &lt;path d="M100 20L20 70L100 120L180 70L100 20Z" fill="url(#paint0_linear)"/&gt;
+        &lt;path d="M20 70L100 120L100 170L20 120L20 70Z" fill="url(#paint0_linear)" fill-opacity="0.7"/&gt;
+        &lt;path d="M180 70L100 120L100 170L180 120L180 70Z" fill="url(#paint0_linear)" fill-opacity="0.5"/&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;</code></pre>
+                </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        Download started!
+    </div>
+
+    <script>
+        // Preset pack configurations
+        const presetPacks = {
+            favicon: [
+                { size: 16, format: 'png' },
+                { size: 32, format: 'png' },
+                { size: 48, format: 'png' },
+                { size: 64, format: 'png' },
+                { size: 128, format: 'png' },
+                { size: 256, format: 'png' }
+            ],
+            ios: [
+                { size: 20, format: 'png' },
+                { size: 29, format: 'png' },
+                { size: 40, format: 'png' },
+                { size: 58, format: 'png' },
+                { size: 60, format: 'png' },
+                { size: 80, format: 'png' },
+                { size: 87, format: 'png' },
+                { size: 120, format: 'png' },
+                { size: 180, format: 'png' },
+                { size: 1024, format: 'png' }
+            ],
+            android: [
+                { size: 36, format: 'png' },
+                { size: 48, format: 'png' },
+                { size: 72, format: 'png' },
+                { size: 96, format: 'png' },
+                { size: 144, format: 'png' },
+                { size: 192, format: 'png' },
+                { size: 512, format: 'png' }
+            ],
+            pwa: [
+                { size: 72, format: 'png' },
+                { size: 96, format: 'png' },
+                { size: 128, format: 'png' },
+                { size: 144, format: 'png' },
+                { size: 152, format: 'png' },
+                { size: 192, format: 'png' },
+                { size: 384, format: 'png' },
+                { size: 512, format: 'png' }
+            ],
+            social: [
+                { size: 200, format: 'png' },
+                { size: 400, format: 'png' },
+                { size: 500, format: 'png' },
+                { size: 800, format: 'png' },
+                { size: 1200, format: 'png' }
+            ],
+            print: [
+                { size: 1024, format: 'png' },
+                { size: 2048, format: 'png' },
+                { size: 4096, format: 'png' },
+                { size: 'vector', format: 'svg' }
+            ],
+            animated: [
+                { size: 'animated', format: 'svg' }
+            ]
+        };
+
+        function createLogoSVG(size = 200, padding = 0, background = 'transparent') {
+            const paddingPx = size * (padding / 100);
+            const logoSize = size - (paddingPx * 2);
+            const logoX = (size - logoSize) / 2;
+            const logoY = (size - logoSize) / 2;
+            
+            let backgroundRect = '';
+            if (background !== 'transparent') {
+                backgroundRect = `<rect width="${size}" height="${size}" fill="${background}"/>`;
+            }
+            
+            // Use a fixed 200x200 viewBox to maintain consistent proportions and gradient mapping
+            return `<svg width="${size}" height="${size}" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="paint0_linear_generated" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#833AB4"/>
+                        <stop offset="0.3" stop-color="#E1306C"/>
+                        <stop offset="0.6" stop-color="#F77737"/>
+                        <stop offset="1" stop-color="#FCAF45"/>
+                    </linearGradient>
+                </defs>
+                ${backgroundRect ? `<rect width="200" height="200" fill="${background}"/>` : ''}
+                <path d="M100 20L20 70L100 120L180 70L100 20Z" fill="url(#paint0_linear_generated)"/>
+                <path d="M20 70L100 120L100 170L20 120L20 70Z" fill="url(#paint0_linear_generated)" fill-opacity="0.7"/>
+                <path d="M180 70L100 120L100 170L180 120L180 70Z" fill="url(#paint0_linear_generated)" fill-opacity="0.5"/>
+            </svg>`;
+        }
+
+        function createAnimatedLogoSVG(size = 200) {
+            return `<svg width="${size}" height="${size}" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="paint0_linear" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#833AB4"/>
+            <stop offset="0.3" stop-color="#E1306C"/>
+            <stop offset="0.6" stop-color="#F77737"/>
+            <stop offset="1" stop-color="#FCAF45"/>
+        </linearGradient>
+        <style>
+            @keyframes hue-shift {
+                from {
+                    filter: hue-rotate(0deg);
+                }
+                to {
+                    filter: hue-rotate(360deg);
+                }
+            }
+            
+            .gem {
+                animation: hue-shift 10s linear infinite;
+            }
+        </style>
+    </defs>
+    <g class="gem">
+        <path d="M100 20L20 70L100 120L180 70L100 20Z" fill="url(#paint0_linear)"/>
+        <path d="M20 70L100 120L100 170L20 120L20 70Z" fill="url(#paint0_linear)" fill-opacity="0.7"/>
+        <path d="M180 70L100 120L100 170L180 120L180 70Z" fill="url(#paint0_linear)" fill-opacity="0.5"/>
+    </g>
+</svg>`;
+        }
+
+        function svgToPng(svgString, size, callback) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            canvas.width = size;
+            canvas.height = size;
+            
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, size, size);
+                canvas.toBlob(callback, 'image/png');
+            };
+            
+            const svgBlob = new Blob([svgString], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(svgBlob);
+            img.src = url;
+        }
+
+        function downloadFile(content, filename, type = 'text/plain') {
+            if (content instanceof Blob) {
+                const url = URL.createObjectURL(content);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } else {
+                const blob = new Blob([content], { type });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+            showNotification();
+        }
+
+        function downloadPresetPack(packType) {
+            const pack = presetPacks[packType];
+            if (!pack) return;
+
+            showNotification(`Generating ${packType} pack...`);
+
+            // Special handling for animated pack (single file download)
+            if (packType === 'animated') {
+                const svg = createAnimatedLogoSVG(200);
+                downloadFile(svg, 'trnkts-logo-animated.svg', 'image/svg+xml');
+                showNotification('Animated SVG downloaded!');
+                return;
+            }
+
+            const zip = new JSZip();
+            let completedFiles = 0;
+            const totalFiles = pack.length;
+
+            pack.forEach((item, index) => {
+                if (item.format === 'svg') {
+                    const svg = createLogoSVG(item.size === 'vector' ? 200 : item.size);
+                    const filename = `trnkts-logo-${item.size === 'vector' ? 'vector' : item.size}x${item.size === 'vector' ? 'vector' : item.size}.svg`;
+                    zip.file(filename, svg);
+                    completedFiles++;
+                    
+                    if (completedFiles === totalFiles) {
+                        generateZipDownload(zip, `trnkts-${packType}-pack.zip`);
+                    }
+                } else if (item.format === 'png') {
+                    const svg = createLogoSVG(item.size);
+                    svgToPng(svg, item.size, (blob) => {
+                        const filename = `trnkts-logo-${item.size}x${item.size}.png`;
+                        zip.file(filename, blob);
+                        completedFiles++;
+                        
+                        if (completedFiles === totalFiles) {
+                            generateZipDownload(zip, `trnkts-${packType}-pack.zip`);
+                        }
+                    });
+                }
+            });
+        }
+
+        function copyAnimatedSVGCode() {
+            const codeElement = document.getElementById('animatedSvgCode');
+            const copyButton = document.querySelector('.copy-button');
+            
+            // Get the text content without HTML entities
+            const svgCode = `<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="paint0_linear" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#833AB4"/>
+            <stop offset="0.3" stop-color="#E1306C"/>
+            <stop offset="0.6" stop-color="#F77737"/>
+            <stop offset="1" stop-color="#FCAF45"/>
+        </linearGradient>
+        <style>
+            @keyframes hue-shift {
+                from {
+                    filter: hue-rotate(0deg);
+                }
+                to {
+                    filter: hue-rotate(360deg);
+                }
+            }
+            
+            .gem {
+                animation: hue-shift 10s linear infinite;
+            }
+        </style>
+    </defs>
+    <g class="gem">
+        <path d="M100 20L20 70L100 120L180 70L100 20Z" fill="url(#paint0_linear)"/>
+        <path d="M20 70L100 120L100 170L20 120L20 70Z" fill="url(#paint0_linear)" fill-opacity="0.7"/>
+        <path d="M180 70L100 120L100 170L180 120L180 70Z" fill="url(#paint0_linear)" fill-opacity="0.5"/>
+    </g>
+</svg>`;
+            
+            navigator.clipboard.writeText(svgCode).then(() => {
+                copyButton.textContent = '✅ Copied!';
+                copyButton.classList.add('copied');
+                showNotification('SVG code copied to clipboard!');
+                
+                setTimeout(() => {
+                    copyButton.textContent = '📋 Copy Code';
+                    copyButton.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                showNotification('Failed to copy code. Please try again.');
+            });
+        }
+
+        function generateZipDownload(zip, filename) {
+            zip.generateAsync({ type: 'blob' }).then(function(content) {
+                downloadFile(content, filename);
+                showNotification(`${filename} ready for download!`);
+            });
+        }
+
+        function showNotification(message = 'Download started!') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

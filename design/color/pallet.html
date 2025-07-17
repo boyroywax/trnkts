@@ -27,6 +27,32 @@
             border-radius: 24px;
             padding: 3rem;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .home-button {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba(175, 75, 14, 0.1);
+            color: #AF4B0E;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: 2px solid rgba(175, 75, 14, 0.2);
+        }
+
+        .home-button:hover {
+            background: #AF4B0E;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(175, 75, 14, 0.3);
         }
 
         .header {
@@ -287,6 +313,10 @@
 </head>
 <body>
     <div class="container">
+        <a href="../index.html" class="home-button">
+            🏠 Home
+        </a>
+        
         <div class="header">
             <div class="logo-container">
                 <svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">

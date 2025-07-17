@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trnkts Design Kit - Typography, Graphics & Colors</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #89CFF0, #A855F7, #EC4899, #F97316, #FCD34D);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0 6rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+        }
+
+        .logo-container svg {
+            width: 160px;
+            height: 160px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #AF4B0E, #EC4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #666;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .overview-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overview-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #833AB4, #E1306C, #F77737, #FCAF45);
+        }
+
+        .overview-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .card-description {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .card-features {
+            margin-bottom: 2rem;
+        }
+
+        .card-features h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            color: #666;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .card-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #AF4B0E;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: 2px solid #AF4B0E;
+        }
+
+        .card-link:hover {
+            background: #8a3c0b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(175, 75, 14, 0.3);
+        }
+
+        .card-link.secondary {
+            background: transparent;
+            color: #AF4B0E;
+        }
+
+        .card-link.secondary:hover {
+            background: #AF4B0E;
+            color: white;
+        }
+
+        .typography-preview {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e9ecef;
+        }
+
+        .font-sample {
+            margin-bottom: 1.5rem;
+        }
+
+        .font-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+        }
+
+        .font-display {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .font-mono {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+        }
+
+        .colors-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e9ecef;
+        }
+
+        .color-swatch {
+            text-align: center;
+        }
+
+        .color-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .color-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #666;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+        }
+
+        .graphics-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e9ecef;
+            min-height: 200px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .quick-link {
+            color: #AF4B0E;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border: 2px solid #AF4B0E;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .quick-link:hover {
+            background: #AF4B0E;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .overview-card {
+                padding: 2rem;
+            }
+
+            .card-links {
+                flex-direction: column;
+            }
+
+            .quick-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <div class="logo-container">
+                <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                <linearGradient id="paint0_linear" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#833AB4"/>
+                <stop offset="0.3" stop-color="#E1306C"/>
+                <stop offset="0.6" stop-color="#F77737"/>
+                <stop offset="1" stop-color="#FCAF45"/>
+                </linearGradient>
+                <style>
+                 @keyframes hue-shift {
+                 from {
+                 filter: hue-rotate(0deg);
+                 }
+                 to {
+                 filter: hue-rotate(360deg);
+                 }
+                 }
+
+                 .gem {
+                 animation: hue-shift 10s linear infinite;
+                 }
+                 </style>
+                </defs>
+                <g class="gem">
+                <path d="M100 20L20 70L100 120L180 70L100 20Z" fill="url(#paint0_linear)"/>
+                <path d="M20 70L100 120L100 170L20 120L20 70Z" fill="url(#paint0_linear)" fill-opacity="0.7"/>
+                <path d="M180 70L100 120L100 170L180 120L180 70Z" fill="url(#paint0_linear)" fill-opacity="0.5"/>
+                </g>
+                </svg>
+            </div>
+            <h1 class="hero-title">trnkts</h1>
+            <p class="hero-subtitle">Design Kit & Brand Assets</p>
+            <p class="hero-description">
+                A comprehensive design system featuring typography, graphics, and colors for the trnkts brand. 
+                Everything you need to create consistent, beautiful designs with downloadable assets and interactive tools.
+            </p>
+        </div>
+
+        <div class="overview-grid">
+            <div class="overview-card">
+                <span class="card-icon">🔤</span>
+                <h2 class="card-title">Typography</h2>
+                <p class="card-description">
+                    Professional typography system featuring SF Pro Display for interfaces and SF Mono for code. 
+                    Complete with size scales, weights, and usage guidelines for consistent text hierarchy.
+                </p>
+                
+                <div class="typography-preview">
+                    <div class="font-sample">
+                        <div class="font-name">SF Pro Display</div>
+                        <div class="font-display">Beautiful Interface Text</div>
+                    </div>
+                    <div class="font-sample">
+                        <div class="font-name">SF Mono</div>
+                        <div class="font-display font-mono">Code & Technical Text</div>
+                    </div>
+                </div>
+
+                <div class="card-features">
+                    <h4>Typography Features:</h4>
+                    <ul class="feature-list">
+                        <li>SF Pro Display for headings and UI text</li>
+                        <li>SF Mono for code and technical content</li>
+                        <li>Complete weight and size specifications</li>
+                        <li>Usage guidelines and best practices</li>
+                        <li>Responsive text scaling examples</li>
+                    </ul>
+                </div>
+
+                <div class="card-links">
+                    <a href="typography/fonts.html" class="card-link">
+                        📖 View Typography Guide
+                    </a>
+                </div>
+            </div>
+
+            <div class="overview-card">
+                <span class="card-icon">🎨</span>
+                <h2 class="card-title">Graphics & Logo</h2>
+                <p class="card-description">
+                    Dynamic trnkts logo with animated hue-shifting effects and comprehensive download packages. 
+                    Get the perfect logo format for any platform with our preset packs and custom generator.
+                </p>
+
+                <div class="graphics-preview">
+                    <svg width="120" height="120" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                    <linearGradient id="paint0_linear_preview" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#833AB4"/>
+                    <stop offset="0.3" stop-color="#E1306C"/>
+                    <stop offset="0.6" stop-color="#F77737"/>
+                    <stop offset="1" stop-color="#FCAF45"/>
+                    </linearGradient>
+                    </defs>
+                    <path d="M100 20L20 70L100 120L180 70L100 20Z" fill="url(#paint0_linear_preview)"/>
+                    <path d="M20 70L100 120L100 170L20 120L20 70Z" fill="url(#paint0_linear_preview)" fill-opacity="0.7"/>
+                    <path d="M180 70L100 120L100 170L180 120L180 70Z" fill="url(#paint0_linear_preview)" fill-opacity="0.5"/>
+                    </svg>
+                </div>
+
+                <div class="card-features">
+                    <h4>Logo Assets Include:</h4>
+                    <ul class="feature-list">
+                        <li>Favicon packs for web browsers</li>
+                        <li>iOS and Android app icon sets</li>
+                        <li>PWA and social media optimized sizes</li>
+                        <li>High-resolution print formats</li>
+                        <li>Animated SVG with hue-shift effect</li>
+                        <li>Custom generator with full control</li>
+                    </ul>
+                </div>
+
+                <div class="card-links">
+                    <a href="graphics/formats.html" class="card-link">
+                        📦 Download Logo Packs
+                    </a>
+                    <a href="graphics/custom.html" class="card-link secondary">
+                        🎛️ Custom Generator
+                    </a>
+                </div>
+            </div>
+
+            <div class="overview-card">
+                <span class="card-icon">🌈</span>
+                <h2 class="card-title">Color Palette</h2>
+                <p class="card-description">
+                    Vibrant gradient-based color system inspired by the trnkts logo. Features primary brand colors 
+                    with complementary shades for backgrounds, interfaces, and accent elements.
+                </p>
+
+                <div class="colors-preview">
+                    <div class="color-swatch">
+                        <div class="color-circle" style="background: #833AB4;"></div>
+                        <div class="color-name">#833AB4</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="color-circle" style="background: #E1306C;"></div>
+                        <div class="color-name">#E1306C</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="color-circle" style="background: #F77737;"></div>
+                        <div class="color-name">#F77737</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="color-circle" style="background: #FCAF45;"></div>
+                        <div class="color-name">#FCAF45</div>
+                    </div>
+                </div>
+
+                <div class="card-features">
+                    <h4>Color System Features:</h4>
+                    <ul class="feature-list">
+                        <li>Primary gradient colors from logo</li>
+                        <li>Background and interface variations</li>
+                        <li>Accessibility-tested color combinations</li>
+                        <li>CSS custom properties and variables</li>
+                        <li>Interactive color palette viewer</li>
+                        <li>Export formats for design tools</li>
+                    </ul>
+                </div>
+
+                <div class="card-links">
+                    <a href="color/pallet.html" class="card-link">
+                        🎨 View Color Palette
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h2 class="footer-title">Ready to Create?</h2>
+            <p class="footer-description">
+                Start using the trnkts design system in your projects. All assets are optimized for web, mobile, and print use.
+            </p>
+            <div class="quick-links">
+                <a href="typography/fonts.html" class="quick-link">Typography</a>
+                <a href="graphics/formats.html" class="quick-link">Logo Downloads</a>
+                <a href="graphics/custom.html" class="quick-link">Custom Generator</a>
+                <a href="color/pallet.html" class="quick-link">Color Palette</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

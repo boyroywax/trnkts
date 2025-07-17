@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trnkts - Typography Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #89CFF0, #A855F7, #EC4899, #F97316, #FCD34D);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .home-button {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba(175, 75, 14, 0.1);
+            color: #AF4B0E;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: 2px solid rgba(175, 75, 14, 0.2);
+        }
+
+        .home-button:hover {
+            background: #AF4B0E;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(175, 75, 14, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+        }
+
+        .logo-container svg {
+            width: 120px;
+            height: 120px;
+        }
+
+        .main-title {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #AF4B0E, #EC4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .typography-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .font-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .font-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .font-name {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #AF4B0E;
+            margin-bottom: 0.5rem;
+        }
+
+        .font-family {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 0.9rem;
+            background: #f8f9fa;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            color: #666;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            display: inline-block;
+        }
+
+        .font-family:hover {
+            background: #e9ecef;
+        }
+
+        .font-description {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .font-examples {
+            border-top: 1px solid #eee;
+            padding-top: 1.5rem;
+        }
+
+        .example-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #fafafa;
+            border-radius: 8px;
+            border-left: 4px solid #AF4B0E;
+        }
+
+        .example-label {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* SF Pro Display Examples */
+        .sf-pro-display {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .example-heading-1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #333;
+        }
+
+        .example-heading-2 {
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #333;
+        }
+
+        .example-heading-3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #333;
+        }
+
+        .example-body {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .example-small {
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #888;
+        }
+
+        .example-button {
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            background: #AF4B0E;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .example-button:hover {
+            background: #8a3c0b;
+            transform: translateY(-1px);
+        }
+
+        /* SF Mono Examples */
+        .sf-mono {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+        }
+
+        .example-code {
+            background: #1a1a1a;
+            color: #e8e8e8;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+
+        .example-inline-code {
+            background: #f8f9fa;
+            color: #666;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .usage-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .usage-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .usage-title {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .character-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 12px;
+        }
+
+        .character-item {
+            text-align: center;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #eee;
+        }
+
+        .character {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        .character-name {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 0.7rem;
+            color: #888;
+        }
+
+        .weight-showcase {
+            margin: 2rem 0;
+        }
+
+        .weight-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #fafafa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .weight-label {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 0.8rem;
+            color: #888;
+            min-width: 80px;
+        }
+
+        .weight-example {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .copy-notification {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: #28a745;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .copy-notification.show {
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .container {
+                padding: 2rem;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .usage-examples {
+                grid-template-columns: 1fr;
+            }
+
+            .character-showcase {
+                grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+            }
+
+            .weight-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="home-button">
+            🏠 Home
+        </a>
+        
+        <div class="header">
+            <div class="logo-container">
+                <svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                <linearGradient id="paint0_linear" x1="0" y1="0" x2="400" y2="400" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#833AB4"/>
+                <stop offset="0.3" stop-color="#E1306C"/>
+                <stop offset="0.6" stop-color="#F77737"/>
+                <stop offset="1" stop-color="#FCAF45"/>
+                </linearGradient>
+                <style>
+                 @keyframes hue-shift {
+                 from {
+                 filter: hue-rotate(0deg);
+                 }
+                 to {
+                 filter: hue-rotate(360deg);
+                 }
+                 }
+
+                 .gem {
+                 animation: hue-shift 10s linear infinite;
+                 }
+                 </style>
+                </defs>
+                <g class="gem">
+                <path d="M200 40L40 140L200 240L360 140L200 40Z" fill="url(#paint0_linear)"/>
+                <path d="M40 140L200 240L200 340L40 240L40 140Z" fill="url(#paint0_linear)" fill-opacity="0.7"/>
+                <path d="M360 140L200 240L200 340L360 240L360 140Z" fill="url(#paint0_linear)" fill-opacity="0.5"/>
+                </g>
+                </svg>
+            </div>
+            <h1 class="main-title">trnkts</h1>
+            <p class="subtitle">Typography Guide & Font System</p>
+        </div>
+
+        <div class="typography-section">
+            <h2 class="section-title">Primary Font Family</h2>
+            <div class="font-card">
+                <h3 class="font-name">SF Pro Display</h3>
+                <div class="font-family" onclick="copyToClipboard('font-family: \'SF Pro Display\', -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif;')">
+                    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                </div>
+                <p class="font-description">
+                    SF Pro Display is Apple's system font designed for optimal readability and modern aesthetics. It serves as our primary typeface for all interface elements, headings, and body text. The font stack includes progressive fallbacks to ensure consistent appearance across all platforms and devices.
+                </p>
+                
+                <div class="font-examples">
+                    <div class="example-item">
+                        <div class="example-label">Heading 1 - Bold 700</div>
+                        <div class="sf-pro-display example-heading-1">Transform Your Digital Experience</div>
+                    </div>
+
+                    <div class="example-item">
+                        <div class="example-label">Heading 2 - Semibold 600</div>
+                        <div class="sf-pro-display example-heading-2">Beautiful Typography for Modern Interfaces</div>
+                    </div>
+
+                    <div class="example-item">
+                        <div class="example-label">Heading 3 - Semibold 600</div>
+                        <div class="sf-pro-display example-heading-3">Section Title with Character</div>
+                    </div>
+
+                    <div class="example-item">
+                        <div class="example-label">Body Text - Regular 400</div>
+                        <div class="sf-pro-display example-body">
+                            This is body text that demonstrates the excellent readability and organic character of SF Pro Display. The font maintains clarity at various sizes while providing a warm, approachable feeling that aligns with the trnkts brand aesthetic.
+                        </div>
+                    </div>
+
+                    <div class="example-item">
+                        <div class="example-label">Small Text - Regular 400</div>
+                        <div class="sf-pro-display example-small">
+                            Secondary information, captions, and supporting text use the same font family at a smaller size to maintain consistency while establishing clear hierarchy.
+                        </div>
+                    </div>
+
+                    <div class="example-item">
+                        <div class="example-label">Button Text - Semibold 600</div>
+                        <button class="sf-pro-display example-button">Get Started</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="typography-section">
+            <h2 class="section-title">Monospace Font Family</h2>
+            <div class="font-card">
+                <h3 class="font-name">SF Mono</h3>
+                <div class="font-family" onclick="copyToClipboard('font-family: \'SF Mono\', Monaco, \'Cascadia Code\', monospace;')">
+                    font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+                </div>
+                <p class="font-description">
+                    SF Mono is used for all code-related content, technical specifications, and data display. This monospace font ensures perfect alignment and readability for color codes, technical documentation, and any content requiring fixed-width characters.
+                </p>
+                
+                <div class="font-examples">
+                    <div class="example-item">
+                        <div class="example-label">Code Block</div>
+                        <div class="sf-mono example-code">const colors = {
+  primary: '#AF4B0E',
+  secondary: '#FF8A5B',
+  background: '#FFE5D9'
+};
+
+function generateGradient(colors) {
+  return `linear-gradient(135deg, ${colors.join(', ')})`;
+}</div>
+                    </div>
+
+                    <div class="example-item">
+                        <div class="example-label">Inline Code</div>
+                        <div class="sf-pro-display example-body">
+                            Use the <span class="sf-mono example-inline-code">#AF4B0E</span> color for primary accents and <span class="sf-mono example-inline-code">rgb(175, 75, 14)</span> for the equivalent RGB value.
+                        </div>
+                    </div>
+
+                    <div class="example-item">
+                        <div class="example-label">Color Codes</div>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <span class="sf-mono example-inline-code">#833AB4</span>
+                            <span class="sf-mono example-inline-code">#E1306C</span>
+                            <span class="sf-mono example-inline-code">#F77737</span>
+                            <span class="sf-mono example-inline-code">#FCAF45</span>
+                        </div>
+                    </div>
+
+                    <div class="example-item">
+                        <div class="example-label">Technical Labels</div>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <span class="sf-mono" style="font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px;">HUE SHIFT: 180°</span>
+                            <span class="sf-mono" style="font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px;">VERSION: 2.1.0</span>
+                            <span class="sf-mono" style="font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px;">FORMAT: HSL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="typography-section">
+            <h2 class="section-title">Font Weight Hierarchy</h2>
+            <div class="font-card">
+                <h3 class="font-name">Weight Scale</h3>
+                <p class="font-description">
+                    SF Pro Display supports a range of weights. We use a carefully selected subset to maintain consistency and clear hierarchy throughout the interface.
+                </p>
+                
+                <div class="weight-showcase">
+                    <div class="weight-item">
+                        <div class="weight-label">700 Bold</div>
+                        <div class="weight-example" style="font-weight: 700;">Main titles, logo text, primary headings</div>
+                    </div>
+                    <div class="weight-item">
+                        <div class="weight-label">600 Semibold</div>
+                        <div class="weight-example" style="font-weight: 600;">Section headings, button text, important labels</div>
+                    </div>
+                    <div class="weight-item">
+                        <div class="weight-label">500 Medium</div>
+                        <div class="weight-example" style="font-weight: 500;">Card titles, navigation items, emphasis text</div>
+                    </div>
+                    <div class="weight-item">
+                        <div class="weight-label">400 Regular</div>
+                        <div class="weight-example" style="font-weight: 400;">Body text, descriptions, general content</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="typography-section">
+            <h2 class="section-title">Character Showcase</h2>
+            <div class="font-card">
+                <h3 class="font-name">Special Characters & Symbols</h3>
+                <p class="font-description">
+                    SF Pro Display includes excellent support for special characters, symbols, and international typography, ensuring consistent appearance across different languages and contexts.
+                </p>
+                
+                <div class="character-showcase">
+                    <div class="character-item">
+                        <div class="character sf-pro-display">Aa</div>
+                        <div class="character-name">Basic</div>
+                    </div>
+                    <div class="character-item">
+                        <div class="character sf-pro-display">123</div>
+                        <div class="character-name">Numbers</div>
+                    </div>
+                    <div class="character-item">
+                        <div class="character sf-pro-display">€£¥</div>
+                        <div class="character-name">Currency</div>
+                    </div>
+                    <div class="character-item">
+                        <div class="character sf-pro-display">©®™</div>
+                        <div class="character-name">Symbols</div>
+                    </div>
+                    <div class="character-item">
+                        <div class="character sf-pro-display">→←↑↓</div>
+                        <div class="character-name">Arrows</div>
+                    </div>
+                    <div class="character-item">
+                        <div class="character sf-pro-display">✓✗◆</div>
+                        <div class="character-name">Icons</div>
+                    </div>
+                    <div class="character-item">
+                        <div class="character sf-pro-display">áéíóú</div>
+                        <div class="character-name">Accents</div>
+                    </div>
+                    <div class="character-item">
+                        <div class="character sf-pro-display">…—–</div>
+                        <div class="character-name">Punctuation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="typography-section">
+            <h2 class="section-title">Usage Examples</h2>
+            <div class="usage-examples">
+                <div class="usage-card">
+                    <h3 class="usage-title">Interface Components</h3>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="sf-pro-display" style="font-size: 1.1rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Navigation Menu</div>
+                        <div class="sf-pro-display" style="font-size: 0.9rem; color: #666;">Home • Portfolio • About • Contact</div>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="sf-pro-display" style="font-size: 1rem; font-weight: 500; color: #333; margin-bottom: 0.5rem;">Form Labels</div>
+                        <div class="sf-pro-display" style="font-size: 0.9rem; color: #888;">Email Address *</div>
+                    </div>
+                </div>
+
+                <div class="usage-card">
+                    <h3 class="usage-title">Content Hierarchy</h3>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="sf-pro-display" style="font-size: 1.5rem; font-weight: 700; color: #AF4B0E; margin-bottom: 0.5rem;">Article Title</div>
+                        <div class="sf-pro-display" style="font-size: 1rem; color: #666; margin-bottom: 0.75rem;">This is the article subtitle or introduction text that provides context.</div>
+                        <div class="sf-pro-display" style="font-size: 0.9rem; color: #999;">Published on March 15, 2024</div>
+                    </div>
+                </div>
+
+                <div class="usage-card">
+                    <h3 class="usage-title">Technical Content</h3>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="sf-pro-display" style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">Color Value:</div>
+                        <div class="sf-mono" style="font-size: 0.9rem; background: #f8f9fa; padding: 0.5rem; border-radius: 4px; color: #666;">#AF4B0E</div>
+                    </div>
+                    <div>
+                        <div class="sf-pro-display" style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">CSS Property:</div>
+                        <div class="sf-mono" style="font-size: 0.9rem; background: #f8f9fa; padding: 0.5rem; border-radius: 4px; color: #666;">background-color: #AF4B0E;</div>
+                    </div>
+                </div>
+
+                <div class="usage-card">
+                    <h3 class="usage-title">Interactive Elements</h3>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <button class="sf-pro-display" style="font-size: 0.9rem; font-weight: 600; padding: 0.75rem 1.5rem; background: #AF4B0E; color: white; border: none; border-radius: 8px; cursor: pointer;">Primary Action</button>
+                        <button class="sf-pro-display" style="font-size: 0.9rem; font-weight: 500; padding: 0.75rem 1.5rem; background: transparent; color: #AF4B0E; border: 2px solid #AF4B0E; border-radius: 8px; cursor: pointer;">Secondary Action</button>
+                        <div class="sf-pro-display" style="font-size: 0.85rem; color: #00BCD4; text-decoration: underline; cursor: pointer;">Link Example</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="typography-section">
+            <h2 class="section-title">Implementation Guidelines</h2>
+            <div class="font-card">
+                <h3 class="font-name">Best Practices</h3>
+                <div class="font-description">
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 class="sf-pro-display" style="font-size: 1.1rem; font-weight: 600; color: #333; margin-bottom: 0.75rem;">Font Loading</h4>
+                        <p class="sf-pro-display" style="margin-bottom: 0.5rem;">Use the system font stack to ensure immediate rendering and fallback support:</p>
+                        <div class="sf-mono example-code" style="margin-bottom: 1rem;">font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;</div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 class="sf-pro-display" style="font-size: 1.1rem; font-weight: 600; color: #333; margin-bottom: 0.75rem;">Size Scale</h4>
+                        <div class="sf-mono" style="background: #1a1a1a; color: #e8e8e8; padding: 1rem; border-radius: 8px; font-size: 0.85rem; line-height: 1.6;">/* Recommended size scale */
+--font-size-xs: 0.75rem;    /* 12px */
+--font-size-sm: 0.875rem;   /* 14px */
+--font-size-base: 1rem;     /* 16px */
+--font-size-lg: 1.125rem;   /* 18px */
+--font-size-xl: 1.25rem;    /* 20px */
+--font-size-2xl: 1.5rem;    /* 24px */
+--font-size-3xl: 2rem;      /* 32px */
+--font-size-4xl: 2.5rem;    /* 40px */</div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 class="sf-pro-display" style="font-size: 1.1rem; font-weight: 600; color: #333; margin-bottom: 0.75rem;">Line Heights</h4>
+                        <div class="sf-mono" style="background: #1a1a1a; color: #e8e8e8; padding: 1rem; border-radius: 8px; font-size: 0.85rem; line-height: 1.6;">/* Optimal line heights for readability */
+--line-height-tight: 1.2;   /* Headings */
+--line-height-snug: 1.3;    /* Subheadings */
+--line-height-normal: 1.5;  /* Body text */
+--line-height-relaxed: 1.6; /* Long-form content */</div>
+                    </div>
+
+                    <div>
+                        <h4 class="sf-pro-display" style="font-size: 1.1rem; font-weight: 600; color: #333; margin-bottom: 0.75rem;">Accessibility</h4>
+                        <ul class="sf-pro-display" style="color: #666; line-height: 1.6; padding-left: 1.5rem;">
+                            <li style="margin-bottom: 0.5rem;">Maintain minimum 16px base font size for body text</li>
+                            <li style="margin-bottom: 0.5rem;">Ensure sufficient contrast ratios (4.5:1 for normal text, 3:1 for large text)</li>
+                            <li style="margin-bottom: 0.5rem;">Use relative units (rem, em) for scalable typography</li>
+                            <li style="margin-bottom: 0.5rem;">Test readability across different screen sizes and zoom levels</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copy-notification" id="copyNotification">
+        Font family copied to clipboard!
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                showCopyNotification();
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+        function showCopyNotification() {
+            const notification = document.getElementById('copyNotification');
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+
+        // Add hover effects to interactive elements
+        document.querySelectorAll('.font-family').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-1px)';
+            });
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
