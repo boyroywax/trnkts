@@ -5,40 +5,48 @@ const navigation3dIcons = {
         name: 'Arrow Up',
         type: '3d-stroke',
         layers: [
-            // Main arrow shape
+            // Full arrow - top face
             { path: 'M12 2L22 12L17 12L17 22L7 22L7 12L2 12L12 2Z', render: 'main' },
-            // Right side shadow (with slight overlap)
-            { path: 'M11.9 2L22 12.1L17 12.1L17 22L11.9 22L11.9 2Z', render: 'secondary', opacity: 0.4 }
+            // Left side - primary segment
+            { path: 'M12 2L2 12L7 12L7 22L12 22L12 2Z', render: 'primary', opacity: 0.7 },
+            // Right side - accent segment
+            { path: 'M12 2L22 12L17 12L17 22L12 22L12 2Z', render: 'accent', opacity: 0.5 }
         ]
     },
     'arrow-down': {
         name: 'Arrow Down',
         type: '3d-stroke',
         layers: [
-            // Main arrow shape
-            { path: 'M12 22L2 12L7 12L7 2L17 2L17 12L22 12L12 22Z', render: 'main' },
-            // Right side shadow (with slight overlap)
-            { path: 'M11.9 22L22 12L17 12L17 2L11.9 2L11.9 22Z', render: 'secondary', opacity: 0.4 }
+            // Full arrow - main shape
+            // { path: 'M12 22L2 12L7 12L7 2L17 2L17 12L22 12L12 22Z', render: 'main' },
+            // Left side - primary segment
+            { path: 'M12 22L2 12L7 12L7 2L12 2L12 22Z', render: 'primary'},
+            // Right side - accent segment
+            { path: 'M12 22L22 12L17 12L17 2L12 2L12 22Z', render: 'accent' }
         ]
     },
     'arrow-left': {
         name: 'Arrow Left',
-        type: '3d-stroke',
-        layers: [
-            // Main arrow shape
-            { path: 'M2 12L12 2L12 7L22 7L22 17L12 17L12 22L2 12Z', render: 'main' },
-            // Bottom shadow (with slight overlap)
-            // { path: 'M2 12.1L12 22L12 17L22 17L22 11.9L2 12.1Z', render: 'tertiary', opacity: 0.4 }
+        type: '3d-fill',
+        paths: [
+            // Main shape - full opacity
+            { d: 'M2 12L12 2L12 7L22 7L22 17L12 17L12 22L2 12Z', opacity: 1.0 },
+            // Top side - medium opacity
+            { d: 'M2 12L12 2L12 7L22 7L22 12L2 12Z', opacity: 0.7 },
+            // Bottom side - lower opacity
+            { d: 'M2 12L12 22L12 17L22 17L22 12L2 12Z', opacity: 0.5 }
         ]
     },
     'arrow-right': {
         name: 'Arrow Right',
-        type: '3d-stroke',
-        layers: [
-            // Main arrow shape
-            { path: 'M22 12L12 22L12 17L2 17L2 7L12 7L12 2L22 12Z', render: 'main' },
-            // Bottom shadow (with slight overlap)
-            { path: 'M22 12L12 22L12 17L2 17L2 12L22 12Z', render: 'main', opacity: 0.4 }
+        type: '3d-fill',
+        paths: [
+            // Main shape - full opacity
+            { d: 'M22 12L12 22L12 17L2 17L2 7L12 7L12 2L22 12Z', opacity: 1.0 },
+            // Top side - medium opacity
+            { d: 'M22 12L12 2L12 7L2 7L2 12L22 12Z', opacity: 0.7 },
+            // Bottom side - lower opacity
+            { d: 'M22 12L12 22L12 17L2 17L2 12L22 12Z', opacity: 0.5 }
         ]
     },
     'chevron-up': {

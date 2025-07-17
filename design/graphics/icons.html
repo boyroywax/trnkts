@@ -290,6 +290,18 @@
                             // Detail elements - white fill
                             svgContent += `<path d="${layer.path}" fill="white" fill-opacity="${opacityOverride || 0.9}" stroke="none"/>`;
                             break;
+                        case 'primary':
+                            // Primary segment for tri-tone effect (like in prototypes)
+                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 1.0}" stroke="none"/>`;
+                            break;
+                        case 'accent':
+                            // Accent segment for tri-tone effect (like in prototypes)
+                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 0.7}" stroke="none"/>`;
+                            break;
+                        case 'base':
+                            // Base segment for tri-tone effect (like in prototypes)
+                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 0.5}" stroke="none"/>`;
+                            break;
                         default:
                             // Fallback - basic white stroke
                             svgContent += `<path d="${layer.path}" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>`;
