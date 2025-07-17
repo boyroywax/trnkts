@@ -467,37 +467,27 @@
         Download completed!
     </div>
 
+    <!-- Import modular icon definitions -->
+    <script src="icons/interface.js"></script>
+    <script src="icons/system.js"></script>
+    <script src="icons/arrows.js"></script>
+    <script src="icons/communication.js"></script>
+    <script src="icons/media.js"></script>
+    <script src="icons/brand.js"></script>
+
     <script>
         let currentColorMode = 'gradient';
         let currentSize = 64;
 
-        // Icon definitions with tri-tone SVG paths
+        // Combine all icon modules into the main library
         const iconLibrary = {
-            interface: {
-                'menu': {
-                    name: 'Menu',
-                    paths: [
-                        'M4 6h16M4 12h16M4 18h16',
-                        'M6 8h12M6 14h8',
-                        'M8 10h8'
-                    ]
-                },
-                'search': {
-                    name: 'Search',
-                    paths: [
-                        'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z',
-                        'M17 17l-4-4m1-3a5 5 0 11-10 0 5 5 0 0110 0z',
-                        'M15 15l-2-2m0.5-1.5a3 3 0 11-6 0 3 3 0 016 0z'
-                    ]
-                },
-                'user': {
-                    name: 'User',
-                    paths: [
-                        'M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z',
-                        'M18 19v-1a3 3 0 00-3-3H9a3 3 0 00-3 3v1',
-                        'M12 11a3 3 0 100-6 3 3 0 000 6z'
-                    ]
-                },
+            interface: interfaceIcons,
+            system: systemIcons,
+            arrows: arrowIcons,
+            communication: communicationIcons,
+            media: mediaIcons,
+            brand: brandIcons
+        };
                 'settings': {
                     name: 'Settings',
                     paths: [
