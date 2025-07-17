@@ -1,27 +1,6 @@
 // Web3 3D Icons - Blockchain, crypto, and decentralized technology icons with 3D effects
-const web3Icons = {    'defi': {
-        name: 'DeFi',
-        type: '3d-stroke',
-        paths: [
-            // Central hub with 3D effect - main shape (scaled up)
-            'M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z',
-            // Inner hub depth layer
-            'M12 7.5c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5z',
-            // Connected nodes (scaled up)
-            'M3 3c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
-            'M21 3c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
-            'M3 15c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
-            'M21 15c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
-            // Edge/rim highlight - THE MISSING LAYER!
-            'M12 5.5c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5 6.5-2.91 6.5-6.5-2.91-6.5-6.5-6.5z',
-            'M3 2.5c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5z',
-            'M21 2.5c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5z',
-            'M3 14.5c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5z',
-            'M21 14.5c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5z',
-            // Connection lines
-            'M6 6L18 6M6 18L18 18M6 18L18 6M6 6L18 18'
-        ]
-    },
+const web3Icons = {
+    'bitcoin': {
         name: 'Bitcoin',
         type: '3d-stroke',
         paths: [
@@ -54,8 +33,6 @@ const web3Icons = {    'defi': {
             'M12 2.5L5 13L12 16.5L19 13L12 2.5z',
             // Bottom section
             'M12 18L3 13L12 23L21 13L12 18z',
-            // Edge/rim highlight - THE MISSING LAYER!
-            'M12 0.5L2.5 13L12 18.5L21.5 13L12 0.5z',
             // Highlight lines for 3D effect
             'M12 1L12 18M12 18L21 13M12 18L3 13'
         ]
@@ -94,8 +71,6 @@ const web3Icons = {    'defi': {
             'M4 10h16v3H4z',
             // Security chip
             'M17 14h4v4h-4z',
-            // Edge/rim highlight - THE MISSING LAYER!
-            'M0.5 5.5h23v15H0.5z',
             // Chip detail
             'M18 15h2v2h-2z',
             // 3D depth lines
@@ -111,21 +86,19 @@ const web3Icons = {    'defi': {
             // Block 1 depth layer
             'M2 5h5v6H2z',
             // Block 2 main
-            'M8 8h7v8H8z',
-            // Block 2 depth layer
-            'M9 9h5v6H9z',
+            'M8.5 4h7v8h-7z',
+            // Block 2 depth
+            'M9.5 5h5v6h-5z',
             // Block 3 main
-            'M15 4h7v8H15z',
-            // Block 3 depth layer
-            'M16 5h5v6H16z',
-            // Edge/rim highlight - THE MISSING LAYER!
-            'M0.5 3.5h7.5v9H0.5z',
-            'M7.5 7.5h7.5v9H7.5z',
-            'M14.5 3.5h7.5v9H14.5z',
+            'M16 4h7v8h-7z',
+            // Block 3 depth
+            'M17 5h5v6h-5z',
             // Chain connections
-            'M8 8h0M15 8h0',
-            // 3D depth lines
-            'M1 4L0 3M8 4L7 3M8 8L7 7M15 8L14 7M15 4L14 3M22 4L23 3M22 12L23 13M15 12L14 13M8 16L7 17M1 12L0 13'
+            'M8 8h0.5v1H8zM15.5 8h0.5v1h-0.5z',
+            // 3D depth effect
+            'M1 4L0 3M8 4L9 3M8.5 4L9.5 3M15.5 4L16.5 3M16 4L17 3M23 4L24 3',
+            // Bottom depth lines
+            'M1 12L0 13M8 12L9 13M15.5 12L16.5 13M23 12L24 13'
         ]
     },
     'defi': {
@@ -157,8 +130,6 @@ const web3Icons = {    'defi': {
             'M8 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
             'M16 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
             'M8 14c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
-            // Edge/rim highlight - THE MISSING LAYER!
-            'M12 1.5C6.21 1.5 1.5 6.21 1.5 12s4.71 10.5 10.5 10.5 10.5-4.71 10.5-10.5S17.79 1.5 12 1.5z',
             'M16 14c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
             // Central governance
             'M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
@@ -244,8 +215,6 @@ const web3Icons = {    'defi': {
             'M12 4C7.86 4 4.5 7.36 4.5 12s3.36 8.5 8.5 8.5 8.5-3.36 8.5-8.5S16.14 4 12 4z',
             // Highlight arc
             'M12 2.5C7.37 2.5 3.29 5.41 1.5 9.5',
-            // Edge/rim highlight - THE MISSING LAYER!
-            'M12 1.5C6.21 1.5 1.5 6.21 1.5 12s4.71 10.5 10.5 10.5 10.5-4.71 10.5-10.5S17.79 1.5 12 1.5z',
             // Edge detail
             'M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0z'
         ]
@@ -271,11 +240,6 @@ const web3Icons = {    'defi': {
         ]
     }
 };
-
-// Export for use in icons.html
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = web3Icons;
-}
 
 // Export for use in icons.html
 if (typeof module !== 'undefined' && module.exports) {
