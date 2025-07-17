@@ -81,23 +81,19 @@ const web3Icons = {
         name: 'Blockchain',
         type: '3d-stroke',
         paths: [
-            // Block 1 with 3D effect - main shape (scaled up)
-            'M1 4h7v8H1z',
-            // Block 1 depth layer
-            'M2 5h5v6H2z',
-            // Block 2 main
-            'M8.5 4h7v8h-7z',
-            // Block 2 depth
-            'M9.5 5h5v6h-5z',
-            // Block 3 main
-            'M16 4h7v8h-7z',
-            // Block 3 depth
-            'M17 5h5v6h-5z',
-            // Chain connections
+            // Layer 0: Block main shapes - gradient fill
+            'M1 4h7v8H1zM8.5 4h7v8h-7zM16 4h7v8h-7z',
+            // Layer 1: Block depth layers - semi-transparent overlay
+            'M2 5h5v6H2zM9.5 5h5v6h-5zM17 5h5v6h-5z',
+            // Layer 2: Block inner details for depth
+            'M2.5 5.5h4v5h-4zM10 5.5h4v5h-4zM17.5 5.5h4v5h-4z',
+            // Layer 3: Block center highlights
+            'M3 6h3v3H3zM10.5 6h3v3h-3zM18 6h3v3h-3z',
+            // Layer 4: Chain connections - bright accent
             'M8 8h0.5v1H8zM15.5 8h0.5v1h-0.5z',
-            // 3D depth effect
+            // Layer 5: 3D top depth effect (edge highlights)
             'M1 4L0 3M8 4L9 3M8.5 4L9.5 3M15.5 4L16.5 3M16 4L17 3M23 4L24 3',
-            // Bottom depth lines
+            // Layer 6: 3D bottom depth lines
             'M1 12L0 13M8 12L9 13M15.5 12L16.5 13M23 12L24 13'
         ]
     },
@@ -105,17 +101,20 @@ const web3Icons = {
         name: 'DeFi',
         type: '3d-stroke',
         paths: [
-            // Central hub with 3D effect - main shape (scaled up)
+            // Layer 0: Central hub main shape - full gradient fill
             'M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z',
-            // Inner hub depth layer
+            // Layer 1: Inner hub depth layer - semi-transparent overlay
             'M12 7.5c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5z',
-            // Connected nodes (scaled up)
-            'M3 3c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
-            'M21 3c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
-            'M3 15c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
-            'M21 15c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
-            // Connection lines
-            'M6 6L9 9M18 6L15 9M6 18L9 15M18 18L15 15'
+            // Layer 2: Connected nodes background outlines
+            'M3 3c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM21 3c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM3 15c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM21 15c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
+            // Layer 3: Node inner details for depth
+            'M3 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM21 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM3 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM21 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
+            // Layer 4: Central hub highlight
+            'M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
+            // Layer 5: Connection lines (edge highlights)
+            'M6 6L9 9M18 6L15 9M6 18L9 15M18 18L15 15',
+            // Layer 6: Node center highlights
+            'M3 5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zM21 5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zM3 17c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zM21 17c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z'
         ]
     },
     'dao': {
@@ -205,38 +204,40 @@ const web3Icons = {
         name: 'Token',
         type: '3d-stroke',
         paths: [
-            // Token coin with 3D effect - main shape (scaled up)
+            // Layer 0: Outer coin ring - main shape
+            'M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0z',
+            // Layer 1: Main coin body - gradient fill
             'M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1z',
-            // Inner coin depth
+            // Layer 2: Inner coin depth layer
             'M12 2.5C6.75 2.5 2.5 6.75 2.5 12s4.25 9.5 9.5 9.5 9.5-4.25 9.5-9.5-4.25-9.5-9.5-9.5z',
-            // Token symbol (T) - scaled up
-            'M6 6h12v3h-4.5v9h-3v-9H6V6z',
-            // Inner circle for depth
+            // Layer 3: Token symbol background for visibility
             'M12 4C7.86 4 4.5 7.36 4.5 12s3.36 8.5 8.5 8.5 8.5-3.36 8.5-8.5S16.14 4 12 4z',
-            // Highlight arc
+            // Layer 4: Token symbol (T) - bright accent
+            'M6 6h12v3h-4.5v9h-3v-9H6V6z',
+            // Layer 5: Highlight arc (edge highlight)
             'M12 2.5C7.37 2.5 3.29 5.41 1.5 9.5',
-            // Edge detail
-            'M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0z'
+            // Layer 6: Inner token detail
+            'M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z'
         ]
     },
     'staking': {
         name: 'Staking',
         type: '3d-stroke',
         paths: [
-            // Staking platform with 3D effect - main shape (scaled up)
+            // Layer 0: Main staking platform - full gradient fill
             'M2 12h20v8H2z',
-            // Platform depth
+            // Layer 1: Platform depth/shadow - semi-transparent overlay
             'M3 13h18v6H3z',
-            // Staked coins (scaled up)
-            'M6 6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z',
-            'M12 4c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z',
-            'M18 6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z',
-            // Staking arrows
+            // Layer 2: Coin background outlines for visibility (scaled up)
+            'M6 6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zM12 4c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zM18 6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z',
+            // Layer 3: Inner coin details for depth
+            'M6 7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM12 5c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM18 7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
+            // Layer 4: Coin highlight centers
+            'M6 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM12 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM18 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
+            // Layer 5: Staking arrows (edge highlights)
             'M6 9V12M12 7V12M18 9V12',
-            // Reward indicators
-            'M4 15h4v1H4zM8 15h4v1H8zM12 15h4v1h-4z',
-            // 3D depth lines
-            'M2 12L1 11M22 12L23 11M22 20L23 21M2 20L1 21'
+            // Layer 6: Reward indicators and 3D depth lines
+            'M4 15h4v1H4zM8 15h4v1H8zM12 15h4v1h-4zM2 12L1 11M22 12L23 11M22 20L23 21M2 20L1 21'
         ]
     }
 };
