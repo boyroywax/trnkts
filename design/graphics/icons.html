@@ -132,7 +132,7 @@
         function createSVGIcon(iconData, size = 64, colorMode = 'gradient', previewMode = false) {
             const isPrototype = iconData.type === '3d-fill';
             const isWeb3Icon = iconData.type === 'web3-fill';
-            const isWeb3Stroke = iconData.type === 'web3-stroke';
+            const isWeb3Stroke = iconData.type === '3d-stroke';
             let fills;
             
             // Use fixed 48px for preview cards, actual size for downloads

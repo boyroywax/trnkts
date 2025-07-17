@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Web3 Icon Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .test-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .test-item h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        svg {
+            border: 1px solid #ddd;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bitcoin Web3 Icon Test - Test 9D Implementation</h1>
+    
+    <div class="test-container">
+        <div class="test-item">
+            <h3>Original Test 9D from bitcoin-test.html</h3>
+            <svg width="64" height="64" viewBox="0 0 24 24">
+                <defs>
+                    <linearGradient id="grad9d" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#FF6B00;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <!-- Outer circle -->
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="url(#grad9d)" />
+                <!-- Inner circle - both fill and stroke for depth -->
+                <path d="M12 4C7.58 4 4 7.58 4 12s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8z" fill="black" fill-opacity="0.2" stroke="white" stroke-width="1" stroke-opacity="0.3" />
+                <!-- Perfect centered Bitcoin B with proper vertical extensions -->
+                <!-- Main vertical spine (moved slightly left and up) -->
+                <path d="M10.2 8.7V15.2" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                <!-- Top vertical extension from center of top bar (moved left and up) -->
+                <path d="M12.2 7.2V8.2" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                <!-- Bottom vertical extension from center of bottom bar (moved left and up) -->
+                <path d="M12.2 16.7V17.7" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                <!-- Top curve section (fixed to connect properly, moved left and up) -->
+                <path d="M10.2 8.7h3c1 0 1.8 0.8 1.8 1.8s-0.8 1.8-1.8 1.8h-2.5" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none" />
+                <!-- Bottom curve section (moved left and up) -->
+                <path d="M10.2 12.7h3c1 0 1.8 0.8 1.8 1.8s-0.8 1.8-1.8 1.8h-3" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none" />
+                <!-- Middle connecting line (moved left and up) -->
+                <path d="M10.7 12.3h1.5" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+        </div>
+        
+        <div class="test-item">
+            <h3>Web3 Icons Implementation</h3>
+            <div id="web3-bitcoin-test"></div>
+        </div>
+    </div>
+
+    <script src="icons/web3-3d.js"></script>
+    <script>
+        // Create the same rendering logic as in icons.html
+        function createSVGIcon(iconData, size = 64, colorMode = 'gradient') {
+            const gradientId = `trnkts-gradient-${Math.random().toString(36).substr(2, 9)}`;
+            
+            let svgContent = `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="${gradientId}" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#833AB4"/>
+                        <stop offset="0.3" stop-color="#E1306C"/>
+                        <stop offset="0.6" stop-color="#F77737"/>
+                        <stop offset="1" stop-color="#FCAF45"/>
+                    </linearGradient>
+                </defs>`;
+
+            if (iconData.type === '3d-stroke' && iconData.paths) {
+                // Web3 stroke-based rendering (like Bitcoin) - matches bitcoin-test.html Test 9D
+                iconData.paths.forEach((path, index) => {
+                    const fillColor = colorMode === 'gradient' ? `url(#${gradientId})` : '#FF8C00';
+                    
+                    if (index === 0) {
+                        // Outer circle - full fill
+                        svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="1.0" stroke="none"/>`;
+                    } else if (index === 1) {
+                        // Inner circle - both fill and stroke for depth (like Test 9D)
+                        svgContent += `<path d="${path}" fill="black" fill-opacity="0.2" stroke="white" stroke-width="1" stroke-opacity="0.3"/>`;
+                    } else {
+                        // All other paths are stroked details (B symbol parts)
+                        svgContent += `<path d="${path}" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>`;
+                    }
+                });
+            }
+
+            svgContent += '</svg>';
+            return svgContent;
+        }
+
+        // Test the Web3 Bitcoin implementation
+        document.addEventListener('DOMContentLoaded', function() {
+            const bitcoinIcon = web3Icons.bitcoin;
+            const svgHTML = createSVGIcon(bitcoinIcon, 64, 'gradient');
+            document.getElementById('web3-bitcoin-test').innerHTML = svgHTML;
+        });
+    </script>
+</body>
+</html>
