@@ -183,64 +183,49 @@
                 });
             } else if (isWeb3Stroke && iconData.paths) {
                 // Web3 stroke-based rendering with enhanced layering
-                
-                // FIRST: Add background shadow layer for all non-Bitcoin icons
-                if (!isBitcoin && iconData.paths.length > 0) {
-                    // Create a shadow effect using the first path (main shape)
-                    const shadowOffset = '1';
-                    const shadowPath = iconData.paths[0];
-                    svgContent += `<path d="${shadowPath}" fill="#000000" fill-opacity="0.15" stroke="none" transform="translate(${shadowOffset}, ${shadowOffset})"/>`;
-                }
-                
                 iconData.paths.forEach((path, index) => {
-                    // Fix: Ensure fillColor respects all color modes
                     const fillColor = colorMode === 'gradient' ? `url(#${gradientId})` : fills[0];
                     
                     if (isBitcoin) {
-                        // Bitcoin-specific Test 9D rendering - enhanced for better visibility
+                        // Bitcoin-specific Test 9D rendering
                         if (index === 0) {
-                            // Outer circle - full gradient fill with dark border
-                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="1.0" stroke="#333333" stroke-width="0.5"/>`;
+                            // Outer circle - full fill
+                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="1.0" stroke="none"/>`;
                         } else if (index === 1) {
-                            // Inner circle - shadow layer with bright rim (like Test 9D)
-                            svgContent += `<path d="${path}" fill="black" fill-opacity="0.25" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.8"/>`;
+                            // Inner circle - both fill and stroke for depth (like Test 9D)
+                            svgContent += `<path d="${path}" fill="black" fill-opacity="0.2" stroke="white" stroke-width="1" stroke-opacity="0.3"/>`;
                         } else {
-                            // All other paths are stroked details (B symbol parts) - bright white with shadow
-                            svgContent += `<path d="${path}" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" fill="none" style="filter: drop-shadow(0 0 1px rgba(0,0,0,0.6))"/>`;
+                            // All other paths are stroked details (B symbol parts)
+                            svgContent += `<path d="${path}" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>`;
                         }
                     } else {
-                        // Enhanced layering for other Web3 icons with better color contrast
-                        // Create dynamic stroke colors based on color mode
-                        const darkStroke = colorMode === 'gradient' ? '#333333' : '#000000';
-                        const lightStroke = colorMode === 'gradient' ? '#FFFFFF' : '#FFFFFF';
-                        const mediumStroke = colorMode === 'gradient' ? '#666666' : '#888888';
-                        
+                        // Enhanced layering for other Web3 icons
                         if (index === 0) {
-                            // Layer 0: Main shape - full color fill with dark stroke for definition
-                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="1.0" stroke="${darkStroke}" stroke-width="0.5" stroke-opacity="0.8"/>`;
+                            // Layer 0: Main shape - full gradient fill
+                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="1.0" stroke="none"/>`;
                         } else if (index === 1) {
-                            // Layer 1: Depth/shadow layer - darker color overlay with light rim
-                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="0.6" stroke="${lightStroke}" stroke-width="0.8" stroke-opacity="0.7"/>`;
+                            // Layer 1: Depth/shadow layer - semi-transparent overlay with rim highlight
+                            svgContent += `<path d="${path}" fill="black" fill-opacity="0.2" stroke="white" stroke-width="1" stroke-opacity="0.3"/>`;
                         } else if (index === 2) {
-                            // Layer 2: Secondary structural element - medium color with visible stroke
-                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="0.8" stroke="${lightStroke}" stroke-width="0.6" stroke-opacity="0.8"/>`;
+                            // Layer 2: Secondary structural element - gradient with highlight
+                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="0.85" stroke="white" stroke-width="0.5" stroke-opacity="0.4"/>`;
                         } else if (index === 3) {
-                            // Layer 3: Tertiary structural element - lighter color with contrast
-                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="0.9" stroke="${darkStroke}" stroke-width="0.4" stroke-opacity="0.6"/>`;
+                            // Layer 3: Tertiary structural element - medium gradient
+                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="0.7" stroke="none"/>`;
                         } else if (index === 4) {
-                            // Layer 4: Surface highlight - bright white accent with colored border
-                            svgContent += `<path d="${path}" fill="${lightStroke}" fill-opacity="0.9" stroke="${fillColor}" stroke-width="0.3" stroke-opacity="0.8"/>`;
+                            // Layer 4: Surface highlight - bright accent
+                            svgContent += `<path d="${path}" fill="white" fill-opacity="0.8" stroke="none"/>`;
                         } else if (index === 5) {
-                            // Layer 5: Edge/rim highlight - bright white stroke for definition
-                            svgContent += `<path d="${path}" fill="none" stroke="${lightStroke}" stroke-width="1.4" stroke-opacity="0.9" stroke-linecap="round"/>`;
+                            // Layer 5: Edge/rim highlight
+                            svgContent += `<path d="${path}" fill="none" stroke="white" stroke-width="1.2" stroke-opacity="0.6" stroke-linecap="round"/>`;
                         } else {
-                            // Layer 6+: Detail elements - high contrast for visibility
+                            // Layer 6+: Detail elements - white stroke/fill for details
                             if (path.includes('M') && path.includes('L') && !path.includes('h') && !path.includes('v') && !path.includes('z')) {
-                                // Line paths - use bright white stroke with shadow
-                                svgContent += `<path d="${path}" stroke="${lightStroke}" stroke-width="1.8" stroke-linecap="round" fill="none" style="filter: drop-shadow(0 0 1px rgba(0,0,0,0.5))"/>`;
+                                // Line paths - use stroke
+                                svgContent += `<path d="${path}" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>`;
                             } else {
-                                // Shape paths - use bright white fill with dark border
-                                svgContent += `<path d="${path}" fill="${lightStroke}" fill-opacity="0.95" stroke="${darkStroke}" stroke-width="0.3" stroke-opacity="0.7"/>`;
+                                // Shape paths - use fill
+                                svgContent += `<path d="${path}" fill="white" fill-opacity="0.9" stroke="none"/>`;
                             }
                         }
                     }
