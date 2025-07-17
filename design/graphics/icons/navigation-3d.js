@@ -5,12 +5,12 @@ const navigation3dIcons = {
         name: 'Arrow Up',
         type: '3d-stroke',
         layers: [
-            // Full arrow - top face
-            { path: 'M12 2L22 12L17 12L17 22L7 22L7 12L2 12L12 2Z', render: 'main' },
+            // Full arrow - main shape (commented out)
+            // { path: 'M12 2L22 12L17 12L17 22L7 22L7 12L2 12L12 2Z', render: 'main' },
             // Left side - primary segment
-            { path: 'M12 2L2 12L7 12L7 22L12 22L12 2Z', render: 'primary', opacity: 0.7 },
+            { path: 'M12 2L2 12L7 12L7 22L12 22L12 2Z', render: 'primary' },
             // Right side - accent segment
-            { path: 'M12 2L22 12L17 12L17 22L12 22L12 2Z', render: 'accent', opacity: 0.5 }
+            { path: 'M12 2L22 12L17 12L17 22L12 22L12 2Z', render: 'accent' }
         ]
     },
     'arrow-down': {
@@ -27,26 +27,26 @@ const navigation3dIcons = {
     },
     'arrow-left': {
         name: 'Arrow Left',
-        type: '3d-fill',
-        paths: [
-            // Main shape - full opacity
-            { d: 'M2 12L12 2L12 7L22 7L22 17L12 17L12 22L2 12Z', opacity: 1.0 },
-            // Top side - medium opacity
-            { d: 'M2 12L12 2L12 7L22 7L22 12L2 12Z', opacity: 0.7 },
-            // Bottom side - lower opacity
-            { d: 'M2 12L12 22L12 17L22 17L22 12L2 12Z', opacity: 0.5 }
+        type: '3d-stroke',
+        layers: [
+            // Full arrow - main shape (commented out)
+            // { path: 'M2 12L12 2L12 7L22 7L22 17L12 17L12 22L2 12Z', render: 'main' },
+            // Top side - primary segment
+            { path: 'M2 12L12 2L12 7L22 7L22 12L2 12Z', render: 'primary' },
+            // Bottom side - accent segment
+            { path: 'M2 12L12 22L12 17L22 17L22 12L2 12Z', render: 'accent' }
         ]
     },
     'arrow-right': {
         name: 'Arrow Right',
-        type: '3d-fill',
-        paths: [
-            // Main shape - full opacity
-            { d: 'M22 12L12 22L12 17L2 17L2 7L12 7L12 2L22 12Z', opacity: 1.0 },
-            // Top side - medium opacity
-            { d: 'M22 12L12 2L12 7L2 7L2 12L22 12Z', opacity: 0.7 },
-            // Bottom side - lower opacity
-            { d: 'M22 12L12 22L12 17L2 17L2 12L22 12Z', opacity: 0.5 }
+        type: '3d-stroke',
+        layers: [
+            // Full arrow - main shape (commented out)
+            // { path: 'M22 12L12 22L12 17L2 17L2 7L12 7L12 2L22 12Z', render: 'main' },
+            // Top side - primary segment
+            { path: 'M22 12L12 2L12 7L2 7L2 12L22 12Z', render: 'primary' },
+            // Bottom side - accent segment
+            { path: 'M22 12L12 22L12 17L2 17L2 12L22 12Z', render: 'accent' }
         ]
     },
     'chevron-up': {
@@ -93,24 +93,24 @@ const navigation3dIcons = {
         name: 'Compass',
         type: '3d-stroke',
         layers: [
-            // Main compass shape (top face)
-            { path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-8l7-4 4 7-7 4-4-7z', render: 'main' },
-            // Left depth (slight offset)
-            { path: 'M11.7 1.7C6.18 1.7 1.7 6.18 1.7 11.7s4.48 10 10 10 10-4.48 10-10S16.22 1.7 11.7 1.7zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-8l7-4 4 7-7 4-4-7z', render: 'depth' },
-            // Right depth (slight offset)
-            { path: 'M12.3 1.7C6.78 1.7 2.3 6.18 2.3 11.7s4.48 10 10 10 10-4.48 10-10S17.82 1.7 12.3 1.7zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-8l7-4 4 7-7 4-4-7z', render: 'secondary' }
+            // Outer circle
+            { path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z', render: 'main' },
+            // Needle - primary segment (North pointing triangle, larger)
+            { path: 'M12 7L10.5 12L12 12L13.5 12L12 7z', render: 'primary' },
+            // Needle - accent segment (South pointing triangle, larger)
+            { path: 'M12 17L10.5 12L12 12L13.5 12L12 17z', render: 'accent' }
         ]
     },
     'location': {
         name: 'Location',
         type: '3d-stroke',
         layers: [
-            // Main location shape (top face)
-            { path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z', render: 'main' },
-            // Left depth (slight offset)
-            { path: 'M11.7 1.7C7.83 1.7 4.7 4.83 4.7 8.7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z', render: 'depth' },
-            // Right depth (slight offset)
-            { path: 'M12.3 1.7C8.43 1.7 5.3 4.83 5.3 8.7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z', render: 'secondary' }
+            // Main pin outline (commented out)
+            // { path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z', render: 'main' },
+            // Left half - primary segment
+            { path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13V2z', render: 'primary' },
+            // Right half - accent segment
+            { path: 'M12 2C15.87 2 19 5.13 19 9c0 5.25-7 13-7 13V2z', render: 'accent' }
         ]
     }
 };

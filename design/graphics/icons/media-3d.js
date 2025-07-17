@@ -3,65 +3,86 @@
 const media3dIcons = {
     'play': {
         name: 'Play',
-        type: '3d-fill',
-        paths: [
-            { d: 'M8 5L19 12L8 19L8 5Z', opacity: 1.0 },
-            { d: 'M10 7L16 12L10 17L10 7Z', opacity: 0.7 },
-            { d: 'M11 9L14 12L11 15L11 9Z', opacity: 0.5 }
+        type: '3d-stroke',
+        layers: [
+            // Main play triangle - top face
+            { path: 'M8 5L19 12L8 19L8 5Z', render: 'main' },
+            // Depth shadow - bottom right shadow
+            { path: 'M8.5 5.5L19.5 12.5L8.5 19.5L8.5 5.5Z', render: 'depth' },
+            // Top edge highlight - left edge of triangle
+            { path: 'M8 5L8 19L8.2 18.8L8.2 5.2L8 5Z', render: 'highlight' }
         ]
     },
     'pause': {
         name: 'Pause',
-        type: '3d-fill',
-        paths: [
-            { d: 'M6 4L10 4L10 20L6 20L6 4Z M14 4L18 4L18 20L14 20L14 4Z', opacity: 1.0 },
-            { d: 'M7 6L9 6L9 18L7 18L7 6Z M15 6L17 6L17 18L15 18L15 6Z', opacity: 0.7 },
-            { d: 'M7.5 8L8.5 8L8.5 16L7.5 16L7.5 8Z M15.5 8L16.5 8L16.5 16L15.5 16L15.5 8Z', opacity: 0.5 }
+        type: '3d-stroke',
+        layers: [
+            // Main pause bars - top face
+            { path: 'M6 4L10 4L10 20L6 20L6 4Z M14 4L18 4L18 20L14 20L14 4Z', render: 'main' },
+            // Depth shadow - bottom right shadow
+            { path: 'M6.5 4.5L10.5 4.5L10.5 20.5L6.5 20.5L6.5 4.5Z M14.5 4.5L18.5 4.5L18.5 20.5L14.5 20.5L14.5 4.5Z', render: 'depth' },
+            // Top edge highlights - top edges of bars
+            { path: 'M6 4L10 4L10 4.3L6 4.3L6 4Z M14 4L18 4L18 4.3L14 4.3L14 4Z', render: 'highlight' }
         ]
     },
     'stop': {
         name: 'Stop',
-        type: '3d-fill',
-        paths: [
-            { d: 'M6 6L18 6L18 18L6 18L6 6Z', opacity: 1.0 },
-            { d: 'M8 8L16 8L16 16L8 16L8 8Z', opacity: 0.7 },
-            { d: 'M10 10L14 10L14 14L10 14L10 10Z', opacity: 0.5 }
+        type: '3d-stroke',
+        layers: [
+            // Main stop square (commented out)
+            // { path: 'M6 6L18 6L18 18L6 18L6 6Z', render: 'main' },
+            // Left half - primary segment
+            { path: 'M6 6L12 6L12 18L6 18L6 6Z', render: 'primary' },
+            // Right half - accent segment
+            { path: 'M12 6L18 6L18 18L12 18L12 6Z', render: 'accent' }
         ]
     },
     'volume': {
         name: 'Volume',
-        type: '3d-fill',
-        paths: [
-            { d: 'M3 9L7 9L11 5L11 19L7 15L3 15L3 9Z M15.5 12C15.5 10.23 14.48 8.71 13 7.97L13 16.02C14.48 15.29 15.5 13.77 15.5 12Z M13 4.27L13 5.73C16.01 6.48 18.27 9.05 18.27 12C18.27 14.95 16.01 17.52 13 18.27L13 19.73C16.88 18.93 19.77 15.71 19.77 12C19.77 8.29 16.88 5.07 13 4.27Z', opacity: 1.0 },
-            { d: 'M5 11L7 11L9 9L9 15L7 13L5 13L5 11Z M13 8.5C13.83 9.09 14.5 10.02 14.5 11C14.5 11.98 13.83 12.91 13 13.5L13 8.5Z', opacity: 0.7 },
-            { d: 'M5.5 11.5L6.5 11.5L8 10L8 14L6.5 12.5L5.5 12.5L5.5 11.5Z M13 10C13.28 10.32 13.5 10.66 13.5 11C13.5 11.34 13.28 11.68 13 12L13 10Z', opacity: 0.5 }
+        type: '3d-stroke',
+        layers: [
+            // Main volume icon (commented out)
+            // { path: 'M11 5L6 9L2 9L2 15L6 15L11 19L11 5Z M15.54 8.46C16.47 9.39 17 10.65 17 12C17 13.35 16.47 14.61 15.54 15.54M18.07 5.93C20.26 8.12 21.5 11.04 21.5 12C21.5 12.96 20.26 15.88 18.07 18.07', render: 'main' },
+            // Speaker cone - primary segment
+            { path: 'M11 5L6 9L2 9L2 15L6 15L11 19L11 5Z', render: 'primary' },
+            // Sound waves - accent segment
+            { path: 'M15.54 8.46C16.47 9.39 17 10.65 17 12C17 13.35 16.47 14.61 15.54 15.54M18.07 5.93C20.26 8.12 21.5 11.04 21.5 12C21.5 12.96 20.26 15.88 18.07 18.07', render: 'accent' }
         ]
     },
     'camera': {
         name: 'Camera',
-        type: '3d-fill',
-        paths: [
-            { d: 'M9 2L15 2L17 4L21 4C22.1 4 23 4.9 23 6L23 18C23 19.1 22.1 20 21 20L3 20C1.9 20 1 19.1 1 18L1 6C1 4.9 1.9 4 3 4L7 4L9 2Z M12 7C9.24 7 7 9.24 7 12C7 14.76 9.24 17 12 17C14.76 17 17 14.76 17 12C17 9.24 14.76 7 12 7Z', opacity: 1.0 },
-            { d: 'M10 4L14 4L15 5L19 5L19 17L5 17L5 5L8 5L10 4Z M12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z', opacity: 0.7 },
-            { d: 'M11 5L13 5L13.5 5.5L17 5.5L17 15.5L7 15.5L7 5.5L10.5 5.5L11 5Z M12 10C11.45 10 11 10.45 11 11C11 11.55 11.45 12 12 12C12.55 12 13 11.55 13 11C13 10.45 12.55 10 12 10Z', opacity: 0.5 }
+        type: '3d-stroke',
+        layers: [
+            // Main camera body (commented out)
+            // { path: 'M9 3L7 5L4 5C2.9 5 2 5.9 2 7L2 19C2 20.1 2.9 21 4 21L20 21C21.1 21 22 20.1 22 19L22 7C22 5.9 21.1 5 20 5L17 5L15 3L9 3Z M12 17C14.21 17 16 15.21 16 13C16 10.79 14.21 9 12 9C9.79 9 8 10.79 8 13C8 15.21 9.79 17 12 17Z', render: 'main' },
+            // Camera body - primary segment
+            { path: 'M9 3L7 5L4 5C2.9 5 2 5.9 2 7L2 19C2 20.1 2.9 21 4 21L20 21C21.1 21 22 20.1 22 19L22 7C22 5.9 21.1 5 20 5L17 5L15 3L9 3Z', render: 'primary' },
+            // Camera lens - accent segment
+            { path: 'M12 17C14.21 17 16 15.21 16 13C16 10.79 14.21 9 12 9C9.79 9 8 10.79 8 13C8 15.21 9.79 17 12 17Z', render: 'accent' }
         ]
     },
     'image': {
         name: 'Image',
-        type: '3d-fill',
-        paths: [
-            { d: 'M5 3C3.9 3 3 3.9 3 5L3 19C3 20.1 3.9 21 5 21L19 21C20.1 21 21 20.1 21 19L21 5C21 3.9 20.1 3 19 3L5 3Z M14.25 10L11 14.25L8.75 11.5L5.5 16L18.5 16L14.25 10Z', opacity: 1.0 },
-            { d: 'M5 5L19 5L19 19L5 19L5 5Z M13 11L10.5 13.5L8.5 11L6 15L18 15L13 11Z', opacity: 0.7 },
-            { d: 'M7 7L17 7L17 17L7 17L7 7Z M12 12L10 13.5L8.5 12L7.5 14L16.5 14L12 12Z', opacity: 0.5 }
+        type: '3d-stroke',
+        layers: [
+            // Main image frame (commented out)
+            // { path: 'M5 3C3.9 3 3 3.9 3 5L3 19C3 20.1 3.9 21 5 21L19 21C20.1 21 21 20.1 21 19L21 5C21 3.9 20.1 3 19 3L5 3Z M14.25 10L11 14.25L8.75 11.5L5.5 16L18.5 16L14.25 10Z', render: 'main' },
+            // Image frame - primary segment
+            { path: 'M5 3C3.9 3 3 3.9 3 5L3 19C3 20.1 3.9 21 5 21L19 21C20.1 21 21 20.1 21 19L21 5C21 3.9 20.1 3 19 3L5 3Z', render: 'primary' },
+            // Mountain/sun content - accent segment
+            { path: 'M14.25 10L11 14.25L8.75 11.5L5.5 16L18.5 16L14.25 10Z', render: 'accent' }
         ]
     },
     'music': {
         name: 'Music',
-        type: '3d-fill',
-        paths: [
-            { d: 'M12 3L22 6L22 16C22 18.21 20.21 20 18 20C15.79 20 14 18.21 14 16C14 13.79 15.79 12 18 12C19.1 12 20.1 12.4 20.83 13.04L20.83 7.17L12 5.17L12 15C12 17.21 10.21 19 8 19C5.79 19 4 17.21 4 15C4 12.79 5.79 11 8 11C9.1 11 10.1 11.4 10.83 12.04L10.83 3L12 3Z', opacity: 1.0 },
-            { d: 'M12 5L20 7L20 15C20 16.1 19.1 17 18 17C16.9 17 16 16.1 16 15C16 13.9 16.9 13 18 13C18.5 13 18.96 13.19 19.32 13.49L19.32 8.5L12 7L12 14C12 15.1 11.1 16 10 16C8.9 16 8 15.1 8 14C8 12.9 8.9 12 10 12C10.5 12 10.96 12.19 11.32 12.49L11.32 5Z', opacity: 0.7 },
-            { d: 'M12 6L18 7.5L18 14C18 14.55 17.55 15 17 15C16.45 15 16 14.55 16 14C16 13.45 16.45 13 17 13C17.28 13 17.53 13.11 17.71 13.29L17.71 9L12 8L12 13C12 13.55 11.55 14 11 14C10.45 14 10 13.55 10 13C10 12.45 10.45 12 11 12C11.28 12 11.53 12.11 11.71 12.29L11.71 6Z', opacity: 0.5 }
+        type: '3d-stroke',
+        layers: [
+            // Main music note (commented out)
+            // { path: 'M12 3L22 6L22 16C22 18.21 20.21 20 18 20C15.79 20 14 18.21 14 16C14 13.79 15.79 12 18 12C19.1 12 20.1 12.4 20.83 13.04L20.83 7.17L12 5.17L12 15C12 17.21 10.21 19 8 19C5.79 19 4 17.21 4 15C4 12.79 5.79 11 8 11C9.1 11 10.1 11.4 10.83 12.04L10.83 3L12 3Z', render: 'main' },
+            // Music note stem and left circle - primary segment
+            { path: 'M12 3L22 6L22 16C22 18.21 20.21 20 18 20C15.79 20 14 18.21 14 16C14 13.79 15.79 12 18 12C19.1 12 20.1 12.4 20.83 13.04L20.83 7.17L12 5.17L12 15C12 17.21 10.21 19 8 19C5.79 19 4 17.21 4 15C4 12.79 5.79 11 8 11C9.1 11 10.1 11.4 10.83 12.04L10.83 3L12 3Z', render: 'primary' },
+            // Music note accents - accent segment (empty for unified look)
+            { path: '', render: 'accent' }
         ]
     },
     'video-play': {
