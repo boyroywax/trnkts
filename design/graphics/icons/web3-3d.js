@@ -41,18 +41,14 @@ const web3Icons = {
         name: 'NFT',
         type: '3d-stroke',
         layers: [
-            // Main frame - outer border
-            { path: 'M3 3h18v18H3z', render: 'main' },
-            // Inner frame for depth
-            { path: 'M4 4h16v16H4z', render: 'depth' },
-            // Punk face - head shape
-            { path: 'M7 7h10v8H7z', render: 'secondary' },
+            // Punk head - main pixelated face
+            { path: 'M8 8h8v8H8z', render: 'main' },
+            // Punk head depth
+            { path: 'M8.5 8.5h7v7h-7z', render: 'depth' },
             // Punk hair - spiky top
-            { path: 'M7 7h2v-2H7zM10 6h2v-2h-2zM13 7h2v-2h-2zM16 8h1v-2h-1z', render: 'symbol' },
-            // Punk features - eyes and accessories
-            { path: 'M9 9h1v1H9zM14 9h1v1h-1zM11 11h2v1h-2zM8 13h1v1H8zM15 13h1v1h-1z', render: 'highlight' },
-            // NFT label
-            { path: 'M6 17h12v2H6z', render: 'detail' }
+            { path: 'M8 8h2v-2H8zM11 7h2v-2h-2zM14 8h2v-2h-2z', render: 'symbol' },
+            // Punk features - simple eyes and mouth
+            { path: 'M10 10h1v1h-1zM13 10h1v1h-1zM11 13h2v1h-2z', render: 'highlight' }
         ]
     },
     'wallet': {
@@ -109,12 +105,10 @@ const web3Icons = {
             { path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z', render: 'main' },
             // Inner circle for depth
             { path: 'M12 4C7.58 4 4 7.58 4 12s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8z', render: 'depth' },
-            // Voting nodes
-            { path: 'M8 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM16 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM8 14c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM16 14c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z', render: 'secondary' },
-            // Central governance hub
-            { path: 'M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z', render: 'symbol' },
-            // Connection lines
-            { path: 'M10 10L8 8M14 10L16 8M10 14L8 16M14 14L16 16', render: 'highlight' }
+            // Central hub
+            { path: 'M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z', render: 'symbol' },
+            // Connection lines (simplified)
+            { path: 'M12 2V6M12 18V22M2 12H6M18 12H22', render: 'highlight' }
         ]
     },
     'metaverse': {
@@ -125,12 +119,10 @@ const web3Icons = {
             { path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z', render: 'main' },
             // Inner sphere for depth
             { path: 'M12 4C7.58 4 4 7.58 4 12s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8z', render: 'depth' },
-            // VR headset overlay
-            { path: 'M6 8h12v6H6z', render: 'secondary' },
-            // Eye pieces
-            { path: 'M8 10h3v2H8zM13 10h3v2h-3z', render: 'symbol' },
-            // Grid lines for virtual space
-            { path: 'M12 2V22M2 12H22', render: 'highlight' }
+            // Simple VR visor
+            { path: 'M7 9h10v6H7z', render: 'secondary' },
+            // Clean grid pattern
+            { path: 'M12 4V20M6 12H18', render: 'highlight' }
         ]
     },
     'smart-contract': {
