@@ -133,6 +133,7 @@
             const isPrototype = iconData.type === '3d-fill';
             const isWeb3Icon = iconData.type === 'web3-fill';
             const isWeb3Stroke = iconData.type === '3d-stroke';
+            const is3DStroke = iconData.type === '3d-stroke';
             const isBitcoin = iconData.name === 'Bitcoin';
             let fills;
             
@@ -245,47 +246,49 @@
                         }
                     }
                 });
-            } else if (isWeb3Stroke && iconData.layers) {
-                // New layer-based rendering system
+            } else if ((isWeb3Stroke || iconData.type === '3d-stroke') && iconData.layers) {
+                // Unified layer-based rendering system for all 3D icons including navigation-3d
                 iconData.layers.forEach((layer) => {
                     const fillColor = colorMode === 'gradient' ? `url(#${gradientId})` : fills[0];
+                    // Check for opacity override from the icon definition
+                    const opacityOverride = layer.opacity !== undefined ? layer.opacity : null;
                     
                     switch (layer.render) {
                         case 'main':
                             // Main shape - full gradient fill
-                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="1.0" stroke="none"/>`;
+                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 1.0}" stroke="none"/>`;
                             break;
                         case 'depth':
                             // Depth/shadow layer - semi-transparent overlay with rim highlight
-                            svgContent += `<path d="${layer.path}" fill="black" fill-opacity="0.2" stroke="white" stroke-width="1" stroke-opacity="0.3"/>`;
+                            svgContent += `<path d="${layer.path}" fill="black" fill-opacity="${opacityOverride || 0.2}" stroke="white" stroke-width="1" stroke-opacity="0.3"/>`;
                             break;
                         case 'secondary':
                             // Secondary structural element - gradient with highlight
-                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="0.85" stroke="white" stroke-width="0.5" stroke-opacity="0.4"/>`;
+                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 0.85}" stroke="white" stroke-width="0.5" stroke-opacity="0.4"/>`;
                             break;
                         case 'tertiary':
                             // Tertiary structural element - medium gradient
-                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="0.7" stroke="none"/>`;
+                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 0.7}" stroke="none"/>`;
                             break;
                         case 'background':
                             // Background circle - dark fill for contrast
-                            svgContent += `<path d="${layer.path}" fill="black" fill-opacity="0.3" stroke="none"/>`;
+                            svgContent += `<path d="${layer.path}" fill="black" fill-opacity="${opacityOverride || 0.3}" stroke="none"/>`;
                             break;
                         case 'symbol':
                             // Symbol elements - bright white (for Bitcoin use stroke, for Token use fill)
                             if (iconData.name === 'Bitcoin') {
                                 svgContent += `<path d="${layer.path}" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>`;
                             } else {
-                                svgContent += `<path d="${layer.path}" fill="white" fill-opacity="1.0" stroke="none"/>`;
+                                svgContent += `<path d="${layer.path}" fill="white" fill-opacity="${opacityOverride || 1.0}" stroke="none"/>`;
                             }
                             break;
                         case 'highlight':
                             // Highlight arc - stroked
-                            svgContent += `<path d="${layer.path}" fill="none" stroke="white" stroke-width="1.2" stroke-opacity="0.6" stroke-linecap="round"/>`;
+                            svgContent += `<path d="${layer.path}" fill="none" stroke="white" stroke-width="1.2" stroke-opacity="${opacityOverride || 0.6}" stroke-linecap="round"/>`;
                             break;
                         case 'detail':
                             // Detail elements - white fill
-                            svgContent += `<path d="${layer.path}" fill="white" fill-opacity="0.9" stroke="none"/>`;
+                            svgContent += `<path d="${layer.path}" fill="white" fill-opacity="${opacityOverride || 0.9}" stroke="none"/>`;
                             break;
                         default:
                             // Fallback - basic white stroke
