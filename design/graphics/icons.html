@@ -213,21 +213,83 @@
                             // Layer 3: Tertiary structural element - medium gradient
                             svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="0.7" stroke="none"/>`;
                         } else if (index === 4) {
-                            // Layer 4: Surface highlight - bright accent
-                            svgContent += `<path d="${path}" fill="white" fill-opacity="0.8" stroke="none"/>`;
+                            // Layer 4: Check if this is a token icon background circle
+                            if (iconData.name === 'Token' && path.includes('M12 8c-2.21')) {
+                                // Token background circle - use dark fill for contrast behind T symbol
+                                svgContent += `<path d="${path}" fill="black" fill-opacity="0.3" stroke="none"/>`;
+                            } else {
+                                // Surface highlight - bright accent
+                                svgContent += `<path d="${path}" fill="white" fill-opacity="1.0" stroke="none"/>`;
+                            }
                         } else if (index === 5) {
-                            // Layer 5: Edge/rim highlight
-                            svgContent += `<path d="${path}" fill="none" stroke="white" stroke-width="1.2" stroke-opacity="0.6" stroke-linecap="round"/>`;
+                            // Layer 5: Check if this is the T symbol or edge highlight
+                            if (iconData.name === 'Token' && path.includes('M6 6h12v3h-4.5v9h-3v-9H6V6z')) {
+                                // Token T symbol - bright white
+                                svgContent += `<path d="${path}" fill="white" fill-opacity="1.0" stroke="none"/>`;
+                            } else {
+                                // Edge/rim highlight
+                                svgContent += `<path d="${path}" fill="none" stroke="white" stroke-width="1.2" stroke-opacity="0.6" stroke-linecap="round"/>`;
+                            }
                         } else {
-                            // Layer 6+: Detail elements - white stroke/fill for details
+                            // Layer 6+: Detail elements
                             if (path.includes('M') && path.includes('L') && !path.includes('h') && !path.includes('v') && !path.includes('z')) {
                                 // Line paths - use stroke
                                 svgContent += `<path d="${path}" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>`;
+                            } else if (iconData.name === 'Token' && path.includes('M12 2.5C7.37')) {
+                                // Token highlight arc - should be stroked, not filled
+                                svgContent += `<path d="${path}" fill="none" stroke="white" stroke-width="1.2" stroke-opacity="0.6" stroke-linecap="round"/>`;
                             } else {
-                                // Shape paths - use fill
+                                // Shape paths - use white fill
                                 svgContent += `<path d="${path}" fill="white" fill-opacity="0.9" stroke="none"/>`;
                             }
                         }
+                    }
+                });
+            } else if (isWeb3Stroke && iconData.layers) {
+                // New layer-based rendering system
+                iconData.layers.forEach((layer) => {
+                    const fillColor = colorMode === 'gradient' ? `url(#${gradientId})` : fills[0];
+                    
+                    switch (layer.render) {
+                        case 'main':
+                            // Main shape - full gradient fill
+                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="1.0" stroke="none"/>`;
+                            break;
+                        case 'depth':
+                            // Depth/shadow layer - semi-transparent overlay with rim highlight
+                            svgContent += `<path d="${layer.path}" fill="black" fill-opacity="0.2" stroke="white" stroke-width="1" stroke-opacity="0.3"/>`;
+                            break;
+                        case 'secondary':
+                            // Secondary structural element - gradient with highlight
+                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="0.85" stroke="white" stroke-width="0.5" stroke-opacity="0.4"/>`;
+                            break;
+                        case 'tertiary':
+                            // Tertiary structural element - medium gradient
+                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="0.7" stroke="none"/>`;
+                            break;
+                        case 'background':
+                            // Background circle - dark fill for contrast
+                            svgContent += `<path d="${layer.path}" fill="black" fill-opacity="0.3" stroke="none"/>`;
+                            break;
+                        case 'symbol':
+                            // Symbol elements - bright white (for Bitcoin use stroke, for Token use fill)
+                            if (iconData.name === 'Bitcoin') {
+                                svgContent += `<path d="${layer.path}" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>`;
+                            } else {
+                                svgContent += `<path d="${layer.path}" fill="white" fill-opacity="1.0" stroke="none"/>`;
+                            }
+                            break;
+                        case 'highlight':
+                            // Highlight arc - stroked
+                            svgContent += `<path d="${layer.path}" fill="none" stroke="white" stroke-width="1.2" stroke-opacity="0.6" stroke-linecap="round"/>`;
+                            break;
+                        case 'detail':
+                            // Detail elements - white fill
+                            svgContent += `<path d="${layer.path}" fill="white" fill-opacity="0.9" stroke="none"/>`;
+                            break;
+                        default:
+                            // Fallback - basic white stroke
+                            svgContent += `<path d="${layer.path}" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>`;
                     }
                 });
             } else if (isWeb3Icon && iconData.paths) {

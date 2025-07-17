@@ -3,38 +3,38 @@ const web3Icons = {
     'bitcoin': {
         name: 'Bitcoin',
         type: '3d-stroke',
-        paths: [
+        layers: [
             // Outer circle
-            'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z',
+            { path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z', render: 'main' },
             // Inner circle - both fill and stroke for depth
-            'M12 4C7.58 4 4 7.58 4 12s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8z',
+            { path: 'M12 4C7.58 4 4 7.58 4 12s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8z', render: 'depth' },
             // Perfect centered Bitcoin B with proper vertical extensions
             // Main vertical spine (moved slightly left and up)
-            'M10.2 8.7V15.2',
+            { path: 'M10.2 8.7V15.2', render: 'symbol' },
             // Top vertical extension from center of top bar (moved left and up)
-            'M12.2 7.2V8.2',
+            { path: 'M12.2 7.2V8.2', render: 'symbol' },
             // Bottom vertical extension from center of bottom bar (moved left and up)
-            'M12.2 16.7V17.7',
+            { path: 'M12.2 16.7V17.7', render: 'symbol' },
             // Top curve section (fixed to connect properly, moved left and up)
-            'M10.2 8.7h3c1 0 1.8 0.8 1.8 1.8s-0.8 1.8-1.8 1.8h-2.5',
+            { path: 'M10.2 8.7h3c1 0 1.8 0.8 1.8 1.8s-0.8 1.8-1.8 1.8h-2.5', render: 'symbol' },
             // Bottom curve section (moved left and up)
-            'M10.2 12.7h3c1 0 1.8 0.8 1.8 1.8s-0.8 1.8-1.8 1.8h-3',
+            { path: 'M10.2 12.7h3c1 0 1.8 0.8 1.8 1.8s-0.8 1.8-1.8 1.8h-3', render: 'symbol' },
             // Middle connecting line (moved left and up)
-            'M10.7 12.3h1.5'
+            { path: 'M10.7 12.3h1.5', render: 'symbol' }
         ]
     },
     'ethereum': {
         name: 'Ethereum',
         type: '3d-stroke',
-        paths: [
+        layers: [
             // Main diamond shape with 3D effect (scaled up)
-            'M12 1L3 13L12 18L21 13L12 1z',
+            { path: 'M12 1L3 13L12 18L21 13L12 1z', render: 'main' },
             // Inner diamond layers for depth
-            'M12 2.5L5 13L12 16.5L19 13L12 2.5z',
+            { path: 'M12 2.5L5 13L12 16.5L19 13L12 2.5z', render: 'depth' },
             // Bottom section
-            'M12 18L3 13L12 23L21 13L12 18z',
+            { path: 'M12 18L3 13L12 23L21 13L12 18z', render: 'secondary' },
             // Highlight lines for 3D effect
-            'M12 1L12 18M12 18L21 13M12 18L3 13'
+            { path: 'M12 1L12 18M12 18L21 13M12 18L3 13', render: 'highlight' }
         ]
     },
     'nft': {
@@ -203,21 +203,21 @@ const web3Icons = {
     'token': {
         name: 'Token',
         type: '3d-stroke',
-        paths: [
+        layers: [
             // Layer 0: Outer coin ring - main shape
-            'M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0z',
+            { path: 'M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0z', render: 'main' },
             // Layer 1: Main coin body - gradient fill
-            'M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1z',
+            { path: 'M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1z', render: 'depth' },
             // Layer 2: Inner coin depth layer
-            'M12 2.5C6.75 2.5 2.5 6.75 2.5 12s4.25 9.5 9.5 9.5 9.5-4.25 9.5-9.5-4.25-9.5-9.5-9.5z',
+            { path: 'M12 2.5C6.75 2.5 2.5 6.75 2.5 12s4.25 9.5 9.5 9.5 9.5-4.25 9.5-9.5-4.25-9.5-9.5-9.5z', render: 'secondary' },
             // Layer 3: Token symbol background for visibility
-            'M12 4C7.86 4 4.5 7.36 4.5 12s3.36 8.5 8.5 8.5 8.5-3.36 8.5-8.5S16.14 4 12 4z',
-            // Layer 4: Token symbol (T) - bright accent
-            'M6 6h12v3h-4.5v9h-3v-9H6V6z',
-            // Layer 5: Highlight arc (edge highlight)
-            'M12 2.5C7.37 2.5 3.29 5.41 1.5 9.5',
-            // Layer 6: Inner token detail
-            'M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z'
+            { path: 'M12 4C7.86 4 4.5 7.36 4.5 12s3.36 8.5 8.5 8.5 8.5-3.36 8.5-8.5S16.14 4 12 4z', render: 'tertiary' },
+            // Layer 4: Inner token detail - smaller circle for subtle background (moved before T symbol)
+            { path: 'M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z', render: 'background' },
+            // Layer 5: Token symbol (T) - bright accent (moved after background circle)
+            { path: 'M6 6h12v3h-4.5v9h-3v-9H6V6z', render: 'symbol' },
+            // Layer 6: Highlight arc (edge highlight)
+            { path: 'M12 2.5C7.37 2.5 3.29 5.41 1.5 9.5', render: 'highlight' }
         ]
     },
     'staking': {
