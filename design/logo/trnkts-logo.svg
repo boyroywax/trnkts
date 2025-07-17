@@ -1,0 +1,29 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="paint0_linear" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+<stop stop-color="#833AB4"/>
+<stop offset="0.3" stop-color="#E1306C"/>
+<stop offset="0.6" stop-color="#F77737"/>
+<stop offset="1" stop-color="#FCAF45"/>
+</linearGradient>
+<style>
+ @keyframes hue-shift {
+ from {
+ filter: hue-rotate(0deg);
+ }
+ to {
+ filter: hue-rotate(360deg);
+ }
+ }
+
+ .gem {
+ animation: hue-shift 10s linear infinite;
+ }
+ </style>
+</defs>
+<g class="gem">
+<path d="M100 20L20 70L100 120L180 70L100 20Z" fill="url(#paint0_linear)"/>
+<path d="M20 70L100 120L100 170L20 120L20 70Z" fill="url(#paint0_linear)" fill-opacity="0.7"/>
+<path d="M180 70L100 120L100 170L180 120L180 70Z" fill="url(#paint0_linear)" fill-opacity="0.5"/>
+</g>
+</svg>
