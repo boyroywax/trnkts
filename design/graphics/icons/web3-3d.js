@@ -25,10 +25,11 @@ const web3Icons = {
     },
     'ethereum': {
         name: 'Ethereum',
+        type: '3d-stroke',
         paths: [
             // Main diamond shape with 3D effect
             'M12 2L5 12.5L12 17L19 12.5L12 2z',
-            // Inner diamond layers
+            // Inner diamond layers for depth
             'M12 3.5L6.5 12.5L12 15.5L17.5 12.5L12 3.5z',
             // Bottom section
             'M12 17L5 12.5L12 22L19 12.5L12 17z',
@@ -38,12 +39,15 @@ const web3Icons = {
     },
     'nft': {
         name: 'NFT',
+        type: '3d-stroke',
         paths: [
-            // Frame with 3D depth
+            // Frame with 3D depth - main shape
             'M4 4h16v16H4z',
+            // Inner frame for depth
             'M5 5h14v14H5z',
             // Inner artwork representation
             'M7 7h10v6H7z',
+            // Inner artwork detail
             'M8 8h8v4H8z',
             // NFT badge
             'M7 15h10v3H7z',
@@ -55,9 +59,11 @@ const web3Icons = {
     },
     'wallet': {
         name: 'Crypto Wallet',
+        type: '3d-stroke',
         paths: [
             // Wallet main body with 3D effect
             'M3 7h18v12H3z',
+            // Inner wallet depth
             'M4 8h16v10H4z',
             // Wallet flap
             'M3 7V5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v2',
@@ -65,6 +71,7 @@ const web3Icons = {
             'M6 11h12v2H6z',
             // Security chip
             'M16 13h3v3h-3z',
+            // Chip detail
             'M17 14h1v1h-1z',
             // 3D depth lines
             'M3 7L2 6M21 7L22 6M21 19L22 20M3 19L2 20'
@@ -72,28 +79,35 @@ const web3Icons = {
     },
     'blockchain': {
         name: 'Blockchain',
+        type: '3d-stroke',
         paths: [
-            // Block 1 with 3D effect
+            // Block 1 with 3D effect - main shape
             'M2 6h6v6H2z',
+            // Block 1 depth layer
             'M3 7h4v4H3z',
-            // Block 2
+            // Block 2 main
             'M9 6h6v6H9z',
+            // Block 2 depth
             'M10 7h4v4h-4z',
-            // Block 3
+            // Block 3 main
             'M16 6h6v6h-6z',
+            // Block 3 depth
             'M17 7h4v4h-4z',
             // Chain connections
             'M8 9h1v1H8zM15 9h1v1h-1z',
             // 3D depth effect
             'M2 6L1 5M8 6L9 5M9 6L10 5M15 6L16 5M16 6L17 5M22 6L23 5',
+            // Bottom depth lines
             'M2 12L1 13M8 12L9 13M15 12L16 13M22 12L23 13'
         ]
     },
     'defi': {
         name: 'DeFi',
+        type: '3d-stroke',
         paths: [
-            // Central hub with 3D effect
+            // Central hub with 3D effect - main shape
             'M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z',
+            // Inner hub depth layer
             'M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
             // Connected nodes
             'M4 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
@@ -106,9 +120,11 @@ const web3Icons = {
     },
     'dao': {
         name: 'DAO',
+        type: '3d-stroke',
         paths: [
-            // Governance circle with 3D effect
+            // Governance circle with 3D effect - main shape
             'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z',
+            // Inner circle for depth
             'M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z',
             // Voting nodes
             'M8 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
@@ -123,15 +139,18 @@ const web3Icons = {
     },
     'metaverse': {
         name: 'Metaverse',
+        type: '3d-stroke',
         paths: [
-            // Virtual world sphere with 3D effect
+            // Virtual world sphere with 3D effect - main shape
             'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z',
+            // Inner sphere for depth
             'M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z',
             // Grid lines for virtual space
             'M12 3V21M3 12H21',
             'M6.34 6.34L17.66 17.66M17.66 6.34L6.34 17.66',
             // VR headset overlay
             'M7 8h10v6H7z',
+            // VR headset inner detail
             'M8 9h8v4H8z',
             // Eye pieces
             'M9 10h2v2H9zM13 10h2v2h-2z',
@@ -141,18 +160,21 @@ const web3Icons = {
     },
     'smart-contract': {
         name: 'Smart Contract',
+        type: '3d-stroke',
         paths: [
-            // Contract document with 3D effect
+            // Contract document with 3D effect - main shape
             'M6 2h12v20H6z',
+            // Inner document depth
             'M7 3h10v18H7z',
             // Contract lines
             'M9 6h6v1H9zM9 8h6v1H9zM9 10h4v1H9z',
             // Smart chip overlay
             'M10 12h4v4h-4z',
+            // Chip inner detail
             'M11 13h2v2h-2z',
             // Circuit pattern
             'M10 12h1v1h-1zM13 12h1v1h-1zM10 15h1v1h-1zM13 15h1v1h-1z',
-            // 3D depth
+            // 3D depth lines
             'M6 2L5 1M18 2L19 1M18 22L19 23M6 22L5 23',
             // More contract text
             'M9 17h6v1H9zM9 19h4v1H9z'
@@ -160,9 +182,11 @@ const web3Icons = {
     },
     'mining': {
         name: 'Crypto Mining',
+        type: '3d-stroke',
         paths: [
-            // Mining rig with 3D effect
+            // Mining rig with 3D effect - main shape
             'M2 10h20v8H2z',
+            // Inner rig depth
             'M3 11h18v6H3z',
             // Graphics cards
             'M5 12h3v3H5zM9 12h3v3H9zM13 12h3v3h-3zM16 12h3v3h-3z',
@@ -173,15 +197,17 @@ const web3Icons = {
             'M17 13.5c0 .28.22.5.5.5s.5-.22.5-.5-.22-.5-.5-.5-.5.22-.5.5z',
             // Heat/power lines
             'M6 11V9M10 11V9M14 11V9M17 11V9',
-            // 3D depth
+            // 3D depth lines
             'M2 10L1 9M22 10L23 9M22 18L23 19M2 18L1 19'
         ]
     },
     'token': {
         name: 'Token',
+        type: '3d-stroke',
         paths: [
-            // Token coin with 3D effect
+            // Token coin with 3D effect - main shape
             'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z',
+            // Inner coin depth
             'M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z',
             // Token symbol (T)
             'M8 8h8v2h-3v6h-2v-6H8V8z',
@@ -195,9 +221,11 @@ const web3Icons = {
     },
     'staking': {
         name: 'Staking',
+        type: '3d-stroke',
         paths: [
-            // Staking platform with 3D effect
+            // Staking platform with 3D effect - main shape
             'M4 14h16v6H4z',
+            // Platform depth
             'M5 15h14v4H5z',
             // Staked coins
             'M8 8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
@@ -207,7 +235,7 @@ const web3Icons = {
             'M8 11V13M12 9V13M16 11V13',
             // Reward indicators
             'M6 16h2v1H6zM10 16h2v1h-2zM14 16h2v1h-2z',
-            // 3D depth
+            // 3D depth lines
             'M4 14L3 13M20 14L21 13M20 20L21 21M4 20L3 21'
         ]
     }

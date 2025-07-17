@@ -133,6 +133,7 @@
             const isPrototype = iconData.type === '3d-fill';
             const isWeb3Icon = iconData.type === 'web3-fill';
             const isWeb3Stroke = iconData.type === '3d-stroke';
+            const isBitcoin = iconData.name === 'Bitcoin';
             let fills;
             
             // Use fixed 48px for preview cards, actual size for downloads
@@ -164,6 +165,13 @@
                         <stop offset="0.6" stop-color="#F77737"/>
                         <stop offset="1" stop-color="#FCAF45"/>
                     </linearGradient>
+                    <filter id="glow-${Math.random().toString(36).substr(2, 9)}" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+                        <feMerge> 
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
                 </defs>`;
 
             if (isPrototype && iconData.paths) {
@@ -174,19 +182,49 @@
                     svgContent += `<path d="${pathData.d}" fill="${fill}" fill-opacity="${opacity}" stroke="none"/>`;
                 });
             } else if (isWeb3Stroke && iconData.paths) {
-                // Web3 stroke-based rendering (like Bitcoin) - matches bitcoin-test.html Test 9D
+                // Web3 stroke-based rendering with enhanced layering
                 iconData.paths.forEach((path, index) => {
                     const fillColor = colorMode === 'gradient' ? `url(#${gradientId})` : fills[0];
                     
-                    if (index === 0) {
-                        // Outer circle - full fill
-                        svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="1.0" stroke="none"/>`;
-                    } else if (index === 1) {
-                        // Inner circle - both fill and stroke for depth (like Test 9D)
-                        svgContent += `<path d="${path}" fill="black" fill-opacity="0.2" stroke="white" stroke-width="1" stroke-opacity="0.3"/>`;
+                    if (isBitcoin) {
+                        // Bitcoin-specific Test 9D rendering
+                        if (index === 0) {
+                            // Outer circle - full fill
+                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="1.0" stroke="none"/>`;
+                        } else if (index === 1) {
+                            // Inner circle - both fill and stroke for depth (like Test 9D)
+                            svgContent += `<path d="${path}" fill="black" fill-opacity="0.2" stroke="white" stroke-width="1" stroke-opacity="0.3"/>`;
+                        } else {
+                            // All other paths are stroked details (B symbol parts)
+                            svgContent += `<path d="${path}" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>`;
+                        }
                     } else {
-                        // All other paths are stroked details (B symbol parts)
-                        svgContent += `<path d="${path}" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>`;
+                        // Enhanced layering for other Web3 icons
+                        if (index === 0) {
+                            // Layer 0: Main shape - full gradient fill
+                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="1.0" stroke="none"/>`;
+                        } else if (index === 1) {
+                            // Layer 1: Depth/shadow layer - semi-transparent overlay for depth
+                            svgContent += `<path d="${path}" fill="black" fill-opacity="0.2" stroke="white" stroke-width="0.8" stroke-opacity="0.3"/>`;
+                        } else if (index === 2) {
+                            // Layer 2: Secondary structural element - gradient with highlight
+                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="0.85" stroke="white" stroke-width="0.5" stroke-opacity="0.4"/>`;
+                        } else if (index === 3) {
+                            // Layer 3: Tertiary structural element - medium gradient
+                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="0.7" stroke="none"/>`;
+                        } else if (index === 4) {
+                            // Layer 4: Surface highlight - bright accent
+                            svgContent += `<path d="${path}" fill="white" fill-opacity="0.8" stroke="none"/>`;
+                        } else {
+                            // Layer 5+: Detail elements - white stroke/fill for details
+                            if (path.includes('M') && path.includes('L') && !path.includes('h') && !path.includes('v') && !path.includes('z')) {
+                                // Line paths - use stroke
+                                svgContent += `<path d="${path}" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>`;
+                            } else {
+                                // Shape paths - use fill
+                                svgContent += `<path d="${path}" fill="white" fill-opacity="0.9" stroke="none"/>`;
+                            }
+                        }
                     }
                 });
             } else if (isWeb3Icon && iconData.paths) {
