@@ -2,29 +2,23 @@
 const web3Icons = {
     'bitcoin': {
         name: 'Bitcoin',
-        type: '3d-stroke',
+        type: 'web3-stroke',
         paths: [
             // Outer circle
             'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z',
-            // Inner circle - both fill and stroke for depth
-            'M12 4C7.58 4 4 7.58 4 12s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8z',
-            // Perfect centered Bitcoin B with proper vertical extensions
-            // Main vertical spine (moved slightly left and up)
-            'M10.2 8.7V15.2',
-            // Top vertical extension from center of top bar (moved left and up)
-            'M12.2 7.2V8.2',
-            // Bottom vertical extension from center of bottom bar (moved left and up)
-            'M12.2 16.7V17.7',
-            // Top curve section (fixed to connect properly, moved left and up)
-            'M10.2 8.7h3c1 0 1.8 0.8 1.8 1.8s-0.8 1.8-1.8 1.8h-2.5',
-            // Bottom curve section (moved left and up)
-            'M10.2 12.7h3c1 0 1.8 0.8 1.8 1.8s-0.8 1.8-1.8 1.8h-3',
-            // Middle connecting line (moved left and up)
-            'M10.7 12.3h1.5'
+            // Inner circle for depth
+            'M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z',
+            // B vertical line
+            'M9 7.5V16.5',
+            // B top curve
+            'M9 9.5h3c1.2 0 2 0.8 2 2s-0.8 2-2 2h-3',
+            // B bottom curve  
+            'M9 13.5h3.5c1.2 0 2 0.8 2 2s-0.8 2-2 2h-3.5'
         ]
     },
     'ethereum': {
         name: 'Ethereum',
+        type: 'web3-fill',
         paths: [
             // Main diamond shape with 3D effect
             'M12 2L5 12.5L12 17L19 12.5L12 2z',
@@ -32,22 +26,27 @@ const web3Icons = {
             'M12 3.5L6.5 12.5L12 15.5L17.5 12.5L12 3.5z',
             // Bottom section
             'M12 17L5 12.5L12 22L19 12.5L12 17z',
-            // Highlight lines for 3D effect
-            'M12 2L12 17M12 17L19 12.5M12 17L5 12.5'
+            // Center highlight
+            'M12 2L12 17',
+            // Side highlights
+            'M12 17L19 12.5M12 17L5 12.5'
         ]
     },
     'nft': {
         name: 'NFT',
+        type: 'web3-fill',
         paths: [
             // Frame with 3D depth
             'M4 4h16v16H4z',
+            // Inner frame
             'M5 5h14v14H5z',
-            // Inner artwork representation
+            // Artwork area
             'M7 7h10v6H7z',
-            'M8 8h8v4H8z',
-            // NFT badge
+            // NFT badge area
             'M7 15h10v3H7z',
-            // 3D effect lines
+            // NFT text placeholder
+            'M9 16h6v1H9z',
+            // 3D effect corners
             'M4 4L3 3M20 4L21 3M20 20L21 21M4 20L3 21',
             // Artwork details
             'M9 9h6v2H9zM10 12h4v1h-4z'
@@ -55,6 +54,7 @@ const web3Icons = {
     },
     'wallet': {
         name: 'Crypto Wallet',
+        type: 'web3-fill',
         paths: [
             // Wallet main body with 3D effect
             'M3 7h18v12H3z',
@@ -72,6 +72,7 @@ const web3Icons = {
     },
     'blockchain': {
         name: 'Blockchain',
+        type: 'web3-fill',
         paths: [
             // Block 1 with 3D effect
             'M2 6h6v6H2z',
@@ -91,6 +92,7 @@ const web3Icons = {
     },
     'defi': {
         name: 'DeFi',
+        type: 'web3-fill',
         paths: [
             // Central hub with 3D effect
             'M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z',
@@ -106,6 +108,7 @@ const web3Icons = {
     },
     'dao': {
         name: 'DAO',
+        type: 'web3-fill',
         paths: [
             // Governance circle with 3D effect
             'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z',
@@ -123,6 +126,7 @@ const web3Icons = {
     },
     'metaverse': {
         name: 'Metaverse',
+        type: 'web3-fill',
         paths: [
             // Virtual world sphere with 3D effect
             'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z',
@@ -141,6 +145,7 @@ const web3Icons = {
     },
     'smart-contract': {
         name: 'Smart Contract',
+        type: 'web3-fill',
         paths: [
             // Contract document with 3D effect
             'M6 2h12v20H6z',
@@ -160,6 +165,7 @@ const web3Icons = {
     },
     'mining': {
         name: 'Crypto Mining',
+        type: 'web3-fill',
         paths: [
             // Mining rig with 3D effect
             'M2 10h20v8H2z',
@@ -179,6 +185,7 @@ const web3Icons = {
     },
     'token': {
         name: 'Token',
+        type: 'web3-fill',
         paths: [
             // Token coin with 3D effect
             'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z',
@@ -195,6 +202,7 @@ const web3Icons = {
     },
     'staking': {
         name: 'Staking',
+        type: 'web3-fill',
         paths: [
             // Staking platform with 3D effect
             'M4 14h16v6H4z',
@@ -212,11 +220,6 @@ const web3Icons = {
         ]
     }
 };
-
-// Export for use in icons.html
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = web3Icons;
-}
 
 // Export for use in icons.html
 if (typeof module !== 'undefined' && module.exports) {
