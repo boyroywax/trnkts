@@ -46,7 +46,7 @@ const arrowIcons = {
         name: 'Expand',
         paths: [
             'M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7M15 21h6v-6M9 3H3v6M21 21l-7-7M3 3l7 7',
-            'M17 5h4v4M7 19H3v-4M19 5l-5 5M5 19l5-5M17 19h4v-4M7 5H3v4M19 19l-5-5M5 5l5 5'
+            'M16 4h4v4M8 20H4v-4M20 4l-6 6M4 20l6-6M16 20h4v-4M8 4H4v4M20 20l-6-6M4 4l6 6'
         ]
     },
     'compress': {

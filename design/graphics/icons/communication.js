@@ -25,7 +25,7 @@ const communicationIcons = {
         name: 'Video',
         paths: [
             'M23 7l-7 5 7 5V7zM16 5H2a1 1 0 00-1 1v12a1 1 0 001 1h14a1 1 0 001-1V6a1 1 0 00-1-1z',
-            'M22 8l-6 4 6 4V8zM15 6H3v10h12V6z'
+            'M22 8l-6 4 6 4V8zM15 6H3a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V7a1 1 0 00-1-1z'
         ]
     },
     'share': {
