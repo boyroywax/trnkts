@@ -1,4 +1,4 @@
-// Communication Icons - Messaging and sharing tools
+// Communication and Media Icons - Messaging, sharing, and media tools
 const communicationIcons = {
     'message': {
         name: 'Message',
@@ -27,13 +27,55 @@ const communicationIcons = {
     'share': {
         name: 'Share',
         paths: [
-            'M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13'
+            'M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z'
         ]
     },
     'link': {
         name: 'Link',
         paths: [
             'M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71'
+        ]
+    },
+    'play': {
+        name: 'Play',
+        paths: [
+            'M8 5v14l11-7z'
+        ]
+    },
+    'pause': {
+        name: 'Pause',
+        paths: [
+            'M6 4h4v16H6zM14 4h4v16h-4z'
+        ]
+    },
+    'stop': {
+        name: 'Stop',
+        paths: [
+            'M6 6h12v12H6z'
+        ]
+    },
+    'volume': {
+        name: 'Volume',
+        paths: [
+            'M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07'
+        ]
+    },
+    'camera': {
+        name: 'Camera',
+        paths: [
+            'M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2zM12 17a4 4 0 100-8 4 4 0 000 8z'
+        ]
+    },
+    'image': {
+        name: 'Image',
+        paths: [
+            'M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2zM8.5 8.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM21 15l-5-5L5 21'
+        ]
+    },
+    'music': {
+        name: 'Music',
+        paths: [
+            'M9 18V5l12-2v13M6 16a3 3 0 100 6 3 3 0 000-6zM18 14a3 3 0 100 6 3 3 0 000-6z'
         ]
     }
 };
