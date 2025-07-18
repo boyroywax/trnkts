@@ -201,7 +201,7 @@ const interfaceIcons = {
     'fullscreen': {
         name: 'Fullscreen',
         paths: [
-            'M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3'
+            'M4 6l3 -3l-3 0l0 3M20 6l-3 -3l3 0l0 3M20 18l-3 3l3 0l0 -3M4 18l3 3l-3 0l0 -3'
         ]
     }
 };
