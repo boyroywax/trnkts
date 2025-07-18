@@ -137,33 +137,61 @@
             'web3-3d': web3Icons
         };
 
+        // Layer-based rendering function for 3D icons
+        function renderLayer(layer, fillColor, iconData, opacityOverride) {
+            switch (layer.render) {
+                case 'main':
+                    return `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 1.0}" stroke="none"/>`;
+                case 'depth':
+                    return `<path d="${layer.path}" fill="black" fill-opacity="${opacityOverride || 0.2}" stroke="white" stroke-width="1" stroke-opacity="0.3"/>`;
+                case 'secondary':
+                    return `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 0.85}" stroke="white" stroke-width="0.5" stroke-opacity="0.4"/>`;
+                case 'tertiary':
+                    return `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 0.7}" stroke="none"/>`;
+                case 'background':
+                    return `<path d="${layer.path}" fill="black" fill-opacity="${opacityOverride || 0.3}" stroke="none"/>`;
+                case 'symbol':
+                    if (iconData.name === 'Bitcoin') {
+                        return `<path d="${layer.path}" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>`;
+                    } else {
+                        return `<path d="${layer.path}" fill="white" fill-opacity="${opacityOverride || 1.0}" stroke="none"/>`;
+                    }
+                case 'highlight':
+                    return `<path d="${layer.path}" fill="none" stroke="white" stroke-width="1.2" stroke-opacity="${opacityOverride || 0.6}" stroke-linecap="round"/>`;
+                case 'detail':
+                    return `<path d="${layer.path}" fill="white" fill-opacity="${opacityOverride || 0.9}" stroke="none"/>`;
+                case 'primary':
+                    return `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 1.0}" stroke="none"/>`;
+                case 'accent':
+                    return `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 0.7}" stroke="none"/>`;
+                case 'base':
+                    return `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 0.5}" stroke="none"/>`;
+                default:
+                    return `<path d="${layer.path}" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>`;
+            }
+        }
+
         function createSVGIcon(iconData, size = 64, colorMode = 'gradient', previewMode = false) {
-            const isPrototype = iconData.type === '3d-fill';
-            const isWeb3Icon = iconData.type === 'web3-fill';
-            const isWeb3Stroke = iconData.type === '3d-stroke';
-            const is3DStroke = iconData.type === '3d-stroke';
-            const isBitcoin = iconData.name === 'Bitcoin';
-            let fills;
-            
             // Use fixed 48px for preview cards, actual size for downloads
             const actualSize = previewMode ? 48 : size;
             
             // Create unique gradient ID to avoid conflicts
             const gradientId = `trnkts-gradient-${Math.random().toString(36).substr(2, 9)}`;
             
+            // Determine fill colors based on color mode
+            let fillColor;
             switch (colorMode) {
                 case 'gradient':
-                    fills = [`url(#${gradientId})`, `url(#${gradientId})`, `url(#${gradientId})`];
+                    fillColor = `url(#${gradientId})`;
                     break;
                 case 'mono':
-                    fills = ['#333333', '#555555', '#777777'];
+                    fillColor = '#333333';
                     break;
                 case 'custom':
-                    const customColor = document.getElementById('customColor')?.value || '#AF4B0E';
-                    fills = [customColor, customColor + 'CC', customColor + '88'];
+                    fillColor = document.getElementById('customColor')?.value || '#AF4B0E';
                     break;
                 default:
-                    fills = [`url(#${gradientId})`, `url(#${gradientId})`, `url(#${gradientId})`];
+                    fillColor = `url(#${gradientId})`;
             }
 
             let svgContent = `<svg width="${actualSize}" height="${actualSize}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -174,172 +202,27 @@
                         <stop offset="0.6" stop-color="#F77737"/>
                         <stop offset="1" stop-color="#FCAF45"/>
                     </linearGradient>
-                    <filter id="glow-${Math.random().toString(36).substr(2, 9)}" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
-                        <feMerge> 
-                            <feMergeNode in="coloredBlur"/>
-                            <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                    </filter>
                 </defs>`;
 
-            if (isPrototype && iconData.paths) {
-                // 3D Fill-based rendering for prototypes
-                iconData.paths.forEach((pathData) => {
-                    const fill = colorMode === 'gradient' ? `url(#${gradientId})` : fills[0];
-                    const opacity = pathData.opacity || 1;
-                    svgContent += `<path d="${pathData.d}" fill="${fill}" fill-opacity="${opacity}" stroke="none"/>`;
-                });
-            } else if (isWeb3Stroke && iconData.paths) {
-                // Web3 stroke-based rendering with enhanced layering
-                iconData.paths.forEach((path, index) => {
-                    const fillColor = colorMode === 'gradient' ? `url(#${gradientId})` : fills[0];
-                    
-                    if (isBitcoin) {
-                        // Bitcoin-specific Test 9D rendering
-                        if (index === 0) {
-                            // Outer circle - full fill
-                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="1.0" stroke="none"/>`;
-                        } else if (index === 1) {
-                            // Inner circle - both fill and stroke for depth (like Test 9D)
-                            svgContent += `<path d="${path}" fill="black" fill-opacity="0.2" stroke="white" stroke-width="1" stroke-opacity="0.3"/>`;
-                        } else {
-                            // All other paths are stroked details (B symbol parts)
-                            svgContent += `<path d="${path}" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>`;
-                        }
-                    } else {
-                        // Enhanced layering for other Web3 icons
-                        if (index === 0) {
-                            // Layer 0: Main shape - full gradient fill
-                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="1.0" stroke="none"/>`;
-                        } else if (index === 1) {
-                            // Layer 1: Depth/shadow layer - semi-transparent overlay with rim highlight
-                            svgContent += `<path d="${path}" fill="black" fill-opacity="0.2" stroke="white" stroke-width="1" stroke-opacity="0.3"/>`;
-                        } else if (index === 2) {
-                            // Layer 2: Secondary structural element - gradient with highlight
-                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="0.85" stroke="white" stroke-width="0.5" stroke-opacity="0.4"/>`;
-                        } else if (index === 3) {
-                            // Layer 3: Tertiary structural element - medium gradient
-                            svgContent += `<path d="${path}" fill="${fillColor}" fill-opacity="0.7" stroke="none"/>`;
-                        } else if (index === 4) {
-                            // Layer 4: Check if this is a token icon background circle
-                            if (iconData.name === 'Token' && path.includes('M12 8c-2.21')) {
-                                // Token background circle - use dark fill for contrast behind T symbol
-                                svgContent += `<path d="${path}" fill="black" fill-opacity="0.3" stroke="none"/>`;
-                            } else {
-                                // Surface highlight - bright accent
-                                svgContent += `<path d="${path}" fill="white" fill-opacity="1.0" stroke="none"/>`;
-                            }
-                        } else if (index === 5) {
-                            // Layer 5: Check if this is the T symbol or edge highlight
-                            if (iconData.name === 'Token' && path.includes('M6 6h12v3h-4.5v9h-3v-9H6V6z')) {
-                                // Token T symbol - bright white
-                                svgContent += `<path d="${path}" fill="white" fill-opacity="1.0" stroke="none"/>`;
-                            } else {
-                                // Edge/rim highlight
-                                svgContent += `<path d="${path}" fill="none" stroke="white" stroke-width="1.2" stroke-opacity="0.6" stroke-linecap="round"/>`;
-                            }
-                        } else {
-                            // Layer 6+: Detail elements
-                            if (path.includes('M') && path.includes('L') && !path.includes('h') && !path.includes('v') && !path.includes('z')) {
-                                // Line paths - use stroke
-                                svgContent += `<path d="${path}" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>`;
-                            } else if (iconData.name === 'Token' && path.includes('M12 2.5C7.37')) {
-                                // Token highlight arc - should be stroked, not filled
-                                svgContent += `<path d="${path}" fill="none" stroke="white" stroke-width="1.2" stroke-opacity="0.6" stroke-linecap="round"/>`;
-                            } else {
-                                // Shape paths - use white fill
-                                svgContent += `<path d="${path}" fill="white" fill-opacity="0.9" stroke="none"/>`;
-                            }
-                        }
-                    }
-                });
-            } else if ((isWeb3Stroke || iconData.type === '3d-stroke') && iconData.layers) {
-                // Unified layer-based rendering system for all 3D icons including navigation-3d
+            // Layer-based rendering for modern 3D icons
+            if (iconData.layers) {
                 iconData.layers.forEach((layer) => {
-                    const fillColor = colorMode === 'gradient' ? `url(#${gradientId})` : fills[0];
-                    // Check for opacity override from the icon definition
                     const opacityOverride = layer.opacity !== undefined ? layer.opacity : null;
-                    
-                    switch (layer.render) {
-                        case 'main':
-                            // Main shape - full gradient fill
-                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 1.0}" stroke="none"/>`;
-                            break;
-                        case 'depth':
-                            // Depth/shadow layer - semi-transparent overlay with rim highlight
-                            svgContent += `<path d="${layer.path}" fill="black" fill-opacity="${opacityOverride || 0.2}" stroke="white" stroke-width="1" stroke-opacity="0.3"/>`;
-                            break;
-                        case 'secondary':
-                            // Secondary structural element - gradient with highlight
-                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 0.85}" stroke="white" stroke-width="0.5" stroke-opacity="0.4"/>`;
-                            break;
-                        case 'tertiary':
-                            // Tertiary structural element - medium gradient
-                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 0.7}" stroke="none"/>`;
-                            break;
-                        case 'background':
-                            // Background circle - dark fill for contrast
-                            svgContent += `<path d="${layer.path}" fill="black" fill-opacity="${opacityOverride || 0.3}" stroke="none"/>`;
-                            break;
-                        case 'symbol':
-                            // Symbol elements - bright white (for Bitcoin use stroke, for Token use fill)
-                            if (iconData.name === 'Bitcoin') {
-                                svgContent += `<path d="${layer.path}" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>`;
-                            } else {
-                                svgContent += `<path d="${layer.path}" fill="white" fill-opacity="${opacityOverride || 1.0}" stroke="none"/>`;
-                            }
-                            break;
-                        case 'highlight':
-                            // Highlight arc - stroked
-                            svgContent += `<path d="${layer.path}" fill="none" stroke="white" stroke-width="1.2" stroke-opacity="${opacityOverride || 0.6}" stroke-linecap="round"/>`;
-                            break;
-                        case 'detail':
-                            // Detail elements - white fill
-                            svgContent += `<path d="${layer.path}" fill="white" fill-opacity="${opacityOverride || 0.9}" stroke="none"/>`;
-                            break;
-                        case 'primary':
-                            // Primary segment for tri-tone effect (like in prototypes)
-                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 1.0}" stroke="none"/>`;
-                            break;
-                        case 'accent':
-                            // Accent segment for tri-tone effect (like in prototypes)
-                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 0.7}" stroke="none"/>`;
-                            break;
-                        case 'base':
-                            // Base segment for tri-tone effect (like in prototypes)
-                            svgContent += `<path d="${layer.path}" fill="${fillColor}" fill-opacity="${opacityOverride || 0.5}" stroke="none"/>`;
-                            break;
-                        default:
-                            // Fallback - basic white stroke
-                            svgContent += `<path d="${layer.path}" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>`;
-                    }
+                    svgContent += renderLayer(layer, fillColor, iconData, opacityOverride);
                 });
-            } else if (isWeb3Icon && iconData.paths) {
-                // Web3 icons - render with fill for all paths to show details
-                iconData.paths.forEach((path, index) => {
-                    const fillColor = colorMode === 'gradient' ? `url(#${gradientId})` : fills[0];
-                    // Create better opacity layering for 3D effect
-                    let opacity, strokeColor;
-                    if (index === 0) {
-                        opacity = 1.0;        // Main shape
-                        strokeColor = 'none';
-                    } else if (index === 1) {
-                        opacity = 0.9;        // Secondary layer
-                        strokeColor = 'none';
-                    } else {
-                        // For detail elements (B symbol, etc), use white fill for better contrast
-                        opacity = 1.0;
-                        strokeColor = 'none';
-                    }
-                    
-                    // Use white fill for detail elements (index > 1) to ensure visibility
-                    const actualFillColor = index > 1 ? 'white' : fillColor;
-                    
-                    svgContent += `<path d="${path}" fill="${actualFillColor}" fill-opacity="${opacity}" stroke="${strokeColor}"/>`;
+            }
+            // Legacy 3D Fill rendering for prototypes
+            else if (iconData.type === '3d-fill' && iconData.paths) {
+                iconData.paths.forEach((pathData) => {
+                    const opacity = pathData.opacity || 1;
+                    svgContent += `<path d="${pathData.d}" fill="${fillColor}" fill-opacity="${opacity}" stroke="none"/>`;
                 });
-            } else if (iconData.paths && iconData.paths.length > 0) {
-                // Dual-tone stroke-based rendering for existing icons
+            }
+            // Legacy dual-tone stroke rendering
+            else if (iconData.paths && iconData.paths.length > 0) {
+                const fills = colorMode === 'mono' ? ['#333333', '#555555'] : 
+                             colorMode === 'custom' ? [fillColor, fillColor + 'CC'] : 
+                             [fillColor, fillColor];
                 svgContent += `<path d="${iconData.paths[0]}" stroke="${fills[0]}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="1.0"/>`;
                 if (iconData.paths[1]) {
                     svgContent += `<path d="${iconData.paths[1]}" stroke="${fills[1]}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.7"/>`;
