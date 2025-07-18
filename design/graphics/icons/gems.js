@@ -3,7 +3,7 @@ const gemsIcons = {
     'trnkts-logo': {
         name: 'Trnkts Logo',
         paths: [
-            'M12 2l8 5-8 5-8-5 8-5zM4 7l8 5v10l-8-5V7zM20 7l-8 5v10l8-5V7z'
+            'M12 2l6 4-6 2-6-2 6-4zM6 6l6 2v8l-6-2V6zM18 6l-6 2v8l6-2V6z'
         ]
     },
     'gem': {
@@ -33,7 +33,7 @@ const gemsIcons = {
     'emerald': {
         name: 'Emerald',
         paths: [
-            'M8 3h8l4 4v8l-4 4H8l-4-4V7l4-4zM8 7h8M8 17h8M4 11h16'
+            'M8 3h8l4 4v8l-4 4H8l-4-4V7l4-4zM8 7h8M4 11h16M8 14h8'
         ]
     },
     'sapphire': {
@@ -51,13 +51,13 @@ const gemsIcons = {
     'sparkle': {
         name: 'Sparkle',
         paths: [
-            'M12 1l3 6 6 3-6 3-3 6-3-6-6-3 6-3 3-6zM18 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2zM6 16l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z'
+            'M12 1l3 6 6 3-6 3-3 6-3-6-6-3 6-3 3-6zM20.5 0.5l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2zM6 16l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z'
         ]
     },
     'treasure': {
         name: 'Treasure',
         paths: [
-            'M5 8h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8a2 2 0 012-2zM8 8V6a1 1 0 011-1h6a1 1 0 011 1v2M12 12l3 3H9l3-3z'
+            'M5 8h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8a2 2 0 012-2zM8 8V6a4 4 0 018 0v2M5 12h14M9 14h6a1 1 0 011 1v1a1 1 0 01-1 1h-6a1 1 0 01-1-1v-1a1 1 0 011-1z'
         ]
     },
     'crown': {
@@ -87,13 +87,13 @@ const gemsIcons = {
     'gemstone': {
         name: 'Gemstone',
         paths: [
-            'M7 4h10l3 3v6l-8 9-8-9V7l3-3zM7 7h10M9 4v3M15 4v3M12 10v12'
+            'M8 3h8l4 4v6l-8 9-8-9V7l4-4zM8 7h8M10 3v4M14 3v4M12 7v15'
         ]
     },
     'precious': {
         name: 'Precious',
         paths: [
-            'M12 2l4 4 4-4v4l-4 4 4 4v4l-4-4-4 4v-4l4-4-4-4V2z'
+            'M12 4a8 8 0 018 8 8 8 0 01-8 8 8 8 0 01-8-8 8 8 0 018-8zM12 6l2 2h4l-2 2 2 2h-4l-2 2-2-2H6l2-2-2-2h4l2-2zM12 10a2 2 0 100 4 2 2 0 000-4z'
         ]
     }
 };
