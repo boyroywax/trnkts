@@ -3,7 +3,7 @@ const gemsIcons = {
     'trnkts-logo': {
         name: 'Trnkts Logo',
         paths: [
-            'M12 2l6 4-6 2-6-2 6-4zM6 6l6 2v8l-6-2V6zM18 6l-6 2v8l6-2V6z'
+            'M12 4l8 4-8 4-8-4 8-4zM4 8l8 4v6l-8-4V8zM20 8l-8 4v6l8-4V8z'
         ]
     },
     'gem': {
@@ -87,7 +87,7 @@ const gemsIcons = {
     'gemstone': {
         name: 'Gemstone',
         paths: [
-            'M8 3h8l4 4v6l-8 9-8-9V7l4-4zM8 7h8M10 3v4M14 3v4M12 7v15'
+            'M8 3h8l4 4v6l-8 9-8-9V7l4-4zM8 3l4 4 4-4M9 3v4M11 3v4M13 3v4M15 3v4M12 7v15M10 7l-2 9M14 7l2 9'
         ]
     },
     'precious': {
