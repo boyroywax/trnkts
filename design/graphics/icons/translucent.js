@@ -1,6 +1,6 @@
-// Prototype Icons - 3D geometric style inspired by trnkts gem logo
+// Translucent Icons - 3D geometric style inspired by trnkts gem logo
 // Using tri-tone filled paths with opacity levels (1.0, 0.7, 0.5) for 3D depth
-const prototypeIcons = {
+const translucentIcons = {
     'diamond': {
         name: 'Diamond',
         type: '3d-fill',
@@ -95,5 +95,5 @@ const prototypeIcons = {
 
 // Export for use in main icons file
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = prototypeIcons;
+    module.exports = translucentIcons;
 }
