@@ -2,209 +2,209 @@
 // Following the tri-tone approach: primary (1.0), accent (0.7), base (0.5)
 
 const systemSimpleIcons = {
-    // Settings/Gear Icon - Improved with proper 3D depth
+    // Settings/Gear Icon
     settings: {
         name: "Settings",
         type: "3d-stroke",
         layers: [
-            // Gear shadow/depth (base)
-            {
-                path: "M12.5 16A4 4 0 0 1 8.5 12A4 4 0 0 1 12.5 8A4 4 0 0 1 16.5 12A4 4 0 0 1 12.5 16M20.43 11.47C20.47 11.68 20.5 11.84 20.5 12C20.5 12.16 20.47 12.32 20.43 12.53L22.54 14.16C22.73 14.31 22.78 14.58 22.66 14.8L20.66 18.26C20.54 18.48 20.27 18.57 20.05 18.48L17.56 17.48C17.04 17.87 16.5 18.21 15.87 18.46L15.5 21.11C15.46 21.35 15.25 21.53 15 21.53H11C10.75 21.53 10.54 21.35 10.5 21.11L10.13 18.46C9.5 18.21 8.96 17.87 8.44 17.48L5.95 18.48C5.73 18.57 5.46 18.48 5.34 18.26L3.34 14.8C3.22 14.58 3.27 14.31 3.46 14.16L5.57 12.53C5.53 12.32 5.5 12.16 5.5 12C5.5 11.84 5.53 11.68 5.57 11.47L3.46 9.84C3.27 9.69 3.22 9.42 3.34 9.2L5.34 5.74C5.46 5.52 5.73 5.43 5.95 5.52L8.44 6.52C8.96 6.13 9.5 5.79 10.13 5.54L10.5 2.89C10.54 2.65 10.75 2.47 11 2.47H15C15.25 2.47 15.46 2.65 15.5 2.89L15.87 5.54C16.5 5.79 17.04 6.13 17.56 6.52L20.05 5.52C20.27 5.43 20.54 5.52 20.66 5.74L22.66 9.2C22.78 9.42 22.73 9.69 22.54 9.84L20.43 11.47Z",
-                render: "base"
-            },
             // Main gear body (primary)
             {
-                path: "M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5A3.5 3.5 0 0 1 15.5 12A3.5 3.5 0 0 1 12 15.5M19.43 11.47C19.47 11.68 19.5 11.84 19.5 12C19.5 12.16 19.47 12.32 19.43 12.53L21.54 14.16C21.73 14.31 21.78 14.58 21.66 14.8L19.66 18.26C19.54 18.48 19.27 18.57 19.05 18.48L16.56 17.48C16.04 17.87 15.5 18.21 14.87 18.46L14.5 21.11C14.46 21.35 14.25 21.53 14 21.53H10C9.75 21.53 9.54 21.35 9.5 21.11L9.13 18.46C8.5 18.21 7.96 17.87 7.44 17.48L4.95 18.48C4.73 18.57 4.46 18.48 4.34 18.26L2.34 14.8C2.22 14.58 2.27 14.31 2.46 14.16L4.57 12.53C4.53 12.32 4.5 12.16 4.5 12C4.5 11.84 4.53 11.68 4.57 11.47L2.46 9.84C2.27 9.69 2.22 9.42 2.34 9.2L4.34 5.74C4.46 5.52 4.73 5.43 4.95 5.52L7.44 6.52C7.96 6.13 8.5 5.79 9.13 5.54L9.5 2.89C9.54 2.65 9.75 2.47 10 2.47H14C14.25 2.47 14.46 2.65 14.5 2.89L14.87 5.54C15.5 5.79 16.04 6.13 16.56 6.52L19.05 5.52C19.27 5.43 19.54 5.52 19.66 5.74L21.66 9.2C21.78 9.42 21.73 9.69 21.54 9.84L19.43 11.47Z",
+                path: "M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97c0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1c0 .33.03.65.07.97L2.46 14.6c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.31.61.22l2.49-1c.52.39 1.06.73 1.69.98l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.25 1.17-.59 1.69-.98l2.49 1c.22.09.49 0 .61-.22l2-3.46c.13-.22.07-.49-.12-.64L19.43 13z",
                 render: "primary"
             },
             // Inner gear mechanism (accent)
             {
-                path: "M12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z",
+                path: "M12 10.5A1.5 1.5 0 0 0 10.5 12A1.5 1.5 0 0 0 12 13.5A1.5 1.5 0 0 0 13.5 12A1.5 1.5 0 0 0 12 10.5",
                 render: "accent"
+            },
+            // Gear teeth detail (base)
+            {
+                path: "M14.5 4.5L14.13 7.15M16.85 7.15L14.13 7.15M19.5 9.5L16.85 7.15M19.5 14.5L16.85 16.85M16.85 16.85L14.13 16.85M14.5 19.5L14.13 16.85M9.5 19.5L9.87 16.85M7.15 16.85L9.87 16.85M4.5 14.5L7.15 16.85M4.5 9.5L7.15 7.15M7.15 7.15L9.87 7.15M9.5 4.5L9.87 7.15",
+                render: "base"
             }
         ]
     },
 
-    // Home Icon - Properly reshaped
+    // Home Icon
     home: {
         name: "Home",
         type: "3d-stroke",
         layers: [
-            // House shadow (base)
-            {
-                path: "M12.5 3.5L21.5 10.5V21.5H19.5V11.5L12.5 5.5L5.5 11.5V21.5H3.5V10.5L12.5 3.5Z",
-                render: "base"
-            },
             // House structure (primary)
             {
-                path: "M12 3L21 10V21H3V10L12 3ZM19 11.5L12 5.5L5 11.5V19H19V11.5Z",
+                path: "M3 12L5 10V20H19V10L21 12M12 3L20 10H4L12 3Z",
                 render: "primary"
             },
-            // Door and windows (accent)
+            // Roof detail (accent)
             {
-                path: "M9 16V19H15V16H9ZM7 12H9V14H7V12ZM15 12H17V14H15V12Z",
+                path: "M12 3L20 10L12 7L4 10L12 3Z",
                 render: "accent"
+            },
+            // Door and windows (base)
+            {
+                path: "M9 16V20H15V16H9ZM7 12H9V14H7V12ZM15 12H17V14H15V12Z",
+                render: "base"
             }
         ]
     },
 
-    // Folder Icon - Improved with proper details
+    // Folder Icon
     folder: {
         name: "Folder",
         type: "3d-stroke",
         layers: [
-            // Folder shadow (base)
-            {
-                path: "M4.5 6.5V18.5C4.5 19.6 5.4 20.5 6.5 20.5H18.5C19.6 20.5 20.5 19.6 20.5 18.5V8.5C20.5 7.4 19.6 6.5 18.5 6.5H12.5L10.5 4.5H6.5C5.4 4.5 4.5 5.4 4.5 6.5Z",
-                render: "base"
-            },
             // Main folder body (primary)
             {
                 path: "M4 6V18C4 19.1 4.9 20 6 20H18C19.1 20 20 19.1 20 18V8C20 6.9 19.1 6 18 6H12L10 4H6C4.9 4 4 4.9 4 6Z",
                 render: "primary"
             },
-            // Folder tab and contents (accent)
+            // Folder tab (accent)
             {
-                path: "M4 6V8H20V6H12L10 4H6C4.9 4 4 4.9 4 6ZM7 11H17M7 13H15M7 15H13",
+                path: "M4 6V8H20V6H12L10 4H6C4.9 4 4 4.9 4 6Z",
                 render: "accent"
+            },
+            // Folder contents indicator (base)
+            {
+                path: "M7 12H17M7 14H15M7 16H13",
+                render: "base"
             }
         ]
     },
 
-    // File Icon - Improved with proper details
+    // File Icon
     file: {
         name: "File",
         type: "3d-stroke",
         layers: [
-            // Document shadow (base)
-            {
-                path: "M6.5 2.5C5.4 2.5 4.5 3.4 4.5 4.5V20.5C4.5 21.6 5.4 22.5 6.5 22.5H18.5C19.6 22.5 20.5 21.6 20.5 20.5V8.5L14.5 2.5H6.5Z",
-                render: "base"
-            },
             // Document body (primary)
             {
                 path: "M6 2C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2H6Z",
                 render: "primary"
             },
-            // Document corner fold and lines (accent)
+            // Document corner fold (accent)
             {
-                path: "M14 2V8H20L14 2ZM7 11H17M7 13H17M7 15H14M7 17H16",
+                path: "M14 2V8H20L14 2Z",
                 render: "accent"
+            },
+            // Document lines (base)
+            {
+                path: "M7 12H17M7 14H17M7 16H14M7 18H16",
+                render: "base"
             }
         ]
     },
 
-    // Search Icon - Improved with proper 3D depth
+    // Search Icon
     search: {
         name: "Search",
         type: "3d-stroke",
         layers: [
-            // Magnifying glass shadow (base)
-            {
-                path: "M15.5 14.5H14.71L14.43 14.23C15.41 13.09 16 11.61 16 10C16 6.41 13.09 3.5 9.5 3.5S3 6.41 3 10S6.41 16.5 10 16.5C11.61 16.5 13.09 15.91 14.23 14.73L14.5 15.01V15.8L19.5 20.79L21.29 19L15.5 14.5Z",
-                render: "base"
-            },
             // Magnifying glass body (primary)
             {
                 path: "M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3S3 5.91 3 9.5S5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14Z",
                 render: "primary"
             },
-            // Glass lens reflection (accent)
+            // Glass lens (accent)
             {
-                path: "M9.5 7C8.12 7 7 8.12 7 9.5C7 10.88 8.12 12 9.5 12C10.88 12 12 10.88 12 9.5C12 8.12 10.88 7 9.5 7ZM17.5 18.5L20.5 21.5",
+                path: "M9.5 7C8.12 7 7 8.12 7 9.5C7 10.88 8.12 12 9.5 12C10.88 12 12 10.88 12 9.5C12 8.12 10.88 7 9.5 7Z",
                 render: "accent"
+            },
+            // Handle detail (base)
+            {
+                path: "M18.5 19.5L21 22",
+                render: "base"
             }
         ]
     },
 
-    // Download Icon - Improved with proper 3D effect
+    // Download Icon
     download: {
         name: "Download",
         type: "3d-stroke",
         layers: [
-            // Download shadow (base)
-            {
-                path: "M5.5 20.5H19.5V18.5H5.5V20.5ZM12.5 4.5L5.5 11.5H9.5V17.5H15.5V11.5H19.5L12.5 4.5Z",
-                render: "base"
-            },
             // Download container (primary)
             {
-                path: "M5 20H19V18H5V20ZM12 4L5 11H9V17H15V11H19L12 4Z",
+                path: "M5 20H19V18H5V20ZM19 9H15V3H9V9H5L12 16L19 9Z",
                 render: "primary"
             },
-            // Arrow detail (accent)
+            // Arrow shaft (accent)
             {
-                path: "M11 11H13V15H11V11ZM12 13L14.5 10.5H13.5V12H10.5V10.5H9.5L12 13Z",
+                path: "M11 3H13V12H11V3Z",
                 render: "accent"
+            },
+            // Arrow head detail (base)
+            {
+                path: "M12 13L15 10H13V12H11V10L12 13Z",
+                render: "base"
             }
         ]
     },
 
-    // Upload Icon - Improved with proper 3D effect
+    // Upload Icon
     upload: {
         name: "Upload",
         type: "3d-stroke",
         layers: [
-            // Upload shadow (base)
-            {
-                path: "M5.5 20.5H19.5V18.5H5.5V20.5ZM12.5 4.5L19.5 11.5H15.5V17.5H9.5V11.5H5.5L12.5 4.5Z",
-                render: "base"
-            },
             // Upload container (primary)
             {
-                path: "M5 20H19V18H5V20ZM12 4L19 11H15V17H9V11H5L12 4Z",
+                path: "M5 20H19V18H5V20ZM12 4L5 11H9V17H15V11H19L12 4Z",
                 render: "primary"
             },
-            // Arrow detail (accent)
+            // Arrow shaft (accent)
             {
-                path: "M11 11H13V15H11V11ZM12 7L9.5 9.5H10.5V8H13.5V9.5H14.5L12 7Z",
+                path: "M11 17H13V8H11V17Z",
                 render: "accent"
+            },
+            // Arrow head detail (base)
+            {
+                path: "M12 7L9 10H11V8H13V10L12 7Z",
+                render: "base"
             }
         ]
     },
 
-    // Lock Icon - Properly reshaped
+    // Lock Icon
     lock: {
         name: "Lock",
         type: "3d-stroke",
         layers: [
-            // Lock shadow (base)
-            {
-                path: "M6.5 10.5V8.5C6.5 6.29 8.29 4.5 10.5 4.5H13.5C15.71 4.5 17.5 6.29 17.5 8.5V10.5H18.5C19.6 10.5 20.5 11.4 20.5 12.5V20.5C20.5 21.6 19.6 22.5 18.5 22.5H5.5C4.4 22.5 3.5 21.6 3.5 20.5V12.5C3.5 11.4 4.4 10.5 5.5 10.5H6.5ZM8.5 8.5V10.5H15.5V8.5C15.5 7.4 14.6 6.5 13.5 6.5H10.5C9.4 6.5 8.5 7.4 8.5 8.5Z",
-                render: "base"
-            },
             // Lock body (primary)
             {
                 path: "M6 10V8C6 5.79 7.79 4 10 4H14C16.21 4 18 5.79 18 8V10H19C20.1 10 21 10.9 21 12V20C21 21.1 20.1 22 19 22H5C3.9 22 3 21.1 3 20V12C3 10.9 3.9 10 5 10H6ZM8 8V10H16V8C16 6.9 15.1 6 14 6H10C8.9 6 8 6.9 8 8Z",
                 render: "primary"
             },
-            // Keyhole (accent)
+            // Lock shackle (accent)
+            {
+                path: "M8 8C8 6.9 8.9 6 10 6H14C15.1 6 16 6.9 16 8V10H8V8Z",
+                render: "accent"
+            },
+            // Keyhole (base)
             {
                 path: "M12 14C11.45 14 11 14.45 11 15C11 15.55 11.45 16 12 16C12.55 16 13 15.55 13 15C13 14.45 12.55 14 12 14ZM12 17V19",
-                render: "accent"
+                render: "base"
             }
         ]
     },
 
-    // User/Profile Icon - Properly reshaped
+    // User/Profile Icon
     user: {
         name: "User",
         type: "3d-stroke",
         layers: [
-            // User shadow (base)
+            // User silhouette (primary)
             {
-                path: "M12.5 2.5C14.16 2.5 15.5 3.84 15.5 5.5C15.5 7.16 14.16 8.5 12.5 8.5C10.84 8.5 9.5 7.16 9.5 5.5C9.5 3.84 10.84 2.5 12.5 2.5ZM12.5 10.5C16.5 10.5 19.5 13.5 19.5 17.5V22.5H5.5V17.5C5.5 13.5 8.5 10.5 12.5 10.5Z",
-                render: "base"
-            },
-            // User head (primary)
-            {
-                path: "M12 2C13.66 2 15 3.34 15 5C15 6.66 13.66 8 12 8C10.34 8 9 6.66 9 5C9 3.34 10.34 2 12 2Z",
+                path: "M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.75L9 7V9L15 8.25L21 9ZM16 12C16 14.69 13.31 17 12 17S8 14.69 8 12V10L12 10.75L16 10V12Z",
                 render: "primary"
             },
-            // User body (accent)
+            // Head detail (accent)
+            {
+                path: "M12 2C13.66 2 15 3.34 15 5C15 6.66 13.66 8 12 8C10.34 8 9 6.66 9 5C9 3.34 10.34 2 12 2Z",
+                render: "accent"
+            },
+            // Body detail (base)
             {
                 path: "M12 10C16 10 19 13 19 17V22H5V17C5 13 8 10 12 10Z",
-                render: "accent"
+                render: "base"
             }
         ]
     },
