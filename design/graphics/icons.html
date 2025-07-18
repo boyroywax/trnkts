@@ -60,7 +60,6 @@
         <div class="tabs">
             <!-- Basic Stroke Series (unlabeled) - Blue theme -->
             <div class="tab active" onclick="switchTab('interface')" style="background: linear-gradient(135deg, #2196F3, #21CBF3); color: white; border-color: transparent;">Interface</div>
-            <div class="tab" onclick="switchTab('system')" style="background: linear-gradient(135deg, #2196F3, #21CBF3); color: white; border-color: transparent;">System</div>
             <div class="tab" onclick="switchTab('arrows')" style="background: linear-gradient(135deg, #2196F3, #21CBF3); color: white; border-color: transparent;">Arrows</div>
             <div class="tab" onclick="switchTab('communication')" style="background: linear-gradient(135deg, #2196F3, #21CBF3); color: white; border-color: transparent;">Communication</div>
             <div class="tab" onclick="switchTab('media')" style="background: linear-gradient(135deg, #2196F3, #21CBF3); color: white; border-color: transparent;">Media</div>
@@ -83,7 +82,6 @@
         </div>
 
         <div id="interface-grid" class="icon-grid"></div>
-        <div id="system-grid" class="icon-grid" style="display: none;"></div>
         <div id="arrows-grid" class="icon-grid" style="display: none;"></div>
         <div id="communication-grid" class="icon-grid" style="display: none;"></div>
         <div id="media-grid" class="icon-grid" style="display: none;"></div>
@@ -104,7 +102,6 @@
     <!-- Import modular icon definitions -->
     <script src="icons/icon-renderer.js"></script>
     <script src="icons/interface.js"></script>
-    <script src="icons/system.js"></script>
     <script src="icons/arrows.js"></script>
     <script src="icons/communication.js"></script>
     <script src="icons/media.js"></script>
@@ -129,7 +126,6 @@
         // Combine all icon modules into the main library
         const iconLibrary = {
             interface: interfaceIcons,
-            system: systemIcons,
             arrows: arrowIcons,
             communication: communicationIcons,
             media: mediaIcons,
