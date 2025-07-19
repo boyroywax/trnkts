@@ -47,12 +47,12 @@ const translucentIcons = {
         name: 'Sphere',
         type: '3d-fill',
         paths: [
-            // Top face (isometric ellipse top third)
-            { d: 'M12 6C16 6 20 12 12 18C4 12 8 6 12 6Z', opacity: 1.0 },
-            // Left face (isometric ellipse left third)
-            { d: 'M12 6C8 6 4 12 12 18C12 18 12 12 12 6Z', opacity: 0.7 },
-            // Right face (isometric ellipse right third)
-            { d: 'M12 6C16 6 20 12 12 18C12 18 12 12 12 6Z', opacity: 0.5 }
+            // 1.0 layer: base circle (excluding highlight regions, approximated as a crescent)
+            { d: 'M12 4A8 8 0 1 1 12 20A8 8 0 1 1 12 4Z M15 9A4 3 0 1 1 14 13A4 3 0 1 1 15 9Z', opacity: 0.7 },
+            // 0.7 layer: large highlight (large ellipse minus small ellipse, approximated as a crescent)
+            { d: 'M15 9A4 3 0 1 1 14 13A4 3 0 1 1 15 9Z M9 16A2 1.5 0 1 1 8 13A2 1.5 0 1 1 9 16Z', opacity: 0.5 },
+            // 0.5 layer: small highlight (small ellipse)
+            { d: 'M9 16A2 1.5 0 1 1 8 13A2 1.5 0 1 1 9 16Z', opacity: 1.0 },
         ]
     },
     'crystal': {
