@@ -48,24 +48,24 @@ const systemSimpleIcons = {
         name: "Folder",
         type: "3d-stroke",
         layers: [
-            // Left half of folder - primary segment
+            // Left half of folder body - primary segment
             {
-                path: "M4 6V8H12V22H6C4.9 22 4 21.1 4 20V6C4 4.9 4.9 4 6 4H10L12 6H4Z",
+                path: "M2 6C2 4.9 2.9 4 4 4H8L10 6H12V20H4C2.9 20 2 19.1 2 18V6Z",
                 render: "primary"
             },
-            // Right half of folder - accent segment
+            // Right half of folder body - accent segment
             {
-                path: "M12 6H18C19.1 6 20 6.9 20 8V20C20 21.1 19.1 22 18 22H12V6Z",
+                path: "M12 6H20C21.1 6 22 6.9 22 8V18C22 19.1 21.1 20 20 20H12V6Z",
                 render: "accent"
             },
-            // Folder tab highlights - accent layer
+            // Folder tab - accent layer
             {
-                path: "M6 4H10L12 6H6V4Z",
+                path: "M4 4H8L10 6H20C21.1 6 22 6.9 22 8H12V6H10L8 4H4Z",
                 render: "accent"
             },
             // Folder content indicators - detail layer
             {
-                path: "M6 10H18M6 12H16M6 14H14M6 16H17M6 18H15",
+                path: "M6 10H18M6 12H16M6 14H17M6 16H15M6 18H18",
                 render: "detail"
             }
         ]
@@ -78,17 +78,22 @@ const systemSimpleIcons = {
         layers: [
             // Left half of document - primary segment
             {
-                path: "M6 2C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H14V8H14V2H6Z",
+                path: "M6 2C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H12V2H6Z",
                 render: "primary"
             },
             // Right half of document with corner fold - accent segment
             {
-                path: "M14 2V8H20V20C20 21.1 19.1 22 18 22H14V8H14V2H18L20 8H14Z",
+                path: "M12 2H16L18 4L20 6V20C20 21.1 19.1 22 18 22H12V2Z",
                 render: "accent"
             },
-            // File content lines and corner fold detail
+            // Corner fold triangle - detail layer
+            // {
+            //     path: "M16 2L18 4L16 6V2Z",
+            //     render: "detail"
+            // },
+            // File content lines - single column - detail layer
             {
-                path: "M6 6H12M6 8H11M6 10H12M6 12H10M6 14H12M6 16H11M6 18H9M14 2L20 8M16 4L18 6",
+                path: "M6 8H16M6 10H14M6 12H15M6 14H13M6 16H16M6 18H14",
                 render: "details"
             }
         ]
@@ -153,15 +158,25 @@ const systemSimpleIcons = {
         name: "Lock",
         type: "3d-stroke",
         layers: [
-            // Left half of lock - primary segment
+            // Left half of lock body - primary segment
             {
-                path: "M6 10H5C3.9 10 3 10.9 3 12V20C3 21.1 3.9 22 5 22H12V10H6ZM8 8C8 6.9 8.9 6 10 6H12V8H8Z",
+                path: "M5 10C3.9 10 3 10.9 3 12V20C3 21.1 3.9 22 5 22H12V10H5Z",
                 render: "primary"
             },
-            // Right half of lock with shackle - accent segment
+            // Right half of lock body - accent segment
             {
-                path: "M12 10H19C20.1 10 21 10.9 21 12V20C21 21.1 20.1 22 19 22H12V10ZM12 6H14C15.1 6 16 6.9 16 8V10H12V6Z",
+                path: "M12 10H19C20.1 10 21 10.9 21 12V20C21 21.1 20.1 22 19 22H12V10Z",
                 render: "accent"
+            },
+            // Shackle - accent layer
+            {
+                path: "M8 10V6C8 3.79 9.79 2 12 2C14.21 2 16 3.79 16 6V10H14V6C14 4.9 13.1 4 12 4C10.9 4 10 4.9 10 6V10H8Z",
+                render: "accent"
+            },
+            // Lock mechanism details - detail layer
+            {
+                path: "M12 14C13.1 14 14 14.9 14 16C14 16.7 13.6 17.3 13 17.7V19H11V17.7C10.4 17.3 10 16.7 10 16C10 14.9 10.9 14 12 14ZM6 12H18M6 18H18",
+                render: "detail"
             }
         ]
     },
