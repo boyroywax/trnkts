@@ -3,62 +3,62 @@ import tseslint from 'typescript-eslint';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 
 export default tseslint.config(
-  {
-    ignores: [
-      'dist/',
-      'node_modules/',
-      '**/*.d.ts',
-      '**/*.js',
-      '!jest.config.js',
-      '!eslint.config.js',
-      // Do not ignore __tests__ at package root
-    ],
-  },
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
-  prettierRecommended,
-  {
-    files: ['**/*.ts', '**/*.tsx', '**/__tests__/**/*.ts'],
-    languageOptions: {
-      ecmaVersion: 2022,
-      sourceType: 'module',
-      parserOptions: {
-        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
+    {
+        ignores: [
+            'dist/',
+            'node_modules/',
+            '**/*.d.ts',
+            '**/*.js',
+            '!jest.config.js',
+            '!eslint.config.js',
+            // Do not ignore __tests__ at package root
+        ],
     },
-    rules: {
-      'prettier/prettier': 'error',
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        { argsIgnorePattern: '^_' },
-      ],
-      '@typescript-eslint/explicit-function-return-type': 'warn',
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-non-null-assertion': 'warn',
-      '@typescript-eslint/consistent-type-imports': 'error',
-      'no-console': 'warn',
-      'prefer-const': 'error',
-      'no-var': 'error',
+    js.configs.recommended,
+    ...tseslint.configs.recommended,
+    prettierRecommended,
+    {
+        files: ['**/*.ts', '**/*.tsx', '**/__tests__/**/*.ts'],
+        languageOptions: {
+            ecmaVersion: 2022,
+            sourceType: 'module',
+            parserOptions: {
+                project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+                tsconfigRootDir: import.meta.dirname,
+            },
+        },
+        rules: {
+            'prettier/prettier': 'error',
+            '@typescript-eslint/no-unused-vars': [
+                'error',
+                { argsIgnorePattern: '^_' },
+            ],
+            '@typescript-eslint/explicit-function-return-type': 'warn',
+            '@typescript-eslint/no-explicit-any': 'warn',
+            '@typescript-eslint/no-non-null-assertion': 'warn',
+            '@typescript-eslint/consistent-type-imports': 'error',
+            'no-console': 'warn',
+            'prefer-const': 'error',
+            'no-var': 'error',
+        },
     },
-  },
-  {
-    files: ['**/*.test.ts', '**/*.spec.ts'],
-    languageOptions: {
-      globals: {
-        describe: 'readonly',
-        it: 'readonly',
-        expect: 'readonly',
-        beforeEach: 'readonly',
-        afterEach: 'readonly',
-        beforeAll: 'readonly',
-        afterAll: 'readonly',
-        jest: 'readonly',
-      },
-    },
-    rules: {
-      '@typescript-eslint/no-explicit-any': 'off',
-      'no-console': 'off',
-    },
-  }
+    {
+        files: ['**/*.test.ts', '**/*.spec.ts'],
+        languageOptions: {
+            globals: {
+                describe: 'readonly',
+                it: 'readonly',
+                expect: 'readonly',
+                beforeEach: 'readonly',
+                afterEach: 'readonly',
+                beforeAll: 'readonly',
+                afterAll: 'readonly',
+                jest: 'readonly',
+            },
+        },
+        rules: {
+            '@typescript-eslint/no-explicit-any': 'off',
+            'no-console': 'off',
+        },
+    }
 );

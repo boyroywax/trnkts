@@ -4,7 +4,7 @@
  * @returns Promise that resolves after the specified delay
  */
 export const delay = (ms: number): Promise<void> => {
-  return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise(resolve => setTimeout(resolve, ms));
 };
 
 /**
@@ -13,7 +13,7 @@ export const delay = (ms: number): Promise<void> => {
  * @returns Formatted date string in ISO format
  */
 export const formatDate = (date: Date): string => {
-  return date.toISOString().split('T')[0] ?? '';
+    return date.toISOString().split('T')[0] ?? '';
 };
 
 /**
@@ -22,8 +22,8 @@ export const formatDate = (date: Date): string => {
  * @returns Capitalized string
  */
 export const capitalize = (str: string): string => {
-  if (!str) return str;
-  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    if (!str) return str;
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
 
 /**
@@ -32,7 +32,7 @@ export const capitalize = (str: string): string => {
  * @returns true if value is defined
  */
 export const isDefined = <T>(value: T | null | undefined): value is T => {
-  return value !== null && value !== undefined;
+    return value !== null && value !== undefined;
 };
 
 /**
@@ -41,11 +41,11 @@ export const isDefined = <T>(value: T | null | undefined): value is T => {
  * @returns Random alphanumeric string
  */
 export const generateId = (length = 8): string => {
-  const chars =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return result;
+    const chars =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
 };
