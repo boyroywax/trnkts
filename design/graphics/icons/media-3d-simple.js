@@ -25,10 +25,12 @@ const media3dSimpleIcons = {
         name: 'Stop',
         type: '3d-stroke',
         layers: [
-            // Main stop square
-            { path: 'M6 6L18 6L18 18L6 18L6 6Z', render: 'main' },
-            // Depth shadow
-            { path: 'M6.3 6.3L18.3 6.3L18.3 18.3L6.3 18.3L6.3 6.3Z', render: 'secondary', opacity: 0.3 }
+            // Lower-left triangle - primary segment
+            { path: 'M6 6L6 18L18 18Z', render: 'primary' },
+            // Upper-right triangle - accent segment
+            { path: 'M6 6L18 6L18 18Z', render: 'accent' },
+            // Diagonal highlight (optional subtle detail)
+            { path: 'M6.5 6.5L17.5 17.5', render: 'detail', opacity: 0.2 }
         ]
     },
     'volume': {
@@ -69,10 +71,10 @@ const media3dSimpleIcons = {
         name: 'Music',
         type: '3d-stroke',
         layers: [
-            // Note stems only - primary segment
-            { path: 'M12 3L12 13.5L13 13.5L13 7L19 5L19 10.5L20 10.5L20 3L12 3Z', render: 'primary' },
-            // Note heads only - accent segment
-            { path: 'M10.5 13C11.9 13 13 14.1 13 15.5C13 16.9 11.9 18 10.5 18C9.1 18 8 16.9 8 15.5C8 14.1 9.1 13 10.5 13Z M17.5 10C18.9 10 20 11.1 20 12.5C20 13.9 18.9 15 17.5 15C16.1 15 15 13.9 15 12.5C15 11.1 16.1 10 17.5 10Z', render: 'accent' }
+            // Left half (x<12) - primary segment (classic eighth note, left side, stem aligned)
+            { path: 'M10.84375 18A3.125 3.125 0 1 1 7.71875 14.875A3.125 3.125 0 0 1 10.84375 18ZM9 15.5V6H11V15.5', render: 'primary' },
+            // Right half (x>=12) - accent segment (classic eighth note, right side, no circle, stem aligned)
+            { path: 'M11 6H15V8Q15 10 13 10H11V15.5', render: 'accent' }
         ]
     },
     'video-play': {
@@ -94,7 +96,9 @@ const media3dSimpleIcons = {
             // Mic body only - primary segment
             { path: 'M12 2C13.1 2 14 2.9 14 4L14 10C14 11.1 13.1 12 12 12C10.9 12 10 11.1 10 10L10 4C10 2.9 10.9 2 12 2Z', render: 'primary' },
             // Stand and base only - accent segment
-            { path: 'M12 12L12 18L7 18L7 20L17 20L17 18L12 18Z M8 10C8 13.3 10.7 16 14 16 M6 10C6 14.4 9.6 18 14 18', render: 'accent' }
+            { path: 'M12 12L12 18L7 18L7 20L17 20L17 18L12 18Z M8 10C8 13.3 10.7 16 14 16 M6 10C6 14.4 9.6 18 14 18', render: 'accent' },
+            // Sound waves - accent segment
+            { path: 'M15.54 8.46C16.47 9.39 17 10.65 17 12C17 13.35 16.47 14.61 15.54 15.54M18.07 5.93C20.26 8.12 21.5 11.04 21.5 12C21.5 12.96 20.26 15.88 18.07 18.07', render: 'accent' }
         ]
     },
     'headphones': {
