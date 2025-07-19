@@ -57,6 +57,16 @@ const systemSimpleIcons = {
             {
                 path: "M12 6H18C19.1 6 20 6.9 20 8V20C20 21.1 19.1 22 18 22H12V6Z",
                 render: "accent"
+            },
+            // Folder tab highlights - accent layer
+            {
+                path: "M6 4H10L12 6H6V4Z",
+                render: "accent"
+            },
+            // Folder content indicators - detail layer
+            {
+                path: "M6 10H18M6 12H16M6 14H14M6 16H17M6 18H15",
+                render: "detail"
             }
         ]
     },
@@ -75,6 +85,11 @@ const systemSimpleIcons = {
             {
                 path: "M14 2V8H20V20C20 21.1 19.1 22 18 22H14V8H14V2H18L20 8H14Z",
                 render: "accent"
+            },
+            // File content lines and corner fold detail
+            {
+                path: "M6 6H12M6 8H11M6 10H12M6 12H10M6 14H12M6 16H11M6 18H9M14 2L20 8M16 4L18 6",
+                render: "details"
             }
         ]
     },
@@ -174,15 +189,20 @@ const systemSimpleIcons = {
         name: "Database",
         type: "3d-stroke",
         layers: [
-            // Left half of database - primary segment
+            // Left half of database cylinders - primary segment
             {
-                path: "M12 2C7.6 2 4 3.79 4 6V17C4 19.21 7.6 21 12 21V2ZM6 6.5C6 5.12 8.69 4 12 4V9C8.69 9 6 7.88 6 6.5Z",
+                path: "M12 2C6.48 2 2 3.79 2 6V18C2 20.21 6.48 22 12 22V2ZM4 6C4 5.17 7.58 4 12 4V6C7.58 6 4 5.17 4 6ZM4 10C4 9.17 7.58 8 12 8V10C7.58 10 4 9.17 4 10ZM4 14C4 13.17 7.58 12 12 12V14C7.58 14 4 13.17 4 14ZM4 18C4 17.17 7.58 16 12 16V18C7.58 18 4 17.17 4 18Z",
                 render: "primary"
             },
-            // Right half of database - accent segment
+            // Right half of database cylinders - accent segment
             {
-                path: "M12 2C16.4 2 20 3.79 20 6V17C20 19.21 16.4 21 12 21V2ZM18 6.5C18 7.88 15.31 9 12 9V4C15.31 4 18 5.12 18 6.5Z",
+                path: "M12 2C17.52 2 22 3.79 22 6V18C22 20.21 17.52 22 12 22V2ZM20 6C20 5.17 16.42 4 12 4V6C16.42 6 20 5.17 20 6ZM20 10C20 9.17 16.42 8 12 8V10C16.42 10 20 9.17 20 10ZM20 14C20 13.17 16.42 12 12 12V14C16.42 14 20 13.17 20 14ZM20 18C20 17.17 16.42 16 12 16V18C16.42 18 20 17.17 20 18Z",
                 render: "accent"
+            },
+            // Database connection indicators - detail layer
+            {
+                path: "M8 7H16M8 11H16M8 15H16M6 9H18M6 13H18M6 17H18",
+                render: "detail"
             }
         ]
     },
@@ -201,6 +221,11 @@ const systemSimpleIcons = {
             {
                 path: "M12 4H21V8H12V4ZM12 10H21V14H12V10ZM12 16H21V20H12V16Z",
                 render: "accent"
+            },
+            // Server details - LED lights, drives, and ports
+            {
+                path: "M5 5.5H6.5V6.5H5V5.5ZM7.5 5.5H9V6.5H7.5V5.5ZM17 5.5H18.5V6.5H17V5.5ZM19 5.5H20V6.5H19V5.5ZM5 11.5H6.5V12.5H5V11.5ZM7.5 11.5H9V12.5H7.5V11.5ZM17 11.5H18.5V12.5H17V11.5ZM19 11.5H20V12.5H19V11.5ZM5 17.5H6.5V18.5H5V17.5ZM7.5 17.5H9V18.5H7.5V17.5ZM17 17.5H18.5V18.5H17V17.5ZM19 17.5H20V18.5H19V17.5Z",
+                render: "detail"
             }
         ]
     },
@@ -241,7 +266,7 @@ const systemSimpleIcons = {
             // Screen content lines - detail layer
             {
                 path: "M6 7H18M6 9H16M6 11H14",
-                render: "detail"
+                render: "details"
             }
         ]
     },
@@ -251,15 +276,25 @@ const systemSimpleIcons = {
         name: "CPU",
         type: "3d-stroke",
         layers: [
-            // Left half of CPU - primary segment
+            // Left half of CPU package - primary segment
             {
-                path: "M5 5H12V19H5V5ZM8 8H12V16H8V8ZM10 10H12V14H10V10Z",
+                path: "M4 4H12V20H4V4ZM6 6V18H12V6H6Z",
                 render: "primary"
             },
-            // Right half of CPU - accent segment
+            // Right half of CPU package - accent segment
             {
-                path: "M12 5H19V19H12V5ZM12 8H16V16H12V8ZM12 10H14V14H12V10Z",
+                path: "M12 4H20V20H12V4ZM12 6V18H18V6H12Z",
                 render: "accent"
+            },
+            // CPU heat spreader and die - detail layer
+            {
+                path: "M8 8H16V16H8V8ZM9 9H15V15H9V15ZM10 10H14V14H10V10Z",
+                render: "accent"
+            },
+            // CPU pins and connection points - detail layer
+            {
+                path: "M4 5H6M4 7H6M4 9H6M4 11H6M4 13H6M4 15H6M4 17H6M4 19H6M18 5H20M18 7H20M18 9H20M18 11H20M18 13H20M18 15H20M18 17H20M18 19H20M5 4V6M7 4V6M9 4V6M11 4V6M13 4V6M15 4V6M17 4V6M19 4V6M5 18V20M7 18V20M9 18V20M11 18V20M13 18V20M15 18V20M17 18V20M19 18V20",
+                render: "detail"
             }
         ]
     },
@@ -269,14 +304,19 @@ const systemSimpleIcons = {
         name: "Network",
         type: "3d-stroke",
         layers: [
-            // Top and left nodes - primary segment
+            // Network connection lines - primary segment
             {
-                path: "M12 1C12.55 1 13 1.45 13 2C13 2.55 12.55 3 12 3C11.45 3 11 2.55 11 2C11 1.45 11.45 1 12 1ZM1 9C1.55 9 2 9.45 2 10C2 10.55 1.55 11 1 11C0.45 11 0 10.55 0 10C0 9.45 0.45 9 1 9ZM6 18C6.55 18 7 18.45 7 19C7 19.55 6.55 20 6 20C5.45 20 5 19.55 5 19C5 18.45 5.45 18 6 18Z",
+                path: "M12 2L2 10M12 2L22 10M2 10L6 18M22 10L18 18M6 18L18 18",
                 render: "primary"
             },
-            // Right and bottom nodes - accent segment
+            // Left side nodes - primary segment
             {
-                path: "M23 9C23.55 9 24 9.45 24 10C24 10.55 23.55 11 23 11C22.45 11 22 10.55 22 10C22 9.45 22.45 9 23 9ZM18 18C18.55 18 19 18.45 19 19C19 19.55 18.55 20 18 20C17.45 20 17 19.55 17 19C17 18.45 17.45 18 18 18Z",
+                path: "M12 0C13.1 0 14 0.9 14 2C14 3.1 13.1 4 12 4C10.9 4 10 3.1 10 2C10.9 0 10.9 0 12 0ZM2 8C3.1 8 4 8.9 4 10C4 11.1 3.1 12 2 12C0.9 12 0 11.1 0 10C0 8.9 0.9 8 2 8ZM6 16C7.1 16 8 16.9 8 18C8 19.1 7.1 20 6 20C4.9 20 4 19.1 4 18C4 16.9 4.9 16 6 16Z",
+                render: "primary"
+            },
+            // Right side nodes - accent segment  
+            {
+                path: "M22 8C23.1 8 24 8.9 24 10C24 11.1 23.1 12 22 12C20.9 12 20 11.1 20 10C20 8.9 20.9 8 22 8ZM18 16C19.1 16 20 16.9 20 18C20 19.1 19.1 20 18 20C16.9 20 16 19.1 16 18C16 16.9 16.9 16 18 16Z",
                 render: "accent"
             }
         ]
@@ -296,11 +336,6 @@ const systemSimpleIcons = {
             {
                 path: "M12 1L21 4V11C21 16 17.89 20.58 12 22V1ZM19 5.5V11C19 15 16.5 18.5 12 20V3L19 5.5Z",
                 render: "accent"
-            },
-            // Shield checkmark - detail layer
-            {
-                path: "M9 11L11 13L15 9",
-                render: "detail"
             }
         ]
     },
@@ -323,7 +358,7 @@ const systemSimpleIcons = {
             // Terminal prompt and cursor - detail layer
             {
                 path: "M4 8L7 11L4 14M9 14H15M19 8V10",
-                render: "detail"
+                render: "accent"
             }
         ]
     }
