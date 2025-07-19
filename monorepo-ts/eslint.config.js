@@ -11,13 +11,14 @@ export default tseslint.config(
       '**/*.js',
       '!jest.config.js',
       '!eslint.config.js',
+      // Do not ignore __tests__ at package root
     ],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   prettierRecommended,
   {
-    files: ['**/*.ts', '**/*.tsx'],
+    files: ['**/*.ts', '**/*.tsx', '**/__tests__/**/*.ts'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',

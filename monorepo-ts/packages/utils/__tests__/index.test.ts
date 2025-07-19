@@ -1,4 +1,10 @@
-import { delay, formatDate, capitalize, isDefined, generateId } from '../index';
+import {
+  delay,
+  formatDate,
+  capitalize,
+  isDefined,
+  generateId,
+} from '../src/index';
 
 describe('Utils', () => {
   describe('delay', () => {

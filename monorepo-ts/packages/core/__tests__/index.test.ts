@@ -1,5 +1,5 @@
-import type { CreateUserOptions } from '../index';
-import { UserService } from '../index';
+import type { CreateUserOptions } from '../src/index';
+import { UserService } from '../src/index';
 
 describe('UserService', () => {
   let userService: UserService;
@@ -50,7 +50,6 @@ describe('UserService', () => {
         name: '  John Doe  ',
         email: '  john@example.com  ',
       };
-
       const user = userService.createUser(options);
       expect(user.name).toBe('John Doe');
       expect(user.email).toBe('john@example.com');

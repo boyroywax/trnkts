@@ -4,6 +4,7 @@
   "description": "Core functionality for the trnkts typescript monorepo",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "files": [
     "dist"
   ],

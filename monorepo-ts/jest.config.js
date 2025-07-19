@@ -24,7 +24,7 @@ const config = {
   resetMocks: true,
   restoreMocks: true,
   verbose: true,
-  moduleNameMapping: {
+  moduleNameMapper: {
     '^@trnkts/(.*)$': '<rootDir>/packages/$1/src',
   },
   globals: {
