@@ -71,10 +71,10 @@ const media3dSimpleIcons = {
         name: 'Music',
         type: '3d-stroke',
         layers: [
-            // Left half (x<12) - primary segment (classic eighth note, left side, stem aligned)
-            { path: 'M10.84375 18A3.125 3.125 0 1 1 7.71875 14.875A3.125 3.125 0 0 1 10.84375 18ZM9 15.5V6H11V15.5', render: 'primary' },
+            // Left half (x<12) - primary segment (classic eighth note, left side, stem extended downward)
+            { path: 'M10.84375 18A3.125 3.125 0 1 1 7.71875 14.875A3.125 3.125 0 0 1 10.84375 18ZM9 18V6H11V18', render: 'primary' },
             // Right half (x>=12) - accent segment (classic eighth note, right side, no circle, stem aligned)
-            { path: 'M11 6H15V8Q15 10 13 10H11V15.5', render: 'accent' }
+            { path: 'M11 6H15V8Q15 10 13 10H11V18', render: 'accent' }
         ]
     },
     'video-play': {
@@ -93,22 +93,22 @@ const media3dSimpleIcons = {
         name: 'Microphone',
         type: '3d-stroke',
         layers: [
-            // Mic body only - primary segment
-            { path: 'M12 2C13.1 2 14 2.9 14 4L14 10C14 11.1 13.1 12 12 12C10.9 12 10 11.1 10 10L10 4C10 2.9 10.9 2 12 2Z', render: 'primary' },
-            // Stand and base only - accent segment
-            { path: 'M12 12L12 18L7 18L7 20L17 20L17 18L12 18Z M8 10C8 13.3 10.7 16 14 16 M6 10C6 14.4 9.6 18 14 18', render: 'accent' },
-            // Sound waves - accent segment
-            { path: 'M15.54 8.46C16.47 9.39 17 10.65 17 12C17 13.35 16.47 14.61 15.54 15.54M18.07 5.93C20.26 8.12 21.5 11.04 21.5 12C21.5 12.96 20.26 15.88 18.07 18.07', render: 'accent' }
+            // Left half of microphone capsule and stand - primary segment
+            { path: 'M12 1C9.24 1 7 3.24 7 6L7 12C7 14.76 9.24 17 12 17L12 1ZM12 17L12 19L6 19L6 21L12 21L12 19Z', render: 'primary' },
+            // Right half of microphone capsule and stand - accent segment
+            { path: 'M12 1C14.76 1 17 3.24 17 6L17 12C17 14.76 14.76 17 12 17L12 1ZM12 17L12 19L18 19L18 21L12 21L12 19Z', render: 'accent' },
+            // Sound waves - detail layer (matching volume icon style, moved up)
+            { path: 'M19.54 6.46C20.47 7.39 21 8.65 21 10C21 11.35 20.47 12.61 19.54 13.54M22.07 3.93C24.26 6.12 25.5 9.04 25.5 10C25.5 10.96 24.26 13.88 22.07 16.07', render: 'accent' }
         ]
     },
     'headphones': {
         name: 'Headphones',
         type: '3d-stroke',
         layers: [
-            // Headband arc only - primary segment
-            { path: 'M12 1C16.97 1 21 4.03 21 9C21 5.13 17.87 2 12 2C6.13 2 3 5.13 3 9C3 4.03 7.03 1 12 1Z', render: 'primary' },
-            // Ear cups only - accent segment
-            { path: 'M6 9C7.1 9 8 9.9 8 11L8 14C8 15.1 7.1 16 6 16L5 16C3.9 16 3 15.1 3 14L3 11C3 9.9 3.9 9 5 9L6 9Z M18 9C19.1 9 20 9.9 20 11L20 14C20 15.1 19.1 16 18 16L17 16C15.9 16 15 15.1 15 14L15 11C15 9.9 15.9 9 17 9L18 9Z', render: 'accent' }
+            // Left half of thick headband and left ear cup - primary segment
+            { path: 'M12 2C5.93 2 1 6.93 1 13C1 11.34 2.34 10 4 10C2.9 10 2 9.1 2 8C2 5.24 6.24 1 12 1L12 2ZM2 13L2 14C2 12.9 2.9 12 4 12L6 12C7.1 12 8 12.9 8 14L8 18C8 19.1 7.1 20 6 20L4 20C2.9 20 2 19.1 2 18L2 14Z', render: 'primary' },
+            // Right half of thick headband and right ear cup - accent segment  
+            { path: 'M12 2C18.07 2 23 6.93 23 13C23 11.34 21.66 10 20 10C21.1 10 22 9.1 22 8C22 5.24 17.76 1 12 1L12 2ZM22 13L22 14C22 12.9 21.1 12 20 12L18 12C16.9 12 16 12.9 16 14L16 18C16 19.1 16.9 20 18 20L20 20C21.1 20 22 19.1 22 18L22 14Z', render: 'accent' }
         ]
     }
 };

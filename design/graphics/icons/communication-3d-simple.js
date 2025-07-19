@@ -145,6 +145,20 @@ const communication3dSimpleIcons = {
             // Control buttons and display - detail layer
             { path: 'M9 12h2v2H9v-2zM13 12h2v2h-2v-2zM9 15h6v1H9v-1z', render: 'detail' }
         ]
+    },
+    'tablet': {
+        name: 'Tablet',
+        type: '3d-stroke',
+        layers: [
+            // Left half of tablet - primary segment (extended bottom)
+            { path: 'M6 2C4.9 2 4 2.9 4 4v17c0 1.1.9 2 2 2h6V2H6z', render: 'primary' },
+            // Right half of tablet - accent segment (extended bottom)
+            { path: 'M12 2h6c1.1 0 2 .9 2 2v17c0 1.1-.9 2-2 2h-6V2z', render: 'accent' },
+            // Screen area - detail layer
+            { path: 'M5 4h14v14H5V4z', render: 'detail' },
+            // Home button - detail layer (moved up)
+            { path: 'M12 19c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5 1.5-.7 1.5-1.5-.7-1.5-1.5-1.5z', render: 'detail' }
+        ]
     }
 };
 
