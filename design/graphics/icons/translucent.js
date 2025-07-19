@@ -31,28 +31,16 @@ const translucentIcons = {
             { d: 'M4 20L12 15L20 20L12 22L4 20Z', opacity: 0.5 }
         ]
     },
-    'hexagon': {
-        name: 'Hexagon',
-        type: '3d-fill',
-        paths: [
-            // Top face
-            // { d: 'M8 6L16 6L20 12L16 18L8 18L4 12L8 6Z', opacity: 1.0 },
-            // Left face
-            { d: 'M8 6L4 12L8 18L8 6Z', opacity: 0.7 },
-            // Right face
-            { d: 'M16 6L20 12L16 18L16 6Z', opacity: 0.5 }
-        ]
-    },
     'sphere': {
         name: 'Sphere',
         type: '3d-fill',
         paths: [
-            // 1.0 layer: base circle (excluding highlight regions, approximated as a crescent)
-            { d: 'M12 4A8 8 0 1 1 12 20A8 8 0 1 1 12 4Z M15 9A4 3 0 1 1 14 13A4 3 0 1 1 15 9Z', opacity: 0.7 },
-            // 0.7 layer: large highlight (large ellipse minus small ellipse, approximated as a crescent)
-            { d: 'M15 9A4 3 0 1 1 14 13A4 3 0 1 1 15 9Z M9 16A2 1.5 0 1 1 8 13A2 1.5 0 1 1 9 16Z', opacity: 0.5 },
-            // 0.5 layer: small highlight (small ellipse)
-            { d: 'M9 16A2 1.5 0 1 1 8 13A2 1.5 0 1 1 9 16Z', opacity: 1.0 },
+            // Largest circle - lightest (0.5 opacity)
+            { d: 'M12 2A10 10 0 1 1 12 22A10 10 0 1 1 12 2Z', opacity: 0.5 },
+            // Medium circle - medium (0.7 opacity)
+            { d: 'M10 4A7 7 0 1 1 10 18A7 7 0 1 1 10 4Z', opacity: 0.7 },
+            // Smallest circle - darkest (1.0 opacity) - positioned in top-left for isometric look
+            { d: 'M8 6A4 4 0 1 1 8 14A4 4 0 1 1 8 6Z', opacity: 1.0 }
         ]
     },
     'crystal': {
@@ -89,39 +77,26 @@ const translucentIcons = {
         name: 'Tetrahedron',
         type: '3d-fill',
         paths: [
-            // Front face (isometric, no overlap)
-            { d: 'M12 4L17 18L7 18L12 4Z', opacity: 1.0 },
-            // Left face (shares edge, no overlap)
-            { d: 'M12 4L7 18L12 12L12 4Z', opacity: 0.7 },
-            // Right face (shares edge, no overlap)
-            { d: 'M12 4L17 18L12 12L12 4Z', opacity: 0.5 }
+            // Front face (brightest, facing viewer)
+            { d: 'M12 4L18 18L6 18L12 4Z', opacity: 1.0 },
+            // Left face (medium brightness, isometric left)
+            { d: 'M12 4L6 18L9 14L12 4Z', opacity: 0.7 },
+            // Right face (darkest, isometric right)
+            { d: 'M12 4L15 14L18 18L12 4Z', opacity: 0.5 }
         ]
     },
     'cone': {
         name: 'Cone',
         type: '3d-fill',
         paths: [
-            // Main face (isometric, no overlap)
-            { d: 'M12 4L17 20L7 20L12 4Z', opacity: 1.0 },
-            // Left face (shares edge, no overlap)
-            { d: 'M12 4L7 20L12 16L12 4Z', opacity: 0.7 },
-            // Right face (shares edge, no overlap)
-            { d: 'M12 4L17 20L12 16L12 4Z', opacity: 0.5 }
+            // Main cone face (triangular side)
+            { d: 'M12 4L19 18L5 18L12 4Z', opacity: 1.0 },
+            // Left side face
+            { d: 'M12 4L5 18L10 16L12 4Z', opacity: 0.7 },
+            // Rounded base (ellipse to show circular bottom)
+            { d: 'M5 18Q12 22 19 18Q12 20 5 18Z', opacity: 0.5 }
         ]
-    },
-    // Nature & Sustainability Icons
-    // --- ARROW ROTATE ICON (stroke style, circle + arrowhead) ---
-    'rotate': {
-        name: 'Rotate',
-        type: 'stroke',
-        paths: [
-            // Circle (stroke)
-            { d: 'M12 4a8 8 0 1 1 0 16a8 8 0 1 1 0-16z', stroke: true, strokeWidth: 2, fill: 'none' },
-            // Arrowhead (enlarged and clearly positioned at the top left, tip at (4,12))
-            // Tip: (4,12), left base: (7,8), right base: (8,12), center base: (7,14)
-            { d: 'M4 12L7 8L8 12L7 14Z', fill: '#000', opacity: 1.0 }
-        ]
-    },
+    }
 };
 
 // Export for use in main icons file
