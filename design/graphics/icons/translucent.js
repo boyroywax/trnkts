@@ -110,6 +110,18 @@ const translucentIcons = {
         ]
     },
     // Nature & Sustainability Icons
+    // --- ARROW ROTATE ICON (stroke style, circle + arrowhead) ---
+    'rotate': {
+        name: 'Rotate',
+        type: 'stroke',
+        paths: [
+            // Circle (stroke)
+            { d: 'M12 4a8 8 0 1 1 0 16a8 8 0 1 1 0-16z', stroke: true, strokeWidth: 2, fill: 'none' },
+            // Arrowhead (enlarged and clearly positioned at the top left, tip at (4,12))
+            // Tip: (4,12), left base: (7,8), right base: (8,12), center base: (7,14)
+            { d: 'M4 12L7 8L8 12L7 14Z', fill: '#000', opacity: 1.0 }
+        ]
+    },
 };
 
 // Export for use in main icons file

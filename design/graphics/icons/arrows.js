@@ -1,5 +1,28 @@
 // Arrow Icons - Directional and navigation elements
 const arrowIcons = {
+    'rotate-disabled': {
+        name: 'Rotate Disabled',
+        // Centered 'X' (chevron) at the center of the frame
+        paths: [
+            'M12 4a8 8 0 1 1-7.5 5',
+            'M9 9l6 6m0-6l-6 6'
+        ]
+    },
+    'rotate': {
+        name: 'Rotate',
+        // Standard rotation icon: arc from bottom right to top left, open chevron arrowhead at end
+        paths: [
+            // Arc: starts at ~5 o'clock, ends at ~10 o'clock (top left)
+            'M18 16A8 8 0 1 0 6 8',
+            // Arrowhead: match size and style to arrow-down icon chevron, placed at arc end (6,8)
+            // Arrow-down chevron: 'M6 9l6 6 6-6'
+            // For rotate, use: 'M4 10l2 2 2-2' (centered at (6,8))
+            // For rotate, use: chevron rotated 180deg around its center (6,8), scaled 2x
+            // Original: M8 6l-2 2-2-2 (center at 6,8, delta x/y = 2)
+            // Chevron: scaled 1.25x about its center (6,10), point at (6,12.5), arms at (1,7.5) and (11,7.5)
+            'M1 7.5L6 12.5L11 7.5'
+        ]
+    },
     'arrow-up': {
         name: 'Arrow Up',
         paths: [
