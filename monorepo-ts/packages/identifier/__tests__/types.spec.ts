@@ -1,4 +1,13 @@
-import { IdentifierTypes, type IdentifierType, type IdentifierValue } from '../src/types';
+import {
+    IdentifierTypes,
+    type IdentifierType,
+    type IdentifierValue,
+    SequenceTypes,
+    type SequenceType,
+    type SequenceValue,
+    type IdentifierSeparator,
+    type RandomGeneratorConfig,
+} from '../src/types';
 
 describe('IdentifierTypes', () => {
     it('should have correct enum values', () => {
@@ -50,6 +59,62 @@ describe('IdentifierValue', () => {
     it('should accept symbol values', () => {
         const symbolValue: IdentifierValue = Symbol('test');
         expect(typeof symbolValue).toBe('symbol');
+    });
+});
+
+describe('SequenceType', () => {
+    it('should have correct enum values', () => {
+        expect(SequenceTypes.ALPHA).toBe('alpha');
+        expect(SequenceTypes.ALPHANUMERIC).toBe('alphanumeric');
+        expect(SequenceTypes.NUMERIC).toBe('numeric');
+    });
+
+    it('should have all expected enum keys', () => {
+        const expectedKeys = ['ALPHA', 'ALPHANUMERIC', 'NUMERIC'];
+        const actualKeys = Object.keys(SequenceTypes);
+        expect(actualKeys).toEqual(expect.arrayContaining(expectedKeys));
+        expect(actualKeys).toHaveLength(expectedKeys.length);
+    });
+
+    it('should be frozen object', () => {
+        expect(Object.isFrozen(SequenceTypes)).toBe(true);
+    });
+});
+
+
+describe('SequenceValue', () => {
+    it('should accept string values', () => {
+        const stringValue: SequenceValue = 'A';
+        expect(typeof stringValue).toBe('string');
+    });
+
+    it('should accept number values', () => {
+        const numberValue: SequenceValue = 1;
+        expect(typeof numberValue).toBe('number');
+    });
+
+    it('should not accept other types', () => {
+        const invalidValue: any = true; // boolean type
+        expect(() => {
+            const invalidValue: SequenceValue = invalidValue;
+        }).toThrow();
+    });
+});
+
+describe('IdentifierSeparator', () => {
+    it('should accept valid separator values', () => {
+        const validSeparators: IdentifierSeparator[] = ['|', ',', '-', '_', '.', ' ', '~', '', undefined];
+        
+        validSeparators.forEach(separator => {
+            expect(typeof separator).toBe('string' || 'undefined');
+        });
+    });
+
+    it('should not accept invalid separator values', () => {
+        const invalidSeparator: any = 123; // number type
+        expect(() => {
+            const invalidValue: IdentifierSeparator = invalidSeparator;
+        }).toThrow();
     });
 });
 

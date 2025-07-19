@@ -2,189 +2,226 @@
 const web3Icons = {
     'bitcoin': {
         name: 'Bitcoin',
-        type: '3d-stroke',
-        layers: [
+        type: 'web3-fill',
+        paths: [
             // Outer circle
-            { path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z', render: 'main' },
-            // Inner circle - both fill and stroke for depth
-            { path: 'M12 4C7.58 4 4 7.58 4 12s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8z', render: 'depth' },
-            // Perfect centered Bitcoin B with proper vertical extensions
-            // Main vertical spine (moved slightly left and up)
-            { path: 'M10.2 8.7V15.2', render: 'symbol' },
-            // Top vertical extension from center of top bar (moved left and up)
-            { path: 'M12.2 7.2V8.2', render: 'symbol' },
-            // Bottom vertical extension from center of bottom bar (moved left and up)
-            { path: 'M12.2 16.7V17.7', render: 'symbol' },
-            // Top curve section (fixed to connect properly, moved left and up)
-            { path: 'M10.2 8.7h3c1 0 1.8 0.8 1.8 1.8s-0.8 1.8-1.8 1.8h-2.5', render: 'symbol' },
-            // Bottom curve section (moved left and up)
-            { path: 'M10.2 12.7h3c1 0 1.8 0.8 1.8 1.8s-0.8 1.8-1.8 1.8h-3', render: 'symbol' },
-            // Middle connecting line (moved left and up)
-            { path: 'M10.7 12.3h1.5', render: 'symbol' }
+            'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z',
+            // Inner circle for depth
+            'M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z',
+            // B vertical bar
+            'M9 7h1.5v10H9z',
+            // B top section
+            'M10.5 8h3v2h-3z',
+            // B bottom section
+            'M10.5 12h3.5v2h-3.5z'
         ]
     },
     'ethereum': {
         name: 'Ethereum',
-        type: '3d-stroke',
-        layers: [
-            // Main diamond shape with 3D effect (scaled up)
-            { path: 'M12 1L3 13L12 18L21 13L12 1z', render: 'main' },
-            // Inner diamond layers for depth
-            { path: 'M12 2.5L5 13L12 16.5L19 13L12 2.5z', render: 'depth' },
+        type: 'web3-fill',
+        paths: [
+            // Main diamond shape with 3D effect
+            'M12 2L5 12.5L12 17L19 12.5L12 2z',
+            // Inner diamond layers
+            'M12 3.5L6.5 12.5L12 15.5L17.5 12.5L12 3.5z',
             // Bottom section
-            { path: 'M12 18L3 13L12 23L21 13L12 18z', render: 'secondary' },
-            // Highlight lines for 3D effect
-            { path: 'M12 1L12 18M12 18L21 13M12 18L3 13', render: 'highlight' }
+            'M12 17L5 12.5L12 22L19 12.5L12 17z',
+            // Center highlight
+            'M12 2L12 17',
+            // Side highlights
+            'M12 17L19 12.5M12 17L5 12.5'
         ]
     },
     'nft': {
         name: 'NFT',
-        type: '3d-stroke',
-        layers: [
-            // Punk head - main pixelated face
-            { path: 'M8 8h8v8H8z', render: 'main' },
-            // Punk head depth
-            { path: 'M8.5 8.5h7v7h-7z', render: 'depth' },
-            // Punk hair - spiky top
-            { path: 'M8 8h2v-2H8zM11 7h2v-2h-2zM14 8h2v-2h-2z', render: 'symbol' },
-            // Punk features - simple eyes and mouth
-            { path: 'M10 10h1v1h-1zM13 10h1v1h-1zM11 13h2v1h-2z', render: 'highlight' }
+        type: 'web3-fill',
+        paths: [
+            // Frame with 3D depth
+            'M4 4h16v16H4z',
+            // Inner frame
+            'M5 5h14v14H5z',
+            // Artwork area
+            'M7 7h10v6H7z',
+            // NFT badge area
+            'M7 15h10v3H7z',
+            // NFT text placeholder
+            'M9 16h6v1H9z',
+            // 3D effect corners
+            'M4 4L3 3M20 4L21 3M20 20L21 21M4 20L3 21',
+            // Artwork details
+            'M9 9h6v2H9zM10 12h4v1h-4z'
         ]
     },
     'wallet': {
         name: 'Crypto Wallet',
-        type: '3d-stroke',
-        layers: [
-            // Main wallet body
-            { path: 'M2 6h20v14H2z', render: 'main' },
+        type: 'web3-fill',
+        paths: [
+            // Wallet main body with 3D effect
+            'M3 7h18v12H3z',
+            'M4 8h16v10H4z',
             // Wallet flap
-            { path: 'M2 6V4c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2v2', render: 'secondary' },
+            'M3 7V5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v2',
             // Card slot
-            { path: 'M5 10h14v4H5z', render: 'depth' },
+            'M6 11h12v2H6z',
             // Security chip
-            { path: 'M17 15h3v3h-3z', render: 'symbol' },
-            // Edge highlight
-            { path: 'M2 6L1 5M22 6L23 5', render: 'highlight' }
+            'M16 13h3v3h-3z',
+            'M17 14h1v1h-1z',
+            // 3D depth lines
+            'M3 7L2 6M21 7L22 6M21 19L22 20M3 19L2 20'
         ]
     },
     'blockchain': {
         name: 'Blockchain',
-        type: '3d-stroke',
-        layers: [
-            // Three main blocks
-            { path: 'M2 6h5v8H2zM9.5 6h5v8h-5zM17 6h5v8h-5z', render: 'main' },
-            // Block depth
-            { path: 'M2.5 6.5h4v7h-4zM10 6.5h4v7h-4zM17.5 6.5h4v7h-4z', render: 'depth' },
-            // Block centers
-            { path: 'M3.5 8h2v3h-2zM11 8h2v3h-2zM18.5 8h2v3h-2z', render: 'symbol' },
+        type: 'web3-fill',
+        paths: [
+            // Block 1 with 3D effect
+            'M2 6h6v6H2z',
+            'M3 7h4v4H3z',
+            // Block 2
+            'M9 6h6v6H9z',
+            'M10 7h4v4h-4z',
+            // Block 3
+            'M16 6h6v6h-6z',
+            'M17 7h4v4h-4z',
             // Chain connections
-            { path: 'M7 10h2.5v1H7zM14.5 10h2.5v1h-2.5z', render: 'highlight' }
+            'M8 9h1v1H8zM15 9h1v1h-1z',
+            // 3D depth effect
+            'M2 6L1 5M8 6L9 5M9 6L10 5M15 6L16 5M16 6L17 5M22 6L23 5',
+            'M2 12L1 13M8 12L9 13M15 12L16 13M22 12L23 13'
         ]
     },
     'defi': {
         name: 'DeFi',
-        type: '3d-stroke',
-        layers: [
-            // Central hub
-            { path: 'M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z', render: 'main' },
-            // Four corner nodes
-            { path: 'M4 4c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM20 4c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM4 16c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM20 16c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z', render: 'secondary' },
-            // Node inner details
-            { path: 'M4 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM20 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM4 17c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM20 17c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z', render: 'depth' },
-            // Central hub detail
-            { path: 'M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z', render: 'symbol' },
+        type: 'web3-fill',
+        paths: [
+            // Central hub with 3D effect
+            'M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z',
+            'M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
+            // Connected nodes
+            'M4 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
+            'M20 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
+            'M4 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
+            'M20 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
             // Connection lines
-            { path: 'M7 7L9 9M17 7L15 9M7 17L9 15M17 17L15 15', render: 'highlight' }
+            'M6 6L10 10M18 6L14 10M6 18L10 14M18 18L14 14'
         ]
     },
     'dao': {
         name: 'DAO',
-        type: '3d-stroke',
-        layers: [
-            // Main governance circle
-            { path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z', render: 'main' },
-            // Inner circle for depth
-            { path: 'M12 4C7.58 4 4 7.58 4 12s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8z', render: 'depth' },
-            // Central hub
-            { path: 'M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z', render: 'symbol' },
-            // Connection lines (simplified)
-            { path: 'M12 2V6M12 18V22M2 12H6M18 12H22', render: 'highlight' }
+        type: 'web3-fill',
+        paths: [
+            // Governance circle with 3D effect
+            'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z',
+            'M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z',
+            // Voting nodes
+            'M8 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
+            'M16 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
+            'M8 14c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
+            'M16 14c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
+            // Central governance
+            'M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z',
+            // Connection lines
+            'M10 10L8 8M14 10L16 8M10 14L8 16M14 14L16 16'
         ]
     },
     'metaverse': {
         name: 'Metaverse',
-        type: '3d-stroke',
-        layers: [
-            // Virtual world sphere
-            { path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z', render: 'main' },
-            // Inner sphere for depth
-            { path: 'M12 4C7.58 4 4 7.58 4 12s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8z', render: 'depth' },
-            // Simple VR visor
-            { path: 'M7 9h10v6H7z', render: 'secondary' },
-            // Clean grid pattern
-            { path: 'M12 4V20M6 12H18', render: 'highlight' }
+        type: 'web3-fill',
+        paths: [
+            // Virtual world sphere with 3D effect
+            'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z',
+            'M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z',
+            // Grid lines for virtual space
+            'M12 3V21M3 12H21',
+            'M6.34 6.34L17.66 17.66M17.66 6.34L6.34 17.66',
+            // VR headset overlay
+            'M7 8h10v6H7z',
+            'M8 9h8v4H8z',
+            // Eye pieces
+            'M9 10h2v2H9zM13 10h2v2h-2z',
+            // Strap
+            'M6 11h1v2H6zM17 11h1v2h-1z'
         ]
     },
     'smart-contract': {
         name: 'Smart Contract',
-        type: '3d-stroke',
-        layers: [
-            // Contract document
-            { path: 'M5 2h14v20H5z', render: 'main' },
-            // Inner document depth
-            { path: 'M6 3h12v18H6z', render: 'depth' },
+        type: 'web3-fill',
+        paths: [
+            // Contract document with 3D effect
+            'M6 2h12v20H6z',
+            'M7 3h10v18H7z',
             // Contract lines
-            { path: 'M8 6h8v1H8zM8 8h8v1H8zM8 10h5v1H8z', render: 'secondary' },
-            // Smart chip
-            { path: 'M9 13h6v5H9z', render: 'symbol' },
+            'M9 6h6v1H9zM9 8h6v1H9zM9 10h4v1H9z',
+            // Smart chip overlay
+            'M10 12h4v4h-4z',
+            'M11 13h2v2h-2z',
             // Circuit pattern
-            { path: 'M10 14h1v1h-1zM13 14h1v1h-1zM10 16h1v1h-1zM13 16h1v1h-1z', render: 'highlight' }
+            'M10 12h1v1h-1zM13 12h1v1h-1zM10 15h1v1h-1zM13 15h1v1h-1z',
+            // 3D depth
+            'M6 2L5 1M18 2L19 1M18 22L19 23M6 22L5 23',
+            // More contract text
+            'M9 17h6v1H9zM9 19h4v1H9z'
         ]
     },
     'mining': {
         name: 'Crypto Mining',
-        type: '3d-stroke',
-        layers: [
-            // Mining rig base
-            { path: 'M2 10h20v8H2z', render: 'main' },
-            // Inner rig depth
-            { path: 'M3 11h18v6H3z', render: 'depth' },
+        type: 'web3-fill',
+        paths: [
+            // Mining rig with 3D effect
+            'M2 10h20v8H2z',
+            'M3 11h18v6H3z',
             // Graphics cards
-            { path: 'M4 12h3v3H4zM8.5 12h3v3h-3zM13 12h3v3h-3zM17.5 12h3v3h-3z', render: 'secondary' },
+            'M5 12h3v3H5zM9 12h3v3H9zM13 12h3v3h-3zM16 12h3v3h-3z',
             // Fans
-            { path: 'M5.5 13.5c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1-1 .45-1 1zM10 13.5c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1-1 .45-1 1zM14.5 13.5c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1-1 .45-1 1zM19 13.5c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1-1 .45-1 1z', render: 'symbol' },
-            // Heat lines
-            { path: 'M5.5 11V8M10 11V8M14.5 11V8M19 11V8', render: 'highlight' }
+            'M6 13.5c0 .28.22.5.5.5s.5-.22.5-.5-.22-.5-.5-.5-.5.22-.5.5z',
+            'M10 13.5c0 .28.22.5.5.5s.5-.22.5-.5-.22-.5-.5-.5-.5.22-.5.5z',
+            'M14 13.5c0 .28.22.5.5.5s.5-.22.5-.5-.22-.5-.5-.5-.5.22-.5.5z',
+            'M17 13.5c0 .28.22.5.5.5s.5-.22.5-.5-.22-.5-.5-.5-.5.22-.5.5z',
+            // Heat/power lines
+            'M6 11V9M10 11V9M14 11V9M17 11V9',
+            // 3D depth
+            'M2 10L1 9M22 10L23 9M22 18L23 19M2 18L1 19'
         ]
     },
     'token': {
         name: 'Token',
-        type: '3d-stroke',
-        layers: [
-            // Main coin circle - simplified outer ring
-            { path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z', render: 'main' },
-            // Inner coin body - creates depth
-            { path: 'M12 3.5C7.31 3.5 3.5 7.31 3.5 12s3.81 8.5 8.5 8.5 8.5-3.81 8.5-8.5-3.81-8.5-8.5-8.5z', render: 'depth' },
-            // Token symbol (T) - clean and simple
-            { path: 'M8 8h8v2h-3v6h-2v-6H8V8z', render: 'symbol' },
-            // Subtle highlight for 3D effect
-            { path: 'M12 3.5C8.5 3.5 5.5 5.8 4.5 9', render: 'highlight' }
+        type: 'web3-fill',
+        paths: [
+            // Token coin with 3D effect
+            'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z',
+            'M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z',
+            // Token symbol (T)
+            'M8 8h8v2h-3v6h-2v-6H8V8z',
+            // Inner circle for depth
+            'M12 6C8.69 6 6 8.69 6 12s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z',
+            // Highlight arc
+            'M12 4C8.13 4 4.86 6.27 3.5 9.5',
+            // Edge detail
+            'M12 1C5.92 1 1 5.92 1 12s4.92 11 11 11 11-4.92 11-11S18.08 1 12 1z'
         ]
     },
     'staking': {
         name: 'Staking',
-        type: '3d-stroke',
-        layers: [
-            // Staking platform
-            { path: 'M3 14h18v6H3z', render: 'main' },
-            // Platform depth
-            { path: 'M4 15h16v4H4z', render: 'depth' },
-            // Three staking coins
-            { path: 'M6 6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zM12 4c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zM18 6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z', render: 'secondary' },
-            // Coin inner details
-            { path: 'M6 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM12 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM18 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z', render: 'symbol' },
+        type: 'web3-fill',
+        paths: [
+            // Staking platform with 3D effect
+            'M4 14h16v6H4z',
+            'M5 15h14v4H5z',
+            // Staked coins
+            'M8 8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
+            'M12 6c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
+            'M16 8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
             // Staking arrows
-            { path: 'M6 10V14M12 8V14M18 10V14', render: 'highlight' }
+            'M8 11V13M12 9V13M16 11V13',
+            // Reward indicators
+            'M6 16h2v1H6zM10 16h2v1h-2zM14 16h2v1h-2z',
+            // 3D depth
+            'M4 14L3 13M20 14L21 13M20 20L21 21M4 20L3 21'
         ]
     }
 };
+
+// Export for use in icons.html
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = web3Icons;
+}

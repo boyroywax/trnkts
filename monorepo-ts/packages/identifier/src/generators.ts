@@ -1,4 +1,5 @@
 import { randomBytes } from 'crypto';
+import { IdentifierType, IdentifierValue, RandomGeneratorConfig, SequenceType, SequenceTypes, SequenceValue } from './types';
 
 /**
  * Generates a RFC 4122 version 4 UUID
@@ -80,10 +81,80 @@ function createSequentialNumber(
 function createPrefixSuffix(
     prefix: string = '',
     suffix: string = ''
-): (value: string | number) => string {
-    return (value: string | number): string => {
-        return `${prefix}${value}${suffix}`;
+): (value: IdentifierValue) => string {
+    return (value: IdentifierValue): string => {
+        return `${prefix}${String(value)}${suffix}`;
     };
+}
+
+class SequenceGenerator {
+    private current: SequenceValue;
+    private type: SequenceType;
+    private step: number;
+
+    constructor(
+        initial: SequenceValue = 0,
+        step: number = 1,
+        type: SequenceType = 'NUMERIC'
+    ) {
+        this.current = initial;
+        this.step = step;
+        this.type = type;
+    }
+
+    public next(): SequenceValue {
+        switch (this.type) {
+            case 'ALPHA':
+                const nextCharCode: number = (this.current as string).charCodeAt(0) + this.step;
+                this.current = String.fromCharCode(nextCharCode);
+                break;
+            case 'ALPHANUMERIC':
+                const alphaNumChars: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                const currentIndex: number = alphaNumChars.indexOf(this.current as string);
+                const nextIndex: number = (currentIndex + this.step) % alphaNumChars.length;
+                this.current = alphaNumChars[nextIndex] as SequenceValue;
+                break;
+            case 'NUMERIC':
+                const nextNumber: number = (this.current as number) + this.step;
+                this.current = nextNumber;
+                break;
+            default:
+                throw new Error(`Unsupported sequence type: ${this.type}`);
+        }
+
+        return this.current;
+    }
+}
+
+class RandomGenerator {
+    private type: IdentifierType;
+    private config: RandomGeneratorConfig;
+
+    constructor(type: IdentifierType, config: RandomGeneratorConfig = {}) {
+        this.type = type;
+        this.config = config;
+    }
+
+    public generate(): IdentifierValue {
+        let value: IdentifierValue = `${String(this.config.prefix)}${this.config.separator}` || '';
+        switch (this.type) {
+            case 'UUID':
+                value += createUuid();
+                break;
+            case 'RANDOM_STRING':
+                value = createRandomString(this.config.length);
+                break;
+            case 'RANDOM_NUMBER':
+                value += createRandomNumber(this.config.min, this.config.max);
+                break;
+            case 'SEQUENTIAL_NUMBER':
+                value += createSequentialNumber(this.config.start, this.config.step);
+                break;
+            default:
+                throw new Error(`Unsupported identifier type: ${this.type}`);
+        }
+        return value;
+    }
 }
 
 export {
@@ -92,4 +163,5 @@ export {
     createRandomNumber,
     createSequentialNumber,
     createPrefixSuffix,
+    SequenceGenerator,
 };

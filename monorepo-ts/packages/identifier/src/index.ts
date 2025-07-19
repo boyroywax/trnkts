@@ -44,7 +44,7 @@ class Identifier {
         this.type = type || IdentifierTypes.UUID; // Default to UUID if type is not provided
     }
 
-    public getValue(): Identifier {
+    public getValue(): IdentifierValue {
         return this.value;
     }
 
@@ -53,7 +53,7 @@ class Identifier {
     }
 
     public toString(): string {
-        return `${this.value}`;
+        return `${String(this.value)}`;
     }
 }
 

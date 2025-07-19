@@ -68,18 +68,12 @@
             <!-- Translucent Series - Green theme -->
             <div class="tab" onclick="switchTab('translucent')" style="background: linear-gradient(135deg, #4CAF50, #8BC34A); color: white; border-color: transparent;">Translucent</div>
             
-            <!-- 3D Series - Orange/Red theme -->
-            <div class="tab" onclick="switchTab('interface-3d')" style="background: linear-gradient(135deg, #FF6B35, #F7931E); color: white; border-color: transparent;">Interface 3D</div>
-            <div class="tab" onclick="switchTab('system-3d')" style="background: linear-gradient(135deg, #FF6B35, #F7931E); color: white; border-color: transparent;">System 3D</div>
-            <div class="tab" onclick="switchTab('communication-3d')" style="background: linear-gradient(135deg, #FF6B35, #F7931E); color: white; border-color: transparent;">Comm 3D</div>
-            <div class="tab" onclick="switchTab('media-3d')" style="background: linear-gradient(135deg, #FF6B35, #F7931E); color: white; border-color: transparent;">Media 3D</div>
-            <div class="tab" onclick="switchTab('web3-3d')" style="background: linear-gradient(135deg, #FF6B35, #F7931E); color: white; border-color: transparent;">Web3 3D</div>
-            
-            <!-- Tonal Simple Series - Purple theme -->
-            <div class="tab" onclick="switchTab('communication-3d-simple')" style="background: linear-gradient(135deg, #9C27B0, #673AB7); color: white; border-color: transparent;">Comm Simple</div>
-            <div class="tab" onclick="switchTab('media-3d-simple')" style="background: linear-gradient(135deg, #9C27B0, #673AB7); color: white; border-color: transparent;">Media Simple</div>
-            <div class="tab" onclick="switchTab('system-3d-simple')" style="background: linear-gradient(135deg, #9C27B0, #673AB7); color: white; border-color: transparent;">System Simple</div>
-            <div class="tab" onclick="switchTab('navigation-3d')" style="background: linear-gradient(135deg, #9C27B0, #673AB7); color: white; border-color: transparent;">Nav Simple</div>
+            <!-- Dual Tone Series - Purple theme -->
+            <div class="tab" onclick="switchTab('communication-3d-simple')" style="background: linear-gradient(135deg, #9C27B0, #673AB7); color: white; border-color: transparent;">Comm Dual Tone</div>
+            <div class="tab" onclick="switchTab('media-3d-simple')" style="background: linear-gradient(135deg, #9C27B0, #673AB7); color: white; border-color: transparent;">Media Dual Tone</div>
+            <div class="tab" onclick="switchTab('system-3d-simple')" style="background: linear-gradient(135deg, #9C27B0, #673AB7); color: white; border-color: transparent;">System Dual Tone</div>
+            <div class="tab" onclick="switchTab('navigation-3d')" style="background: linear-gradient(135deg, #9C27B0, #673AB7); color: white; border-color: transparent;">Nav Dual Tone</div>
+            <div class="tab" onclick="switchTab('web3-dual-tone')" style="background: linear-gradient(135deg, #9C27B0, #673AB7); color: white; border-color: transparent;">Web3 Dual Tone</div>
         </div>
 
         <div id="interface-grid" class="icon-grid"></div>
@@ -88,15 +82,11 @@
         <div id="brand-grid" class="icon-grid" style="display: none;"></div>
         <div id="gems-grid" class="icon-grid" style="display: none;"></div>
         <div id="translucent-grid" class="icon-grid" style="display: none;"></div>
-        <div id="interface-3d-grid" class="icon-grid" style="display: none;"></div>
-        <div id="system-3d-grid" class="icon-grid" style="display: none;"></div>
-        <div id="communication-3d-grid" class="icon-grid" style="display: none;"></div>
         <div id="communication-3d-simple-grid" class="icon-grid" style="display: none;"></div>
-        <div id="media-3d-grid" class="icon-grid" style="display: none;"></div>
         <div id="media-3d-simple-grid" class="icon-grid" style="display: none;"></div>
         <div id="system-3d-simple-grid" class="icon-grid" style="display: none;"></div>
         <div id="navigation-3d-grid" class="icon-grid" style="display: none;"></div>
-        <div id="web3-3d-grid" class="icon-grid" style="display: none;"></div>
+        <div id="web3-dual-tone-grid" class="icon-grid" style="display: none;"></div>
     </div>
 
     <!-- Import modular icon definitions -->
@@ -107,15 +97,11 @@
     <script src="icons/brand.js"></script>
     <script src="icons/gems.js"></script>
     <script src="icons/translucent.js"></script>
-    <script src="icons/interface-3d.js"></script>
-    <script src="icons/system-3d.js"></script>
-    <script src="icons/communication-3d.js"></script>
     <script src="icons/communication-3d-simple.js"></script>
-    <script src="icons/media-3d.js"></script>
     <script src="icons/media-3d-simple.js"></script>
     <script src="icons/system-3d-simple.js"></script>
     <script src="icons/navigation-3d.js"></script>
-    <script src="icons/web3-3d.js"></script>
+    <script src="icons/web3-dual-tone.js"></script>
 
     <script>
         let currentColorMode = 'gradient';
@@ -130,15 +116,11 @@
             brand: brandIcons,
             gems: gemsIcons,
             translucent: translucentIcons,
-            'interface-3d': interface3dIcons,
-            'system-3d': system3dIcons,
-            'communication-3d': communication3dIcons,
             'communication-3d-simple': communication3dSimpleIcons,
-            'media-3d': media3dIcons,
             'media-3d-simple': media3dSimpleIcons,
             'system-3d-simple': systemSimpleIcons,
             'navigation-3d': navigation3dIcons,
-            'web3-3d': web3Icons
+            'web3-dual-tone': web3DualToneIcons
         };
 
         // Initialize the icon renderer
