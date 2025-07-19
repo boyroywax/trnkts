@@ -9,7 +9,6 @@ Object.freeze(IdentifierTypes);
 
 type IdentifierType = keyof typeof IdentifierTypes;
 
-
 type IdentifierValue = string | number | bigint | symbol;
 
 

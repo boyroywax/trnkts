@@ -1,28 +1,30 @@
-// 3D Communication Icons - Simple style matching navigation 3D icons
-// Using primary/accent split or main/secondary depth for cleaner geometric forms
+// 3D Communication Icons - Simple dual tone style matching navigation icons
+// Using primary/accent split for clean geometric forms
 const communication3dSimpleIcons = {
     'message': {
         name: 'Message',
         type: '3d-stroke',
         layers: [
-            // Left half of message bubble - primary segment
-            { path: 'M4 2C2.9 2 2 2.9 2 4L2 16L6 18L12 18L12 2L4 2Z', render: 'primary' },
+            // Left half of message bubble with tail - primary segment
+            { path: 'M4 4C2.9 4 2 4.9 2 6v10c0 1.1.9 2 2 2h6l2 4 2-4V4H4z', render: 'primary' },
             // Right half of message bubble - accent segment
-            { path: 'M12 2L20 2C21.1 2 22 2.9 22 4L22 16C22 17.1 21.1 18 20 18L12 18L12 2Z', render: 'accent' },
-            // Message text lines - line layer (using stroke rendering)
-            { path: 'M6 6L18 6', render: 'line' },
-            { path: 'M6 9L16 9', render: 'line' },
-            { path: 'M6 12L14 12', render: 'line' }
+            { path: 'M12 4h8c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2h-8V4z', render: 'accent' },
+            // Horizontal text lines mimicking lines of text - detail layer
+            { path: 'M5 8h14M5 10h12M5 12h8', render: 'details' }
         ]
     },
     'phone': {
         name: 'Phone',
         type: '3d-stroke',
         layers: [
-            // Left half of phone handset - primary segment
-            { path: 'M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5L21 20C21 20.55 20.55 21 20 21C15.5 21 11.5 19.5 8.5 16.5C5.5 13.5 3.5 9.5 3.5 5C3.5 3.45 3.95 3 4.5 3L7.5 3L6.62 10.79Z', render: 'primary' },
-            // Right half and connection curves - accent segment
-            { path: 'M8.5 16.5C11.5 19.5 15.5 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3L7.5 3C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L8.5 16.5Z', render: 'accent' }
+            // Left half of smartphone - primary segment
+            { path: 'M8 2C6.9 2 6 2.9 6 4v16c0 1.1.9 2 2 2h4V2H8z', render: 'primary' },
+            // Right half of smartphone - accent segment
+            { path: 'M12 2h4c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2h-4V2z', render: 'accent' },
+            // Screen area - detail layer
+            { path: 'M7 5h10v12H7V5z', render: 'detail' },
+            // Home button - detail layer
+            { path: 'M12 19c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1z', render: 'detail' }
         ]
     },
     'email': {
@@ -30,53 +32,46 @@ const communication3dSimpleIcons = {
         type: '3d-stroke',
         layers: [
             // Left half of envelope - primary segment
-            { path: 'M4 4C2.9 4 2 4.9 2 6L2 18C2 19.1 2.9 20 4 20L12 20L12 4L4 4Z', render: 'primary' },
+            { path: 'M4 4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h8V4H4z', render: 'primary' },
             // Right half of envelope - accent segment
-            { path: 'M12 4L20 4C21.1 4 22 4.9 22 6L22 18C22 19.1 21.1 20 20 20L12 20L12 4Z', render: 'accent' },
-            // Email envelope flap - line layer
-            { path: 'M2 6L12 13L22 6', render: 'line' },
-            // Email content lines - line layer
-            { path: 'M6 9L18 9', render: 'line' },
-            { path: 'M6 12L18 12', render: 'line' },
-            { path: 'M6 15L14 15', render: 'line' }
+            { path: 'M12 4h8c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2h-8V4z', render: 'accent' },
+            // Email envelope flap - detail layer
+            { path: 'M2 6l10 7 10-7', render: 'detail' }
         ]
     },
     'chat': {
         name: 'Chat',
         type: '3d-stroke',
         layers: [
-            // Main chat bubble - primary segment
-            { path: 'M8 3C4.13 3 1 6.13 1 10L1 14C1 17.87 4.13 21 8 21L10 21L10 23L14 20L20 20C21.1 20 22 19.1 22 18L22 8C22 6.9 21.1 6 20 6L12 6C10.5 4.5 9.5 3 8 3Z', render: 'primary' },
-            // Chat tail and secondary bubble - accent segment  
-            { path: 'M10 21L10 23L14 20L20 20C21.1 20 22 19.1 22 18L22 8C22 6.9 21.1 6 20 6L12 6L10 21Z', render: 'accent' },
-            // Chat text lines - line layer
-            { path: 'M5 9L19 9', render: 'line' },
-            { path: 'M5 12L19 12', render: 'line' },
-            { path: 'M5 15L15 15', render: 'line' }
+            // Left half of chat bubble - primary segment (scaled up)
+            { path: 'M3 3C1.9 3 1 3.9 1 5v10c0 1.1.9 2 2 2h7l3 4v-4V3H3z', render: 'primary' },
+            // Right half of chat bubble - accent segment (scaled up)
+            { path: 'M12 3h7c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2h-7V3z', render: 'accent' },
+            // Chat dots indicating conversation - detail layer (scaled up)
+            { path: 'M6 10c0 .6.4 1 1 1s1-.4 1-1-.4-1-1-1-1 .4-1 1zM10 10c0 .6.4 1 1 1s1-.4 1-1-.4-1-1-1-1 .4-1 1zM14 10c0 .6.4 1 1 1s1-.4 1-1-.4-1-1-1-1 .4-1 1z', render: 'detail' }
         ]
     },
     'wifi': {
         name: 'WiFi',
         type: '3d-stroke',
         layers: [
-            // Left side wifi arcs - primary segment
-            { path: 'M1 9C2.5 7.5 4.5 6.5 6.8 6.1C8.5 5.8 10.2 5.7 12 5.7L12 7C10.5 7 9 7.2 7.6 7.6C5.8 8.1 4.2 9 3 10.2L1 9ZM4 12C4.8 11.2 5.8 10.6 6.9 10.2C8.5 9.6 10.2 9.4 12 9.4L12 11C10.5 11 9.1 11.2 7.8 11.7C6.8 12.1 5.9 12.6 5.1 13.4L4 12Z', render: 'primary' },
-            // Right side wifi arcs - accent segment
-            { path: 'M12 5.7C13.8 5.7 15.5 5.8 17.2 6.1C19.5 6.5 21.5 7.5 23 9L21 10.2C19.8 9 18.2 8.1 16.4 7.6C15 7.2 13.5 7 12 7L12 5.7ZM12 9.4C13.8 9.4 15.5 9.6 17.1 10.2C18.2 10.6 19.2 11.2 20 12L18.9 13.4C18.1 12.6 17.2 12.1 16.2 11.7C14.9 11.2 13.5 11 12 11L12 9.4Z', render: 'accent' },
-            // Center signal point - detail layer
-            { path: 'M11 18C11 17.45 11.45 17 12 17C12.55 17 13 17.45 13 18C13 18.55 12.55 19 12 19C11.45 19 11 18.55 11 18Z', render: 'detail' }
+            // Left half of wifi signal arcs - primary segment
+            { path: 'M2 16c0-5.5 4.5-10 10-10v2c-4.4 0-8 3.6-8 8h-2zM5 16c0-3.9 3.1-7 7-7v2c-2.8 0-5 2.2-5 5H5zM8 16c0-2.2 1.8-4 4-4v2c-1.1 0-2 .9-2 2H8z', render: 'primary' },
+            // Right half of wifi signal arcs - accent segment
+            { path: 'M12 6c5.5 0 10 4.5 10 10h-2c0-4.4-3.6-8-8-8V6zM12 9c3.9 0 7 3.1 7 7h-2c0-2.8-2.2-5-5-5V9zM12 12c2.2 0 4 1.8 4 4h-2c0-1.1-.9-2-2-2V12z', render: 'accent' },
+            // Center signal dot - split circle (left half primary, right half accent)
+            { path: 'M12 18c-1.1 0-2 .9-2 2s.9 2 2 2V18z', render: 'primary' },
+            { path: 'M12 18v4c1.1 0 2-.9 2-2s-.9-2-2-2z', render: 'accent' }
         ]
     },
     'bluetooth': {
         name: 'Bluetooth',
         type: '3d-stroke',
         layers: [
-            // Left side of bluetooth symbol - primary segment
-            { path: 'M12 2L11 3L11 9.5L7.5 6L6 7.5L10.5 12L6 16.5L7.5 18L11 14.5L11 21L12 22L12 13L12 11L12 2Z', render: 'primary' },
-            // Right side zigzag pattern - accent segment  
-            { path: 'M12 2L17 7L13 11L12 11L12 13L13 13L17 17L12 22L12 21L15 18L13 16L13 13L15 15L17 17L12 22L12 13L13 13L17 17L15 15L13 13L13 11L15 9L17 7L12 2Z', render: 'accent' },
-            // Bluetooth connection points - detail layer
-            { path: 'M13 5L15 7L13 9L13 5ZM13 15L15 17L13 19L13 15Z', render: 'detail' }
+            // Left half of bluetooth symbol - primary segment
+            { path: 'M12 2v7.5L8.5 6 7 7.5 10.5 11 7 14.5 8.5 16l3.5-3.5V20l1-1V2h-1z', render: 'primary' },
+            // Right half of bluetooth symbol - accent segment
+            { path: 'M12 2l5.5 5.5L14 11l3.5 3.5L12 20V2z', render: 'accent' }
         ]
     }
 };
