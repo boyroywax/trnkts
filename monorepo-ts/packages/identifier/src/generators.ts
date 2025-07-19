@@ -4,7 +4,7 @@ import { randomBytes } from 'crypto';
  * Generates a RFC 4122 version 4 UUID
  * @returns A string representation of a UUID
  */
-export function createUuid(): string {
+function createUuid(): string {
     const bytes: Buffer = randomBytes(16);
 
     // Set version (4) and variant bits according to RFC 4122
@@ -27,7 +27,7 @@ export function createUuid(): string {
  * @param length The length of the string to generate (default: 8)
  * @returns A randomly generated alphanumeric string
  */
-export function createRandomString(length: number = 8): string {
+function createRandomString(length: number = 8): string {
     const characters: string =
         'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result: string = '';
@@ -48,7 +48,7 @@ export function createRandomString(length: number = 8): string {
  * @param max The maximum value (inclusive)
  * @returns A random number between min and max
  */
-export function createRandomNumber(min: number, max: number): number {
+function createRandomNumber(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -58,7 +58,7 @@ export function createRandomNumber(min: number, max: number): number {
  * @param step The increment step (default: 1)
  * @returns A function that returns the next number in the sequence
  */
-export function createSequentialNumber(
+function createSequentialNumber(
     start: number = 1,
     step: number = 1
 ): () => number {
@@ -70,3 +70,26 @@ export function createSequentialNumber(
         return value;
     };
 }
+
+/**
+ * Creates a function that adds a prefix and/or suffix to identifier values
+ * @param prefix Optional prefix to add before the identifier (default: empty string)
+ * @param suffix Optional suffix to add after the identifier (default: empty string)
+ * @returns A function that takes an identifier value and returns it with prefix/suffix applied
+ */
+function createPrefixSuffix(
+    prefix: string = '',
+    suffix: string = ''
+): (value: string | number) => string {
+    return (value: string | number): string => {
+        return `${prefix}${value}${suffix}`;
+    };
+}
+
+export {
+    createUuid,
+    createRandomString,
+    createRandomNumber,
+    createSequentialNumber,
+    createPrefixSuffix,
+};
