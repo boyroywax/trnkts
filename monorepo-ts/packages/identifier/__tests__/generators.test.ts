@@ -186,21 +186,30 @@ describe('createPrefixSuffix', () => {
 
 describe('SequenceGenerator', () => {
     it('should generate numeric sequence', () => {
-        const generator = new SequenceGenerator(1, 1, 'NUMERIC');
+        const generator = new SequenceGenerator('NUMERIC', {
+            start: 1,
+            step: 1,
+        });
         expect(generator.next()).toBe(2);
         expect(generator.next()).toBe(3);
         expect(generator.next()).toBe(4);
     });
 
     it('should generate alphabetic sequence', () => {
-        const generator = new SequenceGenerator('A', 1, 'ALPHA');
+        const generator = new SequenceGenerator('ALPHA', {
+            start: 'A',
+            step: 1,
+        });
         expect(generator.next()).toBe('B');
         expect(generator.next()).toBe('C');
         expect(generator.next()).toBe('D');
     });
 
     it('should generate alphanumeric sequence', () => {
-        const generator = new SequenceGenerator('A', 1, 'ALPHANUMERIC');
+        const generator = new SequenceGenerator('ALPHANUMERIC', {
+            start: 'A',
+            step: 1,
+        });
         const result = generator.next();
         expect(typeof result).toBe('string');
         expect(result).toMatch(/^[A-Za-z0-9]$/);
@@ -212,7 +221,9 @@ describe('RandomGenerator', () => {
         const generator = new RandomGenerator('UUID');
         const result = generator.generate();
         expect(typeof result).toBe('string');
-        expect(result).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+        expect(result).toMatch(
+            /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+        );
     });
 
     it('should generate ULID identifier', () => {
@@ -230,10 +241,11 @@ describe('RandomGenerator', () => {
     });
 
     it('should add prefix and suffix', () => {
-        const generator = new RandomGenerator('UUID', { 
-            prefix: 'id_', 
+        const generator = new RandomGenerator('UUID', {
+            prefix: 'id_',
             suffix: '_end',
-            separator: ''
+            prefixSeparator: '',
+            suffixSeparator: '',
         });
         const result = generator.generate() as string;
         expect(result.startsWith('id_')).toBe(true);

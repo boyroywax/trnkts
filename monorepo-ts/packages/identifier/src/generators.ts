@@ -1,18 +1,17 @@
 import { randomBytes as cryptoRandomBytes } from 'crypto';
+import type { SequenceGeneratorConfig } from './types';
 import {
-    SequenceGeneratorConfig,
     type IdentifierType,
     type IdentifierValue,
     type RandomGeneratorConfig,
     type SequenceType,
-    type SequenceValue
+    type SequenceValue,
 } from './types';
 import {
     alphaNumChars,
     base32CrockfordsEncodeChars,
     nanoidChars,
 } from './characters';
-
 
 /**
  * Generates a RFC 4122 version 4 UUID
@@ -22,8 +21,8 @@ function createUuid(): string {
     const bytes: Buffer = cryptoRandomBytes(16);
 
     // Set version (4) and variant bits according to RFC 4122
-    bytes[6] = (bytes[6] & 0x0f) | 0x40; // Version 4
-    bytes[8] = (bytes[8] & 0x3f) | 0x80; // Variant 10
+    bytes[6] = (bytes[6]! & 0x0f) | 0x40; // Version 4
+    bytes[8] = (bytes[8]! & 0x3f) | 0x80; // Variant 10
 
     const hex = bytes.toString('hex');
 
@@ -43,10 +42,10 @@ function createUuid(): string {
  */
 function createUlid(timestamp?: number): string {
     const time = timestamp ?? Date.now();
-    
+
     // Crockford's Base32 encoding alphabet (excludes I, L, O, U to avoid confusion)
     const encoding = base32CrockfordsEncodeChars;
-    
+
     // Encode timestamp (48 bits)
     let timeStr = '';
     let timeValue = time;
@@ -54,7 +53,7 @@ function createUlid(timestamp?: number): string {
         timeStr = encoding[timeValue % 32] + timeStr;
         timeValue = Math.floor(timeValue / 32);
     }
-    
+
     // Generate random component (80 bits)
     const randomBytesArray = cryptoRandomBytes(10);
 
@@ -71,15 +70,15 @@ function createUlid(timestamp?: number): string {
 
     let randomStr = '';
     for (let i = 0; i < 16; i++) {
-        const byteIndex = Math.floor(i * 5 / 8);
+        const byteIndex = Math.floor((i * 5) / 8);
         const bitOffset = (i * 5) % 8;
-        let value = randomBytesArray[byteIndex] >> bitOffset;
+        let value = randomBytesArray[byteIndex]! >> bitOffset;
         if (bitOffset > 3 && byteIndex < 9) {
-            value |= (randomBytesArray[byteIndex + 1] << (8 - bitOffset));
+            value |= randomBytesArray[byteIndex + 1]! << (8 - bitOffset);
         }
         randomStr += encoding[value & 31];
     }
-    
+
     return timeStr + randomStr;
 }
 
@@ -92,13 +91,13 @@ function createUlid(timestamp?: number): string {
 function createNanoid(alphabet?: string, size: number = 21): string {
     const chars = alphabet ?? nanoidChars;
     const mask = (2 << (Math.log(chars.length - 1) / Math.LN2)) - 1;
-    const step = -~(1.6 * mask * size / chars.length);
-    
+    const step = -~((1.6 * mask * size) / chars.length);
+
     let id = '';
     while (true) {
         const bytes = cryptoRandomBytes(step);
         for (let i = 0; i < step; i++) {
-            const byte = bytes[i] & mask;
+            const byte = bytes[i]! & mask;
             if (chars[byte]) {
                 id += chars[byte];
                 if (id.length === size) return id;
@@ -113,10 +112,12 @@ function createNanoid(alphabet?: string, size: number = 21): string {
  */
 function createCuid(): string {
     const timestamp = Date.now().toString(36);
-    const counter = Math.floor(Math.random() * 1679616).toString(36).padStart(4, '0');
+    const counter = Math.floor(Math.random() * 1679616)
+        .toString(36)
+        .padStart(4, '0');
     const fingerprint = 'c'; // Simple fingerprint for collision resistance
     const randomSuffix = cryptoRandomBytes(4).toString('hex');
-    
+
     return `c${timestamp}${counter}${fingerprint}${randomSuffix}`;
 }
 
@@ -132,9 +133,10 @@ function createSnowflake(workerId?: number, datacenterId?: number): string {
     const datacenter = BigInt(datacenterId ?? Math.floor(Math.random() * 32));
     const worker = BigInt(workerId ?? Math.floor(Math.random() * 32));
     const sequence = BigInt(Math.floor(Math.random() * 4096));
-    
-    const id = (timestamp << 22n) | (datacenter << 17n) | (worker << 12n) | sequence;
-    
+
+    const id =
+        (timestamp << 22n) | (datacenter << 17n) | (worker << 12n) | sequence;
+
     return id.toString();
 }
 
@@ -185,6 +187,12 @@ function createSequentialNumber(
     };
 }
 
+const defaultSequenceType: SequenceType = 'NUMERIC';
+const defaultSequenceConfig: SequenceGeneratorConfig = {
+    start: 1,
+    step: 1,
+};
+
 class SequenceGenerator {
     private current: SequenceValue;
     private type: SequenceType;
@@ -197,19 +205,20 @@ class SequenceGenerator {
         this.type = type;
         this.config = {
             start: !config.start ? defaultSequenceConfig.start : config.start,
-            step: !config.step ? defaultSequenceConfig.step : config.step
-        }
+            step: !config.step ? defaultSequenceConfig.step : config.step,
+        };
         this.current = this.config.start || 0;
     }
 
     public next(): SequenceValue {
         switch (this.type) {
-            case 'ALPHA':
+            case 'ALPHA': {
                 const nextCharCode: number =
                     (this.current as string).charCodeAt(0) + this.config.step;
                 this.current = String.fromCharCode(nextCharCode);
                 break;
-            case 'ALPHANUMERIC':
+            }
+            case 'ALPHANUMERIC': {
                 const currentIndex: number = alphaNumChars.indexOf(
                     this.current as string
                 );
@@ -217,10 +226,13 @@ class SequenceGenerator {
                     (currentIndex + this.config.step) % alphaNumChars.length;
                 this.current = alphaNumChars[nextIndex] as SequenceValue;
                 break;
-            case 'NUMERIC':
-                const nextNumber: number = (this.current as number) + this.config.step;
+            }
+            case 'NUMERIC': {
+                const nextNumber: number =
+                    (this.current as number) + this.config.step;
                 this.current = nextNumber;
                 break;
+            }
             default:
                 throw new Error(`Unsupported sequence type: ${this.type}`);
         }
@@ -228,24 +240,6 @@ class SequenceGenerator {
         return this.current;
     }
 }
-
-const defaultRandomConfig: RandomGeneratorConfig = {
-    min: 0,
-    max: 100,
-    length: 8,
-    prefix: '',
-    suffix: '',
-    prefixSeparator: undefined,
-    suffixSeparator: undefined,
-    // ULID specific
-    timestamp: undefined,
-    // Nanoid specific
-    alphabet: nanoidChars,
-    size: 21,
-    // Snowflake specific
-    workerId: undefined,
-    datacenterId: undefined
-};
 
 class RandomGenerator {
     private type: IdentifierType;
@@ -266,7 +260,7 @@ class RandomGenerator {
         if (this.config.prefixSeparator) {
             value += String(this.config.prefixSeparator);
         }
-        
+
         switch (this.type) {
             case 'UUID':
                 value += createUuid();
@@ -281,13 +275,19 @@ class RandomGenerator {
                 value += createCuid();
                 break;
             case 'SNOWFLAKE':
-                value += createSnowflake(this.config.workerId, this.config.datacenterId);
+                value += createSnowflake(
+                    this.config.workerId,
+                    this.config.datacenterId
+                );
                 break;
             case 'RANDOM_STRING':
                 value += createRandomString(this.config.length);
                 break;
             case 'RANDOM_NUMBER':
-                value += createRandomNumber(this.config.min || 0, this.config.max || 100);
+                value += createRandomNumber(
+                    this.config.min || 0,
+                    this.config.max || 100
+                );
                 break;
             default:
                 throw new Error(`Unsupported identifier type: ${this.type}`);
@@ -300,9 +300,21 @@ class RandomGenerator {
         if (this.config.suffix) {
             value += String(this.config.suffix);
         }
-        
+
         return value;
     }
+}
+
+/**
+ * Creates a formatter function that adds prefix and/or suffix to identifier values
+ */
+function createPrefixSuffix(
+    prefix: string = '',
+    suffix: string = ''
+): (value: IdentifierValue) => string {
+    return (value: IdentifierValue): string => {
+        return `${prefix}${String(value)}${suffix}`;
+    };
 }
 
 export {

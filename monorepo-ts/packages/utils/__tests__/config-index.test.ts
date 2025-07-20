@@ -1,7 +1,7 @@
 import {
     ConfigurationDefinition,
     type ParameterDefinition,
-    type Argument
+    type Argument,
 } from '../src/config/index';
 
 describe('ConfigurationDefinition', () => {
@@ -11,77 +11,72 @@ describe('ConfigurationDefinition', () => {
     });
 
     it('should add parameter definitions', () => {
-        const config = new ConfigurationDefinition();
-        const paramDef: ParameterDefinition = {
+        const config = new ConfigurationDefinition<{ testParam: string }>();
+        const paramDef: ParameterDefinition<{ testParam: string }> = {
             key: 'testParam',
-            type: 'string',
+            type: 'testParam',
             required: true,
-            description: 'Test parameter'
+            description: 'Test parameter',
         };
-        
+
         config.addParameter(paramDef);
         expect(config.getParameter('testParam')).toEqual(paramDef);
     });
 
-    it('should validate required parameters', () => {
+    it('should check if parameter exists', () => {
         const config = new ConfigurationDefinition();
         config.addParameter({
-            name: 'required',
-            type: 'string',
-            required: true
+            key: 'required',
+            required: true,
         });
 
-        const args: Argument[] = [];
-        expect(() => config.validate(args)).toThrow();
+        expect(config.hasParameter('required')).toBe(true);
     });
 
-    it('should accept valid arguments', () => {
+    it('should accept parameter with default value', () => {
         const config = new ConfigurationDefinition();
         config.addParameter({
-            name: 'optional',
-            type: 'string',
+            key: 'optional',
             required: false,
-            defaultValue: 'default'
+            default: 'default',
         });
 
-        const args: Argument[] = [{ name: 'optional', value: 'test' }];
-        expect(() => config.validate(args)).not.toThrow();
+        const param = config.getParameter('optional');
+        expect(param?.default).toBe('default');
     });
 });
 
 describe('ParameterDefinition type', () => {
     it('should accept valid parameter definition', () => {
         const param: ParameterDefinition = {
-            name: 'test',
-            type: 'number',
+            key: 'test',
             required: false,
-            description: 'Test number parameter',
-            defaultValue: 42
+            description: 'Test parameter',
+            default: 42,
         };
-        
-        expect(param.name).toBe('test');
-        expect(param.type).toBe('number');
+
+        expect(param.key).toBe('test');
         expect(param.required).toBe(false);
-        expect(param.defaultValue).toBe(42);
+        expect(param.default).toBe(42);
     });
 });
 
 describe('Argument type', () => {
     it('should accept valid argument structure', () => {
-        const arg: Argument = {
-            name: 'testArg',
-            value: 'testValue'
+        const arg: Argument<string> = {
+            key: 'testArg',
+            value: 'testValue',
         };
-        
-        expect(arg.name).toBe('testArg');
+
+        expect(arg.key).toBe('testArg');
         expect(arg.value).toBe('testValue');
     });
 
     it('should accept argument with different value types', () => {
-        const stringArg: Argument = { name: 'str', value: 'string' };
-        const numberArg: Argument = { name: 'num', value: 123 };
-        const boolArg: Argument = { name: 'bool', value: true };
-        
+        const stringArg: Argument<string> = { key: 'str', value: 'string' };
+        const numberArg: Argument<number> = { key: 'num', value: 123 };
+        const boolArg: Argument<boolean> = { key: 'bool', value: true };
+
         expect(typeof stringArg.value).toBe('string');
         expect(typeof numberArg.value).toBe('number');
         expect(typeof boolArg.value).toBe('boolean');

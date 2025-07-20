@@ -3,10 +3,8 @@ import {
     type IdentifierType,
     type IdentifierValue,
     SequenceTypes,
-    type SequenceType,
     type SequenceValue,
     type IdentifierSeparator,
-    type RandomGeneratorConfig,
 } from '../src/types';
 
 describe('IdentifierTypes', () => {
@@ -22,7 +20,16 @@ describe('IdentifierTypes', () => {
     });
 
     it('should have all expected enum keys', () => {
-        const expectedKeys = ['UUID', 'ULID', 'NANOID', 'CUID', 'SNOWFLAKE', 'RANDOM_STRING', 'RANDOM_NUMBER', 'SEQUENTIAL_NUMBER'];
+        const expectedKeys = [
+            'UUID',
+            'ULID',
+            'NANOID',
+            'CUID',
+            'SNOWFLAKE',
+            'RANDOM_STRING',
+            'RANDOM_NUMBER',
+            'SEQUENTIAL_NUMBER',
+        ];
         const actualKeys = Object.keys(IdentifierTypes);
         expect(actualKeys).toEqual(expect.arrayContaining(expectedKeys));
         expect(actualKeys).toHaveLength(expectedKeys.length);
@@ -37,13 +44,13 @@ describe('IdentifierType', () => {
     it('should accept valid identifier type keys', () => {
         const validTypes: IdentifierType[] = [
             'UUID',
-            'ULID', 
+            'ULID',
             'NANOID',
             'CUID',
             'SNOWFLAKE',
             'RANDOM_STRING',
             'RANDOM_NUMBER',
-            'SEQUENTIAL_NUMBER'
+            'SEQUENTIAL_NUMBER',
         ];
 
         validTypes.forEach(type => {
@@ -109,7 +116,7 @@ describe('SequenceValue', () => {
         // TypeScript will prevent this at compile time, so we just test the basic types
         const stringValue: SequenceValue = 'test';
         const numberValue: SequenceValue = 123;
-        
+
         expect(typeof stringValue).toBe('string');
         expect(typeof numberValue).toBe('number');
     });
@@ -136,8 +143,18 @@ describe('IdentifierSeparator', () => {
 
     it('should work with all separator types in practice', () => {
         // Test that all valid separators can be used
-        const separators: IdentifierSeparator[] = ['|', ',', '-', '_', '.', ' ', '~', '', undefined];
-        
+        const separators: IdentifierSeparator[] = [
+            '|',
+            ',',
+            '-',
+            '_',
+            '.',
+            ' ',
+            '~',
+            '',
+            undefined,
+        ];
+
         separators.forEach(separator => {
             if (separator !== undefined) {
                 expect(typeof separator).toBe('string');

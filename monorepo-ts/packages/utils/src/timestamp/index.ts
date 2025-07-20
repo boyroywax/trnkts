@@ -30,7 +30,10 @@ class TimestampGenerator {
     /**
      * Generate timestamp for specific date
      */
-    static fromDate(date: Date, options: TimestampOptions = {}): string | number {
+    static fromDate(
+        date: Date,
+        options: TimestampOptions = {}
+    ): string | number {
         const { format = 'milliseconds' } = options;
 
         switch (format) {
@@ -113,5 +116,5 @@ export {
     convertTimestamp,
     toUnix,
     toISO,
-    toMilliseconds
+    toMilliseconds,
 };

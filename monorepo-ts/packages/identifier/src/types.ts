@@ -5,7 +5,6 @@
  * sequence values, and identifier separators.
  */
 
-
 const IdentifierTypes = {
     UUID: 'uuid',
     ULID: 'ulid',
@@ -47,7 +46,7 @@ type IdentifierSeparator =
     | undefined;
 
 interface SequenceGeneratorConfig {
-    start: SequenceValue ;
+    start: SequenceValue;
     step: number;
 }
 

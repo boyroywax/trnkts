@@ -1,12 +1,11 @@
-import { TagValue } from "./tag";
+import type { TagValue } from './tag';
 
-
-
-class Metadata<T = any> {
+export class Metadata<T = unknown> {
     public name?: string;
     public description?: string;
     public annotations?: Record<string, TagValue>;
     public labels?: string[];
     public tags?: Array<TagValue>;
-    public timestamps
+    public timestamps?: Record<string, number>;
+    public data?: T;
 }

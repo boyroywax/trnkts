@@ -12,7 +12,9 @@ RUN apk add --no-cache git
 
 # Copy package files for dependency installation
 COPY package*.json ./
-COPY packages/*/package.json ./packages/*/
+COPY packages/core/package.json ./packages/core/
+COPY packages/identifier/package.json ./packages/identifier/
+COPY packages/utils/package.json ./packages/utils/
 
 # Install dependencies (use install instead of ci for workspace setup)
 RUN npm install
@@ -26,8 +28,10 @@ COPY . .
 # Build stage - compile TypeScript
 FROM development AS build
 
-# Run TypeScript compilation for all packages
-RUN npm run build
+# Build packages in dependency order for TypeScript composite projects
+RUN cd packages/utils && npm run build
+RUN cd packages/core && npm run build  
+RUN cd packages/identifier && npm run build
 
 # Test stage - run all tests
 FROM development AS test
@@ -35,8 +39,10 @@ FROM development AS test
 # Run linting
 RUN npm run lint
 
-# Run type checking
-RUN npm run typecheck
+# Run type checking (packages should be built first)
+RUN cd packages/utils && npm run typecheck
+RUN cd packages/core && npm run typecheck  
+RUN cd packages/identifier && npm run typecheck
 
 # Run tests with coverage
 RUN npm run test

@@ -51,9 +51,9 @@ describe('TimestampGenerator', () => {
         });
 
         it('should handle timezone option (ignored in current implementation)', () => {
-            const result = TimestampGenerator.now({ 
+            const result = TimestampGenerator.now({
                 format: 'iso',
-                timezone: 'America/New_York'
+                timezone: 'America/New_York',
             });
             expect(result).toBe('2023-01-01T00:00:00.000Z');
         });
@@ -69,33 +69,41 @@ describe('TimestampGenerator', () => {
         });
 
         it('should generate timestamp from date in milliseconds format', () => {
-            const result = TimestampGenerator.fromDate(testDate, { format: 'milliseconds' });
+            const result = TimestampGenerator.fromDate(testDate, {
+                format: 'milliseconds',
+            });
             expect(result).toBe(1686832245123);
             expect(typeof result).toBe('number');
         });
 
         it('should generate timestamp from date in unix format', () => {
-            const result = TimestampGenerator.fromDate(testDate, { format: 'unix' });
+            const result = TimestampGenerator.fromDate(testDate, {
+                format: 'unix',
+            });
             expect(result).toBe(1686832245);
             expect(typeof result).toBe('number');
         });
 
         it('should generate timestamp from date in ISO format', () => {
-            const result = TimestampGenerator.fromDate(testDate, { format: 'iso' });
+            const result = TimestampGenerator.fromDate(testDate, {
+                format: 'iso',
+            });
             expect(result).toBe('2023-06-15T12:30:45.123Z');
             expect(typeof result).toBe('string');
         });
 
         it('should throw error for unsupported format', () => {
             expect(() => {
-                TimestampGenerator.fromDate(testDate, { format: 'invalid' as any });
+                TimestampGenerator.fromDate(testDate, {
+                    format: 'invalid' as any,
+                });
             }).toThrow('Unsupported format: invalid');
         });
 
         it('should handle timezone option (ignored in current implementation)', () => {
-            const result = TimestampGenerator.fromDate(testDate, { 
+            const result = TimestampGenerator.fromDate(testDate, {
                 format: 'iso',
-                timezone: 'Europe/London'
+                timezone: 'Europe/London',
             });
             expect(result).toBe('2023-06-15T12:30:45.123Z');
         });
@@ -168,56 +176,92 @@ describe('TimestampConverter', () => {
         const testTimestamp = {
             unix: 1686832245,
             milliseconds: 1686832245123,
-            iso: '2023-06-15T12:30:45.123Z'
+            iso: '2023-06-15T12:30:45.123Z',
         };
 
         describe('from unix', () => {
             it('should convert unix to unix (identity)', () => {
-                const result = TimestampConverter.convert(testTimestamp.unix, 'unix', 'unix');
+                const result = TimestampConverter.convert(
+                    testTimestamp.unix,
+                    'unix',
+                    'unix'
+                );
                 expect(result).toBe(testTimestamp.unix);
             });
 
             it('should convert unix to milliseconds', () => {
-                const result = TimestampConverter.convert(testTimestamp.unix, 'unix', 'milliseconds');
+                const result = TimestampConverter.convert(
+                    testTimestamp.unix,
+                    'unix',
+                    'milliseconds'
+                );
                 expect(result).toBe(1686832245000);
             });
 
             it('should convert unix to ISO', () => {
-                const result = TimestampConverter.convert(testTimestamp.unix, 'unix', 'iso');
+                const result = TimestampConverter.convert(
+                    testTimestamp.unix,
+                    'unix',
+                    'iso'
+                );
                 expect(result).toBe('2023-06-15T12:30:45.000Z');
             });
         });
 
         describe('from milliseconds', () => {
             it('should convert milliseconds to unix', () => {
-                const result = TimestampConverter.convert(testTimestamp.milliseconds, 'milliseconds', 'unix');
+                const result = TimestampConverter.convert(
+                    testTimestamp.milliseconds,
+                    'milliseconds',
+                    'unix'
+                );
                 expect(result).toBe(1686832245);
             });
 
             it('should convert milliseconds to milliseconds (identity)', () => {
-                const result = TimestampConverter.convert(testTimestamp.milliseconds, 'milliseconds', 'milliseconds');
+                const result = TimestampConverter.convert(
+                    testTimestamp.milliseconds,
+                    'milliseconds',
+                    'milliseconds'
+                );
                 expect(result).toBe(testTimestamp.milliseconds);
             });
 
             it('should convert milliseconds to ISO', () => {
-                const result = TimestampConverter.convert(testTimestamp.milliseconds, 'milliseconds', 'iso');
+                const result = TimestampConverter.convert(
+                    testTimestamp.milliseconds,
+                    'milliseconds',
+                    'iso'
+                );
                 expect(result).toBe(testTimestamp.iso);
             });
         });
 
         describe('from ISO', () => {
             it('should convert ISO to unix', () => {
-                const result = TimestampConverter.convert(testTimestamp.iso, 'iso', 'unix');
+                const result = TimestampConverter.convert(
+                    testTimestamp.iso,
+                    'iso',
+                    'unix'
+                );
                 expect(result).toBe(1686832245);
             });
 
             it('should convert ISO to milliseconds', () => {
-                const result = TimestampConverter.convert(testTimestamp.iso, 'iso', 'milliseconds');
+                const result = TimestampConverter.convert(
+                    testTimestamp.iso,
+                    'iso',
+                    'milliseconds'
+                );
                 expect(result).toBe(testTimestamp.milliseconds);
             });
 
             it('should convert ISO to ISO (identity)', () => {
-                const result = TimestampConverter.convert(testTimestamp.iso, 'iso', 'iso');
+                const result = TimestampConverter.convert(
+                    testTimestamp.iso,
+                    'iso',
+                    'iso'
+                );
                 expect(result).toBe(testTimestamp.iso);
             });
         });
@@ -230,7 +274,11 @@ describe('TimestampConverter', () => {
 
         it('should throw error for unsupported to format via TimestampGenerator', () => {
             expect(() => {
-                TimestampConverter.convert(1686834645, 'unix', 'invalid' as any);
+                TimestampConverter.convert(
+                    1686834645,
+                    'unix',
+                    'invalid' as any
+                );
             }).toThrow('Unsupported format: invalid');
         });
     });
@@ -314,7 +362,10 @@ describe('TimestampOptions interface', () => {
         const options2: TimestampOptions = { format: 'iso' };
         const options3: TimestampOptions = { format: 'milliseconds' };
         const options4: TimestampOptions = { timezone: 'UTC' };
-        const options5: TimestampOptions = { format: 'unix', timezone: 'America/New_York' };
+        const options5: TimestampOptions = {
+            format: 'unix',
+            timezone: 'America/New_York',
+        };
         const options6: TimestampOptions = {};
 
         expect(options1.format).toBe('unix');

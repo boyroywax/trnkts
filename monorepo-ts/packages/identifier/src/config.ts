@@ -1,10 +1,24 @@
-import { IdentifierType, SequenceType } from "types";
+import type { IdentifierType, SequenceType } from 'types';
 
+export const TRNKTS_IDENTIFIER_DEFAULT_TYPE: IdentifierType =
+    (process.env['TRNKTS_IDENTIFIER_DEFAULT_TYPE'] as IdentifierType) || 'UUID';
+export const TRNKTS_IDENTIFIER_NUMBER_MIN: number = parseInt(
+    process.env['TRNKTS_IDENTIFIER_NUMBER_MIN'] || '0',
+    10
+);
+export const TRNKTS_IDENTIFIER_NUMBER_MAX: number = parseInt(
+    process.env['TRNKTS_IDENTIFIER_NUMBER_MAX'] || '9999999999',
+    10
+);
 
-const TRNKTS_IDENTIFIER_DEFAULT_TYPE: IdentifierType = (process.env['TRNKTS_IDENTIFIER_DEFAULT_TYPE'] as IdentifierType) || 'UUID';
-const TRNKTS_IDENTIFIER_NUMBER_MIN: number = parseInt(process.env['TRNKTS_IDENTIFIER_NUMBER_MIN'] || '0', 10);
-const TRNKTS_IDENTIFIER_NUMBER_MAX: number = parseInt(process.env['TRNKTS_IDENTIFIER_NUMBER_MAX'] || '9999999999', 10);
-
-const TRNKTS_IDENTIFIER_DEFAULT_SEQUENCE_TYPE: SequenceType = (process.env['TRNKTS_IDENTIFIER_DEFFAULT_SEQUENCE_TYPE'] as SequenceType) || 'NUMERIC';
-const TRNKTS_IDENTIFIER_DEFAULT_SEQUENCE_START: number = parseInt(process.env['TRNKTS_IDENTIFIER_DEFFAULT_SEQUENCE_START'] || '0', 10);
-const TRNKTS_IDENTIFIER_DEFAULT_SEQUENCE_STEP: number = parseInt(process.env['TRNKTS_IDENTIFIER_DEFFAULT_SEQUENCE_STEP'] || '1', 10);
+export const TRNKTS_IDENTIFIER_DEFAULT_SEQUENCE_TYPE: SequenceType =
+    (process.env['TRNKTS_IDENTIFIER_DEFFAULT_SEQUENCE_TYPE'] as SequenceType) ||
+    'NUMERIC';
+export const TRNKTS_IDENTIFIER_DEFAULT_SEQUENCE_START: number = parseInt(
+    process.env['TRNKTS_IDENTIFIER_DEFFAULT_SEQUENCE_START'] || '0',
+    10
+);
+export const TRNKTS_IDENTIFIER_DEFAULT_SEQUENCE_STEP: number = parseInt(
+    process.env['TRNKTS_IDENTIFIER_DEFFAULT_SEQUENCE_STEP'] || '1',
+    10
+);

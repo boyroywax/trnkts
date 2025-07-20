@@ -4,14 +4,14 @@ import {
     validateNanoid,
     validateCuid,
     validateSnowflake,
-    validateCustom
+    validateCustom,
 } from '../src/validators';
 import {
     createUuid,
     createUlid,
     createNanoid,
     createCuid,
-    createSnowflake
+    createSnowflake,
 } from '../src/generators';
 
 describe('validateUUID', () => {

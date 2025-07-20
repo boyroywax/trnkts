@@ -1,8 +1,3 @@
-type TagValue = 
-    | string
-    | number
-    | symbol;
+type TagValue = string | number | symbol;
 
-export {
-    type TagValue
-}
+export { type TagValue };

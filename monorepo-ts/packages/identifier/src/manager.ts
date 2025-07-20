@@ -1,8 +1,9 @@
-import { Identifier, IdentifierType, IdentifierValue } from "index";
+import type { IdentifierType, IdentifierValue } from 'index';
+import { createSequentialNumber } from './generators';
 
-class IdentifierManager {
+export class IdentifierManager {
     private static instance: IdentifierManager;
-    private identifiers: Map<IdentifierValue, IdentifierType;
+    private identifiers: Map<IdentifierValue, IdentifierType>;
     private sequentialNumberGenerator: () => number;
 
     private constructor() {
@@ -17,21 +18,26 @@ class IdentifierManager {
         return IdentifierManager.instance;
     }
 
-    public registerIdentifier(type: string, value: any): void {
-
-
+    public registerIdentifier(
+        type: IdentifierValue,
+        value: IdentifierType
+    ): void {
         this.identifiers.set(type, value);
     }
 
-    public getIdentifier(type: string): any | undefined {
+    public getIdentifier(type: IdentifierValue): IdentifierType | undefined {
         return this.identifiers.get(type);
     }
 
-    public hasIdentifier(type: string): boolean {
+    public hasIdentifier(type: IdentifierValue): boolean {
         return this.identifiers.has(type);
     }
 
     public clearIdentifiers(): void {
         this.identifiers.clear();
+    }
+
+    public generateSequentialNumber(): number {
+        return this.sequentialNumberGenerator();
     }
 }

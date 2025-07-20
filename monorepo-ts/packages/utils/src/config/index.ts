@@ -1,4 +1,4 @@
-interface ParameterDefinition<T = any> {
+interface ParameterDefinition<T = unknown> {
     key: string;
     type?: keyof T;
     name?: string;
@@ -8,7 +8,7 @@ interface ParameterDefinition<T = any> {
     options?: T[];
 }
 
-interface Argument<T = any> {
+interface Argument<T = unknown> {
     key: ParameterDefinition<T>['key'];
     value: T;
 }
@@ -18,7 +18,9 @@ class ConfigurationDefinition<T> {
 
     public addParameter(param: ParameterDefinition<T>): void {
         if (this.hasParameter(param.key)) {
-            throw new Error(`Parameter with key "${param.key}" already exists.  Use updateParameter to modify it.`);
+            throw new Error(
+                `Parameter with key "${param.key}" already exists.  Use updateParameter to modify it.`
+            );
         }
 
         this.parameters.push(param);
@@ -36,18 +38,21 @@ class ConfigurationDefinition<T> {
         return this.parameters.some(param => param.key === key);
     }
 
-    public updateParameter(key: string, newParam: Partial<ParameterDefinition<T>>): void {
+    public updateParameter(
+        key: string,
+        newParam: Partial<ParameterDefinition<T>>
+    ): void {
         const index = this.parameters.findIndex(param => param.key === key);
         if (index === -1) {
             throw new Error(`Parameter with key "${key}" does not exist.`);
         }
 
-        this.parameters[index] = { key: key, ...this.parameters[index], ...newParam };
+        this.parameters[index] = {
+            key: key,
+            ...this.parameters[index],
+            ...newParam,
+        };
     }
 }
 
-export {
-    ConfigurationDefinition,
-    type ParameterDefinition,
-    type Argument
-}
+export { ConfigurationDefinition, type ParameterDefinition, type Argument };

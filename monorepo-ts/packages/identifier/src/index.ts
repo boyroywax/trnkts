@@ -22,8 +22,8 @@ import {
     type ValidationResult,
 } from './validators';
 
+import type { IdentifierType } from './types';
 import {
-    IdentifierType,
     IdentifierTypes,
     type IdentifierValue,
     SequenceTypes,
@@ -33,15 +33,25 @@ import {
     type RandomGeneratorConfig,
 } from './types';
 
-const TRNKTS_IDENTIFIER_DEFAULT_TYPE: IdentifierType = (process.env['TRNKTS_IDENTIFIER_DEFAULT_TYPE'] as IdentifierType) || 'UUID';
-const TRNKTS_IDENTIFIER_NUMBER_MIN: number = parseInt(process.env['TRNKTS_IDENTIFIER_NUMBER_MIN'] || '0', 10);
-const TRNKTS_IDENTIFIER_NUMBER_MAX: number = parseInt(process.env['TRNKTS_IDENTIFIER_NUMBER_MAX'] || '9999999999', 10);
+const TRNKTS_IDENTIFIER_DEFAULT_TYPE: IdentifierType =
+    (process.env['TRNKTS_IDENTIFIER_DEFAULT_TYPE'] as IdentifierType) || 'UUID';
+const TRNKTS_IDENTIFIER_NUMBER_MIN: number = parseInt(
+    process.env['TRNKTS_IDENTIFIER_NUMBER_MIN'] || '0',
+    10
+);
+const TRNKTS_IDENTIFIER_NUMBER_MAX: number = parseInt(
+    process.env['TRNKTS_IDENTIFIER_NUMBER_MAX'] || '9999999999',
+    10
+);
 
 class Identifier {
     private value: IdentifierValue;
     public type: IdentifierType;
 
-    constructor(value?: IdentifierValue, type: IdentifierType = TRNKTS_IDENTIFIER_DEFAULT_TYPE) {
+    constructor(
+        value?: IdentifierValue,
+        type: IdentifierType = TRNKTS_IDENTIFIER_DEFAULT_TYPE
+    ) {
         if (value === undefined) {
             switch (type) {
                 case 'UUID':
@@ -63,12 +73,16 @@ class Identifier {
                     this.value = createRandomString();
                     break;
                 case 'RANDOM_NUMBER':
-                    this.value = createRandomNumber(TRNKTS_IDENTIFIER_NUMBER_MIN, TRNKTS_IDENTIFIER_NUMBER_MAX);
+                    this.value = createRandomNumber(
+                        TRNKTS_IDENTIFIER_NUMBER_MIN,
+                        TRNKTS_IDENTIFIER_NUMBER_MAX
+                    );
                     break;
-                case 'SEQUENTIAL_NUMBER':
+                case 'SEQUENTIAL_NUMBER': {
                     const sequentialGenerator = createSequentialNumber();
                     this.value = sequentialGenerator();
                     break;
+                }
                 default:
                     throw new Error('Invalid identifier type');
             }
@@ -95,7 +109,7 @@ class Identifier {
 export {
     // Core identifier class
     Identifier,
-    
+
     // Generator functions
     createUuid,
     createUlid,
@@ -106,11 +120,11 @@ export {
     createRandomNumber,
     createSequentialNumber,
     createPrefixSuffix,
-    
+
     // Generator classes
     SequenceGenerator,
     RandomGenerator,
-    
+
     // Validator functions
     validateUUID,
     validateULID,
@@ -118,7 +132,7 @@ export {
     validateCuid,
     validateSnowflake,
     validateCustom,
-    
+
     // Types and enums
     IdentifierTypes,
     SequenceTypes,

@@ -14,7 +14,4 @@ interface Annotations {
     [key: string]: Annotation | Annotation[];
 }
 
-export {
-    type Annotation,
-    type Annotations
-}
+export { type Annotation, type Annotations };

@@ -1,16 +1,16 @@
-enum MessageStatuses {
+export enum MessageStatuses {
     SUCCESS = 'success',
     ERROR = 'error',
     WARNING = 'warning',
     INFO = 'info',
     DEBUG = 'debug',
     CRITICAL = 'critical',
-    UNKNOWN = 'unknown'
+    UNKNOWN = 'unknown',
 }
 
-
-interface ReturnMessage<T = any> {
+export interface ReturnMessage<T = unknown> {
     status: MessageStatuses;
     body: T;
     timestamp: number;
-    metadata
+    metadata?: Record<string, unknown>;
+}
