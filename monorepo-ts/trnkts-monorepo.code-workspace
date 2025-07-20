@@ -9,6 +9,10 @@
       "path": "./packages/core"
     },
     {
+      "name": "📦 Components",
+      "path": "./packages/components"
+    },
+    {
       "name": "🔧 Utils", 
       "path": "./packages/utils"
     },

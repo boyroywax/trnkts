@@ -1,4 +1,11 @@
-import type { WidgetProps } from '../types';
+import type { ReactNode } from 'react';
+
+export interface WidgetProps {
+  title: string;
+  children: ReactNode;
+  className?: string;
+  config?: Record<string, unknown>;
+}
 
 export function Widget({ title, children, className }: WidgetProps) {
   return (

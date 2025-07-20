@@ -1,4 +1,5 @@
 import { ReactNode, ComponentType } from 'react';
+import type { WidgetProps } from '@trnkts/components';
 
 export interface DashboardConfig {
   title: string;
@@ -139,13 +140,6 @@ export interface WidgetConfig {
     height: number;
   };
   config?: Record<string, any>;
-}
-
-export interface WidgetProps {
-  title: string;
-  config?: Record<string, any>;
-  children?: ReactNode;
-  className?: string;
 }
 
 export interface LayoutConfig {

@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
+import { Layout } from '@trnkts/components';
 import { useDashboard } from '../hooks/useDashboard';
 import { DashboardProvider } from '../providers/DashboardProvider';
 import type { DashboardConfig } from '../types';
-import { Layout } from './Layout';
 
 export interface DashboardProps {
   config: DashboardConfig;

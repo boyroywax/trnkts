@@ -3,11 +3,9 @@ export { Dashboard } from './components/Dashboard';
 export { DashboardProvider } from './providers/DashboardProvider';
 export { PluginManager } from './plugins/PluginManager';
 
-// Component exports
-export { Sidebar } from './components/Sidebar';
-export { Header } from './components/Header';
-export { Widget } from './components/Widget';
-export { Layout } from './components/Layout';
+// Re-export components from components library
+export { Sidebar, SidebarItem, Header, Widget, Layout } from '@trnkts/components';
+export type { SidebarProps, SidebarItemProps, HeaderProps, WidgetProps, LayoutProps } from '@trnkts/components';
 
 // Plugin system exports
 export { createPlugin } from './plugins/createPlugin';

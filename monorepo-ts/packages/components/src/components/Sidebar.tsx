@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { useDashboard } from '../hooks/useDashboard';
 
 export interface SidebarProps {
   children: ReactNode;
@@ -14,6 +13,7 @@ export interface SidebarItemProps {
   isActive?: boolean;
   children?: ReactNode;
   className?: string;
+  isDark?: boolean;
 }
 
 export function SidebarItem({
@@ -23,10 +23,9 @@ export function SidebarItem({
   onClick,
   isActive = false,
   children,
-  className
+  className,
+  isDark = false
 }: SidebarItemProps) {
-  const { theme, isDark } = useDashboard();
-
   const handleClick = () => {
     if (onClick) {
       onClick();
@@ -42,11 +41,11 @@ export function SidebarItem({
         className="sidebar-item"
         style={{
           backgroundColor: isActive
-            ? (isDark ? theme.darkColors?.primary : theme.colors.primary)
+            ? 'var(--dashboard-primary)'
             : 'transparent',
           color: isActive
-            ? (isDark ? theme.darkColors?.surface : theme.colors.surface)
-            : (isDark ? theme.darkColors?.text : theme.colors.text),
+            ? 'var(--dashboard-surface)'
+            : (isDark ? 'var(--dashboard-dark-text)' : 'var(--dashboard-text)'),
         }}
       >
         {icon && <span className="sidebar-item-icon">{icon}</span>}

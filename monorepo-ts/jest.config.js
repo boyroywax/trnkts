@@ -4,6 +4,7 @@ const config = {
     testEnvironment: 'node',
     roots: ['<rootDir>/packages'],
     projects: [
+        '<rootDir>/packages/components',
         '<rootDir>/packages/core',
         '<rootDir>/packages/utils',
         '<rootDir>/packages/identifier',

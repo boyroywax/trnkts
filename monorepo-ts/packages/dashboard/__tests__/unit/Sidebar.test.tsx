@@ -1,24 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Sidebar, SidebarItem } from '../../src/components/Sidebar';
-
-// Mock the useDashboard hook
-jest.mock('../src/hooks/useDashboard', () => ({
-  useDashboard: () => ({
-    theme: {
-      colors: {
-        primary: '#AF4B0E',
-        surface: '#FFFFFF',
-        text: '#333333',
-      },
-      darkColors: {
-        primary: '#FF8A5B',
-        surface: '#2D2D2D',
-        text: '#E8E8E8',
-      },
-    },
-    isDark: false,
-  }),
-}));
+import { Sidebar, SidebarItem } from '@trnkts/components';
 
 describe('Sidebar Component', () => {
   it('renders children correctly', () => {
@@ -53,7 +34,7 @@ describe('Sidebar Component', () => {
 
     const navElement = container.querySelector('nav');
     expect(navElement).toBeInTheDocument();
-    expect(navElement).toHaveClass('space-y-1');
+    expect(navElement).toHaveClass('sidebar-nav');
   });
 });
 
@@ -120,11 +101,8 @@ describe('SidebarItem Component', () => {
 
   it('handles href navigation', () => {
     // Mock window.location
-    const mockLocation = { href: '' };
-    Object.defineProperty(window, 'location', {
-      value: mockLocation,
-      writable: true,
-    });
+    delete (window as any).location;
+    window.location = { href: '' } as any;
 
     const href = '/test-route';
     render(<SidebarItem title="Test Link" href={href} />);

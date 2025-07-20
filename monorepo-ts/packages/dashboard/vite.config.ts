@@ -22,6 +22,7 @@ export default defineConfig(({ mode }) => {
         '@': resolve(__dirname, './src'),
         '@trnkts/utils': resolve(__dirname, '../utils/src'),
         '@trnkts/core': resolve(__dirname, '../core/src'),
+        '@trnkts/components': resolve(__dirname, '../components/src'),
       },
     },
     build: isLibrary ? {

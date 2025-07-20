@@ -1,54 +1,59 @@
 import { render, screen } from '@testing-library/react';
-import { Layout } from '@trnkts/components';
+import { Layout } from '../../src/components/Layout';
 
 describe('Layout Component', () => {
   it('renders children correctly', () => {
-    const testContent = 'Test Content';
+    const testContent = 'Main content here';
     render(
       <Layout>
         <div>{testContent}</div>
       </Layout>
     );
+
     expect(screen.getByText(testContent)).toBeInTheDocument();
   });
 
   it('renders header when provided', () => {
-    const headerContent = 'Header Content';
+    const headerContent = 'Header content';
     render(
       <Layout header={<div>{headerContent}</div>}>
-        <div>Main Content</div>
+        <div>Main content</div>
       </Layout>
     );
+
     expect(screen.getByText(headerContent)).toBeInTheDocument();
   });
 
   it('renders sidebar when provided', () => {
-    const sidebarContent = 'Sidebar Content';
+    const sidebarContent = 'Sidebar content';
     render(
       <Layout sidebar={<div>{sidebarContent}</div>}>
-        <div>Main Content</div>
+        <div>Main content</div>
       </Layout>
     );
+
     expect(screen.getByText(sidebarContent)).toBeInTheDocument();
   });
 
   it('renders footer when provided', () => {
-    const footerContent = 'Footer Content';
+    const footerContent = 'Footer content';
     render(
       <Layout footer={<div>{footerContent}</div>}>
-        <div>Main Content</div>
+        <div>Main content</div>
       </Layout>
     );
+
     expect(screen.getByText(footerContent)).toBeInTheDocument();
   });
 
   it('applies custom className', () => {
-    const customClass = 'custom-layout';
+    const customClass = 'custom-layout-class';
     const { container } = render(
       <Layout className={customClass}>
         <div>Content</div>
       </Layout>
     );
+
     expect(container.firstChild).toHaveClass(customClass);
   });
 
@@ -78,7 +83,6 @@ describe('Layout Component', () => {
       </Layout>
     );
 
-    // Check all sections are present
     expect(screen.getByText('Header')).toBeInTheDocument();
     expect(screen.getByText('Sidebar')).toBeInTheDocument();
     expect(screen.getByText('Main Content')).toBeInTheDocument();
@@ -93,12 +97,11 @@ describe('Layout Component', () => {
     );
 
     expect(screen.getByText('Main Content Only')).toBeInTheDocument();
-
-    // Check that header, sidebar, and footer elements are not present
+    
     const headerElement = container.querySelector('header');
     const asideElement = container.querySelector('aside');
     const footerElement = container.querySelector('footer');
-
+    
     expect(headerElement).not.toBeInTheDocument();
     expect(asideElement).not.toBeInTheDocument();
     expect(footerElement).not.toBeInTheDocument();

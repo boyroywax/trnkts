@@ -3,7 +3,7 @@ import { Dashboard } from '../../src/components/Dashboard';
 import type { DashboardConfig } from '../../src/types';
 
 // Mock the useDashboard hook
-jest.mock('../src/hooks/useDashboard', () => ({
+jest.mock('../../src/hooks/useDashboard', () => ({
   useDashboard: () => ({
     theme: {
       colors: {

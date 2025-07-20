@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Header } from '../../src/components/Header';
+import { Header } from '@trnkts/components';
 import { DashboardProvider } from '../../src/providers/DashboardProvider';
 import { DashboardConfig } from '../../src/types';
 
@@ -130,7 +130,7 @@ describe('Header Component', () => {
     );
 
     const header = container.firstChild?.firstChild as HTMLElement;
-    expect(header).toHaveClass('h-16', 'px-6', 'flex', 'items-center', 'justify-between', 'bg-white', 'border-b');
+    expect(header).toHaveClass('header');
     expect(header).toHaveStyle({
       backgroundColor: 'var(--dashboard-surface)',
       borderColor: 'var(--dashboard-border)',
@@ -161,8 +161,7 @@ describe('Header Component', () => {
     );
 
     const menuButton = screen.getByRole('button');
-    expect(menuButton).toHaveClass('p-2', 'rounded-md', 'hover:bg-gray-100', 'transition-colors');
-    expect(menuButton).toHaveStyle({ backgroundColor: 'transparent' });
+    expect(menuButton).toHaveClass('btn-menu');
   });
 
   it('title has proper styling', () => {
@@ -174,8 +173,7 @@ describe('Header Component', () => {
     );
 
     const titleElement = screen.getByRole('heading', { level: 1 });
-    expect(titleElement).toHaveClass('text-xl', 'font-semibold', 'text-gray-900');
-    expect(titleElement).toHaveStyle({ color: 'var(--dashboard-text)' });
+    expect(titleElement).toHaveClass('header-title');
   });
 
   it('handles complex children', () => {

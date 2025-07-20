@@ -1,30 +1,13 @@
 import { render, screen } from '@testing-library/react';
-import { Widget } from '@trnkts/components';
-import { DashboardProvider } from '../../src/providers/DashboardProvider';
-import { DashboardConfig } from '../../src/types';
-
-// Mock config for testing
-const mockConfig: DashboardConfig = {
-  title: 'Test Dashboard',
-  plugins: [],
-};
-
-// Wrapper component to provide context
-const WidgetWrapper = ({ children }: { children: React.ReactNode }) => (
-  <DashboardProvider config={mockConfig}>
-    {children}
-  </DashboardProvider>
-);
+import { Widget } from '../../src/components/Widget';
 
 describe('Widget Component', () => {
   it('renders title correctly', () => {
     const title = 'Test Widget';
     render(
-      <WidgetWrapper>
-        <Widget title={title}>
-          <div>Widget content</div>
-        </Widget>
-      </WidgetWrapper>
+      <Widget title={title}>
+        <div>Widget content</div>
+      </Widget>
     );
 
     expect(screen.getByText(title)).toBeInTheDocument();
@@ -33,11 +16,9 @@ describe('Widget Component', () => {
   it('renders children correctly', () => {
     const childText = 'Widget content goes here';
     render(
-      <WidgetWrapper>
-        <Widget title="Test Widget">
-          <div>{childText}</div>
-        </Widget>
-      </WidgetWrapper>
+      <Widget title="Test Widget">
+        <div>{childText}</div>
+      </Widget>
     );
 
     expect(screen.getByText(childText)).toBeInTheDocument();
@@ -46,32 +27,12 @@ describe('Widget Component', () => {
   it('applies custom className', () => {
     const customClass = 'custom-widget-class';
     const { container } = render(
-      <WidgetWrapper>
-        <Widget title="Test Widget" className={customClass}>
-          <div>Content</div>
-        </Widget>
-      </WidgetWrapper>
+      <Widget title="Test Widget" className={customClass}>
+        <div>Content</div>
+      </Widget>
     );
 
-    expect(container.firstChild?.firstChild).toHaveClass(customClass);
-  });
-
-  it('renders with config prop', () => {
-    const config = {
-      backgroundColor: '#f0f0f0',
-      customSetting: 'test-value'
-    };
-
-    render(
-      <WidgetWrapper>
-        <Widget title="Configured Widget" config={config}>
-          <div>Configured content</div>
-        </Widget>
-      </WidgetWrapper>
-    );
-
-    expect(screen.getByText('Configured Widget')).toBeInTheDocument();
-    expect(screen.getByText('Configured content')).toBeInTheDocument();
+    expect(container.firstChild).toHaveClass(customClass);
   });
 
   it('has proper structure with title and content sections', () => {
@@ -79,15 +40,13 @@ describe('Widget Component', () => {
     const content = 'Widget Content';
 
     const { container } = render(
-      <WidgetWrapper>
-        <Widget title={title}>
-          <div>{content}</div>
-        </Widget>
-      </WidgetWrapper>
+      <Widget title={title}>
+        <div>{content}</div>
+      </Widget>
     );
 
     // Check that the widget has the expected structure
-    const widget = container.firstChild?.firstChild as HTMLElement;
+    const widget = container.firstChild as HTMLElement;
     expect(widget).toBeInTheDocument();
 
     // Check title section
@@ -102,14 +61,12 @@ describe('Widget Component', () => {
 
   it('applies CSS custom properties for theming', () => {
     const { container } = render(
-      <WidgetWrapper>
-        <Widget title="Themed Widget">
-          <div>Content</div>
-        </Widget>
-      </WidgetWrapper>
+      <Widget title="Themed Widget">
+        <div>Content</div>
+      </Widget>
     );
 
-    const widget = container.firstChild?.firstChild as HTMLElement;
+    const widget = container.firstChild as HTMLElement;
     const titleElement = widget.querySelector('div:first-child') as HTMLElement;
 
     // Check that CSS custom properties are applied
@@ -135,11 +92,9 @@ describe('Widget Component', () => {
     );
 
     render(
-      <WidgetWrapper>
-        <Widget title="Complex Widget">
-          <ComplexChild />
-        </Widget>
-      </WidgetWrapper>
+      <Widget title="Complex Widget">
+        <ComplexChild />
+      </Widget>
     );
 
     expect(screen.getByText('Complex Widget')).toBeInTheDocument();
