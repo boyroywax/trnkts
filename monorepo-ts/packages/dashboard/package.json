@@ -1,32 +1,27 @@
 {
   "name": "@trnkts/dashboard",
   "version": "1.0.0",
-  "description": "React dashboard with plugin architecture built with Vite",
+  "description": "React dashboard application with plugin architecture built with Vite",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "private": true,
   "scripts": {
     "dev": "vite --port 3000",
-    "build": "tsc && vite build --mode library",
-    "build:app": "vite build",
+    "build": "vite build",
     "preview": "vite preview --port 3000",
     "typecheck": "tsc --noEmit",
     "test": "NODE_OPTIONS='--no-deprecation' jest",
     "test:verbose": "jest",
-    "clean": "rm -rf dist dist-app"
+    "clean": "rm -rf dist"
   },
   "dependencies": {
+    "@trnkts/components": "^1.0.0",
     "@trnkts/core": "^1.0.0",
     "@trnkts/utils": "^1.0.0",
-    "@trnkts/components": "^1.0.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-router-dom": "^7.7.0",
+    "clsx": "^2.1.1",
     "lucide-react": "^0.525.0",
-    "clsx": "^2.1.1"
+    "react": ">=19.1.0",
+    "react-dom": ">=19.1.0",
+    "react-router-dom": "^7.7.0"
   },
   "peerDependencies": {
     "react": ">=19.1.0",

@@ -18,7 +18,7 @@ export default {
       },
     ],
   },
-  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/__tests__/unit/test-setup.ts'],
   testMatch: ['**/__tests__/**/*.(test|spec).(ts|tsx)'],
   collectCoverageFrom: [
     'src/**/*.(ts|tsx)',
@@ -30,6 +30,6 @@ export default {
   testPathIgnorePatterns: [
     '/node_modules/',
     '/dist/',
-    'test_setup.ts',
+    'test-setup.ts',
   ],
 };
