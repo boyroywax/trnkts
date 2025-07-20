@@ -1,8 +1,20 @@
+/**
+ * @fileoverview Types and constants for identifier generation.
+ * This file defines the types used across the identifier package.
+ * It includes types for identifier values, types of identifiers, sequence types,
+ * sequence values, and identifier separators.
+ */
+
+
 const IdentifierTypes = {
     UUID: 'uuid',
+    ULID: 'ulid',
+    NANOID: 'nanoid',
+    CUID: 'cuid',
+    SNOWFLAKE: 'snowflake',
     RANDOM_STRING: 'random_string',
     RANDOM_NUMBER: 'random_number',
-    SEQUENTIAL_NUMBER: 'sequential_number'
+    SEQUENTIAL_NUMBER: 'sequential_number',
 } as const;
 
 Object.freeze(IdentifierTypes);
@@ -23,7 +35,21 @@ type SequenceType = keyof typeof SequenceTypes;
 
 type SequenceValue = string | number;
 
-type IdentifierSeparator = '|' | ',' | '-' | '_' | '.' | ' ' | '~' | '' | undefined;
+type IdentifierSeparator =
+    | '|'
+    | ','
+    | '-'
+    | '_'
+    | '.'
+    | ' '
+    | '~'
+    | ''
+    | undefined;
+
+interface SequenceGeneratorConfig {
+    start: SequenceValue ;
+    step: number;
+}
 
 interface RandomGeneratorConfig {
     min?: number;
@@ -31,7 +57,16 @@ interface RandomGeneratorConfig {
     length?: number;
     prefix?: IdentifierValue;
     suffix?: IdentifierValue;
-    separator?: IdentifierSeparator;
+    prefixSeparator?: IdentifierSeparator;
+    suffixSeparator?: IdentifierSeparator;
+    // ULID specific
+    timestamp?: number;
+    // Nanoid specific
+    alphabet?: string;
+    size?: number;
+    // Snowflake specific
+    workerId?: number;
+    datacenterId?: number;
 }
 
 export {
@@ -41,5 +76,7 @@ export {
     SequenceTypes,
     type SequenceType,
     type SequenceValue,
-    type RandomGeneratorConfig
-}
+    type IdentifierSeparator,
+    type SequenceGeneratorConfig,
+    type RandomGeneratorConfig,
+};

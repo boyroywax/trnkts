@@ -6,9 +6,9 @@
     "composite": true,
     "declaration": true,
     "declarationMap": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@trnkts/*": ["../*/src", "../*/dist"]
+      "@trnkts/*": ["../*/src"]
     }
   },
   "include": ["src/**/*", "__tests__/**/*.test.ts", "__tests__/**/*.spec.ts"],

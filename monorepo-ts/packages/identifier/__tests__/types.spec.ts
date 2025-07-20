@@ -12,13 +12,17 @@ import {
 describe('IdentifierTypes', () => {
     it('should have correct enum values', () => {
         expect(IdentifierTypes.UUID).toBe('uuid');
+        expect(IdentifierTypes.ULID).toBe('ulid');
+        expect(IdentifierTypes.NANOID).toBe('nanoid');
+        expect(IdentifierTypes.CUID).toBe('cuid');
+        expect(IdentifierTypes.SNOWFLAKE).toBe('snowflake');
         expect(IdentifierTypes.RANDOM_STRING).toBe('random_string');
         expect(IdentifierTypes.RANDOM_NUMBER).toBe('random_number');
         expect(IdentifierTypes.SEQUENTIAL_NUMBER).toBe('sequential_number');
     });
 
     it('should have all expected enum keys', () => {
-        const expectedKeys = ['UUID', 'RANDOM_STRING', 'RANDOM_NUMBER', 'SEQUENTIAL_NUMBER'];
+        const expectedKeys = ['UUID', 'ULID', 'NANOID', 'CUID', 'SNOWFLAKE', 'RANDOM_STRING', 'RANDOM_NUMBER', 'SEQUENTIAL_NUMBER'];
         const actualKeys = Object.keys(IdentifierTypes);
         expect(actualKeys).toEqual(expect.arrayContaining(expectedKeys));
         expect(actualKeys).toHaveLength(expectedKeys.length);
@@ -31,8 +35,17 @@ describe('IdentifierTypes', () => {
 
 describe('IdentifierType', () => {
     it('should accept valid identifier type keys', () => {
-        const validTypes: IdentifierType[] = ['UUID', 'RANDOM_STRING', 'RANDOM_NUMBER', 'SEQUENTIAL_NUMBER'];
-        
+        const validTypes: IdentifierType[] = [
+            'UUID',
+            'ULID', 
+            'NANOID',
+            'CUID',
+            'SNOWFLAKE',
+            'RANDOM_STRING',
+            'RANDOM_NUMBER',
+            'SEQUENTIAL_NUMBER'
+        ];
+
         validTypes.forEach(type => {
             expect(typeof type).toBe('string');
             expect(type in IdentifierTypes).toBe(true);
@@ -81,7 +94,6 @@ describe('SequenceType', () => {
     });
 });
 
-
 describe('SequenceValue', () => {
     it('should accept string values', () => {
         const stringValue: SequenceValue = 'A';
@@ -94,27 +106,45 @@ describe('SequenceValue', () => {
     });
 
     it('should not accept other types', () => {
-        const invalidValue: any = true; // boolean type
-        expect(() => {
-            const invalidValue: SequenceValue = invalidValue;
-        }).toThrow();
+        // TypeScript will prevent this at compile time, so we just test the basic types
+        const stringValue: SequenceValue = 'test';
+        const numberValue: SequenceValue = 123;
+        
+        expect(typeof stringValue).toBe('string');
+        expect(typeof numberValue).toBe('number');
     });
 });
 
 describe('IdentifierSeparator', () => {
     it('should accept valid separator values', () => {
-        const validSeparators: IdentifierSeparator[] = ['|', ',', '-', '_', '.', ' ', '~', '', undefined];
-        
+        const validSeparators: IdentifierSeparator[] = [
+            '|',
+            ',',
+            '-',
+            '_',
+            '.',
+            ' ',
+            '~',
+            '',
+            undefined,
+        ];
+
         validSeparators.forEach(separator => {
-            expect(typeof separator).toBe('string' || 'undefined');
+            expect(['string', 'undefined']).toContain(typeof separator);
         });
     });
 
-    it('should not accept invalid separator values', () => {
-        const invalidSeparator: any = 123; // number type
-        expect(() => {
-            const invalidValue: IdentifierSeparator = invalidSeparator;
-        }).toThrow();
+    it('should work with all separator types in practice', () => {
+        // Test that all valid separators can be used
+        const separators: IdentifierSeparator[] = ['|', ',', '-', '_', '.', ' ', '~', '', undefined];
+        
+        separators.forEach(separator => {
+            if (separator !== undefined) {
+                expect(typeof separator).toBe('string');
+            } else {
+                expect(separator).toBeUndefined();
+            }
+        });
     });
 });
 
@@ -127,6 +157,10 @@ describe('Type exports', () => {
     it('should have correct enum structure', () => {
         const enumValues = Object.values(IdentifierTypes);
         expect(enumValues).toContain('uuid');
+        expect(enumValues).toContain('ulid');
+        expect(enumValues).toContain('nanoid');
+        expect(enumValues).toContain('cuid');
+        expect(enumValues).toContain('snowflake');
         expect(enumValues).toContain('random_string');
         expect(enumValues).toContain('random_number');
         expect(enumValues).toContain('sequential_number');

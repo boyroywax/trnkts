@@ -1,6 +1,8 @@
+import { Identifier, IdentifierType, IdentifierValue } from "index";
+
 class IdentifierManager {
     private static instance: IdentifierManager;
-    private identifiers: Map<string, any>;
+    private identifiers: Map<IdentifierValue, IdentifierType;
     private sequentialNumberGenerator: () => number;
 
     private constructor() {
@@ -16,6 +18,8 @@ class IdentifierManager {
     }
 
     public registerIdentifier(type: string, value: any): void {
+
+
         this.identifiers.set(type, value);
     }
 

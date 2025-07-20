@@ -1,17 +1,39 @@
 import {
     createUuid,
+    createUlid,
+    createNanoid,
+    createCuid,
+    createSnowflake,
     createRandomString,
     createRandomNumber,
     createSequentialNumber,
+    createPrefixSuffix,
+    SequenceGenerator,
+    RandomGenerator,
 } from './generators';
+
+import {
+    validateUUID,
+    validateULID,
+    validateNanoid,
+    validateCuid,
+    validateSnowflake,
+    validateCustom,
+    type ValidationResult,
+} from './validators';
 
 import {
     IdentifierType,
     IdentifierTypes,
     type IdentifierValue,
+    SequenceTypes,
+    type SequenceType,
+    type SequenceValue,
+    type IdentifierSeparator,
+    type RandomGeneratorConfig,
 } from './types';
 
-const TRNKTS_IDENTIFIER_DEFAULT_TYPE: IdentifierType = process.env['TRNKTS_IDENTIFIER_DEFAULT_TYPE'] as IdentifierType || IdentifierTypes.UUID;
+const TRNKTS_IDENTIFIER_DEFAULT_TYPE: IdentifierType = (process.env['TRNKTS_IDENTIFIER_DEFAULT_TYPE'] as IdentifierType) || 'UUID';
 const TRNKTS_IDENTIFIER_NUMBER_MIN: number = parseInt(process.env['TRNKTS_IDENTIFIER_NUMBER_MIN'] || '0', 10);
 const TRNKTS_IDENTIFIER_NUMBER_MAX: number = parseInt(process.env['TRNKTS_IDENTIFIER_NUMBER_MAX'] || '9999999999', 10);
 
@@ -25,6 +47,18 @@ class Identifier {
                 case 'UUID':
                     this.value = createUuid();
                     break;
+                case 'ULID':
+                    this.value = createUlid();
+                    break;
+                case 'NANOID':
+                    this.value = createNanoid();
+                    break;
+                case 'CUID':
+                    this.value = createCuid();
+                    break;
+                case 'SNOWFLAKE':
+                    this.value = createSnowflake();
+                    break;
                 case 'RANDOM_STRING':
                     this.value = createRandomString();
                     break;
@@ -32,7 +66,8 @@ class Identifier {
                     this.value = createRandomNumber(TRNKTS_IDENTIFIER_NUMBER_MIN, TRNKTS_IDENTIFIER_NUMBER_MAX);
                     break;
                 case 'SEQUENTIAL_NUMBER':
-                    this.value = 
+                    const sequentialGenerator = createSequentialNumber();
+                    this.value = sequentialGenerator();
                     break;
                 default:
                     throw new Error('Invalid identifier type');
@@ -41,7 +76,7 @@ class Identifier {
             this.value = value;
         }
 
-        this.type = type || IdentifierTypes.UUID; // Default to UUID if type is not provided
+        this.type = type || 'UUID'; // Default to UUID if type is not provided
     }
 
     public getValue(): IdentifierValue {
@@ -58,5 +93,40 @@ class Identifier {
 }
 
 export {
-    Identifier
-}
+    // Core identifier class
+    Identifier,
+    
+    // Generator functions
+    createUuid,
+    createUlid,
+    createNanoid,
+    createCuid,
+    createSnowflake,
+    createRandomString,
+    createRandomNumber,
+    createSequentialNumber,
+    createPrefixSuffix,
+    
+    // Generator classes
+    SequenceGenerator,
+    RandomGenerator,
+    
+    // Validator functions
+    validateUUID,
+    validateULID,
+    validateNanoid,
+    validateCuid,
+    validateSnowflake,
+    validateCustom,
+    
+    // Types and enums
+    IdentifierTypes,
+    SequenceTypes,
+    type IdentifierType,
+    type IdentifierValue,
+    type SequenceType,
+    type SequenceValue,
+    type IdentifierSeparator,
+    type RandomGeneratorConfig,
+    type ValidationResult,
+};

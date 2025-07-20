@@ -40,7 +40,7 @@
     "verbatimModuleSyntax": false,
     "baseUrl": ".",
     "paths": {
-      "@trnkts/*": ["packages/*/src", "packages/*/dist"]
+      "@trnkts/*": ["packages/*/src"]
     }
   },
   "include": ["packages/*/src/**/*"],
