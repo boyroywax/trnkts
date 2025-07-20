@@ -1,0 +1,35 @@
+{
+  "recommendations": [
+    // Testing Extensions
+    "orta.vscode-jest",
+    "ms-vscode.test-adapter-converter",
+    "hbenl.vscode-test-explorer",
+    
+    // TypeScript & React Extensions
+    "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
+    "ms-vscode.vscode-json",
+    
+    // Code Quality & Formatting
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-eslint",
+    
+    // Git & GitHub
+    "github.vscode-pull-request-github",
+    "github.copilot",
+    "github.copilot-chat",
+    
+    // Development Tools
+    "ms-vscode.vscode-npm-script",
+    "christian-kohler.npm-intellisense",
+    "ms-vscode.vscode-node-azure-pack",
+    
+    // Documentation & Markdown
+    "yzhang.markdown-all-in-one",
+    "shd101wyy.markdown-preview-enhanced"
+  ],
+  "unwantedRecommendations": [
+    "ms-vscode.vscode-typescript-tslint-plugin"
+  ]
+}

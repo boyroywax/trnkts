@@ -16,19 +16,6 @@ const web3Icons = {
             'M9 13.5h3.5c1.2 0 2 0.8 2 2s-0.8 2-2 2h-3.5'
         ]
     },
-        paths: [
-            // Outer circle
-            'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z',
-            // Inner circle for depth
-            'M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z',
-            // B vertical bar
-            'M9 7h1.5v10H9z',
-            // B top section
-            'M10.5 8h3v2h-3z',
-            // B bottom section
-            'M10.5 12h3.5v2h-3.5z'
-        ]
-    },
     'ethereum': {
         name: 'Ethereum',
         type: 'web3-fill',

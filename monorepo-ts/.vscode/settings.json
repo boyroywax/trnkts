@@ -1,0 +1,79 @@
+{
+  // Jest Extension Settings - Simplified for monorepo compatibility
+  "jest.rootPath": "packages/",
+  "jest.runMode": {
+    "type": "on-demand"
+  },
+  "jest.coverageFormatter": "DefaultFormatter",
+  "jest.coverageColors": {
+    "covered": "rgba(9, 156, 65, 0.4)",
+    "uncovered": "rgba(121, 31, 10, 0.4)",
+    "partially-covered": "rgba(235, 198, 52, 0.4)"
+  },
+  // Enable Jest extension features  
+  "jest.autoEnable": false,
+  "jest.enable": true,
+  "jest.monitorLongRun": 60000,
+  "jest.outputConfig": {
+    "revealOn": "run",
+    "revealWithFocus": "test-results", 
+    "clearOnRun": "terminal"
+  },
+  // Focus on dashboard package for now
+  "jest.disabledWorkspaceFolders": [],
+
+
+  // TypeScript Settings for Testing
+  "typescript.preferences.useAliasesForRenames": false,
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  // Editor Settings for Test Files
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+
+  // File Associations for Test Files
+  "files.associations": {
+    "*.test.ts": "typescript",
+    "*.test.tsx": "typescriptreact",
+    "*.spec.ts": "typescript",
+    "*.spec.tsx": "typescriptreact"
+  },
+
+  // Search Settings to Include Test Files
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/.next": true
+  },
+
+  // Dashboard-specific settings
+  "emmet.includeLanguages": {
+    "typescript": "html",
+    "typescriptreact": "html"
+  },
+
+  // Terminal settings for testing
+  "terminal.integrated.env.osx": {
+    "NODE_OPTIONS": "--no-deprecation"
+  },
+  "terminal.integrated.env.linux": {
+    "NODE_OPTIONS": "--no-deprecation"
+  },
+  "terminal.integrated.env.windows": {
+    "NODE_OPTIONS": "--no-deprecation"
+  }
+}
