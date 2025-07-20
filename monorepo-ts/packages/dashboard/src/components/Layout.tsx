@@ -9,16 +9,16 @@ export interface LayoutProps {
   isDark?: boolean;
 }
 
-export function Layout({ 
-  children, 
-  sidebar, 
-  header, 
-  footer, 
+export function Layout({
+  children,
+  sidebar,
+  header,
+  footer,
   className,
   isDark = false,
 }: LayoutProps) {
   return (
-    <div 
+    <div
       className={`layout-container ${className || ''}`}
       style={{
         backgroundColor: isDark ? 'var(--dashboard-dark-background)' : 'var(--dashboard-background)',
@@ -27,11 +27,11 @@ export function Layout({
       }}
     >
       {header && (
-        <header 
+        <header
           className="layout-header"
-          style={{ 
-            backgroundColor: isDark 
-              ? 'rgba(45, 45, 45, 0.95)' 
+          style={{
+            backgroundColor: isDark
+              ? 'rgba(45, 45, 45, 0.95)'
               : 'rgba(255, 255, 255, 0.95)',
             borderColor: isDark ? 'var(--dashboard-dark-border)' : 'var(--dashboard-border)',
             boxShadow: 'var(--dashboard-shadow-md)',
@@ -42,12 +42,12 @@ export function Layout({
           </div>
         </header>
       )}
-      
+
       <div className="layout-main-wrapper">
         {sidebar && (
-          <aside 
+          <aside
             className="layout-sidebar"
-            style={{ 
+            style={{
               backgroundColor: isDark ? 'var(--dashboard-dark-surface)' : 'var(--dashboard-surface)',
               borderColor: isDark ? 'var(--dashboard-dark-border)' : 'var(--dashboard-border)',
             }}
@@ -59,9 +59,9 @@ export function Layout({
             </div>
           </aside>
         )}
-        
+
         <main className="layout-main">
-          <div 
+          <div
             className="layout-main-content"
             style={{
               minHeight: 'calc(100vh - 4rem)',
@@ -71,11 +71,11 @@ export function Layout({
           </div>
         </main>
       </div>
-      
+
       {footer && (
-        <footer 
+        <footer
           className="layout-footer"
-          style={{ 
+          style={{
             backgroundColor: isDark ? 'var(--dashboard-dark-surface)' : 'var(--dashboard-surface)',
             borderColor: isDark ? 'var(--dashboard-dark-border)' : 'var(--dashboard-border)',
           }}

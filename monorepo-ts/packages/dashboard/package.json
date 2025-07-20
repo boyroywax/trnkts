@@ -10,12 +10,13 @@
   ],
   "scripts": {
     "dev": "vite --port 3000",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --mode library",
+    "build:app": "vite build",
     "preview": "vite preview --port 3000",
     "typecheck": "tsc --noEmit",
     "test": "NODE_OPTIONS='--no-deprecation' jest",
     "test:verbose": "jest",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist dist-app"
   },
   "dependencies": {
     "@trnkts/core": "^1.0.0",

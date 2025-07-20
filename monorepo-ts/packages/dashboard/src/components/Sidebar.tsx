@@ -16,17 +16,17 @@ export interface SidebarItemProps {
   className?: string;
 }
 
-export function SidebarItem({ 
-  title, 
-  icon, 
-  href, 
-  onClick, 
-  isActive = false, 
+export function SidebarItem({
+  title,
+  icon,
+  href,
+  onClick,
+  isActive = false,
   children,
-  className 
+  className
 }: SidebarItemProps) {
   const { theme, isDark } = useDashboard();
-  
+
   const handleClick = () => {
     if (onClick) {
       onClick();
@@ -41,7 +41,7 @@ export function SidebarItem({
         onClick={handleClick}
         className="sidebar-item"
         style={{
-          backgroundColor: isActive 
+          backgroundColor: isActive
             ? (isDark ? theme.darkColors?.primary : theme.colors.primary)
             : 'transparent',
           color: isActive
