@@ -11,7 +11,9 @@ class TimestampGenerator {
     /**
      * Generate current timestamp
      */
-    static now(options: TimestampOptions = {}): string | number {
+    static now(
+        options: TimestampOptions = {}
+    ): string | number {
         const { format = 'milliseconds' } = options;
         const now = new Date();
 
@@ -23,7 +25,9 @@ class TimestampGenerator {
             case 'milliseconds':
                 return now.getTime();
             default:
-                throw new Error(`Unsupported format: ${format}`);
+                throw new Error(
+                    `Unsupported format: ${format}`
+                );
         }
     }
 
@@ -44,7 +48,9 @@ class TimestampGenerator {
             case 'milliseconds':
                 return date.getTime();
             default:
-                throw new Error(`Unsupported format: ${format}`);
+                throw new Error(
+                    `Unsupported format: ${format}`
+                );
         }
     }
 }
@@ -84,29 +90,41 @@ class TimestampConverter {
         // Convert input to Date
         switch (fromFormat) {
             case 'unix':
-                date = TimestampConverter.fromUnix(timestamp as number);
+                date = TimestampConverter.fromUnix(
+                    timestamp as number
+                );
                 break;
             case 'milliseconds':
-                date = TimestampConverter.fromMilliseconds(timestamp as number);
+                date = TimestampConverter.fromMilliseconds(
+                    timestamp as number
+                );
                 break;
             case 'iso':
-                date = TimestampConverter.fromISO(timestamp as string);
+                date = TimestampConverter.fromISO(
+                    timestamp as string
+                );
                 break;
             default:
-                throw new Error(`Unsupported from format: ${fromFormat}`);
+                throw new Error(
+                    `Unsupported from format: ${fromFormat}`
+                );
         }
 
         // Convert Date to target format
-        return TimestampGenerator.fromDate(date, { format: toFormat });
+        return TimestampGenerator.fromDate(date, {
+            format: toFormat,
+        });
     }
 }
 
 // Convenience functions
 const generateTimestamp = TimestampGenerator.now;
 const convertTimestamp = TimestampConverter.convert;
-const toUnix = (date: Date): number => Math.floor(date.getTime() / 1000);
+const toUnix = (date: Date): number =>
+    Math.floor(date.getTime() / 1000);
 const toISO = (date: Date): string => date.toISOString();
-const toMilliseconds = (date: Date): number => date.getTime();
+const toMilliseconds = (date: Date): number =>
+    date.getTime();
 
 export {
     type TimestampOptions,

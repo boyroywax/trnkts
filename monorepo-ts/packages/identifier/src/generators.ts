@@ -65,16 +65,21 @@ function createUlid(timestamp?: number): string {
         randomBytesArray.length > 10 ||
         randomBytesArray.length !== 10
     ) {
-        throw new Error('Failed to generate random bytes for ULID');
+        throw new Error(
+            'Failed to generate random bytes for ULID'
+        );
     }
 
     let randomStr = '';
     for (let i = 0; i < 16; i++) {
         const byteIndex = Math.floor((i * 5) / 8);
         const bitOffset = (i * 5) % 8;
-        let value = randomBytesArray[byteIndex]! >> bitOffset;
+        let value =
+            randomBytesArray[byteIndex]! >> bitOffset;
         if (bitOffset > 3 && byteIndex < 9) {
-            value |= randomBytesArray[byteIndex + 1]! << (8 - bitOffset);
+            value |=
+                randomBytesArray[byteIndex + 1]! <<
+                (8 - bitOffset);
         }
         randomStr += encoding[value & 31];
     }
@@ -88,9 +93,13 @@ function createUlid(timestamp?: number): string {
  * @param size Optional size of the ID (default: 21)
  * @returns A string representation of a nanoid
  */
-function createNanoid(alphabet?: string, size: number = 21): string {
+function createNanoid(
+    alphabet?: string,
+    size: number = 21
+): string {
     const chars = alphabet ?? nanoidChars;
-    const mask = (2 << (Math.log(chars.length - 1) / Math.LN2)) - 1;
+    const mask =
+        (2 << (Math.log(chars.length - 1) / Math.LN2)) - 1;
     const step = -~((1.6 * mask * size) / chars.length);
 
     let id = '';
@@ -116,7 +125,8 @@ function createCuid(): string {
         .toString(36)
         .padStart(4, '0');
     const fingerprint = 'c'; // Simple fingerprint for collision resistance
-    const randomSuffix = cryptoRandomBytes(4).toString('hex');
+    const randomSuffix =
+        cryptoRandomBytes(4).toString('hex');
 
     return `c${timestamp}${counter}${fingerprint}${randomSuffix}`;
 }
@@ -127,15 +137,27 @@ function createCuid(): string {
  * @param datacenterId Optional datacenter ID (0-31, default: random)
  * @returns A string representation of a snowflake ID
  */
-function createSnowflake(workerId?: number, datacenterId?: number): string {
+function createSnowflake(
+    workerId?: number,
+    datacenterId?: number
+): string {
     const epoch = 1288834974657; // Twitter epoch (2010-11-04)
     const timestamp = BigInt(Date.now() - epoch);
-    const datacenter = BigInt(datacenterId ?? Math.floor(Math.random() * 32));
-    const worker = BigInt(workerId ?? Math.floor(Math.random() * 32));
-    const sequence = BigInt(Math.floor(Math.random() * 4096));
+    const datacenter = BigInt(
+        datacenterId ?? Math.floor(Math.random() * 32)
+    );
+    const worker = BigInt(
+        workerId ?? Math.floor(Math.random() * 32)
+    );
+    const sequence = BigInt(
+        Math.floor(Math.random() * 4096)
+    );
 
     const id =
-        (timestamp << 22n) | (datacenter << 17n) | (worker << 12n) | sequence;
+        (timestamp << 22n) |
+        (datacenter << 17n) |
+        (worker << 12n) |
+        sequence;
 
     return id.toString();
 }
@@ -164,8 +186,13 @@ function createRandomString(length: number = 8): string {
  * @param max The maximum value (inclusive)
  * @returns A random number between min and max
  */
-function createRandomNumber(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+function createRandomNumber(
+    min: number,
+    max: number
+): number {
+    return (
+        Math.floor(Math.random() * (max - min + 1)) + min
+    );
 }
 
 /**
@@ -204,8 +231,12 @@ class SequenceGenerator {
     ) {
         this.type = type;
         this.config = {
-            start: !config.start ? defaultSequenceConfig.start : config.start,
-            step: !config.step ? defaultSequenceConfig.step : config.step,
+            start: !config.start
+                ? defaultSequenceConfig.start
+                : config.start,
+            step: !config.step
+                ? defaultSequenceConfig.step
+                : config.step,
         };
         this.current = this.config.start || 0;
     }
@@ -214,27 +245,36 @@ class SequenceGenerator {
         switch (this.type) {
             case 'ALPHA': {
                 const nextCharCode: number =
-                    (this.current as string).charCodeAt(0) + this.config.step;
-                this.current = String.fromCharCode(nextCharCode);
+                    (this.current as string).charCodeAt(0) +
+                    this.config.step;
+                this.current =
+                    String.fromCharCode(nextCharCode);
                 break;
             }
             case 'ALPHANUMERIC': {
-                const currentIndex: number = alphaNumChars.indexOf(
-                    this.current as string
-                );
+                const currentIndex: number =
+                    alphaNumChars.indexOf(
+                        this.current as string
+                    );
                 const nextIndex: number =
-                    (currentIndex + this.config.step) % alphaNumChars.length;
-                this.current = alphaNumChars[nextIndex] as SequenceValue;
+                    (currentIndex + this.config.step) %
+                    alphaNumChars.length;
+                this.current = alphaNumChars[
+                    nextIndex
+                ] as SequenceValue;
                 break;
             }
             case 'NUMERIC': {
                 const nextNumber: number =
-                    (this.current as number) + this.config.step;
+                    (this.current as number) +
+                    this.config.step;
                 this.current = nextNumber;
                 break;
             }
             default:
-                throw new Error(`Unsupported sequence type: ${this.type}`);
+                throw new Error(
+                    `Unsupported sequence type: ${this.type}`
+                );
         }
 
         return this.current;
@@ -245,7 +285,10 @@ class RandomGenerator {
     private type: IdentifierType;
     private config: RandomGeneratorConfig;
 
-    constructor(type: IdentifierType, config: RandomGeneratorConfig = {}) {
+    constructor(
+        type: IdentifierType,
+        config: RandomGeneratorConfig = {}
+    ) {
         this.type = type;
         this.config = config;
     }
@@ -269,7 +312,10 @@ class RandomGenerator {
                 value += createUlid(this.config.timestamp);
                 break;
             case 'NANOID':
-                value += createNanoid(this.config.alphabet, this.config.size);
+                value += createNanoid(
+                    this.config.alphabet,
+                    this.config.size
+                );
                 break;
             case 'CUID':
                 value += createCuid();
@@ -281,7 +327,9 @@ class RandomGenerator {
                 );
                 break;
             case 'RANDOM_STRING':
-                value += createRandomString(this.config.length);
+                value += createRandomString(
+                    this.config.length
+                );
                 break;
             case 'RANDOM_NUMBER':
                 value += createRandomNumber(
@@ -290,7 +338,9 @@ class RandomGenerator {
                 );
                 break;
             default:
-                throw new Error(`Unsupported identifier type: ${this.type}`);
+                throw new Error(
+                    `Unsupported identifier type: ${this.type}`
+                );
         }
 
         if (this.config.suffixSeparator) {

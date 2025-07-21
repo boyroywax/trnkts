@@ -7,12 +7,18 @@ import {
 describe('ConfigurationDefinition', () => {
     it('should create a configuration definition with empty parameters', () => {
         const config = new ConfigurationDefinition();
-        expect(config).toBeInstanceOf(ConfigurationDefinition);
+        expect(config).toBeInstanceOf(
+            ConfigurationDefinition
+        );
     });
 
     it('should add parameter definitions', () => {
-        const config = new ConfigurationDefinition<{ testParam: string }>();
-        const paramDef: ParameterDefinition<{ testParam: string }> = {
+        const config = new ConfigurationDefinition<{
+            testParam: string;
+        }>();
+        const paramDef: ParameterDefinition<{
+            testParam: string;
+        }> = {
             key: 'testParam',
             type: 'testParam',
             required: true,
@@ -20,7 +26,9 @@ describe('ConfigurationDefinition', () => {
         };
 
         config.addParameter(paramDef);
-        expect(config.getParameter('testParam')).toEqual(paramDef);
+        expect(config.getParameter('testParam')).toEqual(
+            paramDef
+        );
     });
 
     it('should check if parameter exists', () => {
@@ -73,9 +81,18 @@ describe('Argument type', () => {
     });
 
     it('should accept argument with different value types', () => {
-        const stringArg: Argument<string> = { key: 'str', value: 'string' };
-        const numberArg: Argument<number> = { key: 'num', value: 123 };
-        const boolArg: Argument<boolean> = { key: 'bool', value: true };
+        const stringArg: Argument<string> = {
+            key: 'str',
+            value: 'string',
+        };
+        const numberArg: Argument<number> = {
+            key: 'num',
+            value: 123,
+        };
+        const boolArg: Argument<boolean> = {
+            key: 'bool',
+            value: true,
+        };
 
         expect(typeof stringArg.value).toBe('string');
         expect(typeof numberArg.value).toBe('number');

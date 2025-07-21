@@ -14,9 +14,15 @@ describe('IdentifierTypes', () => {
         expect(IdentifierTypes.NANOID).toBe('nanoid');
         expect(IdentifierTypes.CUID).toBe('cuid');
         expect(IdentifierTypes.SNOWFLAKE).toBe('snowflake');
-        expect(IdentifierTypes.RANDOM_STRING).toBe('random_string');
-        expect(IdentifierTypes.RANDOM_NUMBER).toBe('random_number');
-        expect(IdentifierTypes.SEQUENTIAL_NUMBER).toBe('sequential_number');
+        expect(IdentifierTypes.RANDOM_STRING).toBe(
+            'random_string'
+        );
+        expect(IdentifierTypes.RANDOM_NUMBER).toBe(
+            'random_number'
+        );
+        expect(IdentifierTypes.SEQUENTIAL_NUMBER).toBe(
+            'sequential_number'
+        );
     });
 
     it('should have all expected enum keys', () => {
@@ -31,8 +37,12 @@ describe('IdentifierTypes', () => {
             'SEQUENTIAL_NUMBER',
         ];
         const actualKeys = Object.keys(IdentifierTypes);
-        expect(actualKeys).toEqual(expect.arrayContaining(expectedKeys));
-        expect(actualKeys).toHaveLength(expectedKeys.length);
+        expect(actualKeys).toEqual(
+            expect.arrayContaining(expectedKeys)
+        );
+        expect(actualKeys).toHaveLength(
+            expectedKeys.length
+        );
     });
 
     it('should be frozen object', () => {
@@ -85,15 +95,25 @@ describe('IdentifierValue', () => {
 describe('SequenceType', () => {
     it('should have correct enum values', () => {
         expect(SequenceTypes.ALPHA).toBe('alpha');
-        expect(SequenceTypes.ALPHANUMERIC).toBe('alphanumeric');
+        expect(SequenceTypes.ALPHANUMERIC).toBe(
+            'alphanumeric'
+        );
         expect(SequenceTypes.NUMERIC).toBe('numeric');
     });
 
     it('should have all expected enum keys', () => {
-        const expectedKeys = ['ALPHA', 'ALPHANUMERIC', 'NUMERIC'];
+        const expectedKeys = [
+            'ALPHA',
+            'ALPHANUMERIC',
+            'NUMERIC',
+        ];
         const actualKeys = Object.keys(SequenceTypes);
-        expect(actualKeys).toEqual(expect.arrayContaining(expectedKeys));
-        expect(actualKeys).toHaveLength(expectedKeys.length);
+        expect(actualKeys).toEqual(
+            expect.arrayContaining(expectedKeys)
+        );
+        expect(actualKeys).toHaveLength(
+            expectedKeys.length
+        );
     });
 
     it('should be frozen object', () => {
@@ -137,7 +157,9 @@ describe('IdentifierSeparator', () => {
         ];
 
         validSeparators.forEach(separator => {
-            expect(['string', 'undefined']).toContain(typeof separator);
+            expect(['string', 'undefined']).toContain(
+                typeof separator
+            );
         });
     });
 

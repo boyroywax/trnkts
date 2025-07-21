@@ -75,7 +75,10 @@ describe('createSequentialNumber', () => {
     it('should start from the specified initial value and increment by the specified step', () => {
         const start = 5;
         const step = 2;
-        const nextNumber = createSequentialNumber(start, step);
+        const nextNumber = createSequentialNumber(
+            start,
+            step
+        );
 
         expect(nextNumber()).toBe(start);
         expect(nextNumber()).toBe(start + step);
@@ -95,7 +98,9 @@ describe('createUlid', () => {
     it('should generate a valid ULID', () => {
         const ulid = createUlid();
         expect(ulid).toHaveLength(26);
-        expect(ulid).toMatch(/^[0-7][0-9A-HJKMNP-TV-Z]{25}$/);
+        expect(ulid).toMatch(
+            /^[0-7][0-9A-HJKMNP-TV-Z]{25}$/
+        );
     });
 
     it('should generate different ULIDs on each call', () => {
@@ -166,7 +171,10 @@ describe('createSnowflake', () => {
 
 describe('createPrefixSuffix', () => {
     it('should add prefix and suffix to identifier value', () => {
-        const formatter = createPrefixSuffix('PRE_', '_SUF');
+        const formatter = createPrefixSuffix(
+            'PRE_',
+            '_SUF'
+        );
         const result = formatter('test');
         expect(result).toBe('PRE_test_SUF');
     });
@@ -206,10 +214,13 @@ describe('SequenceGenerator', () => {
     });
 
     it('should generate alphanumeric sequence', () => {
-        const generator = new SequenceGenerator('ALPHANUMERIC', {
-            start: 'A',
-            step: 1,
-        });
+        const generator = new SequenceGenerator(
+            'ALPHANUMERIC',
+            {
+                start: 'A',
+                step: 1,
+            }
+        );
         const result = generator.next();
         expect(typeof result).toBe('string');
         expect(result).toMatch(/^[A-Za-z0-9]$/);
@@ -234,7 +245,10 @@ describe('RandomGenerator', () => {
     });
 
     it('should generate random string with custom length', () => {
-        const generator = new RandomGenerator('RANDOM_STRING', { length: 10 });
+        const generator = new RandomGenerator(
+            'RANDOM_STRING',
+            { length: 10 }
+        );
         const result = generator.generate();
         expect(typeof result).toBe('string');
         expect(result).toHaveLength(10);

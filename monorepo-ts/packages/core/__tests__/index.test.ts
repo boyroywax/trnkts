@@ -1,5 +1,5 @@
 import { NAME, VERSION } from '../src/index';
-    
+
 describe('Core Module', () => {
     it('should have a valid name', () => {
         expect(NAME).toBeDefined();

@@ -1,6 +1,8 @@
-const alphaCharsUpper: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const alphaCharsUpper: string =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-const alphaCharsLower: string = 'abcdefghijklmnopqrstuvwxyz';
+const alphaCharsLower: string =
+    'abcdefghijklmnopqrstuvwxyz';
 
 const numericChars: string = '0123456789';
 

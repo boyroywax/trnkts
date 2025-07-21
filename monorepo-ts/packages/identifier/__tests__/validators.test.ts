@@ -25,11 +25,14 @@ describe('validateUUID', () => {
     it('should reject invalid UUID format', () => {
         const result = validateUUID('invalid-uuid');
         expect(result.isValid).toBe(false);
-        expect(result.error).toContain('Invalid UUID format');
+        expect(result.error).toContain(
+            'Invalid UUID format'
+        );
     });
 
     it('should reject UUID v1', () => {
-        const uuidV1 = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+        const uuidV1 =
+            '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
         const result = validateUUID(uuidV1);
         expect(result.isValid).toBe(false);
     });
@@ -44,15 +47,23 @@ describe('validateULID', () => {
     });
 
     it('should reject wrong length ULID', () => {
-        const result = validateULID('01ARZ3NDEKTSV4RRFFQ69G5FA'); // 25 chars instead of 26
+        const result = validateULID(
+            '01ARZ3NDEKTSV4RRFFQ69G5FA'
+        ); // 25 chars instead of 26
         expect(result.isValid).toBe(false);
-        expect(result.error).toContain('Expected 26 characters');
+        expect(result.error).toContain(
+            'Expected 26 characters'
+        );
     });
 
     it('should reject invalid characters', () => {
-        const result = validateULID('01ARZ3NDEKTSV4RRFFQ69G5FAI'); // Contains 'I'
+        const result = validateULID(
+            '01ARZ3NDEKTSV4RRFFQ69G5FAI'
+        ); // Contains 'I'
         expect(result.isValid).toBe(false);
-        expect(result.error).toContain('invalid characters');
+        expect(result.error).toContain(
+            'invalid characters'
+        );
     });
 });
 
@@ -73,13 +84,19 @@ describe('validateNanoid', () => {
     it('should reject wrong size', () => {
         const result = validateNanoid('short', 21);
         expect(result.isValid).toBe(false);
-        expect(result.error).toContain('Expected 21 characters');
+        expect(result.error).toContain(
+            'Expected 21 characters'
+        );
     });
 
     it('should reject invalid characters', () => {
-        const result = validateNanoid('123456789012345678901!'); // Contains '!'
+        const result = validateNanoid(
+            '123456789012345678901!'
+        ); // Contains '!'
         expect(result.isValid).toBe(false);
-        expect(result.error).toContain('Invalid Nanoid format.');
+        expect(result.error).toContain(
+            'Invalid Nanoid format.'
+        );
     });
 });
 
@@ -94,7 +111,9 @@ describe('validateCuid', () => {
     it('should reject CUID not starting with c', () => {
         const result = validateCuid('x1234567890');
         expect(result.isValid).toBe(false);
-        expect(result.error).toContain('Must start with "c"');
+        expect(result.error).toContain(
+            'Must start with "c"'
+        );
     });
 
     it('should reject too short CUID', () => {
@@ -115,13 +134,17 @@ describe('validateSnowflake', () => {
     it('should reject non-numeric snowflake', () => {
         const result = validateSnowflake('abc123');
         expect(result.isValid).toBe(false);
-        expect(result.error).toContain('Expected 17-19 digit number');
+        expect(result.error).toContain(
+            'Expected 17-19 digit number'
+        );
     });
 
     it('should reject too short snowflake', () => {
         const result = validateSnowflake('123');
         expect(result.isValid).toBe(false);
-        expect(result.error).toContain('Expected 17-19 digit number');
+        expect(result.error).toContain(
+            'Expected 17-19 digit number'
+        );
     });
 });
 
@@ -134,9 +157,14 @@ describe('validateCustom', () => {
 
     it('should reject invalid pattern', () => {
         const pattern = /^TEST_\d+$/;
-        const result = validateCustom('INVALID_123', pattern);
+        const result = validateCustom(
+            'INVALID_123',
+            pattern
+        );
         expect(result.isValid).toBe(false);
-        expect(result.error).toContain('does not match required pattern');
+        expect(result.error).toContain(
+            'does not match required pattern'
+        );
     });
 
     it('should use default validation without pattern', () => {

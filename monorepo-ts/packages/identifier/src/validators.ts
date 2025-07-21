@@ -99,7 +99,9 @@ function validateCuid(value: string): ValidationResult {
 /**
  * Validates Snowflake ID format
  */
-function validateSnowflake(value: string): ValidationResult {
+function validateSnowflake(
+    value: string
+): ValidationResult {
     const snowflakeRegex = /^\d{17,19}$/;
 
     if (!snowflakeRegex.test(value)) {
@@ -125,10 +127,17 @@ function validateSnowflake(value: string): ValidationResult {
 /**
  * Validates custom string identifier format
  */
-function validateCustom(value: string, pattern?: RegExp): ValidationResult {
+function validateCustom(
+    value: string,
+    pattern?: RegExp
+): ValidationResult {
     if (!pattern) {
         // Default validation: non-empty string, no whitespace
-        if (!value || value.trim() !== value || value.length === 0) {
+        if (
+            !value ||
+            value.trim() !== value ||
+            value.length === 0
+        ) {
             return {
                 isValid: false,
                 error: 'Invalid custom identifier. Must be non-empty with no leading/trailing whitespace.',

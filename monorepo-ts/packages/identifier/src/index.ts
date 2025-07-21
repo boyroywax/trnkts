@@ -34,13 +34,16 @@ import {
 } from './types';
 
 const TRNKTS_IDENTIFIER_DEFAULT_TYPE: IdentifierType =
-    (process.env['TRNKTS_IDENTIFIER_DEFAULT_TYPE'] as IdentifierType) || 'UUID';
+    (process.env[
+        'TRNKTS_IDENTIFIER_DEFAULT_TYPE'
+    ] as IdentifierType) || 'UUID';
 const TRNKTS_IDENTIFIER_NUMBER_MIN: number = parseInt(
     process.env['TRNKTS_IDENTIFIER_NUMBER_MIN'] || '0',
     10
 );
 const TRNKTS_IDENTIFIER_NUMBER_MAX: number = parseInt(
-    process.env['TRNKTS_IDENTIFIER_NUMBER_MAX'] || '9999999999',
+    process.env['TRNKTS_IDENTIFIER_NUMBER_MAX'] ||
+        '9999999999',
     10
 );
 
@@ -79,12 +82,15 @@ class Identifier {
                     );
                     break;
                 case 'SEQUENTIAL_NUMBER': {
-                    const sequentialGenerator = createSequentialNumber();
+                    const sequentialGenerator =
+                        createSequentialNumber();
                     this.value = sequentialGenerator();
                     break;
                 }
                 default:
-                    throw new Error('Invalid identifier type');
+                    throw new Error(
+                        'Invalid identifier type'
+                    );
             }
         } else {
             this.value = value;

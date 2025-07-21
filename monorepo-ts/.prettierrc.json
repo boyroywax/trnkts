@@ -16,6 +16,12 @@
   "embeddedLanguageFormatting": "auto",
   "overrides": [
     {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "options": {
+        "printWidth": 60
+      }
+    },
+    {
       "files": ["*.json", "*.jsonc"],
       "options": {
         "printWidth": 120
