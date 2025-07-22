@@ -6,7 +6,7 @@ import {
 import { MessageBuilder } from './builder';
 
 // Factory function for creating messages
-export function createMessage<T>(
+function createMessage<T>(
     status: MessageStatuses,
     body: T,
     options?: Partial<
@@ -20,7 +20,7 @@ export function createMessage<T>(
 }
 
 // Convenience factory functions for each status
-export function createSuccessMessage<T>(
+function createSuccessMessage<T>(
     body: T,
     options?: Partial<
         Omit<MessageOptions<T>, 'body'>
@@ -33,7 +33,7 @@ export function createSuccessMessage<T>(
     );
 }
 
-export function createErrorMessage<T>(
+function createErrorMessage<T>(
     body: T,
     options?: Partial<
         Omit<MessageOptions<T>, 'body'>
@@ -46,7 +46,7 @@ export function createErrorMessage<T>(
     );
 }
 
-export function createWarningMessage<T>(
+function createWarningMessage<T>(
     body: T,
     options?: Partial<
         Omit<MessageOptions<T>, 'body'>
@@ -59,7 +59,7 @@ export function createWarningMessage<T>(
     );
 }
 
-export function createInfoMessage<T>(
+function createInfoMessage<T>(
     body: T,
     options?: Partial<
         Omit<MessageOptions<T>, 'body'>
@@ -72,7 +72,7 @@ export function createInfoMessage<T>(
     );
 }
 
-export function createDebugMessage<T>(
+function createDebugMessage<T>(
     body: T,
     options?: Partial<
         Omit<MessageOptions<T>, 'body'>
@@ -85,7 +85,7 @@ export function createDebugMessage<T>(
     );
 }
 
-export function createCriticalMessage<T>(
+function createCriticalMessage<T>(
     body: T,
     options?: Partial<
         Omit<MessageOptions<T>, 'body'>
@@ -98,7 +98,7 @@ export function createCriticalMessage<T>(
     );
 }
 
-export function createUnknownMessage<T>(
+function createUnknownMessage<T>(
     body: T,
     options?: Partial<
         Omit<MessageOptions<T>, 'body'>
@@ -110,3 +110,14 @@ export function createUnknownMessage<T>(
         options
     );
 }
+
+export {
+    createMessage,
+    createSuccessMessage,
+    createErrorMessage,
+    createWarningMessage,
+    createInfoMessage,
+    createDebugMessage,
+    createCriticalMessage,
+    createUnknownMessage,
+};

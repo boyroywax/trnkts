@@ -3,7 +3,7 @@ import {
     type ReturnMessage,
 } from './types';
 
-export class MessageUtils {
+class MessageUtils {
     // Status checking methods
     public static isSuccess<T>(
         message: ReturnMessage<T>
@@ -239,3 +239,5 @@ export class MessageUtils {
         return result;
     }
 }
+
+export { MessageUtils };

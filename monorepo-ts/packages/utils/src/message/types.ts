@@ -1,4 +1,4 @@
-export enum MessageStatuses {
+enum MessageStatuses {
     SUCCESS = 'success',
     ERROR = 'error',
     WARNING = 'warning',
@@ -8,7 +8,7 @@ export enum MessageStatuses {
     UNKNOWN = 'unknown',
 }
 
-export interface ReturnMessage<T = unknown> {
+interface ReturnMessage<T = unknown> {
     status: MessageStatuses;
     body: T;
     timestamp: number;
@@ -19,7 +19,7 @@ export interface ReturnMessage<T = unknown> {
     category?: string;
 }
 
-export interface MessageOptions<T = unknown> {
+interface MessageOptions<T = unknown> {
     body: T;
     metadata?: Record<string, unknown>;
     id?: string;
@@ -28,3 +28,9 @@ export interface MessageOptions<T = unknown> {
     category?: string;
     timestamp?: number;
 }
+
+export {
+    MessageStatuses,
+    type ReturnMessage,
+    type MessageOptions,
+};

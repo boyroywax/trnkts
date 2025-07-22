@@ -1,6 +1,6 @@
 import type { TagValue } from './tag';
 
-export interface MetadataOptions<T = unknown> {
+interface MetadataOptions<T = unknown> {
     name?: string;
     description?: string;
     annotations?: Record<string, TagValue>;
@@ -10,7 +10,7 @@ export interface MetadataOptions<T = unknown> {
     data?: T;
 }
 
-export class Metadata<T = unknown> {
+class Metadata<T = unknown> {
     public name?: string;
     public description?: string;
     public annotations: Record<string, TagValue>;
@@ -227,3 +227,8 @@ export class Metadata<T = unknown> {
         );
     }
 }
+
+export {
+    type MetadataOptions,
+    Metadata,
+};

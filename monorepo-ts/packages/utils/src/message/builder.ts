@@ -4,7 +4,7 @@ import {
     type MessageOptions,
 } from './types';
 
-export class MessageBuilder<T = unknown> {
+class MessageBuilder<T = unknown> {
     private message: ReturnMessage<T>;
 
     constructor(
@@ -145,3 +145,5 @@ export class MessageBuilder<T = unknown> {
         );
     }
 }
+
+export { MessageBuilder };
