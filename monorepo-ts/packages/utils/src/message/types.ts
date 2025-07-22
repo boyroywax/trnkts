@@ -13,4 +13,18 @@ export interface ReturnMessage<T = unknown> {
     body: T;
     timestamp: number;
     metadata?: Record<string, unknown>;
+    id?: string;
+    correlationId?: string;
+    source?: string;
+    category?: string;
+}
+
+export interface MessageOptions<T = unknown> {
+    body: T;
+    metadata?: Record<string, unknown>;
+    id?: string;
+    correlationId?: string;
+    source?: string;
+    category?: string;
+    timestamp?: number;
 }
