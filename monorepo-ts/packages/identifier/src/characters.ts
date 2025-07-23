@@ -1,8 +1,6 @@
-const alphaCharsUpper: string =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const alphaCharsUpper: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-const alphaCharsLower: string =
-    'abcdefghijklmnopqrstuvwxyz';
+const alphaCharsLower: string = 'abcdefghijklmnopqrstuvwxyz';
 
 const numericChars: string = '0123456789';
 
@@ -13,10 +11,10 @@ const base32CrockfordsEncodeChars: string = `${numericChars}ABCDEFGHJKMNPQRSTVWX
 const nanoidChars: string = `${alphaCharsUpper}${alphaCharsLower}${numericChars}_-`;
 
 export {
-    alphaCharsUpper,
-    alphaCharsLower,
-    numericChars,
-    alphaNumChars,
-    base32CrockfordsEncodeChars,
-    nanoidChars,
+  alphaCharsUpper,
+  alphaCharsLower,
+  numericChars,
+  alphaNumChars,
+  base32CrockfordsEncodeChars,
+  nanoidChars,
 };

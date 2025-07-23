@@ -1,6 +1,9 @@
 # `trnkts` - Distributed Web Development Suite
 
-A comprehensive TypeScript monorepo for building digital artifacts on the distributed web. Trnkts is a complete orchestrator and frontend for running peer-to-peer applications, combining the power of libp2p, IPFS, OrbitDB, and Bacalhau into a unified CLI and API.
+A comprehensive TypeScript monorepo for building digital artifacts on the
+distributed web. Trnkts is a complete orchestrator and frontend for running
+peer-to-peer applications, combining the power of libp2p, IPFS, OrbitDB, and
+Bacalhau into a unified CLI and API.
 
 ## The Trnkt Stack
 
@@ -11,12 +14,15 @@ A comprehensive TypeScript monorepo for building digital artifacts on the distri
 
 ## Features
 
-- 🚀 **Unified P2P Stack**: Combines js-libp2p, Helia (js-IPFS), OrbitDB, and Bacalhau
+- 🚀 **Unified P2P Stack**: Combines js-libp2p, Helia (js-IPFS), OrbitDB, and
+  Bacalhau
 - 🔗 **Peer Provisioning**: Automated setup and management of network peers
-- �️ **Database Operations**: Distributed database management and synchronization
+- �️ **Database Operations**: Distributed database management and
+  synchronization
 - 🔐 **Authentication Systems**: Decentralized identity and access control
 - 👥 **End User Support**: Complete frontend and user experience layer
-- � **Monorepo Architecture**: Modular packages with shared TypeScript configuration
+- � **Monorepo Architecture**: Modular packages with shared TypeScript
+  configuration
 - 🧪 **Comprehensive Testing**: Jest with ts-jest for TypeScript support
 - 🎨 **Code Quality**: Prettier and ESLint for consistent development
 
@@ -129,10 +135,18 @@ import { createPeer } from '@trnkts/core';
 
 // Initialize a new peer with libp2p
 const peer = await createPeer({
-  networking: { /* libp2p config */ },
-  storage: { /* IPFS/Helia config */ },
-  database: { /* OrbitDB config */ },
-  compute: { /* Bacalhau config */ }
+  networking: {
+    /* libp2p config */
+  },
+  storage: {
+    /* IPFS/Helia config */
+  },
+  database: {
+    /* OrbitDB config */
+  },
+  compute: {
+    /* Bacalhau config */
+  },
 });
 ```
 
@@ -147,7 +161,9 @@ import { createDatabase } from '@trnkts/core';
 const db = await createDatabase({
   type: 'docstore',
   name: 'my-app-data',
-  accessController: { /* auth config */ }
+  accessController: {
+    /* auth config */
+  },
 });
 ```
 
@@ -198,7 +214,7 @@ packages/your-package/
 
 - **Networking Layer**: libp2p for peer discovery and communication
 - **Storage Layer**: IPFS/Helia for content-addressed storage
-- **Database Layer**: OrbitDB for distributed, serverless databases  
+- **Database Layer**: OrbitDB for distributed, serverless databases
 - **Compute Layer**: Bacalhau for distributed processing
 - **Identity Layer**: Decentralized authentication and access control
 

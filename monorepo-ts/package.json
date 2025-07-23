@@ -19,8 +19,8 @@
     "typecheck": "npm run typecheck --workspaces"
   },
   "devDependencies": {
-    "@testing-library/react": "^16.3.0",
     "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.14",

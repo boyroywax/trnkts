@@ -1,36 +1,38 @@
 import React, { type ReactNode } from 'react';
 
-export interface WidgetProps {
-    title: string;
-    children: ReactNode;
-    className?: string;
-    config?: Record<string, unknown>;
+interface WidgetProps {
+  title: string;
+  children: ReactNode;
+  className?: string;
+  config?: Record<string, unknown>;
 }
 
-export function Widget({
-    title,
-    children,
-    className,
+function Widget({
+  title,
+  children,
+  className,
 }: WidgetProps): React.JSX.Element {
-    return (
-        <div
-            className={`widget ${className || ''}`}
-            style={{
-                padding: 'var(--dashboard-spacing-md)',
-                borderColor: 'var(--dashboard-border)',
-                backgroundColor: 'var(--dashboard-surface)',
-            }}
-        >
-            <div
-                className='widget-header'
-                style={{
-                    color: 'var(--dashboard-text)',
-                    fontSize: 'var(--dashboard-font-lg)',
-                }}
-            >
-                {title}
-            </div>
-            <div>{children}</div>
-        </div>
-    );
+  return (
+    <div
+      className={`widget ${className || ''}`}
+      style={{
+        padding: 'var(--dashboard-spacing-md)',
+        borderColor: 'var(--dashboard-border)',
+        backgroundColor: 'var(--dashboard-surface)',
+      }}
+    >
+      <div
+        className='widget-header'
+        style={{
+          color: 'var(--dashboard-text)',
+          fontSize: 'var(--dashboard-font-lg)',
+        }}
+      >
+        {title}
+      </div>
+      <div>{children}</div>
+    </div>
+  );
 }
+
+export { type WidgetProps, Widget };

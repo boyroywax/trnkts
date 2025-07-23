@@ -5,18 +5,18 @@ export { PluginManager } from './plugins/PluginManager';
 
 // Re-export components from components library
 export {
-    Sidebar,
-    SidebarItem,
-    Header,
-    Widget,
-    Layout,
+  Sidebar,
+  SidebarItem,
+  Header,
+  Widget,
+  Layout,
 } from '@trnkts/components';
 export type {
-    SidebarProps,
-    SidebarItemProps,
-    HeaderProps,
-    WidgetProps,
-    LayoutProps,
+  SidebarProps,
+  SidebarItemProps,
+  HeaderProps,
+  WidgetProps,
+  LayoutProps,
 } from '@trnkts/components';
 
 // Plugin system exports
@@ -26,11 +26,11 @@ export { useDashboard } from './hooks/useDashboard';
 
 // Type exports
 export type {
-    DashboardConfig,
-    Plugin,
-    PluginConfig,
-    WidgetConfig,
-    DashboardTheme,
+  DashboardConfig,
+  Plugin,
+  PluginConfig,
+  WidgetConfig,
+  DashboardTheme,
 } from './types';
 
 // Utility exports

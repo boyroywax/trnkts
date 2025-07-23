@@ -6,12 +6,12 @@
  */
 
 interface Annotation<T = string> {
-    key: string; // Unique identifier for the annotation
-    value: T; // Value of the annotation
+  key: string; // Unique identifier for the annotation
+  value: T; // Value of the annotation
 }
 
 interface Annotations {
-    [key: string]: Annotation | Annotation[];
+  [key: string]: Annotation | Annotation[];
 }
 
 export { type Annotation, type Annotations };

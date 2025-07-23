@@ -2,41 +2,41 @@
   "folders": [
     {
       "name": "🏠 Root",
-      "path": "."
+      "path": ".",
     },
     {
       "name": "📦 Core",
-      "path": "./packages/core"
+      "path": "./packages/core",
     },
     {
       "name": "📦 Components",
-      "path": "./packages/components"
+      "path": "./packages/components",
     },
     {
-      "name": "🔧 Utils", 
-      "path": "./packages/utils"
+      "name": "🔧 Utils",
+      "path": "./packages/utils",
     },
     {
       "name": "🆔 Identifier",
-      "path": "./packages/identifier"
+      "path": "./packages/identifier",
     },
     {
       "name": "📊 Dashboard",
-      "path": "./packages/dashboard"
-    }
+      "path": "./packages/dashboard",
+    },
   ],
   "settings": {
     "jest.enable": true,
     "jest.autoEnable": true,
     "jest.runMode": {
-      "type": "on-save"
-    }
+      "type": "on-save",
+    },
   },
   "extensions": {
     "recommendations": [
       "orta.vscode-jest",
       "ms-vscode.test-adapter-converter",
-      "hbenl.vscode-test-explorer"
-    ]
-  }
+      "hbenl.vscode-test-explorer",
+    ],
+  },
 }

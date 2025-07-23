@@ -4,55 +4,55 @@ import { useDashboard } from '../hooks/useDashboard';
 import { DashboardProvider } from '../providers/DashboardProvider';
 import type { DashboardConfig } from '../types';
 
-export interface DashboardProps {
-    config: DashboardConfig;
-    children?: ReactNode;
-    className?: string;
+interface DashboardProps {
+  config: DashboardConfig;
+  children?: ReactNode;
+  className?: string;
 }
 
 function DashboardContent({
-    children,
-    className,
+  children,
+  className,
 }: {
-    children?: ReactNode;
-    className?: string;
+  children?: ReactNode;
+  className?: string;
 }): React.JSX.Element {
-    const { theme, isDark } = useDashboard();
+  const { theme, isDark } = useDashboard();
 
-    return (
-        <Layout
-            className={className || ''}
-            isDark={isDark}
-            header={
-                <div className='flex-items-center-justify-between full-width'>
-                    <h1
-                        className='header-title'
-                        style={{
-                            color: isDark
-                                ? theme.darkColors?.text
-                                : theme.colors.text,
-                        }}
-                    >
-                        Dashboard
-                    </h1>
-                </div>
-            }
-        >
-            {children}
-        </Layout>
-    );
+  return (
+    <Layout
+      className={className || ''}
+      isDark={isDark}
+      header={
+        <div className='flex-items-center-justify-between full-width'>
+          <h1
+            className='header-title'
+            style={{
+              color: isDark ? theme.darkColors?.text : theme.colors.text,
+            }}
+          >
+            Dashboard
+          </h1>
+        </div>
+      }
+    >
+      {children}
+    </Layout>
+  );
 }
 
-export function Dashboard({
-    config,
-    children,
-    className,
+function Dashboard({
+  config,
+  children,
+  className,
 }: DashboardProps): React.JSX.Element {
-    return (
-        <DashboardProvider config={config}>
-            <DashboardContent className={className || ''}>
-                {children}
-            </DashboardContent>
-        </DashboardProvider>
-    );
+  return (
+    <DashboardProvider config={config}>
+      <DashboardContent className={className || ''}>
+        {children}
+      </DashboardContent>
+    </DashboardProvider>
+  );
 }
+
+export { type DashboardProps, Dashboard };

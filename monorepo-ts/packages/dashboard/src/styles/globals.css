@@ -2,15 +2,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
 
 /* CSS Reset & Base Styles */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: #FFE5D9;
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background-color: #ffe5d9;
   color: #333333;
   line-height: 1.6;
 }
@@ -22,7 +29,7 @@ html, body {
 /* Dashboard Layout Styles */
 .dashboard-container {
   min-height: 100vh;
-  background-color: #FFE5D9;
+  background-color: #ffe5d9;
 }
 
 .dashboard-content {
@@ -47,7 +54,7 @@ html, body {
   position: sticky;
   top: 0;
   z-index: 50;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #e0e0e0;
   backdrop-filter: blur(8px);
   transition: all 0.2s ease;
 }
@@ -66,7 +73,7 @@ html, body {
 
 .layout-sidebar {
   width: 16rem;
-  border-right: 1px solid #E0E0E0;
+  border-right: 1px solid #e0e0e0;
   transition: all 0.2s ease;
 }
 
@@ -89,7 +96,7 @@ html, body {
 }
 
 .layout-footer {
-  border-top: 1px solid #E0E0E0;
+  border-top: 1px solid #e0e0e0;
   transition: all 0.2s ease;
 }
 
@@ -112,7 +119,10 @@ html, body {
 }
 
 .transition-colors {
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .min-h-screen-minus-header {
@@ -145,15 +155,15 @@ html, body {
 }
 
 .border-b {
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .border-r {
-  border-right: 1px solid #E0E0E0;
+  border-right: 1px solid #e0e0e0;
 }
 
 .border-t {
-  border-top: 1px solid #E0E0E0;
+  border-top: 1px solid #e0e0e0;
 }
 .flex {
   display: flex;
@@ -237,16 +247,32 @@ html, body {
 }
 
 /* Padding */
-.p-2 { padding: 0.5rem; }
-.p-3 { padding: 0.75rem; }
-.p-4 { padding: 1rem; }
-.p-6 { padding: 1.5rem; }
+.p-2 {
+  padding: 0.5rem;
+}
+.p-3 {
+  padding: 0.75rem;
+}
+.p-4 {
+  padding: 1rem;
+}
+.p-6 {
+  padding: 1.5rem;
+}
 
 /* Margin */
-.mb-3 { margin-bottom: 0.75rem; }
-.mb-4 { margin-bottom: 1rem; }
-.mt-2 { margin-top: 0.5rem; }
-.ml-6 { margin-left: 1.5rem; }
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+.mb-4 {
+  margin-bottom: 1rem;
+}
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.ml-6 {
+  margin-left: 1.5rem;
+}
 
 /* Typography */
 .text-xl {
@@ -282,7 +308,7 @@ html, body {
 
 /* Color System - Using trnkts theme colors */
 .text-primary {
-  color: #AF4B0E;
+  color: #af4b0e;
 }
 
 .text-secondary {
@@ -290,63 +316,65 @@ html, body {
 }
 
 .text-success {
-  color: #00E676;
+  color: #00e676;
 }
 
 .text-warning {
-  color: #FF6B35;
+  color: #ff6b35;
 }
 
 .text-error {
-  color: #FF1493;
+  color: #ff1493;
 }
 
 .text-info {
-  color: #00BCD4;
+  color: #00bcd4;
 }
 
 /* Background Colors */
 .bg-surface {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .bg-primary {
-  background-color: #AF4B0E;
+  background-color: #af4b0e;
   color: white;
 }
 
 .bg-success-light {
-  background-color: #E8F5E8;
-  color: #2E7D32;
+  background-color: #e8f5e8;
+  color: #2e7d32;
 }
 
 .bg-warning-light {
-  background-color: #FFF3E0;
-  color: #E65100;
+  background-color: #fff3e0;
+  color: #e65100;
 }
 
 .bg-info-light {
-  background-color: #E0F7FA;
-  color: #00695C;
+  background-color: #e0f7fa;
+  color: #00695c;
 }
 
 .bg-error-light {
-  background-color: #FCE4EC;
-  color: #C2185B;
+  background-color: #fce4ec;
+  color: #c2185b;
 }
 
 /* Card Styles */
 .card {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 0.5rem;
-  border: 1px solid #E0E0E0;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid #e0e0e0;
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 .widget {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 0.5rem;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
@@ -368,7 +396,9 @@ html, body {
   border: none;
   cursor: pointer;
   font-weight: 500;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -399,8 +429,8 @@ html, body {
 
 /* Header Styles */
 .header {
-  background-color: #FFFFFF;
-  border-bottom: 1px solid #E0E0E0;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
   padding: 0.75rem 1.5rem;
 }
 
@@ -412,8 +442,8 @@ html, body {
 
 /* Sidebar Styles */
 .sidebar {
-  background-color: #FFFFFF;
-  border-right: 1px solid #E0E0E0;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
   padding: 1rem;
 }
 
@@ -445,7 +475,7 @@ html, body {
 
 .sidebar-item-active {
   background-color: rgba(175, 75, 14, 0.15);
-  color: #AF4B0E;
+  color: #af4b0e;
 }
 
 .sidebar-item-icon {
@@ -509,7 +539,7 @@ html, body {
   padding: 0.75rem;
   border-radius: 0.375rem;
   background-color: rgba(0, 230, 118, 0.1);
-  color: #00E676;
+  color: #00e676;
   border: 1px solid rgba(0, 230, 118, 0.2);
 }
 
@@ -535,11 +565,11 @@ html, body {
   .dashboard-content {
     padding: 1rem;
   }
-  
+
   .grid-cols-2 {
     grid-template-columns: 1fr;
   }
-  
+
   .demo-grid {
     grid-template-columns: 1fr;
   }
@@ -551,7 +581,7 @@ a:focus,
 input:focus,
 textarea:focus,
 select:focus {
-  outline: 2px solid #AF4B0E;
+  outline: 2px solid #af4b0e;
   outline-offset: 2px;
 }
 
@@ -567,15 +597,18 @@ select:focus {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #AF4B0E;
+  background: #af4b0e;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8A3A0B;
+  background: #8a3a0b;
 }
 
 /* Smooth transitions */
 * {
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
