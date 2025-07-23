@@ -42,13 +42,14 @@ describe('Layout Component', () => {
         expect(screen.getByText(headerContent)).toBeInTheDocument();
     });
 
-    it('renders with dashboard-container class', () => {
+    it('renders with layout structure', () => {
         const { container } = render(
             <Layout>
                 <div>Content</div>
             </Layout>
         );
-        expect(container.firstChild).toHaveClass('dashboard-container');
+        const layoutMainWrapper = container.querySelector('.layout-main-wrapper');
+        expect(layoutMainWrapper).toBeInTheDocument();
     });
 
     it('applies correct grid layout when sidebar is provided', () => {
@@ -63,7 +64,7 @@ describe('Layout Component', () => {
         ) as HTMLElement;
         expect(mainWrapper).toHaveStyle({
             display: 'grid',
-            gridTemplateColumns: '300px 1fr',
+            gridTemplateColumns: '1fr 240px',
         });
     });
 

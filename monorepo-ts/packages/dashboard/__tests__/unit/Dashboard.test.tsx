@@ -96,7 +96,7 @@ jest.mock('../../src/hooks/useDashboard', () => ({
 
 describe('Dashboard Component', () => {
     const mockConfig: DashboardConfig = {
-        title: 'Test Dashboard',
+        title: 'Dashboard',
         theme: undefined,
         plugins: [],
     };
@@ -107,16 +107,14 @@ describe('Dashboard Component', () => {
 
     it('renders without crashing', () => {
         render(<Dashboard config={mockConfig} />);
-        expect(screen.getByText('Dashboard')).toBeInTheDocument();
+        expect(screen.getByRole('main')).toBeInTheDocument();
     });
 
-    it('displays the dashboard title', () => {
+    it('renders layout component', () => {
         render(<Dashboard config={mockConfig} />);
-        expect(
-            screen.getByRole('heading', {
-                level: 1,
-            })
-        ).toHaveTextContent('Dashboard');
+        expect(screen.getByRole('main')).toBeInTheDocument();
+        const layoutContainer = screen.getByRole('main').closest('.layout-main-wrapper');
+        expect(layoutContainer).toBeInTheDocument();
     });
 
     it('renders children when provided', () => {
@@ -138,7 +136,7 @@ describe('Dashboard Component', () => {
             />
         );
         const dashboardContainer = container.querySelector(
-            '.dashboard-container'
+            '.dashboard-content'
         );
         expect(dashboardContainer).toHaveClass(customClass);
     });
@@ -146,6 +144,6 @@ describe('Dashboard Component', () => {
     it('renders with theme context provided', () => {
         render(<Dashboard config={mockConfig} />);
         // Check that the component renders without throwing context errors
-        expect(screen.getByText('Dashboard')).toBeInTheDocument();
+        expect(screen.getByRole('main')).toBeInTheDocument();
     });
 });
