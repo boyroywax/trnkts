@@ -12,6 +12,7 @@ import {
     base32CrockfordsEncodeChars,
     nanoidChars,
 } from './characters';
+import { timestampNow } from '@trnkts/utils';
 
 /**
  * Generates a RFC 4122 version 4 UUID
@@ -41,7 +42,7 @@ function createUuid(): string {
  * @returns A string representation of a ULID
  */
 function createUlid(timestamp?: number): string {
-    const time = timestamp ?? Date.now();
+    const time = timestamp ?? timestampNow();
 
     // Crockford's Base32 encoding alphabet (excludes I, L, O, U to avoid confusion)
     const encoding = base32CrockfordsEncodeChars;
@@ -120,7 +121,7 @@ function createNanoid(
  * @returns A string representation of a cuid
  */
 function createCuid(): string {
-    const timestamp = Date.now().toString(36);
+    const timestamp = timestampNow().toString(36);
     const counter = Math.floor(Math.random() * 1679616)
         .toString(36)
         .padStart(4, '0');
@@ -142,7 +143,7 @@ function createSnowflake(
     datacenterId?: number
 ): string {
     const epoch = 1288834974657; // Twitter epoch (2010-11-04)
-    const timestamp = BigInt(Date.now() - epoch);
+    const timestamp = BigInt(timestampNow() - epoch);
     const datacenter = BigInt(
         datacenterId ?? Math.floor(Math.random() * 32)
     );

@@ -21,6 +21,13 @@
     },
     {
       "path": "../core"
+    },
+    {
+      "path": "../identifier"
+    }
+    ,
+    {
+      "path": "../components"
     }
   ]
 }

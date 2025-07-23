@@ -5,6 +5,9 @@
  * sequence values, and identifier separators.
  */
 
+/**
+ * Identifier types 
+ */
 const IdentifierTypes = {
     UUID: 'uuid',
     ULID: 'ulid',

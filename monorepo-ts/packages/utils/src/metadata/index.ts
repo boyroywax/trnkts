@@ -1,4 +1,5 @@
 import type { TagValue } from './tag';
+import { timestampNow } from '../timestamp';
 
 interface MetadataOptions<T = unknown> {
     name?: string;
@@ -35,7 +36,7 @@ class Metadata<T = unknown> {
         }
 
         // Always set created timestamp
-        this.setTimestamp('created', Date.now());
+        this.setTimestamp('created', timestampNow());
     }
 
     // Annotation methods
@@ -44,7 +45,7 @@ class Metadata<T = unknown> {
         value: TagValue
     ): void {
         this.annotations[key] = value;
-        this.setTimestamp('updated', Date.now());
+        this.setTimestamp('updated', timestampNow());
     }
 
     public getAnnotation(
@@ -56,7 +57,7 @@ class Metadata<T = unknown> {
     public removeAnnotation(key: string): boolean {
         if (key in this.annotations) {
             delete this.annotations[key];
-            this.setTimestamp('updated', Date.now());
+            this.setTimestamp('updated', timestampNow());
             return true;
         }
         return false;
@@ -70,7 +71,7 @@ class Metadata<T = unknown> {
     public addLabel(label: string): void {
         if (!this.labels.includes(label)) {
             this.labels.push(label);
-            this.setTimestamp('updated', Date.now());
+            this.setTimestamp('updated', timestampNow());
         }
     }
 
@@ -78,7 +79,7 @@ class Metadata<T = unknown> {
         const index = this.labels.indexOf(label);
         if (index > -1) {
             this.labels.splice(index, 1);
-            this.setTimestamp('updated', Date.now());
+            this.setTimestamp('updated', timestampNow());
             return true;
         }
         return false;
@@ -92,7 +93,7 @@ class Metadata<T = unknown> {
     public addTag(tag: TagValue): void {
         if (!this.tags.includes(tag)) {
             this.tags.push(tag);
-            this.setTimestamp('updated', Date.now());
+            this.setTimestamp('updated', timestampNow());
         }
     }
 
@@ -100,7 +101,7 @@ class Metadata<T = unknown> {
         const index = this.tags.indexOf(tag);
         if (index > -1) {
             this.tags.splice(index, 1);
-            this.setTimestamp('updated', Date.now());
+            this.setTimestamp('updated', timestampNow());
             return true;
         }
         return false;
@@ -113,7 +114,7 @@ class Metadata<T = unknown> {
     // Timestamp methods
     public setTimestamp(
         key: string,
-        timestamp: number = Date.now()
+        timestamp: number = timestampNow()
     ): void {
         this.timestamps[key] = timestamp;
     }
@@ -133,7 +134,7 @@ class Metadata<T = unknown> {
     // Data methods
     public setData(data: T): void {
         this.data = data;
-        this.setTimestamp('updated', Date.now());
+        this.setTimestamp('updated', timestampNow());
     }
 
     public getData(): T | undefined {
@@ -142,7 +143,7 @@ class Metadata<T = unknown> {
 
     public clearData(): void {
         delete this.data;
-        this.setTimestamp('updated', Date.now());
+        this.setTimestamp('updated', timestampNow());
     }
 
     // Utility methods
@@ -192,7 +193,7 @@ class Metadata<T = unknown> {
             merged.data = other.data;
         }
 
-        merged.setTimestamp('updated', Date.now());
+        merged.setTimestamp('updated', timestampNow());
         return merged;
     }
 

@@ -4,6 +4,8 @@ import {
     type MessageOptions,
 } from './types';
 
+import { timestampNow } from '../timestamp';
+
 class MessageBuilder<T = unknown> {
     private message: ReturnMessage<T>;
 
@@ -14,7 +16,7 @@ class MessageBuilder<T = unknown> {
         this.message = {
             status,
             body: options.body,
-            timestamp: options.timestamp ?? Date.now(),
+            timestamp: options.timestamp ?? timestampNow(),
         };
 
         if (options.metadata !== undefined) {

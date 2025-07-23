@@ -2,8 +2,12 @@
  * Timestamp utilities for generating and converting timestamps
  */
 
+type TimestampFormat = 'unix' | 'iso' | 'milliseconds';
+
+type TimestampValue = string | number;
+
 interface TimestampOptions {
-    format?: 'unix' | 'iso' | 'milliseconds';
+    format?: TimestampFormat;
     timezone?: string;
 }
 
@@ -13,7 +17,7 @@ class TimestampGenerator {
      */
     static now(
         options: TimestampOptions = {}
-    ): string | number {
+    ): TimestampValue {
         const { format = 'milliseconds' } = options;
         const now = new Date();
 
@@ -37,7 +41,7 @@ class TimestampGenerator {
     static fromDate(
         date: Date,
         options: TimestampOptions = {}
-    ): string | number {
+    ): TimestampValue {
         const { format = 'milliseconds' } = options;
 
         switch (format) {
@@ -81,10 +85,10 @@ class TimestampConverter {
      * Convert between timestamp formats
      */
     static convert(
-        timestamp: string | number,
+        timestamp: TimestampValue,
         fromFormat: 'unix' | 'iso' | 'milliseconds',
         toFormat: 'unix' | 'iso' | 'milliseconds'
-    ): string | number {
+    ): TimestampValue {
         let date: Date;
 
         // Convert input to Date
@@ -118,13 +122,23 @@ class TimestampConverter {
 }
 
 // Convenience functions
-const generateTimestamp = TimestampGenerator.now;
-const convertTimestamp = TimestampConverter.convert;
+const generateTimestamp: () => TimestampValue = TimestampGenerator.now;
+const convertTimestamp: (
+    timestamp: TimestampValue,
+    fromFormat: TimestampFormat,
+    toFormat: TimestampFormat
+) => TimestampValue = TimestampConverter.convert;
 const toUnix = (date: Date): number =>
     Math.floor(date.getTime() / 1000);
 const toISO = (date: Date): string => date.toISOString();
 const toMilliseconds = (date: Date): number =>
     date.getTime();
+
+// Current timestamp in milliseconds
+const timestampNow = (): number => TimestampGenerator.now({
+    format: 'milliseconds',
+}) as number;
+
 
 export {
     type TimestampOptions,
@@ -135,4 +149,5 @@ export {
     toUnix,
     toISO,
     toMilliseconds,
+    timestampNow,
 };
