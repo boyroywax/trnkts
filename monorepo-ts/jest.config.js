@@ -24,7 +24,7 @@ const config = {
     '!packages/*/src/**/*.test.{ts,tsx}',
     '!packages/*/src/**/*.spec.{ts,tsx}',
   ],
-  coverageDirectory: 'docs/coverage',
+  coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov', 'html'],
   setupFilesAfterEnv: [],
   clearMocks: true,

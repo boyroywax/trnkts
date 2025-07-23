@@ -14,18 +14,17 @@ function Widget({
 }: WidgetProps): React.JSX.Element {
   return (
     <div
-      className={`widget ${className || ''}`}
+      className={`glass-card ${className || ''}`}
       style={{
-        padding: 'var(--dashboard-spacing-md)',
-        borderColor: 'var(--dashboard-border)',
-        backgroundColor: 'var(--dashboard-surface)',
+        marginBottom: 'var(--trnkts-spacing-md)',
       }}
     >
       <div
-        className='widget-header'
+        className='widget-header gradient-text'
         style={{
-          color: 'var(--dashboard-text)',
-          fontSize: 'var(--dashboard-font-lg)',
+          fontSize: 'var(--trnkts-font-size-xl)',
+          fontWeight: '600',
+          marginBottom: 'var(--trnkts-spacing-sm)',
         }}
       >
         {title}

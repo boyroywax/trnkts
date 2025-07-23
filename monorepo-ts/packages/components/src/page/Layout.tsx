@@ -1,98 +1,57 @@
-import React, { type ReactNode } from 'react';
+import React from 'react';
 
 interface LayoutProps {
-  children: ReactNode;
-  sidebar?: ReactNode;
-  header?: ReactNode;
-  footer?: ReactNode;
-  className?: string;
-  isDark?: boolean;
+  header?: React.ReactNode;
+  sidebar?: React.ReactNode;
+  children: React.ReactNode;
 }
 
-function Layout({
-  children,
-  sidebar,
+export function Layout({
   header,
-  footer,
-  className,
-  isDark = false,
+  sidebar,
+  children,
 }: LayoutProps): React.JSX.Element {
   return (
     <div
-      className={`layout-container ${className || ''}`}
+      className="dashboard-container"
       style={{
-        backgroundColor: isDark
-          ? 'var(--dashboard-dark-background)'
-          : 'var(--dashboard-background)',
-        fontFamily: 'var(--dashboard-font-family)',
-        color: isDark ? 'var(--dashboard-dark-text)' : 'var(--dashboard-text)',
+        minHeight: '100vh',
+        fontFamily: 'var(--trnkts-font-family)',
+        color: 'var(--trnkts-text-primary)',
       }}
     >
       {header && (
-        <header
-          className='layout-header'
-          style={{
-            backgroundColor: isDark
-              ? 'rgba(45, 45, 45, 0.95)'
-              : 'rgba(255, 255, 255, 0.95)',
-            borderColor: isDark
-              ? 'var(--dashboard-dark-border)'
-              : 'var(--dashboard-border)',
-            boxShadow: 'var(--dashboard-shadow-md)',
-          }}
-        >
-          <div className='layout-header-inner'>{header}</div>
+        <header className="layout-header">
+          {header}
         </header>
       )}
 
-      <div className='layout-main-wrapper'>
+      <div 
+        className="layout-main-wrapper"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: sidebar ? '300px 1fr' : '1fr',
+          gap: 'var(--trnkts-spacing-md)',
+          alignItems: 'start',
+        }}
+      >
         {sidebar && (
-          <aside
-            className='layout-sidebar'
-            style={{
-              backgroundColor: isDark
-                ? 'var(--dashboard-dark-surface)'
-                : 'var(--dashboard-surface)',
-              borderColor: isDark
-                ? 'var(--dashboard-dark-border)'
-                : 'var(--dashboard-border)',
-            }}
-          >
-            <div className='layout-sidebar-inner'>
-              <div className='layout-sidebar-content'>{sidebar}</div>
-            </div>
+          <aside className="dashboard-sidebar">
+            {sidebar}
           </aside>
         )}
 
-        <main className='layout-main'>
-          <div
-            className='layout-main-content'
-            style={{
-              minHeight: 'calc(100vh - 4rem)',
-            }}
-          >
-            {children}
-          </div>
-        </main>
-      </div>
-
-      {footer && (
-        <footer
-          className='layout-footer'
+        <main 
+          className="dashboard-main"
           style={{
-            backgroundColor: isDark
-              ? 'var(--dashboard-dark-surface)'
-              : 'var(--dashboard-surface)',
-            borderColor: isDark
-              ? 'var(--dashboard-dark-border)'
-              : 'var(--dashboard-border)',
+            minHeight: '70vh',
           }}
         >
-          <div className='layout-footer-content'>{footer}</div>
-        </footer>
-      )}
+          {children}
+        </main>
+      </div>
     </div>
   );
 }
 
-export { type LayoutProps, Layout };
+export type { LayoutProps };

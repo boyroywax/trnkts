@@ -12,7 +12,7 @@ import {
   base32CrockfordsEncodeChars,
   nanoidChars,
 } from './characters';
-import { timestampNow } from '@trnkts/utils';
+import { timestampNow } from '../../utils/src/timestamp';
 
 /**
  * Generates a RFC 4122 version 4 UUID
