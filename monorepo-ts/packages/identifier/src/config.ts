@@ -1,12 +1,14 @@
 import type { IdentifierType, SequenceType } from 'types';
 
-const TRNKTS_IDENTIFIER_DEFAULT_TYPE: IdentifierType =
+
+const TRNKTS_IDENTIFIER_DEFAULT_TYPE: () => IdentifierType = () =>
     (process.env['TRNKTS_IDENTIFIER_DEFAULT_TYPE'] as IdentifierType) || 'UUID';
-const TRNKTS_IDENTIFIER_NUMBER_MIN: number = parseInt(
+
+const TRNKTS_IDENTIFIER_NUMBER_MIN: () => number = () => parseInt(
     process.env['TRNKTS_IDENTIFIER_NUMBER_MIN'] || '0',
     10
 );
-const TRNKTS_IDENTIFIER_NUMBER_MAX: number = parseInt(
+const TRNKTS_IDENTIFIER_NUMBER_MAX: () => number = () => parseInt(
     process.env['TRNKTS_IDENTIFIER_NUMBER_MAX'] || '9999999999',
     10
 );
@@ -22,6 +24,8 @@ const TRNKTS_IDENTIFIER_DEFAULT_SEQUENCE_STEP: number = parseInt(
     process.env['TRNKTS_IDENTIFIER_DEFFAULT_SEQUENCE_STEP'] || '1',
     10
 );
+
+
 
 export {
     TRNKTS_IDENTIFIER_DEFAULT_TYPE,

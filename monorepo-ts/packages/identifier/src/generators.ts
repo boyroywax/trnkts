@@ -306,18 +306,6 @@ class RandomGenerator {
     }
 }
 
-/**
- * Creates a formatter function that adds prefix and/or suffix to identifier values
- */
-function createPrefixSuffix(
-    prefix: string = '',
-    suffix: string = ''
-): (value: IdentifierValue) => string {
-    return (value: IdentifierValue): string => {
-        return `${prefix}${String(value)}${suffix}`;
-    };
-}
-
 export {
     createUuid,
     createUlid,
@@ -327,7 +315,6 @@ export {
     createRandomString,
     createRandomNumber,
     createSequentialNumber,
-    createPrefixSuffix,
     SequenceGenerator,
     RandomGenerator,
 };

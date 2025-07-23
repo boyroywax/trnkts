@@ -16,7 +16,13 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
-        "@trnkts/utils": "*"
+        "@libp2p/crypto": "^5.1.7",
+        "@libp2p/interface": "^2.10.5",
+        "@libp2p/peer-id": "^5.1.8",
+        "@libp2p/pnet": "^2.0.46",
+        "@multiformats/multiaddr": "^12.5.1",
+        "@trnkts/utils": "*",
+        "uint8arrays": "^5.1.0"
     },
     "keywords": [
         "core",

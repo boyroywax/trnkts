@@ -6,6 +6,7 @@ import {
 
 import { timestampNow } from '../timestamp';
 
+
 class MessageBuilder<T = unknown> {
     private message: ReturnMessage<T>;
 

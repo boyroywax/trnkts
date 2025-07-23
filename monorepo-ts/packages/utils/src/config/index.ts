@@ -1,6 +1,15 @@
+interface Property<T = unknown> {
+    key: string;
+    name?: string;
+    description?: string;
+    required?: boolean; 
+    options?: T[];
+    default?: T;
+    value?: T;
+}
+
 interface ParameterDefinition<T = unknown> {
     key: string;
-    type?: keyof T;
     name?: string;
     description?: string;
     required?: boolean;
@@ -53,6 +62,19 @@ class ConfigurationDefinition<T> {
             ...newParam,
         };
     }
+
+    public removeParameter(key: string): boolean {
+        const index = this.parameters.findIndex(param => param.key === key);
+        if (index !== -1) {
+            this.parameters.splice(index, 1);
+            return true;
+        }
+        return false;
+    }
 }
 
-export { ConfigurationDefinition, type ParameterDefinition, type Argument };
+export {
+    ConfigurationDefinition,
+    type ParameterDefinition,
+    type Argument
+};

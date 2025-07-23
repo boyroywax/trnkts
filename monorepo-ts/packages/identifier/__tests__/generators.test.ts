@@ -7,7 +7,6 @@ import {
     createRandomString,
     createRandomNumber,
     createSequentialNumber,
-    createPrefixSuffix,
     SequenceGenerator,
     RandomGenerator,
 } from '../src/generators';
@@ -161,26 +160,6 @@ describe('createSnowflake', () => {
     it('should accept custom worker and datacenter IDs', () => {
         const snowflake = createSnowflake(1, 2);
         expect(snowflake).toMatch(/^\d+$/);
-    });
-});
-
-describe('createPrefixSuffix', () => {
-    it('should add prefix and suffix to identifier value', () => {
-        const formatter = createPrefixSuffix('PRE_', '_SUF');
-        const result = formatter('test');
-        expect(result).toBe('PRE_test_SUF');
-    });
-
-    it('should work with only prefix', () => {
-        const formatter = createPrefixSuffix('PRE_');
-        const result = formatter('test');
-        expect(result).toBe('PRE_test');
-    });
-
-    it('should work with only suffix', () => {
-        const formatter = createPrefixSuffix('', '_SUF');
-        const result = formatter('test');
-        expect(result).toBe('test_SUF');
     });
 });
 
