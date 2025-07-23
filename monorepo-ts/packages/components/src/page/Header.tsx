@@ -30,8 +30,9 @@ function Header({
                 background: transparent ? 'transparent' : 'var(--trnkts-glass-bg)',
                 backdropFilter: transparent ? 'none' : 'blur(10px)',
                 borderRadius: transparent ? 'none' : 'var(--trnkts-border-radius)',
-                padding: 'var(--trnkts-spacing-sm)',
+                padding: 'var(--trnkts-spacing-xs)',
                 boxShadow: transparent ? 'none' : 'var(--trnkts-glass-shadow)',
+                minHeight: '3rem',
             }}
         >
             <div className='flex items-center space-x-4'>
