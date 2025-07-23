@@ -1,38 +1,38 @@
 {
-  "name": "@trnkts/dashboard",
-  "version": "1.0.0",
-  "description": "React dashboard application with plugin architecture built with Vite",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "dev": "vite --port 3000",
-    "build": "vite build",
-    "preview": "vite preview --port 3000",
-    "typecheck": "tsc --noEmit",
-    "test": "NODE_OPTIONS='--no-deprecation' jest",
-    "test:verbose": "jest",
-    "clean": "rm -rf dist"
-  },
-  "dependencies": {
-    "@trnkts/components": "^1.0.0",
-    "@trnkts/core": "^1.0.0",
-    "@trnkts/utils": "^1.0.0",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.525.0",
-    "react": ">=19.1.0",
-    "react-dom": ">=19.1.0",
-    "react-router-dom": "^7.7.0"
-  },
-  "peerDependencies": {
-    "react": ">=19.1.0",
-    "react-dom": ">=19.1.0"
-  },
-  "keywords": [
-    "dashboard",
-    "react",
-    "vite",
-    "plugins",
-    "typescript"
-  ],
-  "license": "MIT"
+    "name": "@trnkts/dashboard",
+    "version": "1.0.0",
+    "description": "React dashboard application with plugin architecture built with Vite",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "dev": "vite --port 3000",
+        "build": "vite build",
+        "preview": "vite preview --port 3000",
+        "typecheck": "tsc --noEmit",
+        "test": "NODE_OPTIONS='--no-deprecation' jest",
+        "test:verbose": "jest",
+        "clean": "rm -rf dist"
+    },
+    "dependencies": {
+        "@trnkts/components": "^1.0.0",
+        "@trnkts/core": "^1.0.0",
+        "@trnkts/utils": "^1.0.0",
+        "clsx": "^2.1.1",
+        "lucide-react": "^0.525.0",
+        "react": ">=19.1.0",
+        "react-dom": ">=19.1.0",
+        "react-router-dom": "^7.7.0"
+    },
+    "peerDependencies": {
+        "react": ">=19.1.0",
+        "react-dom": ">=19.1.0"
+    },
+    "keywords": [
+        "dashboard",
+        "react",
+        "vite",
+        "plugins",
+        "typescript"
+    ],
+    "license": "MIT"
 }

@@ -1,106 +1,106 @@
 import {
-  MessageStatuses,
-  type ReturnMessage,
-  type MessageOptions,
+    MessageStatuses,
+    type ReturnMessage,
+    type MessageOptions,
 } from './types';
 
 import { timestampNow } from '../timestamp';
 
 class MessageBuilder<T = unknown> {
-  private message: ReturnMessage<T>;
+    private message: ReturnMessage<T>;
 
-  constructor(status: MessageStatuses, options: MessageOptions<T>) {
-    this.message = {
-      status,
-      body: options.body,
-      timestamp: options.timestamp ?? timestampNow(),
-    };
+    constructor(status: MessageStatuses, options: MessageOptions<T>) {
+        this.message = {
+            status,
+            body: options.body,
+            timestamp: options.timestamp ?? timestampNow(),
+        };
 
-    if (options.metadata !== undefined) {
-      this.message.metadata = options.metadata;
+        if (options.metadata !== undefined) {
+            this.message.metadata = options.metadata;
+        }
+        if (options.id !== undefined) {
+            this.message.id = options.id;
+        }
+        if (options.correlationId !== undefined) {
+            this.message.correlationId = options.correlationId;
+        }
+        if (options.source !== undefined) {
+            this.message.source = options.source;
+        }
+        if (options.category !== undefined) {
+            this.message.category = options.category;
+        }
     }
-    if (options.id !== undefined) {
-      this.message.id = options.id;
+
+    public setMetadata(key: string, value: unknown): MessageBuilder<T> {
+        if (!this.message.metadata) {
+            this.message.metadata = {};
+        }
+        this.message.metadata[key] = value;
+        return this;
     }
-    if (options.correlationId !== undefined) {
-      this.message.correlationId = options.correlationId;
+
+    public addMetadata(metadata: Record<string, unknown>): MessageBuilder<T> {
+        this.message.metadata = {
+            ...this.message.metadata,
+            ...metadata,
+        };
+        return this;
     }
-    if (options.source !== undefined) {
-      this.message.source = options.source;
+
+    public setId(id: string): MessageBuilder<T> {
+        this.message.id = id;
+        return this;
     }
-    if (options.category !== undefined) {
-      this.message.category = options.category;
+
+    public setCorrelationId(correlationId: string): MessageBuilder<T> {
+        this.message.correlationId = correlationId;
+        return this;
     }
-  }
 
-  public setMetadata(key: string, value: unknown): MessageBuilder<T> {
-    if (!this.message.metadata) {
-      this.message.metadata = {};
+    public setSource(source: string): MessageBuilder<T> {
+        this.message.source = source;
+        return this;
     }
-    this.message.metadata[key] = value;
-    return this;
-  }
 
-  public addMetadata(metadata: Record<string, unknown>): MessageBuilder<T> {
-    this.message.metadata = {
-      ...this.message.metadata,
-      ...metadata,
-    };
-    return this;
-  }
+    public setCategory(category: string): MessageBuilder<T> {
+        this.message.category = category;
+        return this;
+    }
 
-  public setId(id: string): MessageBuilder<T> {
-    this.message.id = id;
-    return this;
-  }
+    public build(): ReturnMessage<T> {
+        return { ...this.message };
+    }
 
-  public setCorrelationId(correlationId: string): MessageBuilder<T> {
-    this.message.correlationId = correlationId;
-    return this;
-  }
+    // Static factory methods
+    public static success<T>(options: MessageOptions<T>): MessageBuilder<T> {
+        return new MessageBuilder(MessageStatuses.SUCCESS, options);
+    }
 
-  public setSource(source: string): MessageBuilder<T> {
-    this.message.source = source;
-    return this;
-  }
+    public static error<T>(options: MessageOptions<T>): MessageBuilder<T> {
+        return new MessageBuilder(MessageStatuses.ERROR, options);
+    }
 
-  public setCategory(category: string): MessageBuilder<T> {
-    this.message.category = category;
-    return this;
-  }
+    public static warning<T>(options: MessageOptions<T>): MessageBuilder<T> {
+        return new MessageBuilder(MessageStatuses.WARNING, options);
+    }
 
-  public build(): ReturnMessage<T> {
-    return { ...this.message };
-  }
+    public static info<T>(options: MessageOptions<T>): MessageBuilder<T> {
+        return new MessageBuilder(MessageStatuses.INFO, options);
+    }
 
-  // Static factory methods
-  public static success<T>(options: MessageOptions<T>): MessageBuilder<T> {
-    return new MessageBuilder(MessageStatuses.SUCCESS, options);
-  }
+    public static debug<T>(options: MessageOptions<T>): MessageBuilder<T> {
+        return new MessageBuilder(MessageStatuses.DEBUG, options);
+    }
 
-  public static error<T>(options: MessageOptions<T>): MessageBuilder<T> {
-    return new MessageBuilder(MessageStatuses.ERROR, options);
-  }
+    public static critical<T>(options: MessageOptions<T>): MessageBuilder<T> {
+        return new MessageBuilder(MessageStatuses.CRITICAL, options);
+    }
 
-  public static warning<T>(options: MessageOptions<T>): MessageBuilder<T> {
-    return new MessageBuilder(MessageStatuses.WARNING, options);
-  }
-
-  public static info<T>(options: MessageOptions<T>): MessageBuilder<T> {
-    return new MessageBuilder(MessageStatuses.INFO, options);
-  }
-
-  public static debug<T>(options: MessageOptions<T>): MessageBuilder<T> {
-    return new MessageBuilder(MessageStatuses.DEBUG, options);
-  }
-
-  public static critical<T>(options: MessageOptions<T>): MessageBuilder<T> {
-    return new MessageBuilder(MessageStatuses.CRITICAL, options);
-  }
-
-  public static unknown<T>(options: MessageOptions<T>): MessageBuilder<T> {
-    return new MessageBuilder(MessageStatuses.UNKNOWN, options);
-  }
+    public static unknown<T>(options: MessageOptions<T>): MessageBuilder<T> {
+        return new MessageBuilder(MessageStatuses.UNKNOWN, options);
+    }
 }
 
 export { MessageBuilder };

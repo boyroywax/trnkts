@@ -1,25 +1,44 @@
 # `trnkts` - Distributed## Infrastructure & Service Features
 
-- 🚀 **Distributed Infrastructure Service**: Complete orchestration platform for distributed and decentralized systems
-- 🌍 **Multi-Network Operation**: Seamlessly operates across private enterprise networks and public internet infrastructure
-- 🔗 **Unified P2P Stack**: Integrates js-libp2p, Helia (js-IPFS), OrbitDB, and Bacalhau into a cohesive service layer
-- 🏗️ **Peer Infrastructure Management**: Automated provisioning, configuration, and scaling of network peers
-- 📊 **Distributed Database Services**: Enterprise-grade distributed database management and synchronization
-- 🔐 **Decentralized Authentication**: Zero-trust identity and access control across distributed infrastructure
-- 🖥️ **Service Dashboard**: Complete monitoring and management interface for distributed infrastructure
-- 📦 **Modular Service Architecture**: Microservices approach with shared TypeScript configuration
-- 🧪 **Infrastructure Testing**: Comprehensive testing suite for distributed system reliability
-- 🎯 **Enterprise-Ready**: Production-grade code quality with Prettier and ESLint standardszed Infrastructure Service
+- 🚀 **Distributed Infrastructure Service**: Complete orchestration platform for
+  distributed and decentralized systems
+- 🌍 **Multi-Network Operation**: Seamlessly operates across private enterprise
+  networks and public internet infrastructure
+- 🔗 **Unified P2P Stack**: Integrates js-libp2p, Helia (js-IPFS), OrbitDB, and
+  Bacalhau into a cohesive service layer
+- 🏗️ **Peer Infrastructure Management**: Automated provisioning, configuration,
+  and scaling of network peers
+- 📊 **Distributed Database Services**: Enterprise-grade distributed database
+  management and synchronization
+- 🔐 **Decentralized Authentication**: Zero-trust identity and access control
+  across distributed infrastructure
+- 🖥️ **Service Dashboard**: Complete monitoring and management interface for
+  distributed infrastructure
+- 📦 **Modular Service Architecture**: Microservices approach with shared
+  TypeScript configuration
+- 🧪 **Infrastructure Testing**: Comprehensive testing suite for distributed
+  system reliability
+- 🎯 **Enterprise-Ready**: Production-grade code quality with Prettier and
+  ESLint standardszed Infrastructure Service
 
-**trnkts** is a comprehensive service platform for distributed and decentralized infrastructure that seamlessly operates across private and public networks. Built as a TypeScript monorepo, trnkts provides a unified orchestration layer for peer-to-peer applications, combining the power of libp2p, IPFS, OrbitDB, and Bacalhau into a cohesive distributed computing platform.
+**trnkts** is a comprehensive service platform for distributed and decentralized
+infrastructure that seamlessly operates across private and public networks.
+Built as a TypeScript monorepo, trnkts provides a unified orchestration layer
+for peer-to-peer applications, combining the power of libp2p, IPFS, OrbitDB, and
+Bacalhau into a cohesive distributed computing platform.
 
 ## Core Infrastructure Technologies
 
-- **🌐 libp2p**: Modular peer-to-peer networking protocol suite for private and public networks
-- **🗄️ IPFS (Helia)**: Distributed file system with content addressing across network boundaries  
-- **🗃️ OrbitDB**: Serverless, distributed, peer-to-peer databases for decentralized data management
-- **⚡ Bacalhau**: Distributed compute over data for processing across heterogeneous networks
-- **🔗 Network Agnostic**: Operates seamlessly on private enterprise networks and public internet infrastructureDistributed Web Development Suite
+- **🌐 libp2p**: Modular peer-to-peer networking protocol suite for private and
+  public networks
+- **🗄️ IPFS (Helia)**: Distributed file system with content addressing across
+  network boundaries
+- **🗃️ OrbitDB**: Serverless, distributed, peer-to-peer databases for
+  decentralized data management
+- **⚡ Bacalhau**: Distributed compute over data for processing across
+  heterogeneous networks
+- **🔗 Network Agnostic**: Operates seamlessly on private enterprise networks
+  and public internet infrastructureDistributed Web Development Suite
 
 A comprehensive TypeScript monorepo for building digital artifacts on the
 distributed web. Trnkts is a complete orchestrator and frontend for running
@@ -163,62 +182,70 @@ npm run dev -w packages/utils
 
 ### Deploying Infrastructure Nodes
 
-The core package provides comprehensive infrastructure orchestration for distributed systems:
+The core package provides comprehensive infrastructure orchestration for
+distributed systems:
 
 ```typescript
 import { createPeer } from '@trnkts/core';
 
 // Initialize a new infrastructure node with full P2P stack
 const infrastructureNode = await createPeer({
-  networking: {
-    // libp2p configuration for private/public networks
-    addresses: ['/ip4/0.0.0.0/tcp/4001', '/ip4/0.0.0.0/tcp/4002/ws'],
-    bootstrap: ['existing-peer-addresses'],
-    relay: { enabled: true, hop: { enabled: true } }
-  },
-  storage: {
-    // IPFS/Helia distributed storage configuration
-    blockstore: 'leveldb',
-    datastore: 'leveldb', 
-    libp2p: { /* networking config */ }
-  },
-  database: {
-    // OrbitDB distributed database configuration
-    directory: './orbitdb',
-    identity: { /* identity provider */ }
-  },
-  compute: {
-    // Bacalhau distributed compute configuration
-    api: { host: 'localhost', port: 1234 },
-    requester: { /* job submission config */ }
-  },
+    networking: {
+        // libp2p configuration for private/public networks
+        addresses: ['/ip4/0.0.0.0/tcp/4001', '/ip4/0.0.0.0/tcp/4002/ws'],
+        bootstrap: ['existing-peer-addresses'],
+        relay: { enabled: true, hop: { enabled: true } },
+    },
+    storage: {
+        // IPFS/Helia distributed storage configuration
+        blockstore: 'leveldb',
+        datastore: 'leveldb',
+        libp2p: {
+            /* networking config */
+        },
+    },
+    database: {
+        // OrbitDB distributed database configuration
+        directory: './orbitdb',
+        identity: {
+            /* identity provider */
+        },
+    },
+    compute: {
+        // Bacalhau distributed compute configuration
+        api: { host: 'localhost', port: 1234 },
+        requester: {
+            /* job submission config */
+        },
+    },
 });
 ```
 
 ### Managing Distributed Database Infrastructure
 
-OrbitDB integration provides enterprise-grade distributed database services across networks:
+OrbitDB integration provides enterprise-grade distributed database services
+across networks:
 
 ```typescript
 import { createDatabase } from '@trnkts/core';
 
 // Deploy distributed database infrastructure
 const distributedDB = await createDatabase({
-  type: 'docstore', // or 'keyvalue', 'eventlog', 'feed', 'counter'
-  name: 'enterprise-data-layer',
-  accessController: {
-    type: 'orbitdb',    // Built-in access control
-    write: ['peer-id-1', 'peer-id-2'], // Write permissions
-    admin: ['admin-peer-id']             // Admin permissions
-  },
-  replication: {
-    factor: 3,          // Replication across 3 nodes minimum
-    strategy: 'closest' // Geographic replication strategy
-  },
-  network: {
-    private: true,      // Private network deployment
-    encryption: 'aes256' // Data encryption
-  }
+    type: 'docstore', // or 'keyvalue', 'eventlog', 'feed', 'counter'
+    name: 'enterprise-data-layer',
+    accessController: {
+        type: 'orbitdb', // Built-in access control
+        write: ['peer-id-1', 'peer-id-2'], // Write permissions
+        admin: ['admin-peer-id'], // Admin permissions
+    },
+    replication: {
+        factor: 3, // Replication across 3 nodes minimum
+        strategy: 'closest', // Geographic replication strategy
+    },
+    network: {
+        private: true, // Private network deployment
+        encryption: 'aes256', // Data encryption
+    },
 });
 ```
 
@@ -267,21 +294,33 @@ packages/your-package/
 
 ### Service Layer Components
 
-- **Network Infrastructure Layer**: libp2p protocol suite for multi-network peer discovery and secure communication
-- **Distributed Storage Layer**: IPFS/Helia for content-addressed storage with automatic replication
-- **Database Infrastructure Layer**: OrbitDB for distributed, serverless database services with conflict resolution
-- **Compute Infrastructure Layer**: Bacalhau for distributed processing and job orchestration
-- **Identity & Access Layer**: Decentralized authentication and zero-trust access control across networks
-- **Management Dashboard**: Real-time monitoring, configuration, and scaling of distributed infrastructure
+- **Network Infrastructure Layer**: libp2p protocol suite for multi-network peer
+  discovery and secure communication
+- **Distributed Storage Layer**: IPFS/Helia for content-addressed storage with
+  automatic replication
+- **Database Infrastructure Layer**: OrbitDB for distributed, serverless
+  database services with conflict resolution
+- **Compute Infrastructure Layer**: Bacalhau for distributed processing and job
+  orchestration
+- **Identity & Access Layer**: Decentralized authentication and zero-trust
+  access control across networks
+- **Management Dashboard**: Real-time monitoring, configuration, and scaling of
+  distributed infrastructure
 
 ### Infrastructure Deployment Workflow
 
-1. **Network Planning**: Design distributed network topology for private/public infrastructure
-2. **Node Provisioning**: Automated deployment and configuration of infrastructure nodes
-3. **Service Configuration**: Setup databases, storage, and compute services across the distributed network
-4. **Access Control**: Implement decentralized identity and permissioning systems
-5. **Monitoring & Management**: Deploy service dashboard for real-time infrastructure monitoring
-6. **Scaling & Orchestration**: Dynamic scaling and load balancing across distributed infrastructure
+1. **Network Planning**: Design distributed network topology for private/public
+   infrastructure
+2. **Node Provisioning**: Automated deployment and configuration of
+   infrastructure nodes
+3. **Service Configuration**: Setup databases, storage, and compute services
+   across the distributed network
+4. **Access Control**: Implement decentralized identity and permissioning
+   systems
+5. **Monitoring & Management**: Deploy service dashboard for real-time
+   infrastructure monitoring
+6. **Scaling & Orchestration**: Dynamic scaling and load balancing across
+   distributed infrastructure
 
 ## Code Quality
 
@@ -320,28 +359,28 @@ packages/your-package/
 ## Infrastructure Service Roadmap
 
 - [ ] **Core Infrastructure Services**
-  - [ ] Complete libp2p multi-network integration (private/public)
-  - [ ] IPFS/Helia distributed storage service implementation
-  - [ ] OrbitDB enterprise database infrastructure layer
-  - [ ] Bacalhau distributed compute orchestration integration
+    - [ ] Complete libp2p multi-network integration (private/public)
+    - [ ] IPFS/Helia distributed storage service implementation
+    - [ ] OrbitDB enterprise database infrastructure layer
+    - [ ] Bacalhau distributed compute orchestration integration
 
 - [ ] **Service Management & Operations**
-  - [ ] Infrastructure monitoring and alerting dashboard
-  - [ ] Automated node provisioning and scaling services
-  - [ ] Service health checks and failover mechanisms
-  - [ ] Distributed backup and disaster recovery systems
+    - [ ] Infrastructure monitoring and alerting dashboard
+    - [ ] Automated node provisioning and scaling services
+    - [ ] Service health checks and failover mechanisms
+    - [ ] Distributed backup and disaster recovery systems
 
 - [ ] **Enterprise & Production Features**
-  - [ ] Enterprise-grade security and compliance features
-  - [ ] Multi-tenant infrastructure isolation
-  - [ ] API gateway and service mesh integration
-  - [ ] Performance optimization and caching layers
+    - [ ] Enterprise-grade security and compliance features
+    - [ ] Multi-tenant infrastructure isolation
+    - [ ] API gateway and service mesh integration
+    - [ ] Performance optimization and caching layers
 
 - [ ] **Platform & Ecosystem**
-  - [ ] CLI tools for infrastructure management
-  - [ ] SDK for third-party service integration
-  - [ ] Mobile monitoring applications
-  - [ ] Community marketplace for distributed services
+    - [ ] CLI tools for infrastructure management
+    - [ ] SDK for third-party service integration
+    - [ ] Mobile monitoring applications
+    - [ ] Community marketplace for distributed services
 
 ## License
 

@@ -1,57 +1,57 @@
 version: '3.8'
 
 services:
-  # Development environment
-  trnkts-dev:
-    build:
-      context: .
-      target: development
-    volumes:
-      - .:/app
-      - /app/node_modules
-    working_dir: /app
-    command: npm run dev
-    ports:
-      - '3000:3000'
-    environment:
-      - NODE_ENV=development
+    # Development environment
+    trnkts-dev:
+        build:
+            context: .
+            target: development
+        volumes:
+            - .:/app
+            - /app/node_modules
+        working_dir: /app
+        command: npm run dev
+        ports:
+            - '3000:3000'
+        environment:
+            - NODE_ENV=development
 
-  # Build and test environment
-  trnkts-build:
-    build:
-      context: .
-      target: build
-    volumes:
-      - build-artifacts:/app/packages/*/dist
+    # Build and test environment
+    trnkts-build:
+        build:
+            context: .
+            target: build
+        volumes:
+            - build-artifacts:/app/packages/*/dist
 
-  # Test environment
-  trnkts-test:
-    build:
-      context: .
-      target: test
-    environment:
-      - NODE_ENV=test
-      - CI=true
+    # Test environment
+    trnkts-test:
+        build:
+            context: .
+            target: test
+        environment:
+            - NODE_ENV=test
+            - CI=true
 
-  # CI environment - runs all checks
-  trnkts-ci:
-    build:
-      context: .
-      target: ci
-    environment:
-      - NODE_ENV=test
-      - CI=true
+    # CI environment - runs all checks
+    trnkts-ci:
+        build:
+            context: .
+            target: ci
+        environment:
+            - NODE_ENV=test
+            - CI=true
 
-  # Production environment
-  trnkts-prod:
-    build:
-      context: .
-      target: production
-    ports:
-      - '3000:3000'
-    environment:
-      - NODE_ENV=production
-    restart: unless-stopped
+    # Production environment
+    trnkts-prod:
+        build:
+            context: .
+            target: production
+        ports:
+            - '3000:3000'
+        environment:
+            - NODE_ENV=production
+        restart: unless-stopped
 
 volumes:
-  build-artifacts:
+    build-artifacts:

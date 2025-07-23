@@ -5,7 +5,7 @@ import clsx from 'clsx';
  * A lightweight alternative to the popular classnames library
  */
 function cn(...classes: (string | undefined | null | false)[]): string {
-  return clsx(classes);
+    return clsx(classes);
 }
 
 export { cn };

@@ -2,44 +2,44 @@ import type { IdentifierType, IdentifierValue } from 'index';
 import { createSequentialNumber } from './generators';
 
 class IdentifierManager {
-  private static instance: IdentifierManager;
-  private identifiers: Map<IdentifierValue, IdentifierType>;
-  private sequentialNumberGenerator: () => number;
+    private static instance: IdentifierManager;
+    private identifiers: Map<IdentifierValue, IdentifierType>;
+    private sequentialNumberGenerator: () => number;
 
-  private constructor() {
-    this.identifiers = new Map();
-    this.sequentialNumberGenerator = createSequentialNumber();
-  }
-
-  public static getInstance(): IdentifierManager {
-    if (!IdentifierManager.instance) {
-      IdentifierManager.instance = new IdentifierManager();
+    private constructor() {
+        this.identifiers = new Map();
+        this.sequentialNumberGenerator = createSequentialNumber();
     }
-    return IdentifierManager.instance;
-  }
 
-  public registerIdentifier(
-    type: IdentifierValue,
-    value: IdentifierType
-  ): void {
-    this.identifiers.set(type, value);
-  }
+    public static getInstance(): IdentifierManager {
+        if (!IdentifierManager.instance) {
+            IdentifierManager.instance = new IdentifierManager();
+        }
+        return IdentifierManager.instance;
+    }
 
-  public getIdentifier(type: IdentifierValue): IdentifierType | undefined {
-    return this.identifiers.get(type);
-  }
+    public registerIdentifier(
+        type: IdentifierValue,
+        value: IdentifierType
+    ): void {
+        this.identifiers.set(type, value);
+    }
 
-  public hasIdentifier(type: IdentifierValue): boolean {
-    return this.identifiers.has(type);
-  }
+    public getIdentifier(type: IdentifierValue): IdentifierType | undefined {
+        return this.identifiers.get(type);
+    }
 
-  public clearIdentifiers(): void {
-    this.identifiers.clear();
-  }
+    public hasIdentifier(type: IdentifierValue): boolean {
+        return this.identifiers.has(type);
+    }
 
-  public generateSequentialNumber(): number {
-    return this.sequentialNumberGenerator();
-  }
+    public clearIdentifiers(): void {
+        this.identifiers.clear();
+    }
+
+    public generateSequentialNumber(): number {
+        return this.sequentialNumberGenerator();
+    }
 }
 
 export { IdentifierManager };

@@ -1,23 +1,23 @@
 {
-  "name": "@trnkts/utils",
-  "version": "1.0.0",
-  "description": "Shared utilities for the trnkts typescript monorepo",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "type": "module",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "clean": "rm -rf dist",
-    "test": "jest",
-    "typecheck": "tsc --noEmit"
-  },
-  "keywords": [
-    "utilities",
-    "typescript"
-  ],
-  "license": "MIT"
+    "name": "@trnkts/utils",
+    "version": "1.0.0",
+    "description": "Shared utilities for the trnkts typescript monorepo",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "type": "module",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsc --watch",
+        "clean": "rm -rf dist",
+        "test": "jest",
+        "typecheck": "tsc --noEmit"
+    },
+    "keywords": [
+        "utilities",
+        "typescript"
+    ],
+    "license": "MIT"
 }

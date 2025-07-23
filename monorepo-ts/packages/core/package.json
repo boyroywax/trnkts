@@ -1,26 +1,26 @@
 {
-  "name": "@trnkts/core",
-  "version": "1.0.0",
-  "description": "Core functionality for the trnkts typescript monorepo",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "type": "module",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "clean": "rm -rf dist",
-    "test": "jest",
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@trnkts/utils": "*"
-  },
-  "keywords": [
-    "core",
-    "typescript"
-  ],
-  "license": "MIT"
+    "name": "@trnkts/core",
+    "version": "1.0.0",
+    "description": "Core functionality for the trnkts typescript monorepo",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "type": "module",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsc --watch",
+        "clean": "rm -rf dist",
+        "test": "jest",
+        "typecheck": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@trnkts/utils": "*"
+    },
+    "keywords": [
+        "core",
+        "typescript"
+    ],
+    "license": "MIT"
 }

@@ -1,41 +1,41 @@
 {
-  "name": "@trnkts/components",
-  "version": "1.0.0",
-  "description": "Reusable React components library for trnkts projects",
-  "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "dev": "vite --port 3001",
-    "build": "tsc && vite build",
-    "preview": "vite preview --port 3001",
-    "typecheck": "tsc --noEmit",
-    "test": "NODE_OPTIONS='--no-deprecation' jest",
-    "test:watch": "jest --watch",
-    "clean": "rm -rf dist"
-  },
-  "dependencies": {
-    "@trnkts/core": "^1.0.0",
-    "@trnkts/utils": "^1.0.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "lucide-react": "^0.525.0",
-    "clsx": "^2.1.1"
-  },
-  "peerDependencies": {
-    "react": ">=19.1.0",
-    "react-dom": ">=19.1.0"
-  },
-  "keywords": [
-    "react",
-    "components",
-    "library",
-    "typescript",
-    "ui"
-  ],
-  "author": "",
-  "license": "ISC"
+    "name": "@trnkts/components",
+    "version": "1.0.0",
+    "description": "Reusable React components library for trnkts projects",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "dev": "vite --port 3001",
+        "build": "tsc && vite build",
+        "preview": "vite preview --port 3001",
+        "typecheck": "tsc --noEmit",
+        "test": "NODE_OPTIONS='--no-deprecation' jest",
+        "test:watch": "jest --watch",
+        "clean": "rm -rf dist"
+    },
+    "dependencies": {
+        "@trnkts/core": "^1.0.0",
+        "@trnkts/utils": "^1.0.0",
+        "react": "^19.1.0",
+        "react-dom": "^19.1.0",
+        "lucide-react": "^0.525.0",
+        "clsx": "^2.1.1"
+    },
+    "peerDependencies": {
+        "react": ">=19.1.0",
+        "react-dom": ">=19.1.0"
+    },
+    "keywords": [
+        "react",
+        "components",
+        "library",
+        "typescript",
+        "ui"
+    ],
+    "author": "",
+    "license": "ISC"
 }

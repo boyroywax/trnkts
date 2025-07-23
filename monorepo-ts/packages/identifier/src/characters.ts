@@ -11,10 +11,10 @@ const base32CrockfordsEncodeChars: string = `${numericChars}ABCDEFGHJKMNPQRSTVWX
 const nanoidChars: string = `${alphaCharsUpper}${alphaCharsLower}${numericChars}_-`;
 
 export {
-  alphaCharsUpper,
-  alphaCharsLower,
-  numericChars,
-  alphaNumChars,
-  base32CrockfordsEncodeChars,
-  nanoidChars,
+    alphaCharsUpper,
+    alphaCharsLower,
+    numericChars,
+    alphaNumChars,
+    base32CrockfordsEncodeChars,
+    nanoidChars,
 };
