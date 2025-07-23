@@ -74,7 +74,10 @@ function Sidebar({ children, className }: SidebarProps): React.JSX.Element {
         <nav
             className={`sidebar-nav ${className || ''}`}
             style={{
-                padding: 'var(--trnkts-spacing-sm)',
+                paddingTop: 'var(--trnkts-spacing-sm)',
+                paddingBottom: 'var(--trnkts-spacing-sm)',
+                paddingLeft: 'var(--trnkts-spacing-sm)',
+                paddingRight: '0.25rem',
             }}
         >
             {children}

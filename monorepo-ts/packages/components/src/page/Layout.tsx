@@ -27,13 +27,19 @@ export function Layout({
                 className='layout-main-wrapper'
                 style={{
                     display: 'grid',
-                    gridTemplateColumns: sidebar ? '240px 1fr' : '1fr',
+                    gridTemplateColumns: sidebar ? '1fr 240px' : '1fr',
                     gap: 'var(--trnkts-spacing-sm)',
                     alignItems: 'start',
                     flex: 1,
                     padding: 'var(--trnkts-spacing-sm)',
                 }}
             >
+                <main style={{ 
+                    padding: 'var(--trnkts-spacing-sm)',
+                }}>
+                    {children}
+                </main>
+
                 {sidebar && (
                     <aside style={{ 
                         padding: 'var(--trnkts-spacing-sm)',
@@ -41,12 +47,6 @@ export function Layout({
                         {sidebar}
                     </aside>
                 )}
-
-                <main style={{ 
-                    padding: 'var(--trnkts-spacing-sm)',
-                }}>
-                    {children}
-                </main>
             </div>
 
             {footer && (

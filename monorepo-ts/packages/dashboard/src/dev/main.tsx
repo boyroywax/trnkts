@@ -39,28 +39,6 @@ function App(): React.JSX.Element {
 
     const sidebarContent = (
         <Sidebar>
-            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                <Logo
-                    size={60}
-                    animated={true}
-                />
-                <h3
-                    className='gradient-text-logo'
-                    style={{ margin: '1rem 0 0 0', fontSize: '1.5rem' }}
-                >
-                    trnkts
-                </h3>
-                <p
-                    className="text-light"
-                    style={{
-                        fontSize: '0.9rem',
-                        margin: '0.5rem 0',
-                    }}
-                >
-                    Design System
-                </p>
-            </div>
-
             <SidebarItem
                 title='Dashboard'
                 icon={<Home size={18} />}
