@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Header } from '../../src/page/Header';
 import { Layout } from '../../src/page/Layout';
+import { Footer } from '../../src/page/Footer';
 import { Sidebar, SidebarItem } from '../../src/page/Sidebar';
 import { Widget } from '../../src/page/Widget';
 
@@ -138,6 +139,7 @@ describe('Layout Component', () => {
             <Layout
                 header={<div>Header</div>}
                 sidebar={<div>Sidebar</div>}
+                footer={<div>Footer</div>}
             >
                 <div>Main Content</div>
             </Layout>
@@ -146,6 +148,18 @@ describe('Layout Component', () => {
         expect(screen.getByText('Header')).toBeInTheDocument();
         expect(screen.getByText('Sidebar')).toBeInTheDocument();
         expect(screen.getByText('Main Content')).toBeInTheDocument();
+        expect(screen.getByText('Footer')).toBeInTheDocument();
+    });
+
+    it('renders footer when provided', () => {
+        const footerContent = 'Custom Footer Content';
+        render(
+            <Layout footer={<div>{footerContent}</div>}>
+                <div>Main content</div>
+            </Layout>
+        );
+
+        expect(screen.getByText(footerContent)).toBeInTheDocument();
     });
 
     it('renders without header, sidebar, and footer when not provided', () => {
@@ -417,5 +431,82 @@ describe('Widget Component', () => {
                 name: 'Action Button',
             })
         ).toBeInTheDocument();
+    });
+});
+
+describe('Footer Component', () => {
+    it('renders without crashing', () => {
+        render(<Footer />);
+    });
+
+    it('renders default copyright text when no children provided', () => {
+        render(<Footer />);
+        
+        expect(screen.getByText('© 2025 trnkts - Distributed Infrastructure Platform')).toBeInTheDocument();
+    });
+
+    it('renders custom children when provided', () => {
+        const customText = 'Custom footer content';
+        render(<Footer>{customText}</Footer>);
+        
+        expect(screen.getByText(customText)).toBeInTheDocument();
+    });
+
+    it('renders theme toggle button by default', () => {
+        render(<Footer />);
+        
+        const themeToggle = screen.getByRole('button');
+        expect(themeToggle).toBeInTheDocument();
+    });
+
+    it('hides theme toggle button when showThemeToggle is false', () => {
+        render(<Footer showThemeToggle={false} />);
+        
+        const themeToggle = screen.queryByRole('button');
+        expect(themeToggle).not.toBeInTheDocument();
+    });
+
+    it('shows sun icon when isDark is true', () => {
+        render(<Footer isDark={true} />);
+        
+        const themeToggle = screen.getByRole('button');
+        expect(themeToggle).toHaveTextContent('☀️');
+        expect(themeToggle).toHaveAttribute('title', 'Switch to light mode');
+    });
+
+    it('shows moon icon when isDark is false', () => {
+        render(<Footer isDark={false} />);
+        
+        const themeToggle = screen.getByRole('button');
+        expect(themeToggle).toHaveTextContent('🌙');
+        expect(themeToggle).toHaveAttribute('title', 'Switch to dark mode');
+    });
+
+    it('calls onThemeToggle when theme button is clicked', () => {
+        const mockOnThemeToggle = jest.fn();
+        render(<Footer onThemeToggle={mockOnThemeToggle} />);
+        
+        const themeToggle = screen.getByRole('button');
+        fireEvent.click(themeToggle);
+        
+        expect(mockOnThemeToggle).toHaveBeenCalledTimes(1);
+    });
+
+    it('applies custom className', () => {
+        const customClass = 'custom-footer-class';
+        const { container } = render(<Footer className={customClass} />);
+        
+        const footer = container.querySelector('footer');
+        expect(footer).toHaveClass('footer-container', customClass);
+    });
+
+    it('has proper structure with content and theme toggle', () => {
+        render(<Footer />);
+        
+        const footer = screen.getByRole('contentinfo');
+        expect(footer).toBeInTheDocument();
+        
+        const themeButton = screen.getByRole('button');
+        expect(themeButton).toBeInTheDocument();
     });
 });

@@ -81,8 +81,7 @@ html {
 body {
     font-family: var(--trnkts-font-family);
     background: var(--trnkts-bg-gradient);
-    background-attachment: fixed;
-    min-height: 100vh;
+    background-attachment: scroll;
     color: var(--trnkts-text-primary);
     line-height: 1.6;
 }

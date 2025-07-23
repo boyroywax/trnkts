@@ -2,6 +2,7 @@
 export { Widget, type WidgetProps } from './page/Widget';
 export { Header, type HeaderProps } from './page/Header';
 export { Layout, type LayoutProps } from './page/Layout';
+export { Footer, type FooterProps } from './page/Footer';
 export {
     Sidebar,
     SidebarItem,

@@ -1,5 +1,5 @@
 import React, { type ReactNode } from 'react';
-import { Layout } from '@trnkts/components';
+import { Layout, Footer } from '@trnkts/components';
 import { useDashboard } from '../hooks/useDashboard';
 import { DashboardProvider } from '../providers/DashboardProvider';
 import type { DashboardConfig } from '../types';
@@ -17,34 +17,27 @@ function DashboardContent({
     children?: ReactNode;
     className?: string;
 }): React.JSX.Element {
-    const { theme, isDark } = useDashboard();
+    const { theme, isDark, setIsDark } = useDashboard();
+
+    const handleThemeToggle = (): void => {
+        setIsDark(!isDark);
+    };
 
     return (
         <div
             className={`dashboard-container ${className || ''}`}
             style={{
-                minHeight: '100vh',
                 fontFamily: 'var(--trnkts-font-family)',
                 color: isDark ? theme.darkColors?.text : theme.colors.text,
-                backgroundColor: isDark
-                    ? theme.darkColors?.background
-                    : theme.colors.background,
             }}
         >
             <Layout
-                header={
-                    <div className='flex-items-center-justify-between full-width'>
-                        <h1
-                            className='header-title'
-                            style={{
-                                color: isDark
-                                    ? theme.darkColors?.text
-                                    : theme.colors.text,
-                            }}
-                        >
-                            Dashboard
-                        </h1>
-                    </div>
+                footer={
+                    <Footer
+                        isDark={isDark}
+                        onThemeToggle={handleThemeToggle}
+                        showThemeToggle={true}
+                    />
                 }
             >
                 {children}

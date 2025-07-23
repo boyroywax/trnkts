@@ -8,6 +8,7 @@ import {
     Widget,
     Logo,
 } from '@trnkts/components';
+import { Dashboard } from '../components/Dashboard';
 import {
     Home,
     Settings,
@@ -21,10 +22,17 @@ import {
     Globe,
 } from 'lucide-react';
 import '../styles/globals.css';
+import '../styles/theme.css';
 
 // Sample dashboard for demonstrating the new design
 function App(): React.JSX.Element {
     const [activeItem, setActiveItem] = React.useState<string>('home');
+
+    // Dashboard configuration
+    const dashboardConfig = {
+        title: 'Trnkts Dashboard',
+        plugins: [],
+    };
 
     const sidebarContent = (
         <Sidebar>
@@ -773,12 +781,14 @@ function App(): React.JSX.Element {
     };
 
     return (
-        <Layout
-            header={headerContent}
-            sidebar={sidebarContent}
-        >
-            {getMainContent()}
-        </Layout>
+        <Dashboard config={dashboardConfig}>
+            <Layout
+                header={headerContent}
+                sidebar={sidebarContent}
+            >
+                {getMainContent()}
+            </Layout>
+        </Dashboard>
     );
 }
 

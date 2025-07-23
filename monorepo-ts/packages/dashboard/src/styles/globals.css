@@ -17,20 +17,11 @@ body {
         system-ui,
         -apple-system,
         sans-serif;
-    background-color: #ffe5d9;
     color: #333333;
     line-height: 1.6;
 }
 
-#root {
-    min-height: 100vh;
-}
-
 /* Dashboard Layout Styles */
-.dashboard-container {
-    min-height: 100vh;
-    background-color: #ffe5d9;
-}
 
 .dashboard-content {
     padding: 1.5rem;
@@ -54,7 +45,6 @@ body {
     position: sticky;
     top: 0;
     z-index: 50;
-    border-bottom: 1px solid #e0e0e0;
     backdrop-filter: blur(8px);
     transition: all 0.2s ease;
 }
