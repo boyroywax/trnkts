@@ -28,29 +28,12 @@ function Footer({
         position: 'relative',
         marginTop: 'auto',
         padding: 'var(--trnkts-spacing-lg) var(--trnkts-spacing-md)',
-        background: 'linear-gradient(135deg, var(--trnkts-primary-dark) 0%, var(--trnkts-secondary-dark) 100%)',
-        color: 'var(--trnkts-text-light)',
-        borderTopLeftRadius: 'var(--trnkts-border-radius-lg)',
-        borderTopRightRadius: 'var(--trnkts-border-radius-lg)',
-        boxShadow: '0 -4px 20px rgba(0, 0, 0, 0.15)',
-        backdropFilter: 'blur(10px)',
+        background: 'transparent',
+        color: isDark ? '#e8e8e8' : '#333333',
+        borderTopLeftRadius: 'var(--trnkts-border-radius)',
+        borderTopRightRadius: 'var(--trnkts-border-radius)',
       }}
     >
-      {/* Rounded corner overlay to create seamless transition */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '-20px',
-          left: 0,
-          right: 0,
-          height: '20px',
-          background: 'linear-gradient(135deg, var(--trnkts-primary-dark) 0%, var(--trnkts-secondary-dark) 100%)',
-          borderTopLeftRadius: 'var(--trnkts-border-radius-lg)',
-          borderTopRightRadius: 'var(--trnkts-border-radius-lg)',
-          backdropFilter: 'blur(10px)',
-        }}
-      />
-
       <div
         className="footer-content"
         style={{
@@ -89,20 +72,19 @@ function Footer({
               width: '40px',
               height: '40px',
               borderRadius: '50%',
-              border: '2px solid rgba(255, 255, 255, 0.2)',
-              background: 'rgba(255, 255, 255, 0.1)',
-              color: 'var(--trnkts-text-light)',
+              border: 'none',
+              background: 'transparent',
+              color: isDark ? '#e8e8e8' : '#333333',
               cursor: 'pointer',
               transition: 'all 0.3s ease',
               fontSize: 'var(--trnkts-font-size-lg)',
-              backdropFilter: 'blur(5px)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
-              e.currentTarget.style.transform = 'scale(1.05)';
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+              e.currentTarget.style.transform = 'scale(1.1)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+              e.currentTarget.style.background = 'transparent';
               e.currentTarget.style.transform = 'scale(1)';
             }}
             title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}

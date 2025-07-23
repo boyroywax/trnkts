@@ -793,12 +793,27 @@ function App(): React.JSX.Element {
 }
 
 // Mount the application
-const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
-);
+const container = document.getElementById('root') as HTMLElement;
 
-root.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>
-);
+// Create root if it doesn't exist or reuse existing one
+if (import.meta.hot) {
+    // In development with HMR, we need to handle the root carefully
+    let root = (window as any).__vite_react_root;
+    if (!root) {
+        root = ReactDOM.createRoot(container);
+        (window as any).__vite_react_root = root;
+    }
+    root.render(
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    );
+} else {
+    // In production, create root normally
+    const root = ReactDOM.createRoot(container);
+    root.render(
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    );
+}
