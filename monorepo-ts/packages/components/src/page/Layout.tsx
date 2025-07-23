@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 
 export interface LayoutProps {
     children: ReactNode;
@@ -16,7 +16,7 @@ export function Layout({
     footer,
     className,
     isDark = false,
-}: LayoutProps) {
+}: LayoutProps): React.JSX.Element {
     return (
         <div
             className={`layout-container ${className || ''}`}

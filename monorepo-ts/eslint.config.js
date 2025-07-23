@@ -13,18 +13,22 @@ export default tseslint.config(
             '!eslint.config.js',
             '!tsconfig.json',
             '!tsconfig.*.json',
-            '__tests__',
-            // Do not ignore __tests__ at package root
+            // Remove the __tests__ ignore to allow linting test files
         ],
     },
     js.configs.recommended,
     ...tseslint.configs.recommended,
     prettierRecommended,
     {
-        files: [
-            '**/*.ts',
-            '**/*.tsx',
+        files: ['**/*.ts', '**/*.tsx'],
+        ignores: [
+            '**/*.test.ts',
+            '**/*.spec.ts',
+            '**/*.test.tsx',
+            '**/*.spec.tsx',
             '**/__tests__/**/*.ts',
+            '**/__tests__/**/*.tsx',
+            '**/vite.config.ts',
         ],
         languageOptions: {
             ecmaVersion: 2022,
@@ -56,8 +60,18 @@ export default tseslint.config(
         },
     },
     {
-        files: ['**/*.test.ts', '**/*.spec.ts'],
+        files: [
+            '**/*.test.ts',
+            '**/*.spec.ts',
+            '**/*.test.tsx',
+            '**/*.spec.tsx',
+            '**/__tests__/**/*.ts',
+            '**/__tests__/**/*.tsx',
+            '**/test-setup.ts',
+        ],
         languageOptions: {
+            ecmaVersion: 2022,
+            sourceType: 'module',
             globals: {
                 describe: 'readonly',
                 it: 'readonly',
@@ -71,7 +85,20 @@ export default tseslint.config(
         },
         rules: {
             '@typescript-eslint/no-explicit-any': 'off',
+            '@typescript-eslint/explicit-function-return-type':
+                'off',
             'no-console': 'off',
+        },
+    },
+    {
+        files: ['**/vite.config.ts', '**/jest.config.js'],
+        languageOptions: {
+            ecmaVersion: 2022,
+            sourceType: 'module',
+        },
+        rules: {
+            '@typescript-eslint/explicit-function-return-type':
+                'off',
         },
     }
 );

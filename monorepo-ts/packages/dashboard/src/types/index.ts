@@ -109,7 +109,7 @@ export interface Plugin {
     version: string;
     description?: string;
     component: ComponentType<PluginProps>;
-    config?: Record<string, any>;
+    config?: Record<string, unknown>;
     dependencies?: string[];
     permissions?: string[];
 }
@@ -117,7 +117,7 @@ export interface Plugin {
 export interface PluginConfig {
     id: string;
     enabled: boolean;
-    config?: Record<string, any>;
+    config?: Record<string, unknown>;
     position?: {
         area: 'sidebar' | 'main' | 'header' | 'footer';
         order: number;
@@ -125,7 +125,7 @@ export interface PluginConfig {
 }
 
 export interface PluginProps {
-    config?: Record<string, any>;
+    config?: Record<string, unknown>;
     dashboard?: DashboardContextValue;
 }
 
@@ -139,7 +139,7 @@ export interface WidgetConfig {
         width: number;
         height: number;
     };
-    config?: Record<string, any>;
+    config?: Record<string, unknown>;
 }
 
 export interface LayoutConfig {
@@ -185,6 +185,6 @@ export interface DashboardContextValue {
     disablePlugin: (pluginId: string) => void;
     updatePluginConfig: (
         pluginId: string,
-        config: Record<string, any>
+        config: Record<string, unknown>
     ) => void;
 }

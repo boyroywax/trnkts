@@ -24,7 +24,7 @@ const dashboardConfig: DashboardConfig = {
 };
 
 // Sample widgets to demonstrate the dashboard
-function SampleWidget() {
+function SampleWidget(): React.JSX.Element {
     return (
         <div className='demo-widget'>
             <h3 className='demo-widget-title'>
@@ -43,7 +43,7 @@ function SampleWidget() {
     );
 }
 
-function AnotherWidget() {
+function AnotherWidget(): React.JSX.Element {
     return (
         <div className='demo-widget'>
             <h3 className='demo-widget-title'>
@@ -71,7 +71,7 @@ function AnotherWidget() {
     );
 }
 
-function App() {
+function App(): React.JSX.Element {
     return (
         <div className='dashboard-container'>
             <Dashboard config={dashboardConfig}>
@@ -118,7 +118,7 @@ function App() {
 }
 
 const root = ReactDOM.createRoot(
-    document.getElementById('root')!
+    document.getElementById('root') as HTMLElement
 );
 root.render(
     <React.StrictMode>

@@ -4,7 +4,7 @@ describe('Metadata', () => {
     describe('constructor', () => {
         it('creates metadata with default values', () => {
             const metadata = new Metadata();
-            
+
             expect(metadata.name).toBeUndefined();
             expect(metadata.description).toBeUndefined();
             expect(metadata.annotations).toEqual({});
@@ -30,7 +30,7 @@ describe('Metadata', () => {
             };
 
             const metadata = new Metadata(options);
-            
+
             expect(metadata.name).toBe('test-metadata');
             expect(metadata.description).toBe(
                 'Test metadata instance'
@@ -62,7 +62,7 @@ describe('Metadata', () => {
 
         it('sets and gets annotations', () => {
             metadata.setAnnotation('key1', 'value1');
-            
+
             expect(metadata.getAnnotation('key1')).toBe(
                 'value1'
             );
@@ -73,7 +73,7 @@ describe('Metadata', () => {
 
         it('removes annotations', () => {
             metadata.setAnnotation('key1', 'value1');
-            
+
             expect(metadata.removeAnnotation('key1')).toBe(
                 true
             );
@@ -86,24 +86,27 @@ describe('Metadata', () => {
         });
 
         it('updates timestamp when annotation is modified', async () => {
-            const initialUpdated = metadata.getTimestamp(
-                'updated'
+            const initialUpdated =
+                metadata.getTimestamp('updated');
+
+            await new Promise(resolve =>
+                setTimeout(resolve, 1)
             );
-            
-            await new Promise(resolve => setTimeout(resolve, 1));
             metadata.setAnnotation('key1', 'value1');
-            const afterSet = metadata.getTimestamp('updated');
-            
+            const afterSet =
+                metadata.getTimestamp('updated');
+
             expect(afterSet).toBeGreaterThan(
                 initialUpdated || 0
             );
-            
-            await new Promise(resolve => setTimeout(resolve, 1));
-            metadata.removeAnnotation('key1');
-            const afterRemove = metadata.getTimestamp(
-                'updated'
+
+            await new Promise(resolve =>
+                setTimeout(resolve, 1)
             );
-            
+            metadata.removeAnnotation('key1');
+            const afterRemove =
+                metadata.getTimestamp('updated');
+
             expect(afterRemove).toBeGreaterThan(
                 afterSet || 0
             );
@@ -120,7 +123,7 @@ describe('Metadata', () => {
         it('adds labels', () => {
             metadata.addLabel('label1');
             metadata.addLabel('label2');
-            
+
             expect(metadata.labels).toEqual([
                 'label1',
                 'label2',
@@ -131,14 +134,14 @@ describe('Metadata', () => {
         it('prevents duplicate labels', () => {
             metadata.addLabel('label1');
             metadata.addLabel('label1');
-            
+
             expect(metadata.labels).toEqual(['label1']);
         });
 
         it('removes labels', () => {
             metadata.addLabel('label1');
             metadata.addLabel('label2');
-            
+
             expect(metadata.removeLabel('label1')).toBe(
                 true
             );
@@ -160,7 +163,7 @@ describe('Metadata', () => {
             metadata.addTag('tag1');
             metadata.addTag(42);
             metadata.addTag(Symbol('test'));
-            
+
             expect(metadata.tags).toHaveLength(3);
             expect(metadata.hasTag('tag1')).toBe(true);
             expect(metadata.hasTag(42)).toBe(true);
@@ -169,19 +172,19 @@ describe('Metadata', () => {
         it('prevents duplicate tags', () => {
             metadata.addTag('tag1');
             metadata.addTag('tag1');
-            
+
             expect(metadata.tags).toEqual(['tag1']);
         });
 
         it('removes tags', () => {
             metadata.addTag('tag1');
             metadata.addTag('tag2');
-            
+
             expect(metadata.removeTag('tag1')).toBe(true);
             expect(metadata.tags).toEqual(['tag2']);
-            expect(
-                metadata.removeTag('nonexistent')
-            ).toBe(false);
+            expect(metadata.removeTag('nonexistent')).toBe(
+                false
+            );
         });
     });
 
@@ -195,7 +198,7 @@ describe('Metadata', () => {
         it('sets and gets timestamps', () => {
             const timestamp = Date.now();
             metadata.setTimestamp('custom', timestamp);
-            
+
             expect(metadata.getTimestamp('custom')).toBe(
                 timestamp
             );
@@ -203,10 +206,10 @@ describe('Metadata', () => {
 
         it('removes timestamps', () => {
             metadata.setTimestamp('custom', Date.now());
-            
-            expect(
-                metadata.removeTimestamp('custom')
-            ).toBe(true);
+
+            expect(metadata.removeTimestamp('custom')).toBe(
+                true
+            );
             expect(
                 metadata.getTimestamp('custom')
             ).toBeUndefined();
@@ -226,14 +229,14 @@ describe('Metadata', () => {
         it('sets and gets data', () => {
             const data = { value: 42 };
             metadata.setData(data);
-            
+
             expect(metadata.getData()).toEqual(data);
         });
 
         it('clears data', () => {
             metadata.setData({ value: 42 });
             metadata.clearData();
-            
+
             expect(metadata.getData()).toBeUndefined();
         });
     });
@@ -254,7 +257,7 @@ describe('Metadata', () => {
 
         it('clones metadata', () => {
             const clone = metadata.clone();
-            
+
             expect(clone).not.toBe(metadata);
             expect(clone.name).toBe(metadata.name);
             expect(clone.description).toBe(
@@ -283,7 +286,7 @@ describe('Metadata', () => {
             });
 
             const merged = metadata.merge(other);
-            
+
             expect(merged.name).toBe('other');
             expect(merged.annotations).toEqual({
                 type: 'test',
@@ -299,7 +302,7 @@ describe('Metadata', () => {
 
         it('converts to JSON', () => {
             const json = metadata.toJSON();
-            
+
             expect(json).toEqual({
                 name: 'test',
                 description: 'Test metadata',
@@ -318,7 +321,7 @@ describe('Metadata', () => {
             const restored = Metadata.fromJSON<{
                 value: number;
             }>(json);
-            
+
             expect(restored.name).toBe(metadata.name);
             expect(restored.description).toBe(
                 metadata.description
@@ -339,21 +342,27 @@ describe('Metadata', () => {
 
         beforeEach(() => {
             metadata = new Metadata({
-                annotations: { type: 'test', category: 'demo' },
+                annotations: {
+                    type: 'test',
+                    category: 'demo',
+                },
                 labels: ['label1', 'label2'],
                 tags: ['tag1', 'tag2'],
             });
         });
 
         it('matches labels', () => {
-            expect(
-                metadata.matchesLabels(['label1'])
-            ).toBe(true);
+            expect(metadata.matchesLabels(['label1'])).toBe(
+                true
+            );
             expect(
                 metadata.matchesLabels(['label1', 'label2'])
             ).toBe(true);
             expect(
-                metadata.matchesLabels(['label1', 'missing'])
+                metadata.matchesLabels([
+                    'label1',
+                    'missing',
+                ])
             ).toBe(false);
         });
 

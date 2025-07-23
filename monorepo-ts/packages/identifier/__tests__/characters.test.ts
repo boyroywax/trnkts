@@ -120,36 +120,45 @@ describe('Character Sets', () => {
         });
 
         it('should have exactly 32 characters', () => {
-            expect(base32CrockfordsEncodeChars).toHaveLength(32);
+            expect(
+                base32CrockfordsEncodeChars
+            ).toHaveLength(32);
         });
 
         it('should start with numeric chars 0-9', () => {
-            expect(base32CrockfordsEncodeChars.slice(0, 10)).toBe(
-                numericChars
-            );
+            expect(
+                base32CrockfordsEncodeChars.slice(0, 10)
+            ).toBe(numericChars);
         });
 
         it('should exclude ambiguous characters I, L, O, U', () => {
             const ambiguousChars = ['I', 'L', 'O', 'U'];
             for (const char of ambiguousChars) {
-                expect(base32CrockfordsEncodeChars).not.toContain(char);
+                expect(
+                    base32CrockfordsEncodeChars
+                ).not.toContain(char);
             }
         });
 
         it('should contain all digits 0-9', () => {
             for (const char of numericChars) {
-                expect(base32CrockfordsEncodeChars).toContain(char);
+                expect(
+                    base32CrockfordsEncodeChars
+                ).toContain(char);
             }
         });
 
         it('should contain valid Crockford alphabet letters', () => {
-            const expectedLetters = 'ABCDEFGHJKMNPQRSTVWXYZ';
-            const lettersOnly = base32CrockfordsEncodeChars.slice(10);
+            const expectedLetters =
+                'ABCDEFGHJKMNPQRSTVWXYZ';
+            const lettersOnly =
+                base32CrockfordsEncodeChars.slice(10);
             expect(lettersOnly).toBe(expectedLetters);
         });
 
         it('should not contain duplicates', () => {
-            const chars = base32CrockfordsEncodeChars.split('');
+            const chars =
+                base32CrockfordsEncodeChars.split('');
             const uniqueChars = [...new Set(chars)];
             expect(uniqueChars).toHaveLength(chars.length);
         });
@@ -193,21 +202,29 @@ describe('Character Sets', () => {
 
     describe('Character Set Relationships', () => {
         it('should have no overlap between upper and lower alpha chars', () => {
-            const upperSet = new Set(alphaCharsUpper.split(''));
-            const lowerSet = new Set(alphaCharsLower.split(''));
-            const intersection = [...upperSet].filter(char =>
-                lowerSet.has(char)
+            const upperSet = new Set(
+                alphaCharsUpper.split('')
+            );
+            const lowerSet = new Set(
+                alphaCharsLower.split('')
+            );
+            const intersection = [...upperSet].filter(
+                char => lowerSet.has(char)
             );
             expect(intersection).toHaveLength(0);
         });
 
         it('should have no overlap between alpha and numeric chars', () => {
             const alphaSet = new Set(
-                (alphaCharsUpper + alphaCharsLower).split('')
+                (alphaCharsUpper + alphaCharsLower).split(
+                    ''
+                )
             );
-            const numericSet = new Set(numericChars.split(''));
-            const intersection = [...alphaSet].filter(char =>
-                numericSet.has(char)
+            const numericSet = new Set(
+                numericChars.split('')
+            );
+            const intersection = [...alphaSet].filter(
+                char => numericSet.has(char)
             );
             expect(intersection).toHaveLength(0);
         });
@@ -216,8 +233,10 @@ describe('Character Sets', () => {
             const base32Set = new Set(
                 base32CrockfordsEncodeChars.split('')
             );
-            const nanoidSet = new Set(nanoidChars.split(''));
-            
+            const nanoidSet = new Set(
+                nanoidChars.split('')
+            );
+
             for (const char of base32Set) {
                 expect(nanoidSet.has(char)).toBe(true);
             }
@@ -256,7 +275,9 @@ describe('Character Sets', () => {
                     Math.random() * charSet.length
                 );
                 expect(charSet[randomIndex]).toBeDefined();
-                expect(typeof charSet[randomIndex]).toBe('string');
+                expect(typeof charSet[randomIndex]).toBe(
+                    'string'
+                );
             }
         });
     });

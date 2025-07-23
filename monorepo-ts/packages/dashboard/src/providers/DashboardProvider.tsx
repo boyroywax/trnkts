@@ -24,7 +24,7 @@ export interface DashboardProviderProps {
 export function DashboardProvider({
     config,
     children,
-}: DashboardProviderProps) {
+}: DashboardProviderProps): React.JSX.Element {
     const [plugins, setPlugins] = useState<Plugin[]>([]);
     const [activePlugins, setActivePlugins] = useState<
         PluginConfig[]
@@ -93,7 +93,10 @@ export function DashboardProvider({
     );
 
     const updatePluginConfig = useCallback(
-        (pluginId: string, config: Record<string, any>) => {
+        (
+            pluginId: string,
+            config: Record<string, unknown>
+        ) => {
             setActivePlugins(prev =>
                 prev.map(p =>
                     p.id === pluginId

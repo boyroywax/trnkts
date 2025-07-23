@@ -15,7 +15,7 @@ export function Header({
     showMenuButton = true,
     children,
     className,
-}: HeaderProps) {
+}: HeaderProps): React.JSX.Element {
     return (
         <header
             className={`header ${className || ''}`}

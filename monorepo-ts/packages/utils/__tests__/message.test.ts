@@ -2,7 +2,6 @@ import {
     MessageStatuses,
     ReturnMessage,
     MessageBuilder,
-    createMessage,
     createSuccessMessage,
     createErrorMessage,
     createWarningMessage,
@@ -65,7 +64,9 @@ describe('MessageBuilder', () => {
             );
             const message = builder.build();
 
-            expect(message.status).toBe(MessageStatuses.INFO);
+            expect(message.status).toBe(
+                MessageStatuses.INFO
+            );
             expect(message.body).toEqual(testBody);
             expect(message.timestamp).toBe(testTimestamp);
             expect(message.metadata).toEqual({
@@ -151,57 +152,56 @@ describe('MessageBuilder', () => {
         const options = { body: testBody };
 
         it('creates success messages', () => {
-            const message = MessageBuilder.success(
-                options
-            ).build();
+            const message =
+                MessageBuilder.success(options).build();
             expect(message.status).toBe(
                 MessageStatuses.SUCCESS
             );
         });
 
         it('creates error messages', () => {
-            const message = MessageBuilder.error(
-                options
-            ).build();
-            expect(message.status).toBe(MessageStatuses.ERROR);
+            const message =
+                MessageBuilder.error(options).build();
+            expect(message.status).toBe(
+                MessageStatuses.ERROR
+            );
         });
 
         it('creates warning messages', () => {
-            const message = MessageBuilder.warning(
-                options
-            ).build();
+            const message =
+                MessageBuilder.warning(options).build();
             expect(message.status).toBe(
                 MessageStatuses.WARNING
             );
         });
 
         it('creates info messages', () => {
-            const message = MessageBuilder.info(
-                options
-            ).build();
-            expect(message.status).toBe(MessageStatuses.INFO);
+            const message =
+                MessageBuilder.info(options).build();
+            expect(message.status).toBe(
+                MessageStatuses.INFO
+            );
         });
 
         it('creates debug messages', () => {
-            const message = MessageBuilder.debug(
-                options
-            ).build();
-            expect(message.status).toBe(MessageStatuses.DEBUG);
+            const message =
+                MessageBuilder.debug(options).build();
+            expect(message.status).toBe(
+                MessageStatuses.DEBUG
+            );
         });
 
         it('creates critical messages', () => {
-            const message = MessageBuilder.critical(
-                options
-            ).build();
+            const message =
+                MessageBuilder.critical(options).build();
             expect(message.status).toBe(
                 MessageStatuses.CRITICAL
             );
         });
 
         it('creates unknown messages', () => {
-            const message = MessageBuilder.unknown(
-                options
-            ).build();
+            const message =
+                MessageBuilder.unknown(options).build();
             expect(message.status).toBe(
                 MessageStatuses.UNKNOWN
             );
@@ -222,7 +222,9 @@ describe('createMessage utilities', () => {
             testOptions
         );
 
-        expect(message.status).toBe(MessageStatuses.SUCCESS);
+        expect(message.status).toBe(
+            MessageStatuses.SUCCESS
+        );
         expect(message.body).toBe(testBody);
         expect(message.metadata).toEqual(
             testOptions.metadata
@@ -240,7 +242,9 @@ describe('createMessage utilities', () => {
     it('creates warning message', () => {
         const message = createWarningMessage(testBody);
 
-        expect(message.status).toBe(MessageStatuses.WARNING);
+        expect(message.status).toBe(
+            MessageStatuses.WARNING
+        );
         expect(message.body).toBe(testBody);
     });
 
@@ -270,7 +274,9 @@ describe('createMessage utilities', () => {
     it('creates unknown message', () => {
         const message = createUnknownMessage(testBody);
 
-        expect(message.status).toBe(MessageStatuses.UNKNOWN);
+        expect(message.status).toBe(
+            MessageStatuses.UNKNOWN
+        );
         expect(message.body).toBe(testBody);
     });
 });
@@ -434,9 +440,9 @@ describe('MessageUtils', () => {
             );
 
             expect(sorted[0].timestamp).toBe(1640995200000);
-            expect(sorted[sorted.length - 1].timestamp).toBe(
-                1640995700000
-            );
+            expect(
+                sorted[sorted.length - 1].timestamp
+            ).toBe(1640995700000);
         });
 
         it('sorts messages by timestamp descending', () => {
@@ -446,22 +452,30 @@ describe('MessageUtils', () => {
             );
 
             expect(sorted[0].timestamp).toBe(1640995700000);
-            expect(sorted[sorted.length - 1].timestamp).toBe(
-                1640995200000
-            );
+            expect(
+                sorted[sorted.length - 1].timestamp
+            ).toBe(1640995200000);
         });
 
         it('groups messages by status', () => {
             const grouped =
                 MessageUtils.getStatusSummary(messages);
 
-            expect(grouped[MessageStatuses.SUCCESS]).toBe(1);
+            expect(grouped[MessageStatuses.SUCCESS]).toBe(
+                1
+            );
             expect(grouped[MessageStatuses.ERROR]).toBe(1);
-            expect(grouped[MessageStatuses.WARNING]).toBe(1);
+            expect(grouped[MessageStatuses.WARNING]).toBe(
+                1
+            );
             expect(grouped[MessageStatuses.INFO]).toBe(1);
             expect(grouped[MessageStatuses.DEBUG]).toBe(1);
-            expect(grouped[MessageStatuses.CRITICAL]).toBe(1);
-            expect(grouped[MessageStatuses.UNKNOWN]).toBe(0);
+            expect(grouped[MessageStatuses.CRITICAL]).toBe(
+                1
+            );
+            expect(grouped[MessageStatuses.UNKNOWN]).toBe(
+                0
+            );
         });
     });
 
@@ -475,9 +489,8 @@ describe('MessageUtils', () => {
         );
 
         it('clones messages', () => {
-            const cloned = MessageUtils.clone(
-                originalMessage
-            );
+            const cloned =
+                MessageUtils.clone(originalMessage);
 
             expect(cloned).toEqual(originalMessage);
             expect(cloned).not.toBe(originalMessage);
@@ -519,7 +532,8 @@ describe('MessageUtils', () => {
                 }
             );
 
-            const formatted = MessageUtils.formatMessage(message);
+            const formatted =
+                MessageUtils.formatMessage(message);
 
             expect(formatted).toMatch(
                 /^\[INFO\] \d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z test-app: Test message$/

@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 
 export interface WidgetProps {
     title: string;
@@ -11,7 +11,7 @@ export function Widget({
     title,
     children,
     className,
-}: WidgetProps) {
+}: WidgetProps): React.JSX.Element {
     return (
         <div
             className={`widget ${className || ''}`}

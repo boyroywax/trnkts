@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 import { Layout } from '@trnkts/components';
 import { useDashboard } from '../hooks/useDashboard';
 import { DashboardProvider } from '../providers/DashboardProvider';
@@ -16,7 +16,7 @@ function DashboardContent({
 }: {
     children?: ReactNode;
     className?: string;
-}) {
+}): React.JSX.Element {
     const { theme, isDark } = useDashboard();
 
     return (
@@ -47,7 +47,7 @@ export function Dashboard({
     config,
     children,
     className,
-}: DashboardProps) {
+}: DashboardProps): React.JSX.Element {
     return (
         <DashboardProvider config={config}>
             <DashboardContent className={className || ''}>

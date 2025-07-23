@@ -7,7 +7,7 @@ export interface CreatePluginOptions {
     version: string;
     description?: string;
     component: ComponentType<PluginProps>;
-    config?: Record<string, any>;
+    config?: Record<string, unknown>;
     dependencies?: string[];
     permissions?: string[];
 }

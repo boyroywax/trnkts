@@ -25,8 +25,8 @@ export function SidebarItem({
     children,
     className,
     isDark = false,
-}: SidebarItemProps) {
-    const handleClick = () => {
+}: SidebarItemProps): React.JSX.Element {
+    const handleClick = (): void => {
         if (onClick) {
             onClick();
         } else if (href) {
@@ -71,7 +71,7 @@ export function SidebarItem({
 export function Sidebar({
     children,
     className,
-}: SidebarProps) {
+}: SidebarProps): React.JSX.Element {
     return (
         <nav className={`sidebar-nav ${className || ''}`}>
             {children}

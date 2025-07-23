@@ -7,9 +7,7 @@ export class PluginManager {
 
     registerPlugin(plugin: Plugin): void {
         if (this.plugins.has(plugin.id)) {
-            console.warn(
-                `Plugin with id "${plugin.id}" is already registered`
-            );
+            // Plugin already registered, skip silently or could use a logger here
             return;
         }
 
@@ -51,7 +49,7 @@ export class PluginManager {
 
     enablePlugin(
         pluginId: string,
-        config?: Record<string, any>
+        config?: Record<string, unknown>
     ): void {
         const plugin = this.plugins.get(pluginId);
         if (!plugin) {
@@ -80,7 +78,7 @@ export class PluginManager {
 
     updatePluginConfig(
         pluginId: string,
-        config: Record<string, any>
+        config: Record<string, unknown>
     ): void {
         const activeConfig =
             this.activeConfigs.get(pluginId);
@@ -124,10 +122,17 @@ export class PluginManager {
                     (a.position?.order ?? 0) -
                     (b.position?.order ?? 0)
             )
-            .map(config => ({
-                plugin: this.plugins.get(config.id)!,
-                config,
-            }))
-            .filter(item => item.plugin);
+            .map(config => {
+                const plugin = this.plugins.get(config.id);
+                return plugin ? { plugin, config } : null;
+            })
+            .filter(
+                (
+                    item
+                ): item is {
+                    plugin: Plugin;
+                    config: PluginConfig;
+                } => item !== null
+            );
     }
 }
