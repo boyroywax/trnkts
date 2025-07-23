@@ -11,6 +11,9 @@ export default tseslint.config(
             '**/*.js',
             '!jest.config.js',
             '!eslint.config.js',
+            '!tsconfig.json',
+            '!tsconfig.*.json',
+            '__tests__',
             // Do not ignore __tests__ at package root
         ],
     },
@@ -18,12 +21,19 @@ export default tseslint.config(
     ...tseslint.configs.recommended,
     prettierRecommended,
     {
-        files: ['**/*.ts', '**/*.tsx', '**/__tests__/**/*.ts'],
+        files: [
+            '**/*.ts',
+            '**/*.tsx',
+            '**/__tests__/**/*.ts',
+        ],
         languageOptions: {
             ecmaVersion: 2022,
             sourceType: 'module',
             parserOptions: {
-                project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+                project: [
+                    './tsconfig.json',
+                    './packages/*/tsconfig.json',
+                ],
                 tsconfigRootDir: import.meta.dirname,
             },
         },
@@ -33,10 +43,13 @@ export default tseslint.config(
                 'error',
                 { argsIgnorePattern: '^_' },
             ],
-            '@typescript-eslint/explicit-function-return-type': 'warn',
+            '@typescript-eslint/explicit-function-return-type':
+                'warn',
             '@typescript-eslint/no-explicit-any': 'warn',
-            '@typescript-eslint/no-non-null-assertion': 'warn',
-            '@typescript-eslint/consistent-type-imports': 'error',
+            '@typescript-eslint/no-non-null-assertion':
+                'warn',
+            '@typescript-eslint/consistent-type-imports':
+                'error',
             'no-console': 'warn',
             'prefer-const': 'error',
             'no-var': 'error',

@@ -47,7 +47,9 @@ class Metadata<T = unknown> {
         this.setTimestamp('updated', Date.now());
     }
 
-    public getAnnotation(key: string): TagValue | undefined {
+    public getAnnotation(
+        key: string
+    ): TagValue | undefined {
         return this.annotations[key];
     }
 
@@ -151,7 +153,7 @@ class Metadata<T = unknown> {
             tags: [...this.tags],
             timestamps: { ...this.timestamps },
         };
-        
+
         if (this.name !== undefined) {
             options.name = this.name;
         }
@@ -161,21 +163,31 @@ class Metadata<T = unknown> {
         if (this.data !== undefined) {
             options.data = this.data;
         }
-        
+
         return new Metadata<T>(options);
     }
 
     public merge(other: Metadata<T>): Metadata<T> {
         const merged = this.clone();
-        
+
         if (other.name) merged.name = other.name;
-        if (other.description) merged.description = other.description;
-        
-        Object.assign(merged.annotations, other.annotations);
-        merged.labels.push(...other.labels.filter(label => !merged.hasLabel(label)));
-        merged.tags.push(...other.tags.filter(tag => !merged.hasTag(tag)));
+        if (other.description)
+            merged.description = other.description;
+
+        Object.assign(
+            merged.annotations,
+            other.annotations
+        );
+        merged.labels.push(
+            ...other.labels.filter(
+                label => !merged.hasLabel(label)
+            )
+        );
+        merged.tags.push(
+            ...other.tags.filter(tag => !merged.hasTag(tag))
+        );
         Object.assign(merged.timestamps, other.timestamps);
-        
+
         if (other.data !== undefined) {
             merged.data = other.data;
         }
@@ -202,10 +214,16 @@ class Metadata<T = unknown> {
         return new Metadata<T>({
             name: json['name'] as string,
             description: json['description'] as string,
-            annotations: json['annotations'] as Record<string, TagValue>,
+            annotations: json['annotations'] as Record<
+                string,
+                TagValue
+            >,
             labels: json['labels'] as string[],
             tags: json['tags'] as Array<TagValue>,
-            timestamps: json['timestamps'] as Record<string, number>,
+            timestamps: json['timestamps'] as Record<
+                string,
+                number
+            >,
             data: json['data'] as T,
         });
     }
@@ -223,12 +241,10 @@ class Metadata<T = unknown> {
         annotations: Record<string, TagValue>
     ): boolean {
         return Object.entries(annotations).every(
-            ([key, value]) => this.getAnnotation(key) === value
+            ([key, value]) =>
+                this.getAnnotation(key) === value
         );
     }
 }
 
-export {
-    type MetadataOptions,
-    Metadata,
-};
+export { type MetadataOptions, Metadata };

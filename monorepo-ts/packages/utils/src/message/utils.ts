@@ -53,7 +53,7 @@ class MessageUtils {
         status: MessageStatuses
     ): ReturnMessage<T>[] {
         return messages.filter(
-            (message) => message.status === status
+            message => message.status === status
         );
     }
 
@@ -62,7 +62,7 @@ class MessageUtils {
         category: string
     ): ReturnMessage<T>[] {
         return messages.filter(
-            (message) => message.category === category
+            message => message.category === category
         );
     }
 
@@ -71,7 +71,7 @@ class MessageUtils {
         source: string
     ): ReturnMessage<T>[] {
         return messages.filter(
-            (message) => message.source === source
+            message => message.source === source
         );
     }
 
@@ -81,7 +81,7 @@ class MessageUtils {
         endTime: number
     ): ReturnMessage<T>[] {
         return messages.filter(
-            (message) =>
+            message =>
                 message.timestamp >= startTime &&
                 message.timestamp <= endTime
         );
@@ -145,9 +145,11 @@ class MessageUtils {
         }
 
         // Format the body - use JSON.stringify for objects
-        const bodyString = typeof message.body === 'object' && message.body !== null
-            ? JSON.stringify(message.body)
-            : String(message.body);
+        const bodyString =
+            typeof message.body === 'object' &&
+            message.body !== null
+                ? JSON.stringify(message.body)
+                : String(message.body);
         formatted += ` ${bodyString}`;
 
         return formatted;
@@ -166,7 +168,7 @@ class MessageUtils {
             {} as Record<MessageStatuses, number>
         );
 
-        messages.forEach((message) => {
+        messages.forEach(message => {
             summary[message.status]++;
         });
 

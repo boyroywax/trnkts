@@ -1,4 +1,4 @@
-import { ComponentType } from 'react';
+import type { ComponentType } from 'react';
 import type { Plugin, PluginProps } from '../types';
 
 export interface CreatePluginOptions {

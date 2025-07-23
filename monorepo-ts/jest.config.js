@@ -8,7 +8,7 @@ const config = {
         '<rootDir>/packages/core',
         '<rootDir>/packages/utils',
         '<rootDir>/packages/identifier',
-        '<rootDir>/packages/dashboard'
+        '<rootDir>/packages/dashboard',
     ],
     testMatch: [
         '**/__tests__/**/*.+(ts|tsx|js)',
@@ -17,7 +17,14 @@ const config = {
     transform: {
         '^.+\\.(ts|tsx)$': 'ts-jest',
     },
-    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+    moduleFileExtensions: [
+        'ts',
+        'tsx',
+        'js',
+        'jsx',
+        'json',
+        'node',
+    ],
     collectCoverageFrom: [
         'packages/*/src/**/*.{ts,tsx}',
         '!packages/*/src/**/*.d.ts',

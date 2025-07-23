@@ -24,7 +24,8 @@ class MessageBuilder<T = unknown> {
             this.message.id = options.id;
         }
         if (options.correlationId !== undefined) {
-            this.message.correlationId = options.correlationId;
+            this.message.correlationId =
+                options.correlationId;
         }
         if (options.source !== undefined) {
             this.message.source = options.source;
@@ -72,7 +73,9 @@ class MessageBuilder<T = unknown> {
         return this;
     }
 
-    public setCategory(category: string): MessageBuilder<T> {
+    public setCategory(
+        category: string
+    ): MessageBuilder<T> {
         this.message.category = category;
         return this;
     }

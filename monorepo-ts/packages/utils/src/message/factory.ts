@@ -9,9 +9,7 @@ import { MessageBuilder } from './builder';
 function createMessage<T>(
     status: MessageStatuses,
     body: T,
-    options?: Partial<
-        Omit<MessageOptions<T>, 'body'>
-    >
+    options?: Partial<Omit<MessageOptions<T>, 'body'>>
 ): ReturnMessage<T> {
     return new MessageBuilder(status, {
         body,
@@ -22,9 +20,7 @@ function createMessage<T>(
 // Convenience factory functions for each status
 function createSuccessMessage<T>(
     body: T,
-    options?: Partial<
-        Omit<MessageOptions<T>, 'body'>
-    >
+    options?: Partial<Omit<MessageOptions<T>, 'body'>>
 ): ReturnMessage<T> {
     return createMessage(
         MessageStatuses.SUCCESS,
@@ -35,9 +31,7 @@ function createSuccessMessage<T>(
 
 function createErrorMessage<T>(
     body: T,
-    options?: Partial<
-        Omit<MessageOptions<T>, 'body'>
-    >
+    options?: Partial<Omit<MessageOptions<T>, 'body'>>
 ): ReturnMessage<T> {
     return createMessage(
         MessageStatuses.ERROR,
@@ -48,9 +42,7 @@ function createErrorMessage<T>(
 
 function createWarningMessage<T>(
     body: T,
-    options?: Partial<
-        Omit<MessageOptions<T>, 'body'>
-    >
+    options?: Partial<Omit<MessageOptions<T>, 'body'>>
 ): ReturnMessage<T> {
     return createMessage(
         MessageStatuses.WARNING,
@@ -61,9 +53,7 @@ function createWarningMessage<T>(
 
 function createInfoMessage<T>(
     body: T,
-    options?: Partial<
-        Omit<MessageOptions<T>, 'body'>
-    >
+    options?: Partial<Omit<MessageOptions<T>, 'body'>>
 ): ReturnMessage<T> {
     return createMessage(
         MessageStatuses.INFO,
@@ -74,9 +64,7 @@ function createInfoMessage<T>(
 
 function createDebugMessage<T>(
     body: T,
-    options?: Partial<
-        Omit<MessageOptions<T>, 'body'>
-    >
+    options?: Partial<Omit<MessageOptions<T>, 'body'>>
 ): ReturnMessage<T> {
     return createMessage(
         MessageStatuses.DEBUG,
@@ -87,9 +75,7 @@ function createDebugMessage<T>(
 
 function createCriticalMessage<T>(
     body: T,
-    options?: Partial<
-        Omit<MessageOptions<T>, 'body'>
-    >
+    options?: Partial<Omit<MessageOptions<T>, 'body'>>
 ): ReturnMessage<T> {
     return createMessage(
         MessageStatuses.CRITICAL,
@@ -100,9 +86,7 @@ function createCriticalMessage<T>(
 
 function createUnknownMessage<T>(
     body: T,
-    options?: Partial<
-        Omit<MessageOptions<T>, 'body'>
-    >
+    options?: Partial<Omit<MessageOptions<T>, 'body'>>
 ): ReturnMessage<T> {
     return createMessage(
         MessageStatuses.UNKNOWN,

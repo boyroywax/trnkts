@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Layout } from '@trnkts/components';
 import { useDashboard } from '../hooks/useDashboard';
 import { DashboardProvider } from '../providers/DashboardProvider';
