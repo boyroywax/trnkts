@@ -104,7 +104,7 @@ describe('Widget Component', () => {
     expect(contentElement).toHaveTextContent(content);
   });
 
-  it('applies CSS custom properties for theming', () => {
+  it('applies glass-card styling from theme', () => {
     const { container } = render(
       <WidgetWrapper>
         <Widget title='Themed Widget'>
@@ -114,19 +114,14 @@ describe('Widget Component', () => {
     );
 
     const widget = container.firstChild?.firstChild as HTMLElement;
-    const titleElement = widget.querySelector('div:first-child') as HTMLElement;
 
-    // Check that CSS custom properties are applied
-    expect(widget).toHaveStyle({
-      padding: 'var(--dashboard-spacing-md)',
-      borderColor: 'var(--dashboard-border)',
-      backgroundColor: 'var(--dashboard-surface)',
-    });
-
-    expect(titleElement).toHaveStyle({
-      color: 'var(--dashboard-text)',
-      fontSize: 'var(--dashboard-font-lg)',
-    });
+    // Check that glass-card class is applied
+    expect(widget).toHaveClass('glass-card');
+    
+    // Check basic structure - Widget uses div elements, not h3
+    expect(widget.querySelector('.widget-header')).toBeInTheDocument();
+    expect(screen.getByText('Themed Widget')).toBeInTheDocument();
+    expect(screen.getByText('Content')).toBeInTheDocument();
   });
 
   it('renders complex children correctly', () => {

@@ -137,7 +137,8 @@ describe('Dashboard Component', () => {
         className={customClass}
       />
     );
-    expect(container.firstChild?.firstChild).toHaveClass(customClass);
+    const dashboardContainer = container.querySelector('.dashboard-container');
+    expect(dashboardContainer).toHaveClass(customClass);
   });
 
   it('renders with theme context provided', () => {

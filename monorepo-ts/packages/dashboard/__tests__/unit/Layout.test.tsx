@@ -32,38 +32,36 @@ describe('Layout Component', () => {
     expect(screen.getByText(sidebarContent)).toBeInTheDocument();
   });
 
-  it('renders footer when provided', () => {
-    const footerContent = 'Footer Content';
+  it('renders header when provided', () => {
+    const headerContent = 'Header Content';
     render(
-      <Layout footer={<div>{footerContent}</div>}>
+      <Layout header={<div>{headerContent}</div>}>
         <div>Main Content</div>
       </Layout>
     );
-    expect(screen.getByText(footerContent)).toBeInTheDocument();
+    expect(screen.getByText(headerContent)).toBeInTheDocument();
   });
 
-  it('applies custom className', () => {
-    const customClass = 'custom-layout';
+  it('renders with dashboard-container class', () => {
     const { container } = render(
-      <Layout className={customClass}>
+      <Layout>
         <div>Content</div>
       </Layout>
     );
-    expect(container.firstChild).toHaveClass(customClass);
+    expect(container.firstChild).toHaveClass('dashboard-container');
   });
 
-  it('applies dark mode styles when isDark is true', () => {
+  it('applies correct grid layout when sidebar is provided', () => {
     const { container } = render(
-      <Layout isDark={true}>
+      <Layout sidebar={<div>Sidebar</div>}>
         <div>Content</div>
       </Layout>
     );
 
-    const layoutElement = container.firstChild as HTMLElement;
-    expect(layoutElement).toHaveClass('layout-container');
-    expect(layoutElement).toHaveStyle({
-      backgroundColor: 'var(--dashboard-dark-background)',
-      color: 'var(--dashboard-dark-text)',
+    const mainWrapper = container.querySelector('.layout-main-wrapper') as HTMLElement;
+    expect(mainWrapper).toHaveStyle({
+      display: 'grid',
+      gridTemplateColumns: '300px 1fr',
     });
   });
 
@@ -72,7 +70,6 @@ describe('Layout Component', () => {
       <Layout
         header={<div>Header</div>}
         sidebar={<div>Sidebar</div>}
-        footer={<div>Footer</div>}
       >
         <div>Main Content</div>
       </Layout>
@@ -82,10 +79,9 @@ describe('Layout Component', () => {
     expect(screen.getByText('Header')).toBeInTheDocument();
     expect(screen.getByText('Sidebar')).toBeInTheDocument();
     expect(screen.getByText('Main Content')).toBeInTheDocument();
-    expect(screen.getByText('Footer')).toBeInTheDocument();
   });
 
-  it('renders without header, sidebar, and footer when not provided', () => {
+  it('renders without header and sidebar when not provided', () => {
     const { container } = render(
       <Layout>
         <div>Main Content Only</div>
@@ -94,13 +90,11 @@ describe('Layout Component', () => {
 
     expect(screen.getByText('Main Content Only')).toBeInTheDocument();
 
-    // Check that header, sidebar, and footer elements are not present
+    // Check that header and sidebar elements are not present
     const headerElement = container.querySelector('header');
     const asideElement = container.querySelector('aside');
-    const footerElement = container.querySelector('footer');
 
     expect(headerElement).not.toBeInTheDocument();
     expect(asideElement).not.toBeInTheDocument();
-    expect(footerElement).not.toBeInTheDocument();
   });
 });

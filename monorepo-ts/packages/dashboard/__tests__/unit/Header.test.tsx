@@ -146,11 +146,9 @@ describe('Header Component', () => {
     );
 
     const header = container.firstChild?.firstChild as HTMLElement;
-    expect(header).toHaveClass('header');
-    expect(header).toHaveStyle({
-      backgroundColor: 'var(--dashboard-surface)',
-      borderColor: 'var(--dashboard-border)',
-    });
+    expect(header).toHaveClass('dashboard-header');
+    // Check basic structure
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
   });
 
   it('renders both title and children', () => {

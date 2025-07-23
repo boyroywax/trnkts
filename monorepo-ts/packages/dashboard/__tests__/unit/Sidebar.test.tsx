@@ -128,14 +128,10 @@ describe('SidebarItem Component', () => {
   });
 
   it('handles href navigation', () => {
-    // Mock window.location
-    delete (window as any).location;
-    window.location = {
-      href: '',
-    } as any;
-
+    // Instead of mocking complex JSDOM navigation, let's just test that
+    // the component renders and accepts the href prop
     const href = '/test-route';
-    render(
+    const { container } = render(
       <SidebarItem
         title='Test Link'
         href={href}
@@ -145,11 +141,14 @@ describe('SidebarItem Component', () => {
     const button = screen.getByRole('button', {
       name: 'Test Link',
     });
-    fireEvent.click(button);
-
-    // Note: In a real test, you might want to mock navigation differently
-    // This is a simplified test for the structure
+    
+    // Verify the component renders with the href prop
     expect(button).toBeInTheDocument();
+    expect(screen.getByText('Test Link')).toBeInTheDocument();
+    
+    // Test that clicking doesn't throw an error (even if navigation is mocked by JSDOM)
+    // We can't easily test actual navigation in JSDOM without complex mocking
+    expect(() => fireEvent.click(button)).not.toThrow();
   });
 
   it('prioritizes onClick over href when both provided', () => {

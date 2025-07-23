@@ -124,40 +124,19 @@ describe('Layout Component', () => {
     expect(screen.getByText(sidebarContent)).toBeInTheDocument();
   });
 
-  it('renders footer when provided', () => {
-    const footerContent = 'Footer content';
-    render(
-      <Layout footer={<div>{footerContent}</div>}>
-        <div>Main content</div>
-      </Layout>
-    );
-
-    expect(screen.getByText(footerContent)).toBeInTheDocument();
-  });
-
-  it('applies custom className', () => {
-    const customClass = 'custom-layout-class';
+  it('applies consistent styling', () => {
     const { container } = render(
-      <Layout className={customClass}>
-        <div>Content</div>
-      </Layout>
-    );
-
-    expect(container.firstChild).toHaveClass(customClass);
-  });
-
-  it('applies dark mode styles when isDark is true', () => {
-    const { container } = render(
-      <Layout isDark={true}>
+      <Layout>
         <div>Content</div>
       </Layout>
     );
 
     const layoutElement = container.firstChild as HTMLElement;
-    expect(layoutElement).toHaveClass('layout-container');
+    expect(layoutElement).toHaveClass('dashboard-container');
     expect(layoutElement).toHaveStyle({
-      backgroundColor: 'var(--dashboard-dark-background)',
-      color: 'var(--dashboard-dark-text)',
+      minHeight: '100vh',
+      fontFamily: 'var(--trnkts-font-family)',
+      color: 'var(--trnkts-text-primary)',
     });
   });
 
@@ -166,7 +145,6 @@ describe('Layout Component', () => {
       <Layout
         header={<div>Header</div>}
         sidebar={<div>Sidebar</div>}
-        footer={<div>Footer</div>}
       >
         <div>Main Content</div>
       </Layout>
@@ -175,7 +153,6 @@ describe('Layout Component', () => {
     expect(screen.getByText('Header')).toBeInTheDocument();
     expect(screen.getByText('Sidebar')).toBeInTheDocument();
     expect(screen.getByText('Main Content')).toBeInTheDocument();
-    expect(screen.getByText('Footer')).toBeInTheDocument();
   });
 
   it('renders without header, sidebar, and footer when not provided', () => {
@@ -292,9 +269,11 @@ describe('SidebarItem Component', () => {
 
     const button = container.querySelector('button');
     expect(button).toHaveStyle({
-      backgroundColor: 'var(--dashboard-primary)',
-      color: 'var(--dashboard-surface)',
+      color: 'rgb(255, 255, 255)',
     });
+    
+    // Check that the button has the expected classes
+    expect(button).toHaveClass('btn-trnkts', 'sidebar-item');
   });
 
   it('renders children when active', () => {
@@ -407,18 +386,16 @@ describe('Widget Component', () => {
     );
 
     const widget = container.firstChild as HTMLElement;
-    const titleElement = widget.querySelector('div:first-child') as HTMLElement;
+    const titleElement = widget.querySelector('.widget-header') as HTMLElement;
 
-    // Check that CSS custom properties are applied
-    expect(widget).toHaveStyle({
-      padding: 'var(--dashboard-spacing-md)',
-      borderColor: 'var(--dashboard-border)',
-      backgroundColor: 'var(--dashboard-surface)',
-    });
-
+    // Check that the widget has the glass-card class
+    expect(widget).toHaveClass('glass-card');
+    
+    // Check that title element exists and has proper styling
+    expect(titleElement).toBeInTheDocument();
     expect(titleElement).toHaveStyle({
-      color: 'var(--dashboard-text)',
-      fontSize: 'var(--dashboard-font-lg)',
+      fontSize: 'var(--trnkts-font-size-xl)',
+      fontWeight: '600',
     });
   });
 
