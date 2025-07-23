@@ -17,6 +17,7 @@ function Widget({
             className={`glass-card ${className || ''}`}
             style={{
                 marginBottom: 'var(--trnkts-spacing-md)',
+                color: 'var(--trnkts-text-primary)',
             }}
         >
             <div
@@ -29,7 +30,14 @@ function Widget({
             >
                 {title}
             </div>
-            <div>{children}</div>
+            <div 
+                className="widget-content"
+                style={{ 
+                    color: 'var(--trnkts-text-primary)',
+                }}
+            >
+                {children}
+            </div>
         </div>
     );
 }

@@ -4,7 +4,6 @@ interface FooterProps {
   children?: ReactNode;
   className?: string;
   showThemeToggle?: boolean;
-  isDark?: boolean;
   onThemeToggle?: () => void;
 }
 
@@ -12,7 +11,6 @@ function Footer({
   children,
   className,
   showThemeToggle = true,
-  isDark = false,
   onThemeToggle,
 }: FooterProps): React.JSX.Element {
   const handleThemeToggle = (): void => {
@@ -29,7 +27,6 @@ function Footer({
         marginTop: 'auto',
         padding: 'var(--trnkts-spacing-lg) var(--trnkts-spacing-md)',
         background: 'transparent',
-        color: isDark ? '#e8e8e8' : '#333333',
         borderTopLeftRadius: 'var(--trnkts-border-radius)',
         borderTopRightRadius: 'var(--trnkts-border-radius)',
       }}
@@ -64,7 +61,7 @@ function Footer({
         {showThemeToggle && (
           <button
             onClick={handleThemeToggle}
-            className="theme-toggle-btn"
+            className="theme-toggle-btn btn-trnkts"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -72,24 +69,12 @@ function Footer({
               width: '40px',
               height: '40px',
               borderRadius: '50%',
-              border: 'none',
-              background: 'transparent',
-              color: isDark ? '#e8e8e8' : '#333333',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
+              padding: '0',
               fontSize: 'var(--trnkts-font-size-lg)',
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-              e.currentTarget.style.transform = 'scale(1.1)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'transparent';
-              e.currentTarget.style.transform = 'scale(1)';
-            }}
-            title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            title="Toggle theme"
           >
-            {isDark ? '☀️' : '🌙'}
+            �
           </button>
         )}
       </div>

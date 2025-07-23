@@ -8,6 +8,7 @@ interface HeaderProps {
     showLogo?: boolean;
     children?: React.ReactNode;
     className?: string;
+    transparent?: boolean;
 }
 
 function Header({
@@ -17,6 +18,7 @@ function Header({
     showLogo = false,
     children,
     className,
+    transparent = false,
 }: HeaderProps): React.JSX.Element {
     return (
         <header
@@ -25,11 +27,11 @@ function Header({
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                background: 'var(--trnkts-glass-bg)',
-                backdropFilter: 'blur(10px)',
-                borderRadius: 'var(--trnkts-border-radius)',
-                padding: 'var(--trnkts-spacing-md)',
-                boxShadow: 'var(--trnkts-glass-shadow)',
+                background: transparent ? 'transparent' : 'var(--trnkts-glass-bg)',
+                backdropFilter: transparent ? 'none' : 'blur(10px)',
+                borderRadius: transparent ? 'none' : 'var(--trnkts-border-radius)',
+                padding: 'var(--trnkts-spacing-sm)',
+                boxShadow: transparent ? 'none' : 'var(--trnkts-glass-shadow)',
             }}
         >
             <div className='flex items-center space-x-4'>
@@ -41,7 +43,8 @@ function Header({
                             padding: '0.5rem',
                             minWidth: 'auto',
                             backgroundColor: 'transparent',
-                            border: '2px solid rgba(175, 75, 14, 0.2)',
+                            border: '2px solid var(--trnkts-border)',
+                            color: 'var(--trnkts-text-primary)',
                         }}
                     >
                         <Menu size={20} />

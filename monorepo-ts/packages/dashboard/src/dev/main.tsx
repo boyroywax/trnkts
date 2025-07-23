@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
     Layout,
@@ -7,8 +7,10 @@ import {
     SidebarItem,
     Widget,
     Logo,
+    Footer,
 } from '@trnkts/components';
 import { Dashboard } from '../components/Dashboard';
+import { ThemeProvider, useTheme } from '../contexts/ThemeContext';
 import {
     Home,
     Settings,
@@ -27,6 +29,7 @@ import '../styles/theme.css';
 // Sample dashboard for demonstrating the new design
 function App(): React.JSX.Element {
     const [activeItem, setActiveItem] = React.useState<string>('home');
+    const { isDark, toggleTheme } = useTheme();
 
     // Dashboard configuration
     const dashboardConfig = {
@@ -48,9 +51,9 @@ function App(): React.JSX.Element {
                     trnkts
                 </h3>
                 <p
+                    className="text-light"
                     style={{
                         fontSize: '0.9rem',
-                        color: 'var(--trnkts-text-light)',
                         margin: '0.5rem 0',
                     }}
                 >
@@ -89,7 +92,8 @@ function App(): React.JSX.Element {
         <Header
             title='Trnkts Dashboard'
             showLogo={true}
-            showMenuButton={true}
+            showMenuButton={false}
+            transparent={true}
             onMenuClick={() => console.log('Menu clicked')}
         />
     );
@@ -137,9 +141,9 @@ function App(): React.JSX.Element {
                                         $12,345
                                     </h4>
                                     <p
+                                        className="text-light"
                                         style={{
                                             margin: '0.25rem 0 0 0',
-                                            color: 'var(--trnkts-text-light)',
                                         }}
                                     >
                                         Revenue
@@ -169,9 +173,9 @@ function App(): React.JSX.Element {
                                         89.5%
                                     </h4>
                                     <p
+                                        className="text-light"
                                         style={{
                                             margin: '0.25rem 0 0 0',
-                                            color: 'var(--trnkts-text-light)',
                                         }}
                                     >
                                         Uptime
@@ -781,14 +785,49 @@ function App(): React.JSX.Element {
     };
 
     return (
-        <Dashboard config={dashboardConfig}>
-            <Layout
-                header={headerContent}
-                sidebar={sidebarContent}
+        <div style={{ 
+            padding: 'var(--trnkts-spacing-md)', 
+            display: 'flex', 
+            flexDirection: 'column',
+            gap: '0.125rem',
+            position: 'relative',
+        }}>
+            {/* Dark mode overlay - handled by CSS */}
+            <div className="dark-mode-overlay" />
+            
+            {/* Header floating above the main layout */}
+            {headerContent}
+            
+            {/* Main rounded container with sidebar and content */}
+            <div 
+                className="main-layout-container glass-container"
+                style={{
+                    overflow: 'hidden',
+                }}
             >
-                {getMainContent()}
-            </Layout>
-        </Dashboard>
+                <Dashboard config={dashboardConfig}>
+                    <Layout sidebar={sidebarContent}>
+                        {getMainContent()}
+                    </Layout>
+                </Dashboard>
+            </div>
+            
+            {/* Footer floating below the main layout */}
+            <div style={{ marginTop: '0.125rem' }}>
+                <Footer
+                    onThemeToggle={toggleTheme}
+                    showThemeToggle={true}
+                />
+            </div>
+        </div>
+    );
+}
+
+function AppWithTheme(): React.JSX.Element {
+    return (
+        <ThemeProvider>
+            <App />
+        </ThemeProvider>
     );
 }
 
@@ -805,7 +844,7 @@ if (import.meta.hot) {
     }
     root.render(
         <React.StrictMode>
-            <App />
+            <AppWithTheme />
         </React.StrictMode>
     );
 } else {
@@ -813,7 +852,7 @@ if (import.meta.hot) {
     const root = ReactDOM.createRoot(container);
     root.render(
         <React.StrictMode>
-            <App />
+            <AppWithTheme />
         </React.StrictMode>
     );
 }

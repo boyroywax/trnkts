@@ -42,12 +42,12 @@ function SidebarItem({
                     justifyContent: 'flex-start',
                     marginBottom: 'var(--trnkts-spacing-xs)',
                     backgroundColor: isActive
-                        ? 'var(--trnkts-accent-orange)'
-                        : 'rgba(175, 75, 14, 0.1)',
-                    color: isActive ? 'white' : 'var(--trnkts-accent-orange)',
+                        ? 'var(--trnkts-primary)'
+                        : 'transparent',
+                    color: isActive ? 'white' : 'var(--trnkts-text-primary)',
                     border: isActive
-                        ? '2px solid var(--trnkts-accent-orange)'
-                        : '2px solid rgba(175, 75, 14, 0.2)',
+                        ? '2px solid var(--trnkts-primary)'
+                        : '2px solid var(--trnkts-border)',
                 }}
             >
                 {icon && <span className='sidebar-item-icon'>{icon}</span>}
@@ -59,7 +59,7 @@ function SidebarItem({
                     style={{
                         marginLeft: 'var(--trnkts-spacing-sm)',
                         paddingLeft: 'var(--trnkts-spacing-sm)',
-                        borderLeft: '2px solid rgba(175, 75, 14, 0.2)',
+                        borderLeft: '2px solid var(--trnkts-border)',
                     }}
                 >
                     {children}

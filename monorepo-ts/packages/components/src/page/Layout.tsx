@@ -15,12 +15,10 @@ export function Layout({
 }: LayoutProps): React.JSX.Element {
     return (
         <div
-            className='dashboard-container'
             style={{
-                fontFamily: 'var(--trnkts-font-family)',
-                color: 'var(--trnkts-text-primary)',
                 display: 'flex',
                 flexDirection: 'column',
+                height: '100%',
             }}
         >
             {header && <header className='layout-header'>{header}</header>}
@@ -33,18 +31,20 @@ export function Layout({
                     gap: 'var(--trnkts-spacing-md)',
                     alignItems: 'start',
                     flex: 1,
+                    padding: 'var(--trnkts-spacing-md)',
                 }}
             >
                 {sidebar && (
-                    <aside className='dashboard-sidebar'>{sidebar}</aside>
+                    <aside style={{ 
+                        padding: 'var(--trnkts-spacing-md)',
+                    }}>
+                        {sidebar}
+                    </aside>
                 )}
 
-                <main
-                    className='dashboard-main'
-                    style={{
-                        padding: 'var(--trnkts-spacing-md)',
-                    }}
-                >
+                <main style={{ 
+                    padding: 'var(--trnkts-spacing-md)',
+                }}>
                     {children}
                 </main>
             </div>
