@@ -22,6 +22,12 @@ import {
     Shield,
     Zap,
     Globe,
+    Rocket,
+    Star,
+    Palette,
+    PieChart,
+    UserCheck,
+    Cog,
 } from 'lucide-react';
 import '../styles/globals.css';
 import '../styles/theme.css';
@@ -41,25 +47,45 @@ function App(): React.JSX.Element {
         <Sidebar>
             <SidebarItem
                 title='Dashboard'
-                icon={<Home size={18} />}
+                icon={
+                    <Home 
+                        size={18} 
+                        style={{ color: 'var(--trnkts-primary-500)' }}
+                    />
+                }
                 isActive={activeItem === 'home'}
                 onClick={() => setActiveItem('home')}
             />
             <SidebarItem
                 title='Analytics'
-                icon={<BarChart size={18} />}
+                icon={
+                    <BarChart 
+                        size={18} 
+                        style={{ color: 'var(--trnkts-secondary-500)' }}
+                    />
+                }
                 isActive={activeItem === 'analytics'}
                 onClick={() => setActiveItem('analytics')}
             />
             <SidebarItem
                 title='Users'
-                icon={<Users size={18} />}
+                icon={
+                    <Users 
+                        size={18} 
+                        style={{ color: 'var(--trnkts-accent-500)' }}
+                    />
+                }
                 isActive={activeItem === 'users'}
                 onClick={() => setActiveItem('users')}
             />
             <SidebarItem
                 title='Settings'
-                icon={<Settings size={18} />}
+                icon={
+                    <Settings 
+                        size={18} 
+                        style={{ color: 'var(--trnkts-warning-500)' }}
+                    />
+                }
                 isActive={activeItem === 'settings'}
                 onClick={() => setActiveItem('settings')}
             />
@@ -86,7 +112,21 @@ function App(): React.JSX.Element {
                             gap: 'var(--trnkts-spacing-md)',
                         }}
                     >
-                        <Widget title='📊 Analytics Overview'>
+                        <Widget 
+                            title={
+                                <div style={{ 
+                                    display: 'flex', 
+                                    alignItems: 'center', 
+                                    gap: '0.5rem' 
+                                }}>
+                                    <PieChart 
+                                        size={20} 
+                                        style={{ color: 'var(--trnkts-primary-500)' }}
+                                    />
+                                    Analytics Overview
+                                </div>
+                            }
+                        >
                             <div
                                 style={{
                                     display: 'grid',
@@ -225,7 +265,21 @@ function App(): React.JSX.Element {
                                 </div>
                             </div>
                         </Widget>
-                        <Widget title='📈 Performance Trends'>
+                        <Widget 
+                            title={
+                                <div style={{ 
+                                    display: 'flex', 
+                                    alignItems: 'center', 
+                                    gap: '0.5rem' 
+                                }}>
+                                    <TrendingUp 
+                                        size={20} 
+                                        style={{ color: 'var(--trnkts-secondary-500)' }}
+                                    />
+                                    Performance Trends
+                                </div>
+                            }
+                        >
                             <div
                                 style={{
                                     height: '200px',
@@ -259,7 +313,21 @@ function App(): React.JSX.Element {
                             gap: 'var(--trnkts-spacing-md)',
                         }}
                     >
-                        <Widget title='👥 User Management'>
+                        <Widget 
+                            title={
+                                <div style={{ 
+                                    display: 'flex', 
+                                    alignItems: 'center', 
+                                    gap: '0.5rem' 
+                                }}>
+                                    <UserCheck 
+                                        size={20} 
+                                        style={{ color: 'var(--trnkts-accent-500)' }}
+                                    />
+                                    User Management
+                                </div>
+                            }
+                        >
                             <div
                                 style={{
                                     display: 'grid',
@@ -368,7 +436,21 @@ function App(): React.JSX.Element {
                             gap: 'var(--trnkts-spacing-md)',
                         }}
                     >
-                        <Widget title='⚙️ System Settings'>
+                        <Widget 
+                            title={
+                                <div style={{ 
+                                    display: 'flex', 
+                                    alignItems: 'center', 
+                                    gap: '0.5rem' 
+                                }}>
+                                    <Cog 
+                                        size={20} 
+                                        style={{ color: 'var(--trnkts-warning-500)' }}
+                                    />
+                                    System Settings
+                                </div>
+                            }
+                        >
                             <div style={{ display: 'grid', gap: '1.5rem' }}>
                                 <div
                                     className='glass-card'
@@ -491,7 +573,21 @@ function App(): React.JSX.Element {
                                 gap: 'var(--trnkts-spacing-md)',
                             }}
                         >
-                            <Widget title='🚀 Quick Start'>
+                            <Widget 
+                                title={
+                                    <div style={{ 
+                                        display: 'flex', 
+                                        alignItems: 'center', 
+                                        gap: '0.5rem' 
+                                    }}>
+                                        <Rocket 
+                                            size={20} 
+                                            style={{ color: 'var(--trnkts-primary-500)' }}
+                                        />
+                                        Quick Start
+                                    </div>
+                                }
+                            >
                                 <p style={{ marginBottom: '1rem' }}>
                                     Get started with your dashboard by exploring
                                     the sidebar navigation.
@@ -508,7 +604,21 @@ function App(): React.JSX.Element {
                                 </div>
                             </Widget>
 
-                            <Widget title='📊 Features'>
+                            <Widget 
+                                title={
+                                    <div style={{ 
+                                        display: 'flex', 
+                                        alignItems: 'center', 
+                                        gap: '0.5rem' 
+                                    }}>
+                                        <Star 
+                                            size={20} 
+                                            style={{ color: 'var(--trnkts-secondary-500)' }}
+                                        />
+                                        Features
+                                    </div>
+                                }
+                            >
                                 <ul
                                     style={{
                                         listStyle: 'none',
@@ -583,7 +693,21 @@ function App(): React.JSX.Element {
                                 </ul>
                             </Widget>
 
-                            <Widget title='🎨 Design System'>
+                            <Widget 
+                                title={
+                                    <div style={{ 
+                                        display: 'flex', 
+                                        alignItems: 'center', 
+                                        gap: '0.5rem' 
+                                    }}>
+                                        <Palette 
+                                            size={20} 
+                                            style={{ color: 'var(--trnkts-accent-500)' }}
+                                        />
+                                        Design System
+                                    </div>
+                                }
+                            >
                                 <p style={{ marginBottom: '1rem' }}>
                                     Built with the Trnkts design system
                                     featuring:
@@ -618,7 +742,21 @@ function App(): React.JSX.Element {
                         </div>
 
                         {/* Stats Dashboard */}
-                        <Widget title='📈 Dashboard Overview'>
+                        <Widget 
+                            title={
+                                <div style={{ 
+                                    display: 'flex', 
+                                    alignItems: 'center', 
+                                    gap: '0.5rem' 
+                                }}>
+                                    <BarChart 
+                                        size={20} 
+                                        style={{ color: 'var(--trnkts-primary-500)' }}
+                                    />
+                                    Dashboard Overview
+                                </div>
+                            }
+                        >
                             <div
                                 style={{
                                     display: 'grid',
