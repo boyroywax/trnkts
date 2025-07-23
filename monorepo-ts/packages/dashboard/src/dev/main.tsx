@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
     Layout,
@@ -50,7 +50,11 @@ function App(): React.JSX.Element {
                 icon={
                     <Home 
                         size={18} 
-                        style={{ color: 'var(--trnkts-primary-500)' }}
+                        style={{ 
+                            color: activeItem === 'home' 
+                                ? 'white' 
+                                : 'var(--trnkts-primary-500)' 
+                        }}
                     />
                 }
                 isActive={activeItem === 'home'}
@@ -61,7 +65,11 @@ function App(): React.JSX.Element {
                 icon={
                     <BarChart 
                         size={18} 
-                        style={{ color: 'var(--trnkts-secondary-500)' }}
+                        style={{ 
+                            color: activeItem === 'analytics' 
+                                ? 'white' 
+                                : 'var(--trnkts-secondary-500)' 
+                        }}
                     />
                 }
                 isActive={activeItem === 'analytics'}
@@ -72,7 +80,11 @@ function App(): React.JSX.Element {
                 icon={
                     <Users 
                         size={18} 
-                        style={{ color: 'var(--trnkts-accent-500)' }}
+                        style={{ 
+                            color: activeItem === 'users' 
+                                ? 'white' 
+                                : 'var(--trnkts-accent-500)' 
+                        }}
                     />
                 }
                 isActive={activeItem === 'users'}
@@ -83,7 +95,11 @@ function App(): React.JSX.Element {
                 icon={
                     <Settings 
                         size={18} 
-                        style={{ color: 'var(--trnkts-warning-500)' }}
+                        style={{ 
+                            color: activeItem === 'settings' 
+                                ? 'white' 
+                                : 'var(--trnkts-warning-500)' 
+                        }}
                     />
                 }
                 isActive={activeItem === 'settings'}
@@ -931,6 +947,7 @@ function App(): React.JSX.Element {
             {/* Footer floating below the main layout */}
             <div style={{ marginTop: '0.125rem' }}>
                 <Footer
+                    isDark={isDark}
                     onThemeToggle={toggleTheme}
                     showThemeToggle={true}
                 />

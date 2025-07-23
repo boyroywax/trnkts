@@ -1,7 +1,7 @@
 import React, { type ReactNode } from 'react';
 
 interface WidgetProps {
-    title: string;
+    title: string | ReactNode;
     children: ReactNode;
     className?: string;
     config?: Record<string, unknown>;

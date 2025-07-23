@@ -32,7 +32,7 @@ function Header({
                 borderRadius: transparent ? 'none' : 'var(--trnkts-border-radius)',
                 padding: 'var(--trnkts-spacing-xs)',
                 boxShadow: transparent ? 'none' : 'var(--trnkts-glass-shadow)',
-                minHeight: '3rem',
+                minHeight: '1.9rem',
             }}
         >
             <div className='flex items-center space-x-4'>
@@ -55,8 +55,8 @@ function Header({
                 {showLogo && (
                     <div style={{ marginRight: '1rem' }}>
                         <svg
-                            width='40'
-                            height='40'
+                            width='60'
+                            height='60'
                             viewBox='0 0 200 200'
                             fill='none'
                             xmlns='http://www.w3.org/2000/svg'
@@ -87,9 +87,11 @@ function Header({
                                 </linearGradient>
                             </defs>
                             <g className='logo-gem'>
+  
                                 <path
                                     d='M100 20L20 70L100 120L180 70L100 20Z'
                                     fill='url(#header-logo-gradient)'
+                                    fillOpacity='1'
                                 />
                                 <path
                                     d='M20 70L100 120L100 170L20 120L20 70Z'
@@ -108,9 +110,9 @@ function Header({
 
                 {title && (
                     <h1
-                        className='header-title gradient-text'
+                        className='header-title gradient-text-logo'
                         style={{
-                            fontSize: 'var(--trnkts-font-size-2xl)',
+                            fontSize: 'var(--trnkts-font-size-3xl)',
                             fontWeight: '700',
                             margin: 0,
                         }}

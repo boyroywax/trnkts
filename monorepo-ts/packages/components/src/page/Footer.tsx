@@ -1,9 +1,11 @@
 import React, { type ReactNode } from 'react';
+import { Sun, Moon } from 'lucide-react';
 
 interface FooterProps {
   children?: ReactNode;
   className?: string;
   showThemeToggle?: boolean;
+  isDark?: boolean;
   onThemeToggle?: () => void;
 }
 
@@ -11,6 +13,7 @@ function Footer({
   children,
   className,
   showThemeToggle = true,
+  isDark = false,
   onThemeToggle,
 }: FooterProps): React.JSX.Element {
   const handleThemeToggle = (): void => {
@@ -72,9 +75,9 @@ function Footer({
               padding: '0',
               fontSize: 'var(--trnkts-font-size-lg)',
             }}
-            title="Toggle theme"
+            title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
           >
-            �
+            {isDark ? <Sun size={20} /> : <Moon size={20} />}
           </button>
         )}
       </div>
